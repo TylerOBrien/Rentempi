@@ -3,7 +3,7 @@
 */
 
 import React from 'react';
-import React, { View } from 'react-native';
+import { View } from 'react-native';
 
 /**
  * Local Imports
