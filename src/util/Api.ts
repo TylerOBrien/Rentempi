@@ -11,6 +11,12 @@ import axios from 'axios';
 import { ApiConfig } from '~/config';
 
 /**
+ * Locals
+*/
+
+const defaultHeadersCommon = { 'X-Requested-With': 'XMLHttpRequest' };
+
+/**
  * Exports
 */
 
@@ -19,25 +25,21 @@ import { ApiConfig } from '~/config';
  * 
  * @param {object} options
  * 
- * @return {object}
+ * @return {Promise}
  */
-export function ApiRequest({ token, token_type, method, uri, data, headers }) {
-  Object.assign(headers || {}, {
+export function ApiRequest({ token, token_type, method, uri, data, headers }):Promise<any> {
+  headers = Object.assign({}, headers, {
     Authorization: ( token && token_type && `${ token_type } ${ token }` ),
-    common: Object.assign({ 'X-Requested-With': 'XMLHttpRequest' }, headers?.common)
+    common: Object.assign({}, defaultHeadersCommon, headers?.common)
   });
 
+  const payloadKey = method.toLowerCase() === 'get' ? 'params' : 'data';
   const config = {
     headers,
     method,
-    url: ApiConfig.url + uri
+    url: ApiConfig.url + uri,
+    [payloadKey]: data || {}
   };
-
-  if (method.toLowerCase() === 'get') {
-    config.params = data || {};
-  } else {
-    config.data = data || {};
-  }
 
   for (const key in config.headers) {
     if (!config.headers[key]) {
