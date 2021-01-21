@@ -133,7 +133,7 @@ export function condense(source:object, parent, existing):object {
  * 
  * @return {object}
  */
-export function excepted(source:object, except:any[] | object):object {
+export function excepted(source:object, except:string[] | object):object {
   const clone = Object.assign({}, source);
 
   if (JS.isArray(except)) {
