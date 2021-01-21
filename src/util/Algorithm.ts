@@ -20,7 +20,7 @@ import { JS } from './JS';
  * 
  * @return {array}
  */
-export function truthies(items) {
+export function truthies(items:any[]):any[] {
   const result = [];
   const end = items.length;
 
@@ -73,7 +73,7 @@ export function search(items, needle, operator) {
  * 
  * @return {*}
  */
-export function within(source, key) {
+export function within(source:object, key:string):any {
   if (!key) {
     ThrowUnexpectedEmpty('key', 'string');
   }
@@ -98,7 +98,7 @@ export function within(source, key) {
  * 
  * @return {object}
  */
-export function expand(condensed) {
+export function expand(condensed:object):object {
   const expanded = {};
 
   for (const key in condensed) {
@@ -134,7 +134,7 @@ export function expand(condensed) {
  * 
  * @return {object}
  */
-export function condense(source, parent, existing) {
+export function condense(source:object, parent, existing):object {
   if (!parent) {
     parent = [];
   }
@@ -160,7 +160,7 @@ export function condense(source, parent, existing) {
  * 
  * @return {object}
  */
-export function excepted(source, except) {
+export function excepted(source:object, except:any[] | object):object {
   const clone = Object.assign({}, source);
 
   if (JS.isArray(except)) {
