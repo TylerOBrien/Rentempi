@@ -1,0 +1,83 @@
+{
+  "name": "Rentempi",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "reset": "react-native start --reset-cache",
+    "tailwind": "npx create-tailwind-rn && mv styles.json resources/tailwind",
+
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+
+    "ipad": "react-native run-ios --simulator=\"iPad Pro (11-inch) (2nd generation)\"",
+    "iphone": "react-native run-ios --simulator=\"iPhone 11\"",
+    "tvos": "react-native run-ios --simulator=\"Apple TV\"",
+    "watchos": "react-native run-ios --simulator=\"Apple Watch Series 4 - 40mm\"",
+    
+    "iphone8": "react-native run-ios --simulator=\"iPhone 8\"",
+    "iphone8p": "react-native run-ios --simulator=\"iPhone 8 Plus\"",
+    "iphone11": "react-native run-ios --simulator=\"iPhone 11\"",
+    "iphone11p": "react-native run-ios --simulator=\"iPhone 11 Pro\"",
+    "iphone11pm": "react-native run-ios --simulator=\"iPhone 11 Pro Max\"",
+    "iphonese2": "react-native run-ios --simulator=\"iPhone 11 SE (2nd Generation)\"",
+
+    "ipad7": "react-native run-ios --simulator=\"iPad (7th generation)\"",
+    "ipadp": "react-native run-ios --simulator=\"iPad Pro (9.7-inch)\"",
+    "ipadp2": "react-native run-ios --simulator=\"iPad Pro (11-inch) (2nd generation)\"",
+    "ipadp4": "react-native run-ios --simulator=\"iPad Pro (12.9-inch) (4th generation)\"",
+    "ipada3": "react-native run-ios --simulator=\"iPad Air (3rd Generation)\"",
+
+    "tvos1080p": "react-native run-ios --simulator=\"Apple TV 4K (at 1080p)\"",
+    "tvos4k": "react-native run-ios --simulator=\"Apple TV 4K\"",
+
+    "watchos440": "react-native run-ios --simulator=\"Apple Watch Series 4 - 40mm\"",
+    "watchos444": "react-native run-ios --simulator=\"Apple Watch Series 4 - 44mm\"",
+    "watchos540": "react-native run-ios --simulator=\"Apple Watch Series 5 - 40mm\"",
+    "watchos544": "react-native run-ios --simulator=\"Apple Watch Series 5 - 44mm\""
+  },
+  "dependencies": {
+    "@react-native-async-storage/async-storage": "^1.13.2",
+    "@react-native-community/datetimepicker": "^3.0.9",
+    "@react-native-community/masked-view": "^0.1.10",
+    "@react-native-community/netinfo": "^5.9.9",
+    "@react-native-community/progress-bar-android": "^1.0.4",
+    "@react-native-community/progress-view": "^1.2.3",
+    "@react-navigation/bottom-tabs": "^5.11.2",
+    "@react-navigation/native": "^5.8.10",
+    "@react-navigation/stack": "^5.12.8",
+    "axios": "^0.21.1",
+    "formik": "^2.2.6",
+    "luxon": "^1.25.0",
+    "node-countries": "^1.5.0",
+    "react": "16.13.1",
+    "react-native": "0.63.4",
+    "react-native-config": "^1.4.1",
+    "react-native-gesture-handler": "^1.9.0",
+    "react-native-image-picker": "^3.1.3",
+    "react-native-pdf": "^6.2.2",
+    "react-native-reanimated": "^1.13.2",
+    "react-native-safe-area-context": "^3.1.9",
+    "react-native-screens": "^2.16.1",
+    "react-native-svg": "^12.1.0",
+    "react-native-vector-icons": "^7.1.0",
+    "rn-fetch-blob": "^0.12.0",
+    "tailwind-rn": "^3.0.0",
+    "tailwindcss": "^2.0.2",
+    "timezones-list": "^1.1.1",
+    "zxcvbn": "^4.4.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.4",
+    "@babel/runtime": "^7.8.4",
+    "@react-native-community/eslint-config": "^1.1.0",
+    "babel-jest": "^25.1.0",
+    "babel-plugin-module-resolver": "^4.1.0",
+    "eslint": "^6.5.1",
+    "jest": "^25.1.0",
+    "metro-react-native-babel-preset": "^0.59.0",
+    "react-test-renderer": "16.13.1"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}

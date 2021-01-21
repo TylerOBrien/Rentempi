@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["src/*"],
+      "@resources/*": ["resources/*"],
+      "@images/*": ["resources/images/*"]
+    }
+  },
+  "exclude": ["node_modules", "dist"]
+}
