@@ -27,9 +27,9 @@ const defaultHeadersCommon = { 'X-Requested-With': 'XMLHttpRequest' };
  * 
  * @return {Promise}
  */
-export function ApiRequest({ token, token_type, method, uri, data, headers }):Promise<any> {
+export function ApiRequest({ token, tokenType, method, uri, data, headers }):Promise<any> {
   headers = Object.assign({}, headers, {
-    Authorization: ( token && token_type && `${ token_type } ${ token }` ),
+    Authorization: ( token && tokenType && `${ tokenType } ${ token }` ),
     common: Object.assign({}, defaultHeadersCommon, headers?.common)
   });
 
