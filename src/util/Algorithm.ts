@@ -39,14 +39,29 @@ export function truthies(items:any[]):any[] {
 }
 
 /**
+ * Returns the named value from source. The given key may contain periods to
+ * denote child objects/values. For example:
  * 
+ * const source = {
+ *     foo: 42,
+ *     bar: {
+ *         message: 'hello',
+ *         baz: {
+ *             data: 'testing 123'
+ *         }
+ *     }
+ * };
+ * 
+ * within(source, 'foo'); // 42
+ * within(source, 'bar.message'); // 'hello'
+ * within(source, 'bar.baz.data'); // 'testing 123'
  * 
  * @param {object} source
  * @param {string} key
  * 
  * @return {*}
  */
-export function within(source:object, key:string):any {
+export function within(source:any, key:string):any {
   if (!key) {
     JS.ThrowUnexpectedEmpty('key', 'string');
   }
@@ -71,7 +86,7 @@ export function within(source:object, key:string):any {
  * 
  * @return {object}
  */
-export function expand(condensed:object):object {
+export function expand(condensed:any):any {
   const expanded = {};
 
   for (const key in condensed) {
@@ -107,7 +122,7 @@ export function expand(condensed:object):object {
  * 
  * @return {object}
  */
-export function condense(source:object, parent, existing):object {
+export function condense(source:any, parent?:string[], existing?:any):any {
   if (!parent) {
     parent = [];
   }
@@ -115,10 +130,10 @@ export function condense(source:object, parent, existing):object {
   const result = existing || {};
 
   for (const key in source) {
-    if (JS.isObject(source[key])) {
+    if (!JS.isObject(source[key])) {
       result[parent.join('.') + ( parent.length ? '.' : '' ) + key] = source[key];
     } else {
-      condense(source[key], [ ...parent, key ], result);
+      condense(source[key], parent.concat(key), result);
     }
   }
 
@@ -133,7 +148,7 @@ export function condense(source:object, parent, existing):object {
  * 
  * @return {object}
  */
-export function excepted(source:object, except:string[] | object):object {
+export function excepted(source:any, except:string[] | any):any {
   const clone = Object.assign({}, source);
 
   if (JS.isArray(except)) {
