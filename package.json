@@ -5,31 +5,25 @@
   "scripts": {
     "reset": "react-native start --reset-cache",
     "tailwind": "npx create-tailwind-rn && mv styles.json resources/tailwind",
-
     "android": "react-native run-android",
     "ios": "react-native run-ios",
-
     "ipad": "react-native run-ios --simulator=\"iPad Pro (11-inch) (2nd generation)\"",
     "iphone": "react-native run-ios --simulator=\"iPhone 11\"",
     "tvos": "react-native run-ios --simulator=\"Apple TV\"",
     "watchos": "react-native run-ios --simulator=\"Apple Watch Series 4 - 40mm\"",
-    
     "iphone8": "react-native run-ios --simulator=\"iPhone 8\"",
     "iphone8p": "react-native run-ios --simulator=\"iPhone 8 Plus\"",
     "iphone11": "react-native run-ios --simulator=\"iPhone 11\"",
     "iphone11p": "react-native run-ios --simulator=\"iPhone 11 Pro\"",
     "iphone11pm": "react-native run-ios --simulator=\"iPhone 11 Pro Max\"",
     "iphonese2": "react-native run-ios --simulator=\"iPhone 11 SE (2nd Generation)\"",
-
     "ipad7": "react-native run-ios --simulator=\"iPad (7th generation)\"",
     "ipadp": "react-native run-ios --simulator=\"iPad Pro (9.7-inch)\"",
     "ipadp2": "react-native run-ios --simulator=\"iPad Pro (11-inch) (2nd generation)\"",
     "ipadp4": "react-native run-ios --simulator=\"iPad Pro (12.9-inch) (4th generation)\"",
     "ipada3": "react-native run-ios --simulator=\"iPad Air (3rd Generation)\"",
-
     "tvos1080p": "react-native run-ios --simulator=\"Apple TV 4K (at 1080p)\"",
     "tvos4k": "react-native run-ios --simulator=\"Apple TV 4K\"",
-
     "watchos440": "react-native run-ios --simulator=\"Apple Watch Series 4 - 40mm\"",
     "watchos444": "react-native run-ios --simulator=\"Apple Watch Series 4 - 44mm\"",
     "watchos540": "react-native run-ios --simulator=\"Apple Watch Series 5 - 40mm\"",
@@ -70,6 +64,7 @@
     "@babel/core": "^7.8.4",
     "@babel/runtime": "^7.8.4",
     "@react-native-community/eslint-config": "^1.1.0",
+    "@types/luxon": "^1.25.1",
     "babel-jest": "^25.1.0",
     "babel-plugin-module-resolver": "^4.1.0",
     "eslint": "^6.5.1",
