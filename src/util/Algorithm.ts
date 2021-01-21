@@ -41,33 +41,6 @@ export function truthies(items:any[]):any[] {
 /**
  * 
  * 
- * @param {array} items
- * @param {*} needle
- * @param {string} operator
- * 
- * @return {array}
- */
-export function search(items, needle, operator) {
-  const result = [];
-  const end = items.length;
-
-  for (let i = 0; i < end; i++) {
-    if (JS.isArray(items[i])) {
-      const children = truthies(items[i]);
-      if (children.length) {
-        result.push(...children);
-      }
-    } else if (items[i]) {
-      result.push(items[i]);
-    }
-  }
-
-  return result;
-}
-
-/**
- * 
- * 
  * @param {object} source
  * @param {string} key
  * 
@@ -181,4 +154,4 @@ export function excepted(source:object, except:any[] | object):object {
  * Namespaced Exports
 */
 
-export const Algorithm = { truthies, search, within, expand, condense, excepted };
+export const Algorithm = { truthies, within, expand, condense, excepted };
