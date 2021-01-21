@@ -29,38 +29,6 @@ export function promised(callback) {
 }
 
 /**
- * Returns a new array that is a copy of items, except the elements in items
- * that are falsey will be removed.
- * 
- * If an element in items is itself an array then it will be recursively
- * evaluated such that this function guarantees to return a 1-dimensional array
- * regardless of the depth of the array passed.
- * 
- * @param {array} items
- * 
- * @return {array}
- */
-export function truthies(items) {
-  JS.AssertType('items', 'array', typeof items, JS.isArray);
-
-  const result = [];
-  const end = items.length;
-
-  for (let i = 0; i < end; i++) {
-    if (JS.isArray(items[i])) {
-      const children = truthies(items[i]);
-      if (children.length) {
-        result.push(...children);
-      }
-    } else if (items[i]) {
-      result.push(items[i]);
-    }
-  }
-
-  return result;
-}
-
-/**
  * Assumes the passed word param is a single word and converts it to a singular
  * form if it is not already singular.
  * 
