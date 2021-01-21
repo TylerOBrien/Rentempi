@@ -10,9 +10,9 @@ import { AsyncJSON } from './JSON';
 */
 
 /**
- * 
+ * @return {Promise<any>}
  */
-export function name(group, key) {
+function name(group:string, key:string):Promise<any> {
   return new Promise(resolve => {
     resolve(
       StorageConfig.name.prefix
@@ -27,9 +27,9 @@ export function name(group, key) {
 }
 
 /**
- * 
+ * @return {Promise<any>}
  */
-export function entry(group, key, unserialized) {
+function entry(group:string, key:string, unserialized:any):Promise<any> {
   return new Promise((resolve, reject) => {
     const promises = [
       name(group, key),

@@ -2,7 +2,7 @@
  * Exports
 */
 
-export const App = {
+export const AppDriver = {
   Screen: {
     Guest: {
       Welcome: 'Welcome',

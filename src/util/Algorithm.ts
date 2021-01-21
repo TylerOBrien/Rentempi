@@ -2,6 +2,7 @@
  * Sibling Imports
 */
 
+import { Assert } from './Assert';
 import { JS } from './JS';
 
 /**
@@ -63,7 +64,7 @@ export function truthies(items:any[]):any[] {
  */
 export function within(source:any, key:string):any {
   if (!key) {
-    JS.ThrowUnexpectedEmpty('key', 'string');
+    Assert.ThrowUnexpectedEmptyError('key', 'string');
   }
 
   const parts = key.split('.');

@@ -1,25 +1,16 @@
 /**
- * Sibling Imports
-*/
-
-import { ThrowUnexpectedEmpty, ThrowUnexpectedTypeError } from './Error'
-import { JS } from './JS';
-
-/**
- * Exports
+ * Locals
 */
 
 /**
- * Creates a new Promise that will resolve to the passed function.
+ * Higher-order function that will wrap the passed function in a Promise.
  * 
- * @param {function} callback
+ * @param {Function} callback
  * 
- * @return {Promise}
+ * @return {Function}
  */
-export function promised(callback) {
-  JS.AssertType('callback', 'function', typeof callback, JS.isFunction);
-
-  return (...args) => new Promise((resolve, reject) => {
+function promised(callback:Function):Function {
+  return (...args:any[]) => new Promise((resolve, reject) => {
     try {
       resolve(callback(...args));
     } catch (error) {
@@ -36,12 +27,10 @@ export function promised(callback) {
  * 
  * @return {string}
  */
-export function singular(word) {
-  JS.AssertType('word', 'string', typeof word, JS.isString);
-
+function singular(word:string):string {
   const end = ( word.length - 1 );
 
-  if (end > 1 && str[end] === 's') {
+  if (end > 1 && word[end] === 's') {
     if (end > 2 && word.slice(-3) === 'ies') {
       word = word.slice(0, end-2) + 'y';
     } else {
@@ -60,9 +49,7 @@ export function singular(word) {
  * 
  * @return {string}
  */
-export function plural(word) {
-  JS.AssertType('word', 'string', typeof word, JS.isString);
-
+function plural(word:string):string {
   const end = ( word.length - 1 );
 
   if (end > 0 && word[end] !== 's') {
@@ -83,9 +70,7 @@ export function plural(word) {
  * 
  * @return {string}
  */
-export function lcfirst(word) {
-  JS.AssertType('word', 'string', typeof word, JS.isString);
-
+function lcfirst(word:string):string {
   return word && ( word[0].toLowerCase() + word.slice(1) );
 }
 
@@ -96,8 +81,12 @@ export function lcfirst(word) {
  * 
  * @return {string}
  */
-export function ucfirst(word) {
-  JS.AssertType('word', 'string', typeof word, JS.isString);
-
+function ucfirst(word:string):string {
   return word && ( word[0].toUpperCase() + word.slice(1) );
 }
+
+/**
+ * Namespaced Exports
+*/
+
+export const Helpers = { promised, singular, plural, lcfirst, ucfirst };

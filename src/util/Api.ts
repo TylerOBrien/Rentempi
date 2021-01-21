@@ -2,7 +2,7 @@
  * Global Imports
 */
 
-import axios from 'axios';
+import axios, { Method } from 'axios';
 
 /**
  * Local Imports
@@ -11,34 +11,55 @@ import axios from 'axios';
 import { ApiConfig } from '~/config';
 
 /**
- * Locals
+ * Config
 */
 
 const defaultHeadersCommon = { 'X-Requested-With': 'XMLHttpRequest' };
 
 /**
- * Exports
+ * Interfaces
+*/
+
+export interface Authorization {
+  token: string,
+  tokenType: string
+}
+
+export interface Request {
+  method: string,
+  uri: string,
+  data?: any,
+  headers?: any
+}
+
+export interface ResourceIdentity {
+  id: number | string
+}
+
+/**
+ * Locals
 */
 
 /**
+ * Wrapper around axios. Will call API with given request parameters.
  * 
- * 
- * @param {object} options
+ * @param {Request} request
+ * @param {Authorization} auth
  * 
  * @return {Promise}
  */
-export function ApiRequest({ token, tokenType, method, uri, data, headers }):Promise<any> {
-  headers = Object.assign({}, headers, {
-    Authorization: ( token && tokenType && `${ tokenType } ${ token }` ),
-    common: Object.assign({}, defaultHeadersCommon, headers?.common)
+function call(request:Request, auth?:Authorization):Promise<any> {
+  const headers = Object.assign({}, request.headers, {
+    Authorization: auth && `${ auth.tokenType } ${ auth.token }`,
+    common: Object.assign({}, defaultHeadersCommon, request.headers?.common)
   });
 
-  const payloadKey = method.toLowerCase() === 'get' ? 'params' : 'data';
+  const payloadKey = request.method.toLowerCase() === 'get' ? 'params' : 'data';
   const config = {
     headers,
-    method,
-    url: ApiConfig.url + uri,
-    [payloadKey]: data || {}
+    method: <Method>request.method,
+    url: ApiConfig.url + request.uri,
+    [payloadKey]: request.data || {}
   };
 
   for (const key in config.headers) {
@@ -49,3 +70,9 @@ export function ApiRequest({ token, tokenType, method, uri, data, headers }):Pro
 
   return axios(config);
 }
+
+/**
+ * Namespaced Exports
+*/
+
+export const Api = { call };

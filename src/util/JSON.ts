@@ -4,8 +4,12 @@
 
 /**
  * 
+ * 
+ * @param {string} serialized
+ * 
+ * @return {Promise<any>}
  */
-function parse(serialized) {
+function parse(serialized:string):Promise<any> {
   return new Promise((resolve, reject) => {
     try {
       resolve(JSON.parse(serialized));
@@ -17,8 +21,12 @@ function parse(serialized) {
 
 /**
  * 
+ * 
+ * @param {any} unserialized
+ * 
+ * @return {Promise<string>}
  */
-function stringify(unserialized) {
+function stringify(unserialized:any):Promise<string> {
   return new Promise((resolve, reject) => {
     try {
       resolve(JSON.stringify(unserialized));

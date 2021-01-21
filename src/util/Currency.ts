@@ -20,7 +20,7 @@ const twoDecimalsRegex = new RegExp('\.\d{2}$');
  * 
  * @return {string}
  */
-export function currencyString(cents, currencySign='$', thousandsSeparator=',', decimalPoint='.') {
+export function currencyString(cents:number, currencySign:string='$', thousandsSeparator:string=',', decimalPoint:string='.'):string {
   const currency = (cents / 100).toFixed(2);
 
   if (decimalPoint !== '.') {
@@ -48,10 +48,10 @@ export function currencyString(cents, currencySign='$', thousandsSeparator=',', 
  * 
  * @return {number}
  */
-export function cents(currencyString, thousandsSeparator=',', decimalPoint='.') {
-  const thousands = ( thousandsSeparator === ',' ? commaRegex : new RegExp(thousandsSeparator, 'g') );
+export function cents(currencyString:string, thousandsSeparator:string=',', decimalPoint:string='.'):number {
+  const thousandsSeparatorRegex = ( thousandsSeparator === ',' ? commaRegex : new RegExp(thousandsSeparator, 'g') );
 
-  let value = currencyString.replace(thousands, '');
+  let value = currencyString.replace(thousandsSeparatorRegex, '');
 
   if (value.match(twoDecimalsRegex)) {
     value = value.replace(decimalPoint, '');

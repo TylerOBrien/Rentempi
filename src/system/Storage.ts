@@ -17,7 +17,7 @@ import { Storage } from '~/util/Storage';
 /**
  * 
  */
-function get(group, key) {
+function get(group:string, key:string):Promise<string> {
   return new Promise((resolve, reject) => {
     Storage.name(group, key)
       .then(name => AsyncStorage.getItem(name))
@@ -29,7 +29,7 @@ function get(group, key) {
 /**
  * 
  */
-function set(group, key, unserialized) {
+function set(group:string, key:string, unserialized:any):Promise<any> {
   return new Promise((resolve, reject) => {
     Storage.entry(group, key, unserialized)
       .then(entry => AsyncStorage.setItem(entry[0], entry[1]))
@@ -41,7 +41,7 @@ function set(group, key, unserialized) {
 /**
  * 
  */
-function merge(group, key, unserialized) {
+function merge(group:string, key:string, unserialized:any):Promise<any> {
   return new Promise((resolve, reject) => {
     Storage.entry(group, key, unserialized)
       .then(entry => AsyncStorage.mergeItem(entry[0], entry[1]))
@@ -53,7 +53,7 @@ function merge(group, key, unserialized) {
 /**
  * 
  */
-function remove(group, key) {
+function remove(group:string, key:string):Promise<any> {
   return new Promise((resolve, reject) => {
     Storage.name(group, key)
       .then(name => AsyncStorage.removeItem(name))

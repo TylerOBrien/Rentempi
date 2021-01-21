@@ -8,7 +8,7 @@ import { JSON as countries } from 'node-countries';
  * Sibling Imports
 */
 
-import { ThrowUnexpectedEmpty, ThrowUnexpectedTypeError } from './Error'
+import { ThrowUnexpectedEmpty, ThrowUnexpectedTypeError } from './Assert'
 import { JS } from './JS';
 
 /**

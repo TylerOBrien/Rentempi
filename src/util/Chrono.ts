@@ -2,7 +2,7 @@
  * Global Imports
 */
 
-import { DateTime as LuxonDateTime } from 'luxon';
+import { DateTime } from 'luxon';
 
 /**
  * Local Imports
@@ -11,7 +11,15 @@ import { DateTime as LuxonDateTime } from 'luxon';
 import { DateTimeConfig } from '~/config';
 
 /**
- * Exports
+ * Interfaces
+*/
+
+export interface DateTimeOptions {
+  dateOnly: boolean
+}
+
+/**
+ * Locals
 */
 
 /**
@@ -19,12 +27,12 @@ import { DateTimeConfig } from '~/config';
  * format to ensure compatiblity with the API.
  * 
  * @param {string} when
- * @param {object} options
+ * @param {DateTimeOptions} options
  * 
  * @return {DateTime}
  */
-export function DateTime(when, options) {
-  return LuxonDateTime.fromFormat(
+function from(when:string, options?:DateTimeOptions):DateTime {
+  return DateTime.fromFormat(
     when, options?.dateOnly ? DateTimeConfig.dateFormat : DateTimeConfig.dateTimeFormat
   );
 }
@@ -33,4 +41,4 @@ export function DateTime(when, options) {
  * Namespaced Exports
 */
 
-export const Chrono = { DateTime };
+export const Chrono = { from };
