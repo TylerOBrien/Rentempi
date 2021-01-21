@@ -85,7 +85,7 @@ export function expand(condensed) {
   for (const key in condensed) {
     const parts = key.split('.');
     const end = parts.length;
-    const value = JS.isObject(condensed[key]) ? Object.assign(condensed[key]) : condensed[key];
+    const value = JS.isObject(condensed[key]) ? Object.assign({}, condensed[key]) : condensed[key];
 
     if (end === 1) {
       expanded[key] = value;
@@ -156,7 +156,7 @@ export function excepted(source, except) {
     ThrowUnexpectedTypeError('except', 'array|object', typeof except);
   }
 
-  const clone = Object.assign(source);
+  const clone = Object.assign({}, source);
 
   if (JS.isArray(except)) {
     let i = except.length;
