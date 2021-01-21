@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "target": "es5",
+    "lib": ["esnext"],
+    "paths": {
+      "~/*": ["src/*"],
+      "@resources/*": ["resources/*"],
+      "@images/*": ["resources/images/*"]
+    }
+  },
+  "exclude": ["node_modules", "dist"]
+}
