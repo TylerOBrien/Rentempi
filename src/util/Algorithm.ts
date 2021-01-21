@@ -75,7 +75,7 @@ export function search(items, needle, operator) {
  */
 export function within(source:object, key:string):any {
   if (!key) {
-    ThrowUnexpectedEmpty('key', 'string');
+    JS.ThrowUnexpectedEmpty('key', 'string');
   }
 
   const parts = key.split('.');
