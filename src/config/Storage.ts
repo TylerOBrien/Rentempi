@@ -21,6 +21,10 @@ export const StorageConfig = {
     default: Config.STORAGE_DEFAULT_GROUP || 'storage'
   },
 
+  key: {
+    token: 'token'
+  },
+
   name: {
     prefix: Config.STORAGE_NAME_PREFIX || '@',
     suffix: Config.STORAGE_NAME_SUFFIX || '',
