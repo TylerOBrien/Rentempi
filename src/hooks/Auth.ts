@@ -68,12 +68,16 @@ export function useAuth():AuthHook {
    * @return {Promise<void>}
    */
   const login = (auth:AuthLogin, options?:AuthLoginOptions):Promise<void> => {
-    return new Promise((resolve, reject) => {
+    return new Promise(async (resolve, reject) => {
       loginResolveRef.current = resolve.bind(this);
       hasTokenStorageRef.current = !!options?.remember;
       
       if (hasTokenStorageRef.current) {
-        TokenStorage.set(token);
+        try {
+          await TokenStorage.set(token);
+        } catch (error) {
+          return reject(error);
+        }
       }
 
       setUser(auth.user);
