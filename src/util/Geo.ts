@@ -1,15 +1,21 @@
 /**
- * Global Imports
+ * Local Imports
 */
 
-import { JSON as countries } from 'node-countries';
+import { countries } from '~/lib/node-countries';
 
 /**
  * Sibling Imports
 */
 
-import { ThrowUnexpectedEmpty, ThrowUnexpectedTypeError } from './Assert'
+import { Assert } from './Assert'
 import { JS } from './JS';
+
+/**
+ * Types/Interfaces
+*/
+
+export type GeoNameType = 'name' | 'alpha2' | 'alpha3';
 
 /**
  * Local Vars
@@ -23,26 +29,14 @@ const ncountries = countries.length;
 
 /**
  * 
- * @param {string} needle
+ * @param {GeoNameType} needle
  * @param {string} key
  * 
  * @return {string}
  */
-export function country(needle, key) {
-  if (!JS.isString(needle)) {
-    ThrowUnexpectedTypeError('needle', 'string', typeof needle);
-  }
-  
-  if (!JS.isString(key)) {
-    ThrowUnexpectedTypeError('key', 'string', typeof key);
-  }
-
-  if (!needle) {
-    ThrowUnexpectedEmpty('needle', 'string');
-  }
-
+function country(needle:GeoNameType, key:string):string {
   if (!key) {
-    ThrowUnexpectedEmpty('key', 'string');
+    Assert.ThrowUnexpectedEmptyError('key', 'string');
   }
 
   for (let i = 0; i < ncountries; i++) {
@@ -66,29 +60,17 @@ export function country(needle, key) {
  * 
  * @return {string}
  */
-export function province(country, needle, provinceKey='short', countryKey='alpha2') {
-  if (!JS.isObject(country) && !JS.isString(country)) {
-    ThrowUnexpectedTypeError('country', 'object|string', typeof country);
-  }
-
-  if (!JS.isString(needle)) {
-    ThrowUnexpectedTypeError('needle', 'string', typeof needle);
-  }
-  
-  if (!JS.isString(provinceKey)) {
-    ThrowUnexpectedTypeError('provinceKey', 'string', typeof provinceKey);
-  }
-
+function province(country, needle:string, provinceKey:string='short', countryKey:GeoNameType='alpha2'):string {
   if (!country) {
-    ThrowUnexpectedEmpty('country', 'string');
+    Assert.ThrowUnexpectedEmptyError('country', 'string');
   }
 
   if (!needle) {
-    ThrowUnexpectedEmpty('needle', 'string');
+    Assert.ThrowUnexpectedEmptyError('needle', 'string');
   }
 
   if (!provinceKey) {
-    ThrowUnexpectedEmpty('provinceKey', 'string');
+    Assert.ThrowUnexpectedEmptyError('provinceKey', 'string');
   }
 
   if (JS.isString(country)) {
@@ -116,13 +98,9 @@ export function province(country, needle, provinceKey='short', countryKey='alpha
  * 
  * @return {string}
  */
-export function countryFromAlpha2(alpha2) {
-  if (!JS.isString(alpha2)) {
-    ThrowUnexpectedTypeError('alpha2', 'string', typeof alpha2);
-  }
-
+function countryFromAlpha2(alpha2:string):string {
   if (!alpha2) {
-    ThrowUnexpectedEmpty('alpha2', 'string');
+    Assert.ThrowUnexpectedEmptyError('alpha2', 'string');
   }
 
   if (alpha2.length !== 2) {
@@ -138,13 +116,9 @@ export function countryFromAlpha2(alpha2) {
  * 
  * @return {string}
  */
-export function countryFromAlpha3(alpha3) {
-  if (!JS.isString(alpha3)) {
-    ThrowUnexpectedTypeError('alpha3', 'string', typeof alpha3);
-  }
-
+function countryFromAlpha3(alpha3:string):string {
   if (!alpha3) {
-    ThrowUnexpectedEmpty('alpha3', 'string');
+    Assert.ThrowUnexpectedEmptyError('alpha3', 'string');
   }
 
   if (alpha3.length !== 3) {
@@ -160,13 +134,9 @@ export function countryFromAlpha3(alpha3) {
  * 
  * @return {string}
  */
-export function countryFromName(name) {
-  if (!JS.isString(name)) {
-    ThrowUnexpectedTypeError('name', 'string', typeof name);
-  }
-
+export function countryFromName(name:string):string {
   if (!name) {
-    ThrowUnexpectedEmpty('name', 'string');
+    Assert.ThrowUnexpectedEmptyError('name', 'string');
   }
 
   if (name.length < 4) {
