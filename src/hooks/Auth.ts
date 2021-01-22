@@ -11,6 +11,7 @@ import { useContext, useEffect, useRef } from 'react';
 import { AuthContext } from '~/providers/AuthProvider';
 import { UserContext } from '~/providers/UserProvider';
 
+import { TokenStorage } from '~/util';
 import { Authorization } from '~/util/Api';
 
 /**
@@ -24,7 +25,6 @@ export interface AuthLoginOptions {
 export interface AuthLogin {
   user:any;
   token:Authorization;
-  options?:AuthLoginOptions;
 }
 
 export interface AuthHook {
@@ -62,13 +62,13 @@ export function useAuth():AuthHook {
   /** Helpers **/
 
   /**
-   * @return {Promise<any>}
+   * @return {Promise<void>}
    */
-  const login = (auth:AuthLogin):Promise<any> => {
+  const login = (auth:AuthLogin, options?:AuthLoginOptions):Promise<void> => {
     return new Promise((resolve, reject) => {
       loginResolveRef.current = resolve.bind(this);
       
-      if (auth.options?.remember) {
+      if (options?.remember) {
         TokenStorage.set(token);
       }
 
@@ -78,9 +78,9 @@ export function useAuth():AuthHook {
   };
 
   /**
-   * @return {Promise<any>}
+   * @return {Promise<void>}
    */
-  const logout = ():Promise<any> => {
+  const logout = ():Promise<void> => {
     return new Promise(async (resolve, reject) => {
       logoutResolveRef.current = resolve.bind(this);
 
