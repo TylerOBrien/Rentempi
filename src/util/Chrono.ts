@@ -14,11 +14,15 @@ import { DateTimeConfig } from '~/config';
  * Interfaces
 */
 
+export interface DateTimeFormat {
+  date?: string,
+  time?: string,
+  dateTime?: string
+}
+
 export interface DateTimeOptions {
   dateOnly: boolean,
-  timeFormat?: string,
-  dateFormat?: string,
-  dateTimeFormat?: string
+  format?: DateTimeFormat
 }
 
 /**
@@ -37,8 +41,8 @@ export interface DateTimeOptions {
 function from(when:string, options?:DateTimeOptions):DateTime {
   return DateTime.fromFormat(when,
     options?.dateOnly
-      ? ( options?.dateFormat || DateTimeConfig.format.date )
-      : ( options?.dateTimeFormat || DateTimeConfig.format.dateTime )
+      ? ( options?.format?.date || DateTimeConfig.format.date )
+      : ( options?.format?.dateTime || DateTimeConfig.format.dateTime )
   );
 }
 
