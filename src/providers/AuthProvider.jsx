@@ -2,7 +2,7 @@
  * Global Imports
 */
 
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 
 /**
  * Exports
@@ -11,6 +11,10 @@ import React, { useState } from 'react';
 export const AuthContext = React.createContext();
 
 export function AuthProvider(props) {
+  /** Refs **/
+
+  const hasTokenStorageRef = useRef();
+
   /** States **/
 
   const [ token, setToken ] = useState();
@@ -18,7 +22,7 @@ export function AuthProvider(props) {
   /** Output **/
 
   return (
-    <AuthContext.Provider value={{ token, setToken }}>
+    <AuthContext.Provider value={{ hasTokenStorageRef, token, setToken }}>
       { props.children }
     </AuthContext.Provider>
   );
