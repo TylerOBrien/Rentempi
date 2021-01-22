@@ -33,7 +33,7 @@ export interface DateTimeOptions {
  */
 function from(when:string, options?:DateTimeOptions):DateTime {
   return DateTime.fromFormat(
-    when, options?.dateOnly ? DateTimeConfig.dateFormat : DateTimeConfig.dateTimeFormat
+    when, options?.dateOnly ? DateTimeConfig.format.date : DateTimeConfig.format.dateTime
   );
 }
 
