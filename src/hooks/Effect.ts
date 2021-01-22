@@ -2,16 +2,16 @@
  * Global Imports
 */
 
-import { useEffect, useRef } from 'react';
+import { DependencyList, EffectCallback, useEffect, useRef } from 'react';
 
 /**
  * Exports
 */
 
-export function usePreMountEffect(effect) {
+export function usePreMountEffect(effect:EffectCallback) {
   /** Refs **/
 
-  const hasBeenCalledRef = useRef();
+  const hasBeenCalledRef = useRef<boolean>();
 
   /** Side-Effects **/
 
@@ -21,10 +21,10 @@ export function usePreMountEffect(effect) {
   }
 }
 
-export function usePostMountEffect(effect, deps) {
+export function usePostMountEffect(effect:EffectCallback, deps:DependencyList) {
   /** Refs **/
 
-  const isMountedRef = useRef();
+  const isMountedRef = useRef<boolean>();
 
   /** Side-Effects **/
 
