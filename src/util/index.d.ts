@@ -14,3 +14,4 @@ export { JS } from './JS';
 export { AsyncJSON } from './JSON';
 export { Storage } from './Storage';
 export { Tailwind } from './TailwindCss';
+export { TokenStorage } from './TokenStorage';
