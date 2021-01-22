@@ -17,7 +17,7 @@ const endpoint = 'images';
 /**
  * 
  */
-export function IndexImageService(auth:Authorization, data:any):Promise<any> {
+export function IndexImageService(auth:Authorization, data?:any):Promise<any> {
   const config = {
     data,
     method: 'GET',
@@ -30,7 +30,7 @@ export function IndexImageService(auth:Authorization, data:any):Promise<any> {
 /**
  * 
  */
-export function ShowImageService(auth:Authorization, image:ResourceIdentity, data:any):Promise<any> {
+export function ShowImageService(auth:Authorization, image:ResourceIdentity, data?:any):Promise<any> {
   const config = {
     data,
     method: 'GET',
@@ -69,7 +69,7 @@ export function UpdateImageService(auth:Authorization, image:ResourceIdentity, d
 /**
  * 
  */
-export function DestroyImageService(auth:Authorization, image:ResourceIdentity, data:any):Promise<any> {
+export function DestroyImageService(auth:Authorization, image:ResourceIdentity, data?:any):Promise<any> {
   const config = {
     data,
     method: 'DELETE',

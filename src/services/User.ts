@@ -17,7 +17,7 @@ const endpoint = 'users';
 /**
  * 
  */
-export function IndexUserService(auth:Authorization, data:any):Promise<any> {
+export function IndexUserService(auth:Authorization, data?:any):Promise<any> {
   const config = {
     data,
     method: 'GET',
@@ -30,7 +30,7 @@ export function IndexUserService(auth:Authorization, data:any):Promise<any> {
 /**
  * 
  */
-export function ShowUserService(auth:Authorization, user:ResourceIdentity, data:any):Promise<any> {
+export function ShowUserService(auth:Authorization, user:ResourceIdentity, data?:any):Promise<any> {
   const config = {
     data,
     method: 'GET',
@@ -69,7 +69,7 @@ export function UpdateUserService(auth:Authorization, user:ResourceIdentity, dat
 /**
  * 
  */
-export function DestroyUserService(auth:Authorization, user:ResourceIdentity, data:any):Promise<any> {
+export function DestroyUserService(auth:Authorization, user:ResourceIdentity, data?:any):Promise<any> {
   const config = {
     data,
     method: 'DELETE',
