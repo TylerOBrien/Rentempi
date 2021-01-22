@@ -39,6 +39,7 @@ export interface AuthHook {
 export function useAuth():AuthHook {
   /** Refs **/
 
+  const hasStoredTokenRef = useRef<boolean>();
   const loginResolveRef = useRef<()=>void>();
   const logoutResolveRef = useRef<()=>void>();
 
@@ -53,9 +54,12 @@ export function useAuth():AuthHook {
     if (token && loginResolveRef.current) {
       loginResolveRef.current();
       loginResolveRef.current = null;
-    } else if (!token && logoutResolveRef.current) {
-      logoutResolveRef.current();
-      logoutResolveRef.current = null;
+    } else if (!token) {
+      if (logoutResolveRef.current) {
+        logoutResolveRef.current();
+        logoutResolveRef.current = null;
+      }
+      hasStoredTokenRef.current = false;
     }
   }, [ token ]);
   
@@ -67,8 +71,9 @@ export function useAuth():AuthHook {
   const login = (auth:AuthLogin, options?:AuthLoginOptions):Promise<void> => {
     return new Promise((resolve, reject) => {
       loginResolveRef.current = resolve.bind(this);
+      hasStoredTokenRef.current = !!options?.remember;
       
-      if (options?.remember) {
+      if (hasStoredTokenRef.current) {
         TokenStorage.set(token);
       }
 
@@ -84,10 +89,12 @@ export function useAuth():AuthHook {
     return new Promise(async (resolve, reject) => {
       logoutResolveRef.current = resolve.bind(this);
 
-      try {
-        await TokenStorage.clear();
-      } catch (error) {
-        return reject(error);
+      if (hasStoredTokenRef.current) {
+        try {
+          await TokenStorage.clear();
+        } catch (error) {
+          return reject(error);
+        }
       }
 
       setUser(null);
