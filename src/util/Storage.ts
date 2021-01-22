@@ -3,16 +3,21 @@
 */
 
 import { StorageConfig } from '~/config';
+
+/**
+ * Sibling Imports
+*/
+
 import { AsyncJSON } from './JSON';
 
 /**
- * Exports
+ * Locals
 */
 
 /**
- * @return {Promise<any>}
+ * @return {Promise<string>}
  */
-function name(group:string, key:string):Promise<any> {
+function name(group:string, key:string):Promise<string> {
   return new Promise(resolve => {
     resolve(
       StorageConfig.name.prefix
