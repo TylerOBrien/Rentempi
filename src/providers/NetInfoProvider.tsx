@@ -3,25 +3,26 @@
 */
 
 import React, { useRef, useState } from 'react';
-import NetInfo from '@react-native-community/netinfo';
+import NetInfo, { NetInfoState, NetInfoSubscription } from '@react-native-community/netinfo';
 
 /**
- * Exports
+ * Contexts
 */
 
-export const NetInfoContext = React.createContext();
+export const NetInfoContext = React.createContext<NetInfoState>(undefined);
 
 /**
- * 
- */
-export function NetInfoProvider(props) {
+ * Provider
+*/
+
+export function NetInfoProvider(props:any) {
   /** Refs **/
 
-  const unsubscribeRef = useRef();
+  const unsubscribeRef = useRef<NetInfoSubscription>();
 
   /** States **/
 
-  const [ state, setState ] = useState();
+  const [ state, setState ] = useState<NetInfoState>();
 
   /** Setup **/
 
