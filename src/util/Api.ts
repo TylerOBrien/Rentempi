@@ -49,7 +49,7 @@ export interface ResourceIdentity {
  */
 function call(request:Request, auth?:Authorization):Promise<any> {
   const headers = Object.assign({}, request.headers, {
-    Authorization: auth && `${ auth.tokenType } ${ auth.token }`,
+    Authorization: auth?.token,
     common: Object.assign({}, defaultHeadersCommon, request.headers?.common)
   });
 
