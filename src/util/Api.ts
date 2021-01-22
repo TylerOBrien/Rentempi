@@ -25,14 +25,14 @@ export interface Authorization {
 }
 
 export interface Request {
-  method: string,
-  uri: string,
-  data?: any,
-  headers?: any
+  method: string;
+  uri: string;
+  data?: any;
+  headers?: any;
 }
 
 export interface ResourceIdentity {
-  id: number | string
+  id: number | string;
 }
 
 /**
