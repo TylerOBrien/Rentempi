@@ -21,8 +21,7 @@ const defaultHeadersCommon = { 'X-Requested-With': 'XMLHttpRequest' };
 */
 
 export interface Authorization {
-  token: string,
-  tokenType: string
+  token: string;
 }
 
 export interface Request {
