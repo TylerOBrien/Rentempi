@@ -77,4 +77,4 @@ function remove(group:string, key:string):Promise<any> {
  * Namespaced Exports
 */
 
-export const StorageDriver = { keys, get, set, merge, remove };
+export const StorageDriver = { keys, get, set, merge, remove, clear: AsyncStorage.clear };
