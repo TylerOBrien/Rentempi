@@ -11,13 +11,19 @@ import { useContext } from 'react';
 import { NetInfoContext } from '~/providers/NetInfoProvider';
 
 /**
+ * Types/Interfaces
+*/
+
+export interface NetInfoHook {
+  isConnected:boolean;
+  isInternetReachable:boolean;
+}
+
+/**
  * Exports
 */
 
-/**
- * 
- */
-export function useNetInfo() {
+export function useNetInfo():NetInfoHook {
   /** Contexts **/
 
   const { isConnected, isInternetReachable } = useContext(NetInfoContext);

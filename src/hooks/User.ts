@@ -11,13 +11,18 @@ import { useContext } from 'react';
 import { UserContext } from '~/providers/UserProvider';
 
 /**
+ * Types/Interfaces
+*/
+
+export interface UserHook {
+  
+}
+
+/**
  * Exports
 */
 
-/**
- * 
- */
-export function useUser() {
+export function useUser():UserHook {
   /** Contexts **/
   
   const { user, setUser } = useContext(UserContext);
