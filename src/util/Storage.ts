@@ -21,7 +21,7 @@ function name(group:string, key:string):Promise<string> {
   return new Promise(resolve => {
     resolve(
       StorageConfig.name.prefix
-      + StorageConfig.store
+      + StorageConfig.slug
       + StorageConfig.name.delimeter
       + group
       + StorageConfig.name.delimeter
