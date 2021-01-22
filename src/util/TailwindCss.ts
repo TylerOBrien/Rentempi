@@ -6,11 +6,25 @@ import aliases from '@resources/tailwind/aliases.json';
 import definitions from '@resources/tailwind/styles.json';
 
 /**
+ * Local Imports
+*/
+
+import { ThemeConfig } from '~/config';
+
+/**
  * Sibling Imports
 */
 
-import { truthies } from './Helpers';
+import { Algorithm } from './Algorithm';
+import { Assert } from './Assert';
 import { JS } from './JS';
+
+/**
+ * Types/Interfaces
+*/
+
+export type TailwindClassNames = string | string[];
+export type TailwindObject = string | string[] | object;
 
 /**
  * Local Vars
@@ -24,13 +38,15 @@ const fontSizeRegex = new RegExp('text-(xs|sm|base|lg|xl|2xl|3xl|4xl|5xl|6xl)');
 */
 
 /**
- * @param {array|string} tailwind
+ * Applies aliases, if necessary, to the passes Tailwind class names.
+ * 
+ * @param {TailwindClassNames} tailwind
  * 
  * @return {string}
  */
-function aliased(tailwind) {
+function aliased(tailwind:TailwindClassNames):string {
   if (JS.isArray(tailwind)) {
-    tailwind = truthies(tailwind).join(' ').split(' ');
+    tailwind = Algorithm.truthies(tailwind).join(' ').split(' ');
   } else {
     tailwind = tailwind.split(' ');
   }
@@ -47,22 +63,19 @@ function aliased(tailwind) {
 }
 
 /**
+ * Returns true if the passed Tailwind name beings with tracking- which is
+ * used to change the text-spacing style.
+ * 
  * @param {string} entry
  * 
  * @return {boolean}
  */
-function hasTrackingPrefix(entry) {
+function hasTrackingPrefix(entry:string):boolean {
   return (
     entry.length > 8 &&
-    entry[0] === 't' &&
-    entry[1] === 'r' &&
-    entry[2] === 'a' &&
-    entry[3] === 'c' &&
-    entry[4] === 'k' &&
-    entry[5] === 'i' &&
-    entry[6] === 'n' &&
-    entry[7] === 'g' &&
-    entry[8] === '-'
+    entry[0] === 't' && entry[1] === 'r' && entry[2] === 'a' &&
+    entry[3] === 'c' && entry[4] === 'k' && entry[5] === 'i' &&
+    entry[6] === 'n' && entry[7] === 'g' && entry[8] === '-'
   );
 }
 
@@ -71,21 +84,19 @@ function hasTrackingPrefix(entry) {
 */
 
 /**
+ * Converts the given Tailwind-style class name to a React Native style object.
+ * 
  * @param {string} className
- * @param {array} fontSizes
+ * @param {RegExpExecArray} fontSizes
  * 
  * @return {object}
  */
-function parse(className, fontSizes=undefined) {
-  if (!JS.isString(className)) {
-    throw new Error(`Passed className is ${ typeof className } but expected a string`);
+function parse(className:string, fontSizes?:RegExpExecArray):object {
+  if (!className) {
+    Assert.ThrowUnexpectedEmptyError('className', 'string');
   }
 
-  if (!className.length) {
-    throw new Error('Passed className string is empty');
-  }
-
-  const style = {};
+  const style = { letterSpacing: undefined };
   const entries = className.split(' ');
 
   let end = entries.length;
@@ -108,7 +119,7 @@ function parse(className, fontSizes=undefined) {
     if (!hasTrackingPrefix(key)) {
       Object.assign(style, defined);
     } else {
-      if (fontSizes === undefined) {
+      if (!fontSizes) {
         fontSizes = fontSizeRegex.exec(className);
         if (!fontSizes) {
           throw new Error('Font size is required when applying letter spacing, e.g. text-lg tracking-tighter');
@@ -154,18 +165,14 @@ function parse(className, fontSizes=undefined) {
  * 
  * @return {string}
  */
-function color(colorName) {
-  if (!JS.isString(colorName)) {
-    throw new Error(`Passed colorName is ${ typeof colorName } but expected a string`);
-  }
-
-  if (!colorName.length) {
-    throw new Error('Passed colorName string is empty');
+function color(colorName:string):string {
+  if (!colorName) {
+    Assert.ThrowUnexpectedEmptyError('colorName', 'string');
   }
 
   return colors[colorName] || (() => {
-    let parsed;
-    const entries = colorName.split(' ');
+    let parsed:any;
+    const entries:string[] = colorName.split(' ');
 
     entries[0] = ( 'bg-' + entries[0] );
 
@@ -188,15 +195,15 @@ function color(colorName) {
  * If the passed param is not a Tailwind object then it will be assumed to be a
  * class string or an array of class strings and/or Tailwind objects.
  * 
- * @param {object} props
+ * @param {TailwindClassNames} props
  * @param {string} group
  * @param {boolean} fallbackOnString
  * @param {boolean} fallbackOnArray
- * @param {object} fallbackTailwind
+ * @param {any} fallbackTailwind
  * 
- * @return {object}
+ * @return {any}
  */
-function get(tailwind, group=ThemeConfig.defaults.group.name, fallbackOnString=true, fallbackOnArray=true, fallbackTailwind=undefined) {
+function get(tailwind:TailwindClassNames, group:string=ThemeConfig.defaults.group.name, fallbackOnString:boolean=true, fallbackOnArray:boolean=true, fallbackTailwind?:any):any {
   if (JS.isString(tailwind)) {
     return fallbackOnString ? tailwind || fallbackTailwind : undefined;
   } else if (JS.isArray(tailwind)) {
@@ -208,23 +215,15 @@ function get(tailwind, group=ThemeConfig.defaults.group.name, fallbackOnString=t
 
 /**
  * Merges the extension with the tailwind object. This is roughly equivalent to
- * spreading two objects one after another into a new object.
+ * spreading two Tailwind objects one after another into a new one.
  * 
- * @param {object} tailwind
- * @param {string} group
+ * @param {TailwindObject} tailwind
+ * @param {any} extension
  * @param {string} fallbackGroup
  * 
  * @return {object}
  */
-function merge(tailwind, extension, fallbackGroup=ThemeConfig.defaults.group.name) {
-  if (!tailwind) {
-    throw new Error;
-  }
-
-  if (!extension) {
-    throw new Error;
-  }
-
+function merge(tailwind:TailwindObject, extension:any, fallbackGroup:string=ThemeConfig.defaults.group.name):object {
   if (JS.isString(tailwind)) {
     tailwind = { [fallbackGroup]: tailwind };
   }
@@ -241,11 +240,11 @@ function merge(tailwind, extension, fallbackGroup=ThemeConfig.defaults.group.nam
 /**
  * 
  * 
- * @param {object} properties
+ * @param {any} properties
  * 
- * @return {object}
+ * @return {any}
  */
-function props(properties) {
+function props(properties:any):any {
   if (!properties.tailwind) {
     return properties;
   }
@@ -253,11 +252,11 @@ function props(properties) {
   const parsed = parse(aliased(properties.tailwind));
 
   if (!properties.style) {
-    return Object.assign(properties, { style: parsed, tailwind: undefined });
+    return Object.assign({}, properties, { style: parsed, tailwind: undefined });
   }
 
-  return Object.assign(properties, {
-    style: Object.assign({ style: parsed }, properties.style),
+  return Object.assign({}, properties, {
+    style: Object.assign(parsed, properties.style),
     tailwind: undefined
   });
 }
@@ -269,8 +268,8 @@ function props(properties) {
  * 
  * @return {object}
  */
-const style = (props) => {
-  return props.style && Object.assign(props.style);
+const style = (props:any):any => {
+  return props.style && Object.assign({}, props.style);
 };
 
 /**
