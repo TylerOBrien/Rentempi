@@ -17,6 +17,17 @@ import { Storage } from '~/util/Storage';
 /**
  * 
  */
+function keys():Promise<string[]> {
+  return new Promise((resolve, reject) => {
+    AsyncStorage.getAllKeys()
+      .then(resolve)
+      .catch(reject);
+  });
+}
+
+/**
+ * 
+ */
 function get(group:string, key:string):Promise<string> {
   return new Promise((resolve, reject) => {
     Storage.name(group, key)
@@ -66,4 +77,4 @@ function remove(group:string, key:string):Promise<any> {
  * Namespaced Exports
 */
 
-export const StorageDriver = { get, set, merge, remove };
+export const StorageDriver = { keys, get, set, merge, remove };
