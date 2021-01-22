@@ -3,7 +3,7 @@
 */
 
 /**
- * 
+ * Wraps built-in JSON.parse() function with a Promise.
  * 
  * @param {string} serialized
  * 
@@ -20,7 +20,7 @@ function parse(serialized:string):Promise<any> {
 }
 
 /**
- * 
+ * Wraps built-in JSON.stringify() function with a Promise.
  * 
  * @param {any} unserialized
  * 
