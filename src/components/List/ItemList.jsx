@@ -4,6 +4,7 @@
 
 import PropTypes from 'prop-types';
 import React from 'react';
+import { StyleSheet } from 'react-native';
 
 /**
  * Local Imports
@@ -69,15 +70,14 @@ export function ItemList(props) {
 
   return (
     <props.container
-      style={{  }}
       tailwind={ Tailwind.get(props.tailwind, 'container') }
     >
       {
         props.items.map((item, index) => (
           <props.itemContainer
             key={ index }
-            style={{  }}
-            tailwind={[ 'flex-row', Tailwind.get(props.tailwind, 'item', false) ]}
+            style={ styles.itemContainer }
+            tailwind={ Tailwind.get(props.tailwind, 'item', false) }
           >
             { renderItemPrefix(item, index) }
             { renderItemContent(item, index) }
@@ -103,3 +103,13 @@ ItemList.defaultProps = {
   container: View,
   itemContainer: View
 };
+
+/**
+ * Styles
+*/
+
+const styles = StyleSheet.create({
+  itemContainer: {
+    flexDirection: 'row'
+  }
+});
