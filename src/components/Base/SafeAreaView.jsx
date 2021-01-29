@@ -16,9 +16,6 @@ import { Tailwind } from '~/util/TailwindCss';
  * Exports
 */
 
-/**
- * 
- */
 export function SafeAreaView(props) {
   return React.createElement(BaseSafeAreaView, Tailwind.props(props));
 }

@@ -16,9 +16,6 @@ import { Tailwind } from '~/util/TailwindCss';
  * Exports
 */
 
-/**
- * 
- */
 export function Text(props) {
   return React.createElement(BaseText, Tailwind.props(props));
 }

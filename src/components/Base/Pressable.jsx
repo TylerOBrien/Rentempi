@@ -16,9 +16,6 @@ import { Tailwind } from '~/util/TailwindCss';
  * Exports
 */
 
-/**
- * 
- */
 export function Pressable({ style, ...props }) {
   /** Event Handlers **/
 

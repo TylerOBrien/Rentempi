@@ -16,9 +16,6 @@ import { Tailwind } from '~/util/TailwindCss';
  * Exports
 */
 
-/**
- * 
- */
 export function ScrollView(props) {
   return React.createElement(BaseScrollView, Tailwind.props(props));
 }

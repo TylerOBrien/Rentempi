@@ -16,9 +16,6 @@ import { Tailwind } from '~/util/TailwindCss';
  * Exports
 */
 
-/**
- * 
- */
 export function View(props) {
   return React.createElement(BaseView, Tailwind.props(props));
 }

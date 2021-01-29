@@ -16,9 +16,6 @@ import { Tailwind } from '~/util/TailwindCss';
  * Exports
 */
 
-/**
- * 
- */
 export function TextInput(props) {
   return React.createElement(BaseTextInput, Tailwind.props(props));
 }
