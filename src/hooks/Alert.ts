@@ -11,10 +11,24 @@ import { useContext } from 'react';
 import { AlertContext } from '~/providers/AlertProvider';
 
 /**
+ * Types/Interfaces
+*/
+
+export type AlertIterator = { [Symbol.iterator]: () => Generator<any, void, unknown>; };
+
+export interface AlertHook {
+  iterator: AlertIterator;
+  message: (content:any) => void;
+  notice: (content:any) => void;
+  warning: (content:any) => void;
+  error: (content:any) => void;
+};
+
+/**
  * Exports
 */
 
-export function useAlert() {
+export function useAlert():AlertHook {
   /** Contexts **/
 
   const { alertDataRef, alertTotalCountRef, setAlerts } = useContext(AlertContext);
@@ -24,7 +38,7 @@ export function useAlert() {
   /**
    * 
    */
-  const append = (alert) => {
+  const append = (alert:any) => {
     alert.when = new Date;
 
     if (!alertDataRef.current) {
@@ -44,7 +58,7 @@ export function useAlert() {
   /**
    * 
    */
-  const remove = (key) => {
+  const remove = (key:string) => {
     delete alertDataRef.current[key];
 
     setAlerts(current => {
@@ -68,19 +82,19 @@ export function useAlert() {
 
   /** Alert Types **/
   
-  const message = (content) => {
+  const message = (content:any) => {
     append({ type: 'message', content });
   };
   
-  const notice = (content) => {
+  const notice = (content:any) => {
     append({ type: 'notice', content });
   };
   
-  const warning = (content) => {
+  const warning = (content:any) => {
     append({ type: 'warning', content });
   };
   
-  const error = (content) => {
+  const error = (content:any) => {
     append({ type: 'error', content });
   };
 
