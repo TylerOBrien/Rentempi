@@ -15,15 +15,19 @@ import { UserModel } from '~/models';
 */
 
 export interface UserContextInterface {
-  user:UserModel;
-  setUser:React.Dispatch<React.SetStateAction<UserModel>>;
+  user: UserModel;
+  setUser: React.Dispatch<React.SetStateAction<UserModel>>;
 };
 
 /**
- * Exports
+ * Contexts
 */
 
 export const UserContext = React.createContext<UserContextInterface>(undefined);
+
+/**
+ * Components
+*/
 
 export function UserProvider(props:any) {
   /** States **/
