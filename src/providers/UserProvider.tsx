@@ -8,15 +8,15 @@ import React, { useState } from 'react';
  * Local Imports
 */
 
-import { UserSchema } from '~/schemas';
+import { UserModel } from '~/models';
 
 /**
  * Types/Interfaces
 */
 
 export interface UserContextInterface {
-  user:UserSchema;
-  setUser:React.Dispatch<React.SetStateAction<UserSchema>>;
+  user:UserModel;
+  setUser:React.Dispatch<React.SetStateAction<UserModel>>;
 };
 
 /**
@@ -28,7 +28,7 @@ export const UserContext = React.createContext<UserContextInterface>(undefined);
 export function UserProvider(props:any) {
   /** States **/
 
-  const [ user, setUser ] = useState<UserSchema>(undefined);
+  const [ user, setUser ] = useState<UserModel>(undefined);
 
   /** Output **/
 
