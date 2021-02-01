@@ -17,7 +17,7 @@ import { ApiContext } from '~/providers/ApiProvider';
 */
 
 export interface ServiceHook {
-  call(name:string):Promise<any>;
+  call: (name:string) => Promise<any>;
 }
 
 /**

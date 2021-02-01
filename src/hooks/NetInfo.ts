@@ -15,9 +15,9 @@ import { NetInfoContext } from '~/providers/NetInfoProvider';
 */
 
 export interface NetInfoHook {
-  isConnected:boolean;
-  isInternetReachable:boolean;
-}
+  isConnected: boolean;
+  isInternetReachable: boolean;
+};
 
 /**
  * Exports

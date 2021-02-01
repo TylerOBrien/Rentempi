@@ -19,18 +19,18 @@ import { Authorization } from '~/util/Api';
 */
 
 export interface AuthLoginOptions {
-  remember?:boolean;
-}
+  remember?: boolean;
+};
 
 export interface AuthLogin {
-  user:any;
-  token:Authorization;
-}
+  user: any;
+  token: Authorization;
+};
 
 export interface AuthHook {
-  login(auth:AuthLogin):Promise<any>;
-  logout():Promise<any>;
-}
+  login(auth:AuthLogin): Promise<any>;
+  logout(): Promise<any>;
+};
 
 /**
  * Exports

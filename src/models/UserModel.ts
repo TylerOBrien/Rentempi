@@ -3,7 +3,7 @@
 */
 
 export interface UserSchema {
-  id:number;
-  email:string;
-  status:string;
+  id: number;
+  email: string;
+  status: string;
 };

@@ -2,23 +2,23 @@
  * Global Imports
 */
 
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 /**
  * Types/Interfaces
 */
 
 export interface PaginateOptions {
-  per:number;
-  length:number;
-}
+  per: number;
+  length: number;
+};
 
 export interface PaginateHook {
-  page:number;
-  setPage(page:number):void;
-  pages:number;
-  offset:number[];
-}
+  page: number;
+  setPage: React.Dispatch<React.SetStateAction<number>>;
+  pages: number;
+  offset: Array<number>;
+};
 
 /**
  * Exports

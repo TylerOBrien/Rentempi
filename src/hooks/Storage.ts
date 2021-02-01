@@ -10,13 +10,13 @@ import { Storage } from '~/util';
 */
 
 export interface StorageHook {
-  keys():Promise<string[]>;
-  has(key:string):Promise<boolean>;
-  get(key:string):Promise<any>;
-  set(key:string, value:any):Promise<void>;
-  merge(key:string, value:any):Promise<void>;
-  remove(key:string):Promise<void>;
-  clear():Promise<void>;
+  keys: () => Promise<Array<string>>;
+  has: (key:string) => Promise<boolean>;
+  get: (key:string) => Promise<any>;
+  set: (key:string, value:any) => Promise<void>;
+  merge: (key:string, value:any) => Promise<void>;
+  remove: (key:string) => Promise<void>;
+  clear: () => Promise<void>;
 }
 
 /**
