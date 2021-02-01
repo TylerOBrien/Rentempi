@@ -2,12 +2,13 @@
  * Global Imports
 */
 
-import { useContext } from 'react';
+import React, { useContext } from 'react';
 
 /**
  * Local Imports
 */
 
+import { UserModel } from '~/models';
 import { UserContext } from '~/providers/UserProvider';
 
 /**
@@ -15,8 +16,9 @@ import { UserContext } from '~/providers/UserProvider';
 */
 
 export interface UserHook {
-  
-}
+  user: UserModel;
+  setUser: React.Dispatch<React.SetStateAction<UserModel>>;
+};
 
 /**
  * Exports
@@ -27,13 +29,9 @@ export function useUser():UserHook {
   
   const { user, setUser } = useContext(UserContext);
   
-  /** Helpers **/
-
-  
-  
   /** Output **/
   
   return {
-    
+    user, setUser
   };
 }
