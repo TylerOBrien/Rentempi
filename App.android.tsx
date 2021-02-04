@@ -3,7 +3,7 @@
 */
 
 import 'react-native-gesture-handler';
-import React, { Fragment } from 'react';
+import React, { Fragment, useContext } from 'react';
 import { StatusBar, StyleSheet, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 
@@ -23,13 +23,16 @@ import { AppContext, AppProvider } from '~/providers/AppProvider';
 function Main() {
   /** Contexts **/
 
-  const { statusBarStyle } = useContext(AppContext);
+  const { statusBarStyle, isStatusBarHidden } = useContext(AppContext);
   
   /** Output **/
 
   return (
     <Fragment>
-      <StatusBar barStyle={ statusBarStyle || ThemeConfig.defaults.statusBarStyle } />
+      {
+        !isStatusBarHidden &&
+          <StatusBar barStyle={ statusBarStyle || ThemeConfig.defaults.statusBarStyle } />
+      }
       <View style={ styles.container }>
         <EntryPoint />
       </View>
