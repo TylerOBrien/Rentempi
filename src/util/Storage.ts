@@ -15,6 +15,11 @@ import { AsyncJSON } from './JSON';
 */
 
 /**
+ * Retrieve the fully qualified name to be used for a key in storage.
+ * 
+ * @param {string} group
+ * @param {string} key
+ * 
  * @return {Promise<string>}
  */
 function name(group:string, key:string):Promise<string> {
@@ -32,6 +37,12 @@ function name(group:string, key:string):Promise<string> {
 }
 
 /**
+ * Retrieve a key and value pair to be saved in storage.
+ * 
+ * @param {string} group
+ * @param {string} key
+ * @param {any} unserialized
+ * 
  * @return {Promise<any>}
  */
 function entry(group:string, key:string, unserialized:any):Promise<any> {
