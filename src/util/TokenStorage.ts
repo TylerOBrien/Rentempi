@@ -17,7 +17,9 @@ import { AsyncJSON } from './JSON';
 */
 
 /**
+ * Retrieve the token data from storage.
  * 
+ * @return {Promise<Authorization>}
  */
 function get():Promise<Authorization> {
   return new Promise((resolve, reject) => {
@@ -29,14 +31,20 @@ function get():Promise<Authorization> {
 };
 
 /**
+ * Save the token data in storage.
  * 
+ * @param {Authorization} token
+ * 
+ * @return {Promise<void>}
  */
 function set(token:Authorization):Promise<void> {
   return StorageDriver.set(StorageConfig.group.default, StorageConfig.key.token, token);
 };
 
 /**
+ * Remove all token data from storage.
  * 
+ * @return {Promise<void>}
  */
 function clear():Promise<void> {
   return StorageDriver.remove(StorageConfig.group.default, StorageConfig.key.token);
