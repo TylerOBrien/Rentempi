@@ -28,6 +28,7 @@ const ncountries = countries.length;
 */
 
 /**
+ * Retreive country data.
  * 
  * @param {GeoNameType} needle
  * @param {string} key
@@ -53,6 +54,7 @@ function country(needle:GeoNameType, key:string):string {
 }
 
 /**
+ * Retreive province data.
  * 
  * @param {object|string} country
  * @param {string} needle
