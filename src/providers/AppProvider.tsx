@@ -10,8 +10,8 @@ import { StatusBarStyle } from 'react-native';
 */
 
 export interface AppContextInterface {
-  statusBarStyle:StatusBarStyle;
-  setStatusBarStyle:React.Dispatch<React.SetStateAction<StatusBarStyle>>;
+  statusBarStyle: StatusBarStyle;
+  setStatusBarStyle: React.Dispatch<React.SetStateAction<StatusBarStyle>>;
 };
 
 /**
