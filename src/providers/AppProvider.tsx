@@ -3,14 +3,15 @@
 */
 
 import React, { useState } from 'react';
+import { StatusBarStyle } from 'react-native';
 
 /**
  * Types/Interfaces
 */
 
 export interface AppContextInterface {
-  statusBarStyle:string;
-  setStatusBarStyle:React.Dispatch<React.SetStateAction<string>>;
+  statusBarStyle:StatusBarStyle;
+  setStatusBarStyle:React.Dispatch<React.SetStateAction<StatusBarStyle>>;
 };
 
 /**
@@ -26,7 +27,7 @@ export const AppContext = React.createContext<AppContextInterface>(undefined);
 export function AppProvider(props:any) {
   /** States **/
 
-  const [ statusBarStyle, setStatusBarStyle ] = useState<string>();
+  const [ statusBarStyle, setStatusBarStyle ] = useState<StatusBarStyle>();
   
   /** Output **/
   
