@@ -268,7 +268,7 @@ function props(properties:any):any {
  * 
  * @return {object}
  */
-const style = (props:any):any => {
+function style(props:any):any {
   return props.style && Object.assign({}, props.style);
 };
 
