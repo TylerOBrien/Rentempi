@@ -15,9 +15,11 @@ import { Storage } from '~/util/Storage';
 */
 
 /**
+ * Retrieve an array of all keys in storage.
  * 
+ * @return {Promise<Array<string>>}
  */
-function keys():Promise<string[]> {
+function keys():Promise<Array<string>> {
   return new Promise((resolve, reject) => {
     AsyncStorage.getAllKeys()
       .then(resolve)
@@ -26,7 +28,12 @@ function keys():Promise<string[]> {
 }
 
 /**
+ * Retrieve an item from storage.
  * 
+ * @param {string} group
+ * @param {string} key
+ * 
+ * @return {Promise<string>}
  */
 function get(group:string, key:string):Promise<string> {
   return new Promise((resolve, reject) => {
@@ -38,7 +45,13 @@ function get(group:string, key:string):Promise<string> {
 }
 
 /**
+ * Save an item to storage.
  * 
+ * @param {string} group
+ * @param {string} key
+ * @param {any} unserialized
+ * 
+ * @return {Promise<any>}
  */
 function set(group:string, key:string, unserialized:any):Promise<any> {
   return new Promise((resolve, reject) => {
@@ -50,7 +63,13 @@ function set(group:string, key:string, unserialized:any):Promise<any> {
 }
 
 /**
+ * Merge data with an existing item in storage.
  * 
+ * @param {string} group
+ * @param {string} key
+ * @param {any} unserialized
+ * 
+ * @return {Promise<any>}
  */
 function merge(group:string, key:string, unserialized:any):Promise<any> {
   return new Promise((resolve, reject) => {
@@ -62,7 +81,12 @@ function merge(group:string, key:string, unserialized:any):Promise<any> {
 }
 
 /**
+ * Remove an item from storage.
  * 
+ * @param {string} group
+ * @param {string} key
+ * 
+ * @return {Promise<any>}
  */
 function remove(group:string, key:string):Promise<any> {
   return new Promise((resolve, reject) => {
