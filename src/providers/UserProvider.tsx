@@ -32,7 +32,7 @@ export const UserContext = React.createContext<UserContextInterface>(undefined);
 export function UserProvider(props:any) {
   /** States **/
 
-  const [ user, setUser ] = useState<UserModel>(undefined);
+  const [ user, setUser ] = useState<UserModel>();
 
   /** Output **/
 
