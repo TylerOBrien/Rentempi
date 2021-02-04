@@ -12,6 +12,8 @@ import { StatusBarStyle } from 'react-native';
 export interface AppContextInterface {
   statusBarStyle: StatusBarStyle;
   setStatusBarStyle: React.Dispatch<React.SetStateAction<StatusBarStyle>>;
+  isStatusBarHidden: boolean;
+  setIsStatusBarHidden: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 /**
@@ -28,11 +30,12 @@ export function AppProvider(props:any) {
   /** States **/
 
   const [ statusBarStyle, setStatusBarStyle ] = useState<StatusBarStyle>();
+  const [ isStatusBarHidden, setIsStatusBarHidden ] = useState<boolean>();
   
   /** Output **/
   
   return (
-    <AppContext.Provider value={{ statusBarStyle, setStatusBarStyle }}>
+    <AppContext.Provider value={{ statusBarStyle, setStatusBarStyle, isStatusBarHidden, setIsStatusBarHidden }}>
       { props.children }
     </AppContext.Provider>
   );
