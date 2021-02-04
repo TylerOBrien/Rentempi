@@ -2,7 +2,7 @@
  * Exports
 */
 
-export interface UserSchema {
+export interface UserModel {
   id: number;
   email: string;
   status: string;
