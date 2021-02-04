@@ -15,7 +15,12 @@ const endpoint = 'addresses';
 */
 
 /**
+ * Retrieve listing of all addresses.
  * 
+ * @param {Authorization} auth
+ * @param {any} data
+ * 
+ * @return {Promise<any>}
  */
 export function IndexAddressService(auth:Authorization, data?:any):Promise<any> {
   const config = {
@@ -28,7 +33,13 @@ export function IndexAddressService(auth:Authorization, data?:any):Promise<any> 
 }
 
 /**
+ * Retrieve an address.
  * 
+ * @param {Authorization} auth
+ * @param {ResourceIdentity} address
+ * @param {any} data
+ * 
+ * @return {Promise<any>}
  */
 export function ShowAddressService(auth:Authorization, address:ResourceIdentity, data?:any):Promise<any> {
   const config = {
@@ -41,7 +52,12 @@ export function ShowAddressService(auth:Authorization, address:ResourceIdentity,
 }
 
 /**
+ * Save an address.
  * 
+ * @param {Authorization} auth
+ * @param {any} data
+ * 
+ * @return {Promise<any>}
  */
 export function StoreAddressService(auth:Authorization, data:any):Promise<any> {
   const config = {
@@ -54,7 +70,13 @@ export function StoreAddressService(auth:Authorization, data:any):Promise<any> {
 }
 
 /**
+ * Update an address.
  * 
+ * @param {Authorization} auth
+ * @param {ResourceIdentity} address
+ * @param {any} data
+ * 
+ * @return {Promise<any>}
  */
 export function UpdateAddressService(auth:Authorization, address:ResourceIdentity, data:any):Promise<any> {
   const config = {
@@ -67,7 +89,13 @@ export function UpdateAddressService(auth:Authorization, address:ResourceIdentit
 }
 
 /**
+ * Remove an address.
  * 
+ * @param {Authorization} auth
+ * @param {ResourceIdentity} address
+ * @param {any} data
+ * 
+ * @return {Promise<any>}
  */
 export function DestroyAddressService(auth:Authorization, address:ResourceIdentity, data?:any):Promise<any> {
   const config = {

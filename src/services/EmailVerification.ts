@@ -15,7 +15,12 @@ const endpoint = 'email-verifications';
 */
 
 /**
+ * Save email verification.
  * 
+ * @param {Authorization} auth
+ * @param {any} data
+ * 
+ * @return {Promise<any>}
  */
 export function StoreEmailVerificationService(auth:Authorization, data:any):Promise<any> {
   const config = {

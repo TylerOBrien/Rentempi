@@ -15,7 +15,12 @@ const endpoint = 'profiles';
 */
 
 /**
+ * Retrieve listing of all profiles.
  * 
+ * @param {Authorization} auth
+ * @param {any} data
+ * 
+ * @return {Promise<any>}
  */
 export function IndexProfileService(auth:Authorization, data:any):Promise<any> {
   const config = {
@@ -28,7 +33,13 @@ export function IndexProfileService(auth:Authorization, data:any):Promise<any> {
 }
 
 /**
+ * Retrieve a profile.
  * 
+ * @param {Authorization} auth
+ * @param {ResourceIdentity} profile
+ * @param {any} data
+ * 
+ * @return {Promise<any>}
  */
 export function ShowProfileService(auth:Authorization, profile:ResourceIdentity, data:any):Promise<any> {
   const config = {
@@ -41,7 +52,12 @@ export function ShowProfileService(auth:Authorization, profile:ResourceIdentity,
 }
 
 /**
+ * Save a profile.
  * 
+ * @param {Authorization} auth
+ * @param {any} data
+ * 
+ * @return {Promise<any>}
  */
 export function StoreProfileService(auth:Authorization, data:any):Promise<any> {
   const config = {
@@ -54,7 +70,13 @@ export function StoreProfileService(auth:Authorization, data:any):Promise<any> {
 }
 
 /**
+ * Update a profile.
  * 
+ * @param {Authorization} auth
+ * @param {ResourceIdentity} profile
+ * @param {any} data
+ * 
+ * @return {Promise<any>}
  */
 export function UpdateProfileService(auth:Authorization, profile:ResourceIdentity, data:any):Promise<any> {
   const config = {
@@ -67,7 +89,13 @@ export function UpdateProfileService(auth:Authorization, profile:ResourceIdentit
 }
 
 /**
+ * Remove a profile.
  * 
+ * @param {Authorization} auth
+ * @param {ResourceIdentity} profile
+ * @param {any} data
+ * 
+ * @return {Promise<any>}
  */
 export function DestroyProfileService(auth:Authorization, profile:ResourceIdentity, data:any):Promise<any> {
   const config = {

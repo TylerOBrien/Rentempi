@@ -15,7 +15,12 @@ const endpoint = 'users';
 */
 
 /**
+ * Retrieve listing of all users.
  * 
+ * @param {Authorization} auth
+ * @param {any} data
+ * 
+ * @return {Promise<any>}
  */
 export function IndexUserService(auth:Authorization, data?:any):Promise<any> {
   const config = {
@@ -28,7 +33,13 @@ export function IndexUserService(auth:Authorization, data?:any):Promise<any> {
 }
 
 /**
+ * Retrieve a user.
  * 
+ * @param {Authorization} auth
+ * @param {ResourceIdentity} user
+ * @param {any} data
+ * 
+ * @return {Promise<any>}
  */
 export function ShowUserService(auth:Authorization, user:ResourceIdentity, data?:any):Promise<any> {
   const config = {
@@ -41,7 +52,12 @@ export function ShowUserService(auth:Authorization, user:ResourceIdentity, data?
 }
 
 /**
+ * Save a user.
  * 
+ * @param {Authorization} auth
+ * @param {any} data
+ * 
+ * @return {Promise<any>}
  */
 export function StoreUserService(auth:Authorization, data:any):Promise<any> {
   const config = {
@@ -54,7 +70,13 @@ export function StoreUserService(auth:Authorization, data:any):Promise<any> {
 }
 
 /**
+ * Update a user.
  * 
+ * @param {Authorization} auth
+ * @param {ResourceIdentity} user
+ * @param {any} data
+ * 
+ * @return {Promise<any>}
  */
 export function UpdateUserService(auth:Authorization, user:ResourceIdentity, data:any):Promise<any> {
   const config = {
@@ -67,7 +89,13 @@ export function UpdateUserService(auth:Authorization, user:ResourceIdentity, dat
 }
 
 /**
+ * Remove a user.
  * 
+ * @param {Authorization} auth
+ * @param {ResourceIdentity} user
+ * @param {any} data
+ * 
+ * @return {Promise<any>}
  */
 export function DestroyUserService(auth:Authorization, user:ResourceIdentity, data?:any):Promise<any> {
   const config = {

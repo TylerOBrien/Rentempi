@@ -15,7 +15,12 @@ const endpoint = 'images';
 */
 
 /**
+ * Retrieve listing of all images.
  * 
+ * @param {Authorization} auth
+ * @param {any} data
+ * 
+ * @return {Promise<any>}
  */
 export function IndexImageService(auth:Authorization, data?:any):Promise<any> {
   const config = {
@@ -28,7 +33,13 @@ export function IndexImageService(auth:Authorization, data?:any):Promise<any> {
 }
 
 /**
+ * Retrieve an image.
  * 
+ * @param {Authorization} auth
+ * @param {ResourceIdentity} image
+ * @param {any} data
+ * 
+ * @return {Promise<any>}
  */
 export function ShowImageService(auth:Authorization, image:ResourceIdentity, data?:any):Promise<any> {
   const config = {
@@ -41,7 +52,12 @@ export function ShowImageService(auth:Authorization, image:ResourceIdentity, dat
 }
 
 /**
+ * Save an image.
  * 
+ * @param {Authorization} auth
+ * @param {any} data
+ * 
+ * @return {Promise<any>}
  */
 export function StoreImageService(auth:Authorization, data:any):Promise<any> {
   const config = {
@@ -54,7 +70,13 @@ export function StoreImageService(auth:Authorization, data:any):Promise<any> {
 }
 
 /**
+ * Update an image.
  * 
+ * @param {Authorization} auth
+ * @param {ResourceIdentity} image
+ * @param {any} data
+ * 
+ * @return {Promise<any>}
  */
 export function UpdateImageService(auth:Authorization, image:ResourceIdentity, data:any):Promise<any> {
   const config = {
@@ -67,7 +89,13 @@ export function UpdateImageService(auth:Authorization, image:ResourceIdentity, d
 }
 
 /**
+ * Remove an image.
  * 
+ * @param {Authorization} auth
+ * @param {ResourceIdentity} image
+ * @param {any} data
+ * 
+ * @return {Promise<any>}
  */
 export function DestroyImageService(auth:Authorization, image:ResourceIdentity, data?:any):Promise<any> {
   const config = {

@@ -15,7 +15,11 @@ const endpoint = 'auth';
 */
 
 /**
+ * Attempt login.
  * 
+ * @param {any} data
+ * 
+ * @return {Promise<any>}
  */
 export function LoginAuthService(data:any):Promise<any> {
   const config = {
@@ -28,7 +32,11 @@ export function LoginAuthService(data:any):Promise<any> {
 }
 
 /**
+ * Attempt registration.
  * 
+ * @param {any} data
+ * 
+ * @return {Promise<any>}
  */
 export function RegisterAuthService(data:any):Promise<any> {
   const config = {
@@ -41,7 +49,12 @@ export function RegisterAuthService(data:any):Promise<any> {
 }
 
 /**
+ * Attempt to refresh token.
  * 
+ * @param {Authorization} auth
+ * @param {any} data
+ * 
+ * @return {Promise<any>}
  */
 export function RefreshAuthService(auth:Authorization, data:any):Promise<any> {
   const config = {
@@ -54,7 +67,11 @@ export function RefreshAuthService(auth:Authorization, data:any):Promise<any> {
 }
 
 /**
+ * Initiate forgot password process.
  * 
+ * @param {any} data
+ * 
+ * @return {Promise<any>}
  */
 export function ForgotPasswordAuthService(data:any):Promise<any> {
   const config = {
