@@ -23,8 +23,8 @@ import { JS } from './JS';
  * Types/Interfaces
 */
 
-export type TailwindClassNames = string | string[];
-export type TailwindObject = string | string[] | object;
+export type TailwindClassNames = string | Array<string>;
+export type TailwindObject = string | Array<string> | object;
 
 /**
  * Local Vars
@@ -172,7 +172,7 @@ function color(colorName:string):string {
 
   return colors[colorName] || (() => {
     let parsed:any;
-    const entries:string[] = colorName.split(' ');
+    const entries:Array<string> = colorName.split(' ');
 
     entries[0] = ( 'bg-' + entries[0] );
 
