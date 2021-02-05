@@ -3,15 +3,13 @@
 */
 
 import React, { useState } from 'react';
-import { useNavigation } from '@react-navigation/native';
+import { FormikHelpers } from 'formik';
 
 /**
  * Local Imports
 */
 
-import { ScreenConfig } from '~/config';
-
-import { LoginForm } from '~/forms/Guest';
+import { LoginFields, LoginForm } from '~/forms/Guest/LoginForm';
 import { PrimaryGuestLayout } from '~/layouts/Guest';
 
 import { useAuth, useForm, useService } from '~/hooks';
@@ -46,7 +44,6 @@ export function Login(props:LoginProps) {
   
   const auth = useAuth();
   const form = useForm();
-  const navigation = useNavigation();
   const service = useService();
   
   /** States **/
@@ -57,13 +54,9 @@ export function Login(props:LoginProps) {
   
   const handleSuccess = async ({ user, token }) => {
     await auth.login({ user, token }, { remember });
-    /* navigation.reset({
-      index: 0,
-      routes: [ ScreenConfig.initial[user.status] ]
-    }); */
   };
   
-  const handleSubmit = (values, formik) => {
+  const handleSubmit = (values:LoginFields, formik:FormikHelpers<LoginFields>) => {
     service.call('Auth.Login', values)
       .then(handleSuccess)
       .catch(error => {
