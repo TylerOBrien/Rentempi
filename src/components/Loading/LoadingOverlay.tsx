@@ -3,7 +3,7 @@
 */
 
 import React, { ReactNode } from 'react';
-import { ActivityIndicator, StyleSheet } from 'react-native';
+import { ActivityIndicator, ColorValue, StyleSheet } from 'react-native';
 
 /**
  * Local Imports
@@ -17,8 +17,8 @@ import { Tailwind, StyleProp, TailwindProp } from '~/util/TailwindCss';
 */
 
 export interface LoadingOverlayProps {
-  color: string;
-  size: number;
+  color: ColorValue;
+  size: number | 'small' | 'large';
   style?: StyleProp;
   tailwind?: TailwindProp;
   children?: ReactNode;
