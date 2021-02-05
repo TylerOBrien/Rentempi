@@ -2,29 +2,26 @@
  * Global Imports
 */
 
-import React from 'react';
+import React, { ReactElement } from 'react';
 
 /**
  * Local Imports
 */
 
-import { App } from '~/system';
+import { AppDriver } from '~/system';
 
 import { Text } from '~/components/Base';
 import { Button } from '~/components/Button';
 import { Row } from '~/components/Grid';
 import { Link } from '~/components/Link';
 
-import { WelcomeGuestLayout } from '~/layouts/guest';
+import { WelcomeGuestLayout } from '~/layouts/Guest';
 
 /**
  * Exports
 */
 
-/**
- * 
- */
-export function Welcome(props) {
+export function Welcome(props:any):ReactElement<any> {
   return (
     <WelcomeGuestLayout>
       <Text tailwind='text-2xl text-white'>
@@ -34,15 +31,15 @@ export function Welcome(props) {
         <Link
           label='Login'
           container={ Button }
-          to={ App.Screen.Guest.Login }
+          to={ AppDriver.Screen.Guest.Login }
         />
         <Link
           label='Create Account'
           container={ Button }
-          to={ App.Screen.Guest.Register }
+          to={ AppDriver.Screen.Guest.Register }
         />
       </Row>
-      <Link to={ App.Screen.Guest.ForgotPassword }>
+      <Link to={ AppDriver.Screen.Guest.ForgotPassword }>
         <Text tailwind='text-lg text-white'>
           Trouble signing in?
         </Text>

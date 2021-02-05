@@ -2,7 +2,7 @@
  * Global Imports
 */
 
-import React, { useState } from 'react';
+import React, { ReactElement, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 
 /**
@@ -15,18 +15,29 @@ import { RegisterForm } from '~/forms/Guest';
 import { PrimaryGuestLayout } from '~/layouts/Guest';
 
 import { useAuth, useForm, useService } from '~/hooks';
+import { FormHook } from '~/hooks/Form';
+
+/**
+ * Types/Interfaces
+*/
+
+export interface RegisterContextInterface {
+  form: FormHook;
+  remember: boolean;
+  setRemember: React.Dispatch<React.SetStateAction<boolean>>;
+};
 
 /**
  * Locals
 */
 
-const RegisterContext = React.createContext();
+const RegisterContext = React.createContext<RegisterContextInterface>(undefined);
 
 /**
  * Exports
 */
 
-export function Register(props) {
+export function Register(props:any):ReactElement<any> {
   /** Hooks **/
   
   const auth = useAuth();
@@ -36,12 +47,12 @@ export function Register(props) {
   
   /** States **/
   
-  const [ remember, setRemember ] = useState();
+  const [ remember, setRemember ] = useState<boolean>();
   
   /** Event Handlers **/
   
   const handleSuccess = async ({ user, token }) => {
-    await auth.login({ user, token, remember });
+    await auth.login({ user, token }, { remember });
     navigation.reset({
       index: 0,
       routes: [ ScreenConfig.initial[user.status] ]

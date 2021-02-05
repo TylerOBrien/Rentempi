@@ -26,7 +26,7 @@ import { Header, Navigation } from './components';
 /**
  * 
  */
-export function WelcomeGuestLayout(props) {
+export function PrimaryGuestLayout(props) {
   /** Contexts **/
   
   
@@ -46,7 +46,7 @@ export function WelcomeGuestLayout(props) {
   
   return (
     <View>
-      
+      { props.children }
     </View>
   );
 }

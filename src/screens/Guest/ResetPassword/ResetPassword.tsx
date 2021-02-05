@@ -3,21 +3,31 @@
 */
 
 import PropTypes from 'prop-types';
-import React, { useEffect, useContext, useState } from 'react';
+import React, { ReactElement, useEffect, useContext, useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
 
 /**
  * Local Imports
 */
 
-import { PrimaryGuestLayout } from '~/layouts/guest';
+import { PrimaryGuestLayout } from '~/layouts/Guest';
 
 import { useForm, useService } from '~/hooks';
+import { FormHook } from '~/hooks/Form';
+
+/**
+ * Types/Interfaces
+*/
+
+export interface ResetPasswordContextInterface {
+  form: FormHook;
+};
 
 /**
  * Locals
 */
 
-const ResetPasswordContext = React.createContext();
+const ResetPasswordContext = React.createContext<ResetPasswordContextInterface>(undefined);
 
 /**
  * Exports
@@ -26,7 +36,7 @@ const ResetPasswordContext = React.createContext();
 /**
  * 
  */
-export function ResetPassword(props) {
+export function ResetPassword(props:any):ReactElement<any> {
   /** Hooks **/
   
   const form = useForm();

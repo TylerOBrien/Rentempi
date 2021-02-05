@@ -2,7 +2,7 @@
  * Global Imports
 */
 
-import React, { useState } from 'react';
+import React, { ReactElement, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 
 /**
@@ -15,18 +15,29 @@ import { LoginForm } from '~/forms/Guest';
 import { PrimaryGuestLayout } from '~/layouts/Guest';
 
 import { useAuth, useForm, useService } from '~/hooks';
+import { FormHook } from '~/hooks/Form';
+
+/**
+ * Types/Interfaces
+*/
+
+export interface LoginContextInterface {
+  form: FormHook;
+  remember: boolean;
+  setRemember: React.Dispatch<React.SetStateAction<boolean>>;
+};
 
 /**
  * Locals
 */
 
-const LoginContext = React.createContext();
+const LoginContext = React.createContext<LoginContextInterface>(undefined);
 
 /**
  * Exports
 */
 
-export function Login(props) {
+export function Login(props:any):ReactElement<any> {
   /** Hooks **/
   
   const auth = useAuth();
@@ -36,16 +47,16 @@ export function Login(props) {
   
   /** States **/
   
-  const [ remember, setRemember ] = useState();
+  const [ remember, setRemember ] = useState<boolean>();
   
   /** Event Handlers **/
   
   const handleSuccess = async ({ user, token }) => {
     await auth.login({ user, token }, { remember });
-    navigation.reset({
+    /* navigation.reset({
       index: 0,
       routes: [ ScreenConfig.initial[user.status] ]
-    });
+    }); */
   };
   
   const handleSubmit = (values, formik) => {
