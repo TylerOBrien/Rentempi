@@ -3,7 +3,7 @@
 */
 
 import PropTypes from 'prop-types';
-import React, { ReactElement, useEffect, useContext, useState } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 
 /**
@@ -19,6 +19,10 @@ import { FormHook } from '~/hooks/Form';
  * Types/Interfaces
 */
 
+export interface ResetPasswordProps {
+  
+};
+
 export interface ResetPasswordContextInterface {
   form: FormHook;
 };
@@ -33,10 +37,7 @@ const ResetPasswordContext = React.createContext<ResetPasswordContextInterface>(
  * Exports
 */
 
-/**
- * 
- */
-export function ResetPassword(props:any):ReactElement<any> {
+export function ResetPassword(props:ResetPasswordProps) {
   /** Hooks **/
   
   const form = useForm();

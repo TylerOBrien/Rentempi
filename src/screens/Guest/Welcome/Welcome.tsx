@@ -2,7 +2,7 @@
  * Global Imports
 */
 
-import React, { ReactElement } from 'react';
+import React from 'react';
 
 /**
  * Local Imports
@@ -18,10 +18,18 @@ import { Link } from '~/components/Link';
 import { WelcomeGuestLayout } from '~/layouts/Guest';
 
 /**
+ * Types/Interfaces
+*/
+
+export interface WelcomeProps {
+  
+};
+
+/**
  * Exports
 */
 
-export function Welcome(props:any):ReactElement<any> {
+export function Welcome(props:WelcomeProps) {
   return (
     <WelcomeGuestLayout>
       <Text tailwind='text-2xl text-white'>

@@ -3,7 +3,7 @@
 */
 
 import PropTypes from 'prop-types';
-import React, { ReactElement, useEffect, useContext, useState } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 
 /**
@@ -19,6 +19,10 @@ import { FormHook } from '~/hooks/Form';
  * Types/Interfaces
 */
 
+export interface ForgotPasswordProps {
+  
+};
+
 export interface ForgotPasswordContextInterface {
   form: FormHook;
 };
@@ -33,7 +37,7 @@ const ForgotPasswordContext = React.createContext<ForgotPasswordContextInterface
  * Exports
 */
 
-export function ForgotPassword(props:any):ReactElement<any> {
+export function ForgotPassword(props:ForgotPasswordProps) {
   /** Hooks **/
   
   const form = useForm();

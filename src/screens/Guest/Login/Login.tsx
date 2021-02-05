@@ -2,7 +2,7 @@
  * Global Imports
 */
 
-import React, { ReactElement, useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 
 /**
@@ -21,6 +21,10 @@ import { FormHook } from '~/hooks/Form';
  * Types/Interfaces
 */
 
+export interface LoginProps {
+  
+};
+
 export interface LoginContextInterface {
   form: FormHook;
   remember: boolean;
@@ -37,7 +41,7 @@ const LoginContext = React.createContext<LoginContextInterface>(undefined);
  * Exports
 */
 
-export function Login(props:any):ReactElement<any> {
+export function Login(props:LoginProps) {
   /** Hooks **/
   
   const auth = useAuth();

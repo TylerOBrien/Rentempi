@@ -2,7 +2,7 @@
  * Global Imports
 */
 
-import React, { ReactElement, useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 
 /**
@@ -21,6 +21,10 @@ import { FormHook } from '~/hooks/Form';
  * Types/Interfaces
 */
 
+export interface RegisterProps {
+  
+};
+
 export interface RegisterContextInterface {
   form: FormHook;
   remember: boolean;
@@ -37,7 +41,7 @@ const RegisterContext = React.createContext<RegisterContextInterface>(undefined)
  * Exports
 */
 
-export function Register(props:any):ReactElement<any> {
+export function Register(props:RegisterProps) {
   /** Hooks **/
   
   const auth = useAuth();
