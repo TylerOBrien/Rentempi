@@ -2,25 +2,45 @@
  * Global Imports
 */
 
-import PropTypes from 'prop-types';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { ReactNode, useEffect, useRef, useState } from 'react';
 import { Animated, StyleSheet, View } from 'react-native';
+
+/**
+ * Local Imports
+*/
+
+import { StyleProp } from '~/util/TailwindCss';
+
+/**
+ * Types/Interfaces
+*/
+
+export interface ModalTransition {
+  type: 'fade' | 'slide';
+  duration: number;
+};
+
+export interface ModalProps {
+  visible?: boolean;
+  backgroundColor?: string;
+  transition?: ModalTransition;
+  style?: StyleProp;
+  children?: ReactNode;
+  onLayout?: Function;
+};
 
 /**
  * Exports
 */
 
-/**
- * 
- */
-export function Modal(props) {
+export function Modal(props:ModalProps) {
   /** Refs **/
 
-  const opacityRef = useRef();
+  const opacityRef = useRef<Animated.Value>();
 
   /** States **/
 
-  const [ isActive, setIsActive ] = useState();
+  const [ isActive, setIsActive ] = useState<boolean>();
 
   /** Setup **/
 
@@ -47,13 +67,13 @@ export function Modal(props) {
   /**
    * 
    */
-  const animate = (isVisible) => {
+  const animate = (isVisible:boolean) => {
     Animated.timing(opacityRef.current, {
       toValue: isVisible ? 1 : 0,
       duration: props.transition?.duration || 500,
       useNativeDriver: true
     }).start(() => {
-      setIsActive(!!isVisible);
+      setIsActive(isVisible);
     });
   };
 
@@ -77,17 +97,6 @@ export function Modal(props) {
 
   return isActive ? renderActive() : null;
 }
-
-Modal.propTypes = {
-  visible: PropTypes.bool,
-  backgroundColor: PropTypes.string,
-  transition: PropTypes.shape({
-    type: PropTypes.oneOf([ 'fade' ]),
-    duration: PropTypes.number
-  }),
-  
-  onLayout: PropTypes.func
-};
 
 Modal.defaultProps = {
   visible: false,

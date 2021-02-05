@@ -2,7 +2,6 @@
  * Global Imports
 */
 
-import PropTypes from 'prop-types';
 import React from 'react';
 import { StyleSheet } from 'react-native';
 
@@ -13,16 +12,28 @@ import { StyleSheet } from 'react-native';
 import { Button, LoadingButton } from '~/components/Button';
 import { Text, View } from '~/components/Base';
 
-import { Modal } from './Modal';
+/**
+ * Sibling Imports
+*/
+
+import { Modal, ModalProps } from './Modal';
+
+/**
+ * Types/Interfaces
+*/
+
+export interface ConfirmModalProps extends ModalProps {
+  title: string;
+  loading?: boolean;
+  onConfirm: Function;
+  onClose: Function;
+};
 
 /**
  * Exports
 */
 
-/**
- * 
- */
-export function ConfirmModal(props) {
+export function ConfirmModal(props:ConfirmModalProps) {
   return (
     <Modal visible={ props.visible } onLayout={ props.onLayout }>
       <View style={ styles.container }>
@@ -52,17 +63,6 @@ export function ConfirmModal(props) {
     </Modal>
   );
 }
-
-ConfirmModal.propTypes = {
-  title: PropTypes.string.isRequired,
-
-  loading: PropTypes.bool,
-  visible: PropTypes.bool,
-
-  onLayout: PropTypes.func,
-  onConfirm: PropTypes.func.isRequired,
-  onClose: PropTypes.func.isRequired
-};
 
 /**
  * Styles
