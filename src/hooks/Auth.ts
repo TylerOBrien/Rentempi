@@ -28,8 +28,8 @@ export interface AuthLogin {
 };
 
 export interface AuthHook {
-  login(auth:AuthLogin, options?:AuthLoginOptions): Promise<any>;
-  logout(): Promise<any>;
+  login: (auth:AuthLogin, options?:AuthLoginOptions) => Promise<any>;
+  logout: () => Promise<any>;
 };
 
 /**
