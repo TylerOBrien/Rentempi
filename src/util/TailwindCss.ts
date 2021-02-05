@@ -107,7 +107,7 @@ function parse(className:string, fontSizes?:RegExpExecArray):object {
     const defined = definitions[key];
 
     if (!defined) {
-      throw new Error(`Unsupported Tailwind class: '${ key }'`);
+      console.warn(`Unsupported Tailwind class: '${ key }'`);
     }
 
     if (!hasVariables && key.length > 2 && key[0] !== '-' && key[1] !== '-') {
@@ -122,7 +122,7 @@ function parse(className:string, fontSizes?:RegExpExecArray):object {
       if (!fontSizes) {
         fontSizes = fontSizeRegex.exec(className);
         if (!fontSizes) {
-          throw new Error('Font size is required when applying letter spacing, e.g. text-lg tracking-tighter');
+          console.warn('Font size is required when applying letter spacing, e.g. text-lg tracking-tighter');
         }
       }
       
