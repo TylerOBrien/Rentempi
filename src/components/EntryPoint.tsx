@@ -9,10 +9,8 @@ import { StyleSheet, Text, View } from 'react-native';
  * Local Imports
 */
 
-import { ApiProvider } from '~/providers/ApiProvider';
-import { AlertProvider } from '~/providers/AlertProvider';
-import { AuthProvider } from '~/providers/AuthProvider';
-import { UserProvider } from '~/providers/UserProvider';
+import { GuestStack } from '~/navigation/stacks/Guest';
+import { ApiProvider, AlertProvider, AuthProvider, UserProvider } from '~/providers';
 
 /**
  * Locals
@@ -20,9 +18,7 @@ import { UserProvider } from '~/providers/UserProvider';
 
 function EntryPointMain():ReactElement {
   return (
-    <View>
-      <Text>Entry Point</Text>
-    </View>
+    <GuestStack />
   );
 }
 
