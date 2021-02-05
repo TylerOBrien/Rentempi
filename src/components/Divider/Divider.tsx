@@ -2,8 +2,7 @@
  * Global Imports
 */
 
-import PropTypes from 'prop-types';
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 /**
  * Local Imports
@@ -11,17 +10,25 @@ import React from 'react';
 
 import { View, Text } from '~/components/Base';
 import { Row } from '~/components/Grid';
+import { Tailwind, StyleProp, TailwindProp } from '~/util/TailwindCss';
 
-import { Tailwind } from '~/util/TailwindCss';
+/**
+ * Types/Interfaces
+*/
+
+export interface DividerProps {
+  label: String;
+  style?: StyleProp;
+  tailwind?: TailwindProp;
+  children?: ReactNode;
+  onLayout?: Function;
+};
 
 /**
  * Exports
 */
 
-/**
- * 
- */
-export function Divider(props) {
+export function Divider(props:DividerProps) {
   /** Helpers **/
 
   const tailwind = {
@@ -58,12 +65,3 @@ export function Divider(props) {
 
   return props.label ? renderLabeledLine() : renderLine();
 }
-
-Divider.propTypes = {
-  label: PropTypes.string.isRequired,
-
-  style: PropTypes.oneOfType([ PropTypes.object, PropTypes.array ]),
-  tailwind: PropTypes.oneOfType([ PropTypes.string, PropTypes.object, PropTypes.array ]),
-
-  onLayout: PropTypes.func
-};
