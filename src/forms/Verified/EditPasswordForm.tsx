@@ -12,30 +12,44 @@ import { Formik } from 'formik';
 
 import { Text, View } from '~/components/Base';
 import { Form } from '~/components/Form';
+import { FormikSubmit } from '~/util/Formik';
+
+/**
+ * Types/Interfaces
+*/
+
+export interface EditPasswordFields {
+  password: string;
+  password_confirmation: string;
+  password_current: string;
+};
+
+export interface EditPasswordFormProps {
+  context: React.Context<unknown>;
+  onSubmit: FormikSubmit<EditPasswordFields>;
+};
+
+/**
+ * Locals
+*/
+  
+const initialValues = {
+  password: '',
+  password_confirmation: '',
+  password_current: ''
+};
 
 /**
  * Exports
 */
 
-/**
- * 
- */
-export function EditAccountForm(props) {
+export function EditPasswordForm(props:EditPasswordFormProps) {
   /** Contexts **/
 
   const context = useContext(props.context);
-
-  /** Form **/
-  
-  const initialValues = {
-    code: ''
-  };
   
   /** Renderers **/
   
-  /**
-   * 
-   */
   const renderForm = (formik) => {
     <Form>
       
@@ -50,8 +64,3 @@ export function EditAccountForm(props) {
     </Formik>
   );
 }
-
-EditAccountForm.propTypes = {
-  context: PropTypes.object.isRequired,
-  onSubmit: PropTypes.func.isRequired
-};
