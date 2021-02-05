@@ -29,10 +29,10 @@ function Main() {
 
   return (
     <Fragment>
-      {
-        !isStatusBarHidden &&
-          <StatusBar barStyle={ statusBarStyle || ThemeConfig.defaults.statusBarStyle } />
-      }
+      <StatusBar
+        hidden={ isStatusBarHidden }
+        barStyle={ statusBarStyle || ThemeConfig.defaults.statusBarStyle }
+      />
       <SafeAreaView style={ styles.container }>
         <EntryPoint />
       </SafeAreaView>
