@@ -2,7 +2,6 @@
  * Global Imports
 */
 
-import PropTypes from 'prop-types';
 import React from 'react';
 import { StyleSheet } from 'react-native';
 
@@ -14,13 +13,18 @@ import { Text, View } from '~/components/Base';
 import { Row } from '~/components/Grid';
 
 /**
+ * Types/Interfaces
+*/
+
+export interface ProgressBarTransition {
+  progress: number;
+};
+
+/**
  * Exports
 */
 
-/**
- * 
- */
-export function ProgressBar(props) {
+export function ProgressBar(props:ProgressBarTransition) {
   return (
     <Row>
       <Row style={ styles.inner }>
@@ -28,14 +32,14 @@ export function ProgressBar(props) {
           style={{
             width: ( Math.round(props.progress) || 0 ) + '%',
             height: 3,
-            backgroundColor: props.activeTailwind || 'bg-green-400'
+            backgroundColor: 'bg-green-400'
           }}
         />
         <View
           style={{
             width: ( 100 - (Math.round(props.progress) || 0) ) + '%',
             height: 3,
-            backgroundColor: props.inactiveTailwind || 'bg-gray-800'
+            backgroundColor: 'bg-gray-800'
           }}
         />
       </Row>
@@ -45,10 +49,6 @@ export function ProgressBar(props) {
     </Row>
   );
 }
-
-ProgressBar.propTypes = {
-  progress: PropTypes.number.isRequired
-};
 
 /**
  * Styles
