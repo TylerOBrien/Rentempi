@@ -2,7 +2,7 @@
  * Global Imports
 */
 
-import React, { useContext } from 'react';
+import React, { ReactElement, useContext } from 'react';
 
 /**
  * Local Imports
@@ -29,7 +29,7 @@ export const ApiContext = React.createContext<ApiContextInterface>(undefined);
  * Components
  */
 
-export function ApiProvider(props:any) {
+export function ApiProvider(props:any):ReactElement<any> {
   /** Contexts **/
   
   const { token } = useContext(AuthContext);

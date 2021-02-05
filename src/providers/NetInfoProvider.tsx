@@ -2,7 +2,7 @@
  * Global Imports
 */
 
-import React, { useRef, useState } from 'react';
+import React, { ReactElement, useRef, useState } from 'react';
 import NetInfo, { NetInfoState, NetInfoSubscription } from '@react-native-community/netinfo';
 
 /**
@@ -15,7 +15,7 @@ export const NetInfoContext = React.createContext<NetInfoState>(undefined);
  * Provider
 */
 
-export function NetInfoProvider(props:any) {
+export function NetInfoProvider(props:any):ReactElement<any> {
   /** Refs **/
 
   const unsubscribeRef = useRef<NetInfoSubscription>();

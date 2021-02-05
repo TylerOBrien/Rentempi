@@ -2,7 +2,7 @@
  * Global Imports
 */
 
-import React, { useRef, useState } from 'react';
+import React, { ReactElement, useRef, useState } from 'react';
 
 /**
  * Types/Interfaces
@@ -20,7 +20,7 @@ export interface WebSocketContextInterface {
 
 export const WebSocketContext = React.createContext<WebSocketContextInterface>(undefined);
 
-export function WebSocketProvider(props:any) {
+export function WebSocketProvider(props:any):ReactElement<any> {
   /** Refs **/
 
   const wsRef = useRef<object>();

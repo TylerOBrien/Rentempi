@@ -2,7 +2,7 @@
  * Global Imports
 */
 
-import React, { useRef, useState } from 'react';
+import React, { ReactElement, useRef, useState } from 'react';
 
 /**
  * Types/Interfaces
@@ -24,7 +24,7 @@ export const AuthContext = React.createContext<AuthContextInterface>(undefined);
  * Components
 */
 
-export function AuthProvider(props:any) {
+export function AuthProvider(props:any):ReactElement<any> {
   /** Refs **/
 
   const hasTokenStorageRef = useRef<boolean>();

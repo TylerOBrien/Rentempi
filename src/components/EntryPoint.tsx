@@ -2,8 +2,8 @@
  * Global Imports
 */
 
-import React from 'react';
-import { View } from 'react-native';
+import React, { ReactElement } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 
 /**
  * Local Imports
@@ -18,15 +18,15 @@ import { UserProvider } from '~/providers/UserProvider';
  * Locals
 */
 
-function EntryPointMain() {
+function EntryPointMain():ReactElement {
   return (
     <View>
-      
+      <Text>Entry Point</Text>
     </View>
   );
 }
 
-function EntryPointOverlay() {
+function EntryPointOverlay():ReactElement {
   return (
     <View>
 
@@ -38,7 +38,7 @@ function EntryPointOverlay() {
  * Exports
 */
 
-export function EntryPoint() {
+export function EntryPoint():ReactElement {
   return (
     <AuthProvider>
       <UserProvider>
@@ -52,3 +52,11 @@ export function EntryPoint() {
     </AuthProvider>
   );
 }
+
+/**
+ * Styles
+*/
+
+const styles = StyleSheet.create({
+  
+});

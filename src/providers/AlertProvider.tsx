@@ -2,7 +2,7 @@
  * Global Imports
 */
 
-import React, { useRef, useState } from 'react';
+import React, { ReactElement, useRef, useState } from 'react';
 
 /**
  * Types/Interfaces
@@ -25,7 +25,7 @@ export const AlertContext = React.createContext<AlertContextInterface>(undefined
  * Components
 */
 
-export function AlertProvider(props:any) {
+export function AlertProvider(props:any):ReactElement<any> {
   /** Refs **/
 
   const alertDataRef = useRef<object>();
