@@ -2,27 +2,30 @@
  * Global Imports
 */
 
-import PropTypes from 'prop-types';
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { TextInput as BaseTextInput } from 'react-native';
 
 /**
  * Local Imports
 */
 
-import { Tailwind } from '~/util/TailwindCss';
+import { Tailwind, StyleProp, TailwindProp } from '~/util/TailwindCss';
+
+/**
+ * Types/Interfaces
+*/
+
+export interface TextInputProps {
+  style?: StyleProp;
+  tailwind?: TailwindProp;
+  children?: ReactNode;
+  onLayout?: Function;
+};
 
 /**
  * Exports
 */
 
-export function TextInput(props) {
+export function TextInput(props:TextInputProps) {
   return React.createElement(BaseTextInput, Tailwind.props(props));
 }
-
-TextInput.propTypes = {
-  style: PropTypes.oneOfType([ PropTypes.object, PropTypes.array ]),
-  tailwind: PropTypes.oneOfType([ PropTypes.string, PropTypes.array ]),
-
-  onLayout: PropTypes.func
-};
