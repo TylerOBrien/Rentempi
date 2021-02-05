@@ -2,8 +2,7 @@
  * Global Imports
 */
 
-import PropTypes from 'prop-types';
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { StyleSheet } from 'react-native';
 
 /**
@@ -11,15 +10,24 @@ import { StyleSheet } from 'react-native';
 */
 
 import { View } from '~/components/Base';
+import { StyleProp, TailwindProp } from '~/util/TailwindCss';
+
+/**
+ * Types/Interfaces
+*/
+
+export interface ColProps {
+  style?: StyleProp;
+  tailwind?: TailwindProp;
+  children?: ReactNode;
+  onLayout?: Function;
+};
 
 /**
  * Exports
 */
 
-/**
- * 
- */
-export function Col(props) {
+export function Col(props:ColProps) {
   return (
     <View
       style={ !props.style ? styles.col : [ styles.col, props.style ] }
@@ -30,13 +38,6 @@ export function Col(props) {
     </View>
   );
 }
-
-Col.propTypes = {
-  style: PropTypes.oneOfType([ PropTypes.object, PropTypes.array ]),
-  tailwind: PropTypes.oneOfType([ PropTypes.string, PropTypes.array ]),
-
-  onLayout: PropTypes.func
-};
 
 /**
  * Styles
