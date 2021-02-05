@@ -2,18 +2,29 @@
  * Global Imports
 */
 
-import PropTypes from 'prop-types';
 import React, { useRef } from 'react';
 import { Animated, PanResponder, StyleSheet, View } from 'react-native';
+
+/**
+ * Types/Interfaces
+*/
+
+export interface SliderProps {
+  value: number;
+  width: number;
+  thumbSize?: number;
+  min: number;
+  max: number;
+  stride: number;
+  onLayout?: Function;
+  onValueChange?: Function;
+};
 
 /**
  * Exports
 */
 
-/**
- * 
- */
-export function Slider(props) {
+export function Slider(props:SliderProps) {
   /** Refs **/
 
   const panRef = useRef();
@@ -41,24 +52,6 @@ export function Slider(props) {
     </View>
   );
 }
-
-Slider.propTypes = {
-  value: PropTypes.number,
-
-  width: PropTypes.number,
-  thumbSize: PropTypes.number,
-
-  min: PropTypes.number,
-  max: PropTypes.number,
-  stride: PropTypes.number,
-
-  onLayout: PropTypes.func,
-  onValueChange: PropTypes.func
-};
-
-Slider.defaultProps = {
-  thumbSize: 16
-};
 
 /**
  * Styles
