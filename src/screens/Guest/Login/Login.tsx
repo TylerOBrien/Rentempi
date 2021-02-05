@@ -52,8 +52,8 @@ export function Login(props:LoginProps) {
   
   /** Event Handlers **/
   
-  const handleSuccess = async ({ user, token }) => {
-    await auth.login({ user, token }, { remember });
+  const handleSuccess = ({ user, token }) => {
+    auth.login({ user, token }, { remember });
   };
   
   const handleSubmit = (values:LoginFields, formik:FormikHelpers<LoginFields>) => {
