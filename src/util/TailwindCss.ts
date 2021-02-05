@@ -23,6 +23,9 @@ import { JS } from './JS';
  * Types/Interfaces
 */
 
+export type StyleProp = object | Array<object>;
+export type TailwindProp = string | Array<string>;
+
 export type TailwindClassNames = string | Array<string>;
 export type TailwindObject = string | Array<string> | object;
 
