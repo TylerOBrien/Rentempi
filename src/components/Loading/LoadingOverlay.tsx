@@ -2,8 +2,7 @@
  * Global Imports
 */
 
-import PropTypes from 'prop-types';
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { ActivityIndicator, StyleSheet } from 'react-native';
 
 /**
@@ -11,16 +10,26 @@ import { ActivityIndicator, StyleSheet } from 'react-native';
 */
 
 import { View } from '~/components/Base';
-import { Tailwind } from '~/util/TailwindCss';
+import { Tailwind, StyleProp, TailwindProp } from '~/util/TailwindCss';
+
+/**
+ * Types/Interfaces
+*/
+
+export interface LoadingOverlayProps {
+  color: string;
+  size: number;
+  style?: StyleProp;
+  tailwind?: TailwindProp;
+  children?: ReactNode;
+  onLayout?: Function;
+};
 
 /**
  * Exports
 */
 
-/**
- * 
- */
-export function LoadingOverlay(props) {
+export function LoadingOverlay(props:LoadingOverlayProps) {
   return (
     <View style={ styles.overlay } onLayout={ props.onLayout }>
       <View style={ props.style } tailwind={ props.tailwind }>
@@ -33,17 +42,7 @@ export function LoadingOverlay(props) {
   );
 }
 
-Loading.propTypes = {
-  color: PropTypes.string,
-  size: PropTypes.number,
-  
-  style: PropTypes.oneOfType([ PropTypes.object, PropTypes.array ]),
-  tailwind: PropTypes.oneOfType([ PropTypes.string, PropTypes.array ]),
-
-  onLayout: PropTypes.func
-};
-
-Loading.defaultProps = {
+LoadingOverlay.defaultProps = {
   color: 'black',
   size: 64
 };
