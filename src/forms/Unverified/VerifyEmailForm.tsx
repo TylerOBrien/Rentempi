@@ -2,7 +2,6 @@
  * Global Imports
 */
 
-import PropTypes from 'prop-types';
 import React, { useEffect, useContext, useState } from 'react';
 import { Formik } from 'formik';
 
@@ -12,30 +11,40 @@ import { Formik } from 'formik';
 
 import { Text, View } from '~/components/Base';
 import { Form } from '~/components/Form';
+import { FormikSubmit } from '~/util/Formik';
+
+/**
+ * Types/Interfaces
+*/
+
+export interface VerifyEmailFields {
+  code: string;
+};
+
+export interface VerifyEmailFormProps {
+  context: React.Context<unknown>;
+  onSubmit: FormikSubmit<VerifyEmailFields>;
+};
+
+/**
+ * Locals
+*/
+
+const initialValues = {
+  code: ''
+};
 
 /**
  * Exports
 */
 
-/**
- * 
- */
-export function VerifyEmailForm(props) {
+export function VerifyEmailForm(props:VerifyEmailFormProps) {
   /** Contexts **/
 
   const context = useContext(props.context);
-
-  /** Form **/
-  
-  const initialValues = {
-    code: ''
-  };
   
   /** Renderers **/
   
-  /**
-   * 
-   */
   const renderForm = (formik) => {
     <Form>
       
@@ -50,8 +59,3 @@ export function VerifyEmailForm(props) {
     </Formik>
   );
 }
-
-VerifyEmailForm.propTypes = {
-  context: PropTypes.object.isRequired,
-  onSubmit: PropTypes.func.isRequired
-};
