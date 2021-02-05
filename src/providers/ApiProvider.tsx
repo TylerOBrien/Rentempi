@@ -2,7 +2,7 @@
  * Global Imports
 */
 
-import React, { ReactElement, useContext } from 'react';
+import React, { ReactElement, ReactNode, useContext } from 'react';
 
 /**
  * Local Imports
@@ -14,6 +14,10 @@ import { Authorization } from '~/util/Api'
 /**
  * Types/Interfaces
 */
+
+export interface ApiProviderProps {
+  children: ReactNode;
+};
 
 export interface ApiContextInterface {
   credentials:Authorization;
@@ -29,7 +33,7 @@ export const ApiContext = React.createContext<ApiContextInterface>(undefined);
  * Components
  */
 
-export function ApiProvider(props:any):ReactElement<any> {
+export function ApiProvider(props:ApiProviderProps):ReactElement<any> {
   /** Contexts **/
   
   const { token } = useContext(AuthContext);

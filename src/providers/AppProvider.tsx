@@ -2,12 +2,16 @@
  * Global Imports
 */
 
-import React, { ReactElement, useState } from 'react';
+import React, { ReactElement, ReactNode, useState } from 'react';
 import { StatusBarStyle } from 'react-native';
 
 /**
  * Types/Interfaces
 */
+
+export interface AppProviderProps {
+  children: ReactNode;
+};
 
 export interface AppContextInterface {
   statusBarStyle: StatusBarStyle;
@@ -26,7 +30,7 @@ export const AppContext = React.createContext<AppContextInterface>(undefined);
  * Components
 */
 
-export function AppProvider(props:any):ReactElement<any> {
+export function AppProvider(props:AppProviderProps):ReactElement<any> {
   /** States **/
 
   const [ statusBarStyle, setStatusBarStyle ] = useState<StatusBarStyle>();
