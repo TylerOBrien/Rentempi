@@ -2,7 +2,6 @@
  * Global Imports
 */
 
-import PropTypes from 'prop-types';
 import React, { useEffect, useContext, useState } from 'react';
 import { Platform } from 'react-native';
 import { Formik } from 'formik';
@@ -13,22 +12,39 @@ import { Formik } from 'formik';
 
 import { Text, View } from '~/components/Base';
 import { Form } from '~/components/Form';
+import { FormikSubmit } from '~/util/Formik';
+
+/**
+ * Types/Interfaces
+*/
+
+export interface LoginFields {
+  email: string;
+  password: string;
+};
+
+export interface LoginFormProps {
+  context: React.Context<unknown>;
+  onSubmit: FormikSubmit<LoginFields>;
+};
+
+/**
+ * Locals
+*/
+  
+const initialValues = {
+  email: '',
+  password: ''
+};
 
 /**
  * Exports
 */
 
-export function LoginForm(props) {
+export function LoginForm(props:LoginFormProps) {
   /** Contexts **/
 
   const context = useContext(props.context);
-
-  /** Form **/
-  
-  const initialValues = {
-    email: '',
-    password: ''
-  };
   
   /** Renderers **/
   
@@ -46,8 +62,3 @@ export function LoginForm(props) {
     </Formik>
   );
 }
-
-LoginForm.propTypes = {
-  context: PropTypes.object.isRequired,
-  onSubmit: PropTypes.func.isRequired
-};

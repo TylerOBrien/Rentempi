@@ -13,32 +13,44 @@ import { Formik } from 'formik';
 
 import { Text, View } from '~/components/Base';
 import { Form } from '~/components/Form';
+import { FormikSubmit } from '~/util/Formik';
+
+/**
+ * Types/Interfaces
+*/
+
+export interface RegisterFields {
+  email: string;
+  password: string;
+  password_confirmation: string;
+};
+
+export interface RegisterFormProps {
+  context: React.Context<unknown>;
+  onSubmit: FormikSubmit<RegisterFields>;
+};
+
+/**
+ * Locals
+*/
+  
+const initialValues = {
+  email: '',
+  password: '',
+  password_confirmation: ''
+};
 
 /**
  * Exports
 */
 
-/**
- * 
- */
-export function RegisterForm(props) {
+export function RegisterForm(props:RegisterFormProps) {
   /** Contexts **/
 
   const context = useContext(props.context);
-
-  /** Form **/
-  
-  const initialValues = {
-    email: '',
-    password: '',
-    password_confirmation: ''
-  };
   
   /** Renderers **/
   
-  /**
-   * 
-   */
   const renderForm = (formik) => {
     <Form>
       
@@ -53,8 +65,3 @@ export function RegisterForm(props) {
     </Formik>
   );
 }
-
-RegisterForm.propTypes = {
-  context: PropTypes.object.isRequired,
-  onSubmit: PropTypes.func.isRequired
-};
