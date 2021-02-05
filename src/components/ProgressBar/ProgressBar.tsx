@@ -16,7 +16,7 @@ import { Row } from '~/components/Grid';
  * Types/Interfaces
 */
 
-export interface ProgressBarTransition {
+export interface ProgressBarProps {
   progress: number;
 };
 
@@ -24,7 +24,7 @@ export interface ProgressBarTransition {
  * Exports
 */
 
-export function ProgressBar(props:ProgressBarTransition) {
+export function ProgressBar(props:ProgressBarProps) {
   return (
     <Row>
       <Row style={ styles.inner }>
