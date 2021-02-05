@@ -2,7 +2,7 @@
  * Global Imports
 */
 
-import React, { ReactElement, useContext, useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 
 /**
  * Local Imports
@@ -36,7 +36,7 @@ export const ItemPickerContext = React.createContext<ItemPickerContextInterface>
  * Components
 */
 
-export function ItemPickerProvider(props:any):ReactElement<any> {
+export function ItemPickerProvider(props:any) {
   /** Refs **/
 
   const itemsRef = useRef<Array<any>>();
@@ -68,7 +68,7 @@ export function ItemPickerProvider(props:any):ReactElement<any> {
   );
 }
 
-export function ItemPickerBase():ReactElement {
+export function ItemPickerBase() {
   /** Contexts **/
   
   const { isActive, setIsActive, itemsRef, selectedValueRef, handleChooseRef, handleCancelRef, handleResetRef } = useContext(ItemPickerContext);

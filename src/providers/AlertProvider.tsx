@@ -2,7 +2,7 @@
  * Global Imports
 */
 
-import React, { ReactElement, ReactNode, useRef, useState } from 'react';
+import React, { ReactNode, useRef, useState } from 'react';
 
 /**
  * Types/Interfaces
@@ -13,10 +13,10 @@ export interface AlertProviderProps {
 };
 
 export interface AlertContextInterface {
-  alerts:string[];
-  setAlerts:React.Dispatch<React.SetStateAction<string[]>>;
-  alertDataRef:React.MutableRefObject<object>;
-  alertTotalCountRef:React.MutableRefObject<number>;
+  alerts: Array<string>;
+  setAlerts: React.Dispatch<React.SetStateAction<Array<string>>>;
+  alertDataRef: React.MutableRefObject<object>;
+  alertTotalCountRef: React.MutableRefObject<number>;
 };
 
 /**
@@ -29,7 +29,7 @@ export const AlertContext = React.createContext<AlertContextInterface>(undefined
  * Components
 */
 
-export function AlertProvider(props:AlertProviderProps):ReactElement<any> {
+export function AlertProvider(props:AlertProviderProps) {
   /** Refs **/
 
   const alertDataRef = useRef<object>();
@@ -37,7 +37,7 @@ export function AlertProvider(props:AlertProviderProps):ReactElement<any> {
 
   /** States **/
 
-  const [ alerts, setAlerts ] = useState<string[]>();
+  const [ alerts, setAlerts ] = useState<Array<string>>();
   
   /** Output **/
   

@@ -2,7 +2,7 @@
  * Global Imports
 */
 
-import React, { ReactElement, ReactNode, useRef, useState } from 'react';
+import React, { ReactNode, useRef, useState } from 'react';
 
 /**
  * Types/Interfaces
@@ -13,9 +13,9 @@ export interface AuthProviderProps {
 };
 
 export interface AuthContextInterface {
-  token:string;
-  setToken:React.Dispatch<React.SetStateAction<string>>;
-  hasTokenStorageRef:React.MutableRefObject<boolean>;
+  token: string;
+  setToken: React.Dispatch<React.SetStateAction<string>>;
+  hasTokenStorageRef: React.MutableRefObject<boolean>;
 };
 
 /**
@@ -28,7 +28,7 @@ export const AuthContext = React.createContext<AuthContextInterface>(undefined);
  * Components
 */
 
-export function AuthProvider(props:AuthProviderProps):ReactElement<any> {
+export function AuthProvider(props:AuthProviderProps) {
   /** Refs **/
 
   const hasTokenStorageRef = useRef<boolean>();

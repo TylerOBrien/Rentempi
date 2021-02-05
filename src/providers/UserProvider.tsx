@@ -2,7 +2,7 @@
  * Global Imports
 */
 
-import React, { ReactElement, ReactNode, useState } from 'react';
+import React, { ReactNode, useState } from 'react';
 
 /**
  * Local Imports
@@ -33,7 +33,7 @@ export const UserContext = React.createContext<UserContextInterface>(undefined);
  * Components
 */
 
-export function UserProvider(props:UserProviderProps):ReactElement<any> {
+export function UserProvider(props:UserProviderProps) {
   /** States **/
 
   const [ user, setUser ] = useState<UserModel>();
