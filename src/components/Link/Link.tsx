@@ -2,8 +2,7 @@
  * Global Imports
 */
 
-import PropTypes from 'prop-types';
-import React, { useEffect, useContext, useState } from 'react';
+import React, { FunctionComponent, ReactNode } from 'react';
 import { useNavigation } from '@react-navigation/native';
 
 /**
@@ -11,37 +10,47 @@ import { useNavigation } from '@react-navigation/native';
 */
 
 import { Pressable, Text } from '~/components/Base';
+import { Tailwind, StyleProp, TailwindProp } from '~/util/TailwindCss';
+
+/**
+ * Types/Interfaces
+*/
+
+export interface LinkProps {
+  to: string;
+  container?: FunctionComponent;
+  containerProps?: any;
+  label?: string;
+  labelContainer?: FunctionComponent;
+  labelContainerProps?: any;
+  disabled?: boolean;
+  style?: StyleProp;
+  tailwind?: TailwindProp;
+  children?: ReactNode;
+  onLayout?: Function;
+};
 
 /**
  * Exports
 */
 
-/**
- * 
- */
-export function Link(props) {
+export function Link(props:LinkProps) {
   /** Hooks **/
 
   const navigation = useNavigation();
 
   /** Event Handlers **/
 
-  /**
-   * 
-   */
   const handlePress = () => {
     navigation.navigate(props.to);
   };
   
   /** Renderers **/
 
-  /**
-   * 
-   */
   const renderContainedLabel = () => (
     <props.labelContainer
       { ...props.labelContainerProps }
-      tailwind={ getTailwind(props.tailwind, 'label', false) }
+      tailwind={ Tailwind.get(props.tailwind, 'label', false) }
     >
       { props.label || props.to }
     </props.labelContainer>
@@ -52,7 +61,7 @@ export function Link(props) {
   return (
     <props.container
       { ...props.containerProps }
-      tailwind={ getTailwind(props.tailwind, 'container') }
+      tailwind={ Tailwind.get(props.tailwind, 'container') }
       disabled={ props.disabled }
       onPress={ handlePress }
     >
@@ -60,21 +69,6 @@ export function Link(props) {
     </props.container>
   );
 }
-
-Link.propTypes = {
-  to: PropTypes.string.isRequired,
-  label: PropTypes.string,
-  labelContainer: PropTypes.func,
-  labelContainerProps: PropTypes.object,
-
-  container: PropTypes.func,
-  containerProps: PropTypes.object,
-
-  tailwind: PropTypes.oneOfType([ PropTypes.string, PropTypes.object, PropTypes.arrayOf(PropTypes.string) ]),
-  style: PropTypes.oneOfType([ PropTypes.object, PropTypes.array, ]),
-
-  disabled: PropTypes.bool
-};
 
 Link.defaultProps = {
   container: Pressable,
