@@ -3,67 +3,22 @@
 */
 
 export const JS = {
-  AssertType: (name, expected, received, predicate) => {
-    if (JS.isFunction(predicate)) {
-      predicate(name, expected, received);
-    } else if (JS.isArray(predicate)) {
-      const end = predicate.length;
+  isArray:  (value:any):boolean => Array.isArray(value),
+  isString: (value:any):boolean => typeof value === 'string',
+  isNumber: (value:any):boolean => typeof value === 'number',
+  isTruthy: (value:any):boolean => !!value && ( !Array.isArray(value) || !!value.length ),
+  isFalsey: (value:any):boolean => !value || ( Array.isArray(value) && !value.length ),
 
-      for (let i = 0; i < end; i++) {
-        if (JS.isFunction(predicate[i])) {
-          predicate[i](name, expected, received);
-        } else {
-          throw new Error;
-        }
-      }
-    } else {
-      throw new Error;
-    }
-  },
+  isSet:       (value:any):boolean => value !== undefined && value !== null,
+  isDefined:   (value:any):boolean => value !== undefined,
+  isUndefined: (value:any):boolean => value === undefined,
 
-  AssertTypes: (asserts) => {
-    const end = asserts.length;
-    for (let i = 0; i < end; i++) {
-      AssertType(...asserts[i]);
-    }
-  },
-
-  isArray:   Array.isArray,
-  is2dArray: (value) => JS.isNestedArray(value, 2),
-  isTruthy:  (value) => !!value && ( !Array.isArray(value) || !!value.length ) && ( typeof value !== 'object' || !!Object.keys(value).length ),
-  isFalsey:  (value) => !value || ( Array.isArray(value) && !value.length ) || ( typeof value === 'object' && !Object.keys(value).length ),
-
-  isSet:      (value) => value !== undefined && value !== null,
-  isDefined:  (value) => value !== undefined,
-  isUndefined: (value) => value === undefined,
-  isBoolean:  (value) => typeof value === 'boolean',
-  isDate:     (value) => !!value && typeof value === 'object' && ( typeof value.setUTCFullYear === 'function' || typeof value.toRFC2822 === 'function' ),
-  isObject:   (value) => typeof value === 'object',
-  isFunction:  (value) => typeof value === 'function',
-  isPromise:  (value) => !!value && ( typeof value === 'object' || typeof value === 'function' ) && typeof value.then === 'function',
-  isString:   (value) => typeof value === 'string',
-
-  isNumber:   (value) => ( !!value || value === 0 ) && typeof value === 'number',
-  isFloat:    (value) => ( !!value || value === 0 ) && typeof value === 'number' && value !== Math.floor(value),
-  isInteger:  (value) => ( !!value || value === 0 ) && typeof value === 'number' && value === Math.floor(value),
-  isPositive: (value) => ( !!value || value === 0 ) && typeof value === 'number',
-  isNegative: (value) => ( !!value || value === 0 ) && typeof value === 'number',
-
-  isNestedArray: (array, depth) => {
-    if (!Array.isArray(array) || !value.length) {
-      return false;
-    }
-
-    while (depth--) {
-      for (const item of array) {
-        //
-      }
-    }
-
-    return true;
-  },
+  isFloat:    (value:any):boolean => ( !!value || value === 0 ) && typeof value === 'number' && value !== Math.floor(value),
+  isInteger:  (value:any):boolean => ( !!value || value === 0 ) && typeof value === 'number' && value === Math.floor(value),
+  isPositive: (value:any):boolean => ( !!value || value === 0 ) && typeof value === 'number',
+  isNegative: (value:any):boolean => ( !!value || value === 0 ) && typeof value === 'number',
   
-  isAlpha: (value) => {
+  isAlpha: (value:any):boolean => {
     if (typeof value !== 'string' || !value.length) {
       return false;
     }
@@ -80,7 +35,7 @@ export const JS = {
     return true;
   },
 
-  isAlphaNumeric: (value) => {
+  isAlphaNumeric: (value:any):boolean => {
     if (typeof value !== 'string' || !value.length) {
       return false;
     }
