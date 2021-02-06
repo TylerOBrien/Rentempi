@@ -74,7 +74,7 @@ export function useAuth():AuthHook {
       
       if (hasTokenStorageRef.current) {
         try {
-          await TokenStorage.set(token);
+          await TokenStorage.set(auth.token);
         } catch (error) {
           return reject(error);
         }
