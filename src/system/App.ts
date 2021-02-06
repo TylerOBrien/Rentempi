@@ -8,8 +8,8 @@ export const AppDriver = {
       Welcome: 'Welcome',
       Login: 'Login',
       Register: 'Register',
-      ForgotPassword: 'ForgotPassword',
-      ResetPassword: 'ResetPassword'
+      ForgotPassword: 'Forgot Password',
+      ResetPassword: 'Reset Password'
     },
 
     Unverified: {
