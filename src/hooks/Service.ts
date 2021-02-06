@@ -33,7 +33,7 @@ export function useService():ServiceHook {
   /** Helpers **/
 
   /**
-   * 
+   * @return {Promise<any>}
    */
   const call = (name:string, ...args:Array<any>):Promise<any> => {
     const [ action, group, ...rest ] = name.split('.');
