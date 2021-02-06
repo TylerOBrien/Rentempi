@@ -64,9 +64,9 @@ export interface RegisterAuthResponse {
 /**
  * Attempt registration.
  * 
- * @param {any} data
+ * @param {RegisterAuthRequest} data
  * 
- * @return {Promise<any>}
+ * @return {Promise<RegisterAuthResponse>}
  */
 export function RegisterAuthService(data:RegisterAuthRequest):Promise<RegisterAuthResponse> {
   const config = {
@@ -96,9 +96,9 @@ export interface RefreshAuthResponse {
  * Attempt to refresh token.
  * 
  * @param {Authorization} auth
- * @param {any} data
+ * @param {RefreshAuthRequest} data
  * 
- * @return {Promise<any>}
+ * @return {Promise<RefreshAuthResponse>}
  */
 export function RefreshAuthService(auth:Authorization, data:RefreshAuthRequest):Promise<RefreshAuthResponse> {
   const config = {
@@ -127,9 +127,9 @@ export interface ForgotPasswordAuthResponse {
 /**
  * Initiate forgot password process.
  * 
- * @param {any} data
+ * @param {ForgotPasswordAuthRequest} data
  * 
- * @return {Promise<any>}
+ * @return {Promise<ForgotPasswordAuthResponse>}
  */
 export function ForgotPasswordAuthService(data:ForgotPasswordAuthRequest):Promise<ForgotPasswordAuthResponse> {
   const config = {
