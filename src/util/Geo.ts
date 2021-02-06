@@ -2,7 +2,7 @@
  * Local Imports
 */
 
-import { countries } from '~/lib/node-countries';
+import countries from 'node-countries/data/countries.json';
 
 /**
  * Sibling Imports
