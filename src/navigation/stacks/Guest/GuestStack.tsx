@@ -2,7 +2,7 @@
  * Global Imports
 */
 
-import React, { ReactElement } from 'react';
+import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
 /**
@@ -21,7 +21,7 @@ const GuestRouterStack = createStackNavigator();
  * Exports
 */
 
-export function GuestStack():ReactElement {
+export function GuestStack() {
   return (
     <GuestRouterStack.Navigator>
       {
