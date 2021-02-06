@@ -2,46 +2,19 @@
  * Global Imports
 */
 
-import PropTypes from 'prop-types';
-import React, { useEffect, useContext, useState } from 'react';
+import React from 'react';
 
 /**
  * Local Imports
 */
 
-import { Text, View } from '~/Base/TailwindCss';
-
-/**
- * Locals
-*/
-
-
+import { Text, View } from '~/components/Base';
 
 /**
  * Exports
 */
 
-/**
- * 
- */
-export function Navigation(props) {
-  /** Contexts **/
-  
-  
-  /** States **/
-  
-  
-  /** Side-Effects **/
-  
-  
-  /** Event Handlers **/
-  
-  
-  /** Renderers **/
-  
-  
-  /** Output **/
-  
+export function Navigation() {
   return (
     null
   );
