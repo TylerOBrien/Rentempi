@@ -2,8 +2,7 @@
  * Global Imports
 */
 
-import PropTypes from 'prop-types';
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import { ActivityIndicator, StyleSheet } from 'react-native';
 
 /**
@@ -11,13 +10,30 @@ import { ActivityIndicator, StyleSheet } from 'react-native';
 */
 
 import { Pressable, Text, View } from '~/components/Base';
-import { Tailwind } from '~/util';
+import { Tailwind, TailwindEnabledProps } from '~/util/TailwindCss';
+
+/**
+ * Types/Interfaces
+*/
+
+export interface ButtonProps extends TailwindEnabledProps {
+  label: string;
+  disabled?: boolean;
+  loading?: boolean;
+  container?: FunctionComponent<TailwindEnabledProps>;
+  onPress?: Function;
+};
+
+export interface ButtonLabelProps extends TailwindEnabledProps {
+  label: string;
+  loading?: boolean;
+};
 
 /**
  * Locals
 */
 
-function ButtonLabel(props) {
+function ButtonLabel(props:ButtonLabelProps) {
   /** Helpers **/
 
   const tailwinds = {
@@ -50,7 +66,7 @@ function ButtonLabel(props) {
  * Exports
 */
 
-export function Button(props) {
+export function Button(props:ButtonProps) {
   /** Helpers **/
 
   const tailwinds = {
@@ -63,26 +79,13 @@ export function Button(props) {
     <View style={ props.style } tailwind={ tailwinds.container } onLayout={ props.onLayout }>
       <Pressable
         disabled={ props.disabled }
-        onPress={ () => requestAnimationFrame(props.onPress) }
+        onPress={ () => requestAnimationFrame(() => props.onPress()) }
       >
         <ButtonLabel { ...props } />
       </Pressable>
     </View>
   );
 }
-
-Button.propTypes = {
-  label: PropTypes.string.isRequired,
-
-  style: PropTypes.oneOfType([ PropTypes.object, PropTypes.array, ]),
-  tailwind: PropTypes.oneOfType([ PropTypes.string, PropTypes.object, PropTypes.array ]),
-
-  disabled: PropTypes.bool,
-  loading: PropTypes.bool,
-
-  onLayout: PropTypes.func,
-  onPress: PropTypes.func.isRequired
-};
 
 /**
  * Styles
