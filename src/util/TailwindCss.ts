@@ -1,4 +1,10 @@
 /**
+ * Global Imports
+*/
+
+import { LayoutChangeEvent } from 'react-native';
+
+/**
  * Resources
 */
 
@@ -32,7 +38,7 @@ export type TailwindObject = string | Array<string> | object;
 export interface TailwindEnabledProps {
   style?: StyleProp;
   tailwind?: TailwindProp;
-  onLayout?: Function;
+  onLayout?: (event:LayoutChangeEvent) => void;
 };
 
 /**
