@@ -10,17 +10,14 @@ import React, { ReactNode, useEffect, useContext, useState } from 'react';
 */
 
 import { Text, View } from '~/components/Base';
-import { StyleProp, TailwindProp } from '~/util/TailwindCss';
+import { TailwindEnabledProps } from '~/util/TailwindCss';
 
 /**
  * Types/Interfaces
 */
 
-export interface GridProps {
-  style?: StyleProp;
-  tailwind?: TailwindProp;
+export interface GridProps extends TailwindEnabledProps {
   children?: ReactNode;
-  onLayout?: Function;
 };
 
 /**
