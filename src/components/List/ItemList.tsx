@@ -2,8 +2,7 @@
  * Global Imports
 */
 
-import PropTypes from 'prop-types';
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import { StyleSheet } from 'react-native';
 
 /**
@@ -11,36 +10,47 @@ import { StyleSheet } from 'react-native';
 */
 
 import { Text, View } from '~/components/Base';
-import { Tailwind } from '~/util/TailwindCss';
+import { Tailwind, TailwindEnabledProps } from '~/util/TailwindCss';
+
+/**
+ * Types/Interfaces
+*/
+
+export type Item = string;
+
+export interface ItemContainerProps extends TailwindEnabledProps {
+  
+}
+
+export interface ItemListContainerProps extends TailwindEnabledProps {
+  
+}
+
+export interface ItemListProps extends TailwindEnabledProps {
+  items: Array<Item>;
+  prefix: 'number' | 'disc' | 'letter';
+  container?: FunctionComponent<ItemListContainerProps>;
+  containerProps?: ItemListContainerProps;
+  itemContainer?: FunctionComponent<ItemContainerProps>;
+  itemContainerProps?: ItemContainerProps;
+}
 
 /**
  * Exports
 */
 
-/**
- * 
- */
-export function ItemList(props) {
+export function ItemList(props:ItemListProps) {
   /** Renderers **/
 
-  /**
-   * 
-   */
-  const renderNumberItemPrefix = (item, index) => {
+  const renderNumberItemPrefix = (item:Item, index:number) => {
     return `${ index + 1 }. `;
   };
 
-  /**
-   * 
-   */
-  const renderDiscItemPrefix = (item, index) => {
+  const renderDiscItemPrefix = (item:Item, index:number) => {
     return '•';
   };
 
-  /**
-   * 
-   */
-  const renderItemPrefix = (item, index) => {
+  const renderItemPrefix = (item:Item, index:number) => {
     return (
       <Text tailwind={ Tailwind.get(props.tailwind, 'prefix', false) }>
         {
@@ -54,10 +64,7 @@ export function ItemList(props) {
     );
   };
 
-  /**
-   * 
-   */
-  const renderItemContent = (item, index) => (
+  const renderItemContent = (item:Item, index:number) => (
     <Text
       style={{  }}
       tailwind={ Tailwind.get(props.tailwind, 'label', false) }
@@ -87,16 +94,6 @@ export function ItemList(props) {
     </props.container>
   );
 }
-
-ItemList.propTypes = {
-  prefix: PropTypes.oneOf([ 'number', 'disc', 'letter' ]),
-
-  container: PropTypes.func,
-  containerProps: PropTypes.object,
-
-  itemContainer: PropTypes.func,
-  itemContainerProps: PropTypes.object
-};
 
 ItemList.defaultProps = {
   prefix: 'disc',
