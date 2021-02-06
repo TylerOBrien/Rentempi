@@ -30,7 +30,8 @@ import { JS } from './JS';
 */
 
 export type StyleProp = object | Array<object>;
-export type TailwindProp = string | Array<string>;
+export type TailwindBaseProp = string | Array<string>;
+export type TailwindProp = TailwindBaseProp | object;
 
 export type TailwindClassNames = string | Array<string>;
 export type TailwindObject = string | Array<string> | object;
