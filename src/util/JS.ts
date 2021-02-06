@@ -4,6 +4,7 @@
 
 export const JS = {
   isArray:  (value:any):boolean => Array.isArray(value),
+  isObject: (value:any):boolean => typeof value === 'object',
   isString: (value:any):boolean => typeof value === 'string',
   isNumber: (value:any):boolean => typeof value === 'number',
   isTruthy: (value:any):boolean => !!value && ( !Array.isArray(value) || !!value.length ),
