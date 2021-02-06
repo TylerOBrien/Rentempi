@@ -3,7 +3,7 @@
 */
 
 import 'react-native-gesture-handler';
-import React, { Fragment, ReactElement, useContext } from 'react';
+import React, { Fragment, useContext } from 'react';
 import { SafeAreaView, StatusBar, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 
@@ -20,7 +20,7 @@ import { AppContext, AppProvider } from '~/providers/AppProvider';
  * Locals
 */
 
-function Main():ReactElement {
+function Main() {
   /** Contexts **/
 
   const { statusBarStyle, isStatusBarHidden } = useContext(AppContext);
@@ -44,7 +44,7 @@ function Main():ReactElement {
  * Exports
 */
 
-export function App():ReactElement {
+export function App() {
   return (
     <NavigationContainer>
       <AppProvider>
