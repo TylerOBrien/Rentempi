@@ -11,8 +11,10 @@ import { Api, Authorization } from '~/util/Api';
 
 const endpoint = 'auth';
 
-/**
- * Login
+/*
+|--------------------------------------------------------------------------
+| Login
+|--------------------------------------------------------------------------
 */
 
 export interface LoginAuthRequest {
@@ -42,9 +44,22 @@ export function LoginAuthService(data:LoginAuthRequest):Promise<LoginAuthRespons
   return Api.call(config);
 }
 
-/**
- * 
+/*
+|--------------------------------------------------------------------------
+| Register
+|--------------------------------------------------------------------------
 */
+
+export interface RegisterAuthRequest {
+  email: string;
+  password: string;
+  password_confirmation: string;
+}
+
+export interface RegisterAuthResponse {
+  user: UserModel;
+  token: TokenModel;
+}
 
 /**
  * Attempt registration.
@@ -53,7 +68,7 @@ export function LoginAuthService(data:LoginAuthRequest):Promise<LoginAuthRespons
  * 
  * @return {Promise<any>}
  */
-export function RegisterAuthService(data:any):Promise<any> {
+export function RegisterAuthService(data:RegisterAuthRequest):Promise<RegisterAuthResponse> {
   const config = {
     data,
     method: 'POST',
@@ -61,6 +76,20 @@ export function RegisterAuthService(data:any):Promise<any> {
   };
 
   return Api.call(config);
+}
+
+/*
+|--------------------------------------------------------------------------
+| Refresh
+|--------------------------------------------------------------------------
+*/
+
+export interface RefreshAuthRequest {
+  
+}
+
+export interface RefreshAuthResponse {
+  token: TokenModel;
 }
 
 /**
@@ -71,7 +100,7 @@ export function RegisterAuthService(data:any):Promise<any> {
  * 
  * @return {Promise<any>}
  */
-export function RefreshAuthService(auth:Authorization, data:any):Promise<any> {
+export function RefreshAuthService(auth:Authorization, data:RefreshAuthRequest):Promise<RefreshAuthResponse> {
   const config = {
     data,
     method: 'POST',
@@ -81,6 +110,20 @@ export function RefreshAuthService(auth:Authorization, data:any):Promise<any> {
   return Api.call(config, auth);
 }
 
+/*
+|--------------------------------------------------------------------------
+| Forgot Password
+|--------------------------------------------------------------------------
+*/
+
+export interface ForgotPasswordAuthRequest {
+  email: string;
+}
+
+export interface ForgotPasswordAuthResponse {
+  
+}
+
 /**
  * Initiate forgot password process.
  * 
@@ -88,7 +131,7 @@ export function RefreshAuthService(auth:Authorization, data:any):Promise<any> {
  * 
  * @return {Promise<any>}
  */
-export function ForgotPasswordAuthService(data:any):Promise<any> {
+export function ForgotPasswordAuthService(data:ForgotPasswordAuthRequest):Promise<ForgotPasswordAuthResponse> {
   const config = {
     data,
     method: 'POST',
