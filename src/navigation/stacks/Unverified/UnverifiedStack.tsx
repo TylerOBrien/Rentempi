@@ -2,35 +2,35 @@
  * Global Imports
 */
 
-import React, { ReactElement } from 'react';
+import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
 /**
  * Local Imports
 */
 
-import * as UnverifiedScreens from '~/screens/Unverified';
+import * as UnverifiedScreenConfigs from '~/screens/Unverified/configs';
+import { ScreenConfig } from '~/config';
 
 /**
  * Locals
 */
 
+const Configs = Object.entries(UnverifiedScreenConfigs);
 const UnverifiedRouterStack = createStackNavigator();
 
 /**
  * Exports
 */
 
-export function UnverifiedStack():ReactElement {
+export function UnverifiedStack() {
   return (
-    <UnverifiedRouterStack.Navigator>
+    <UnverifiedRouterStack.Navigator initialRouteName={ ScreenConfig.initial.Unverified }>
       {
-        Object.entries(UnverifiedScreens)
-              .map(([name, screen], index) => (
+        Configs.map(([, config], index) => (
           <UnverifiedRouterStack.Screen
             key={ index }
-            name={ name }
-            component={ screen }
+            { ...config.stack }
           />
         ))
       }

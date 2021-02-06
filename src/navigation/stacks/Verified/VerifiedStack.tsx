@@ -2,35 +2,35 @@
  * Global Imports
 */
 
-import React, { ReactElement } from 'react';
+import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
 /**
  * Local Imports
 */
 
-import * as VerifiedScreens from '~/screens/Verified';
+import * as VerifiedScreenConfigs from '~/screens/Verified/configs';
+import { ScreenConfig } from '~/config';
 
 /**
  * Locals
 */
 
+const Configs = Object.entries(VerifiedScreenConfigs);
 const VerifiedRouterStack = createStackNavigator();
 
 /**
  * Exports
 */
 
-export function VerifiedStack():ReactElement {
+export function VerifiedStack() {
   return (
-    <VerifiedRouterStack.Navigator>
+    <VerifiedRouterStack.Navigator initialRouteName={ ScreenConfig.initial.Verified }>
       {
-        Object.entries(VerifiedScreens)
-              .map(([name, screen], index) => (
+        Configs.map(([, config], index) => (
           <VerifiedRouterStack.Screen
             key={ index }
-            name={ name }
-            component={ screen }
+            { ...config.stack }
           />
         ))
       }
