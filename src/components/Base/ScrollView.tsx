@@ -3,23 +3,23 @@
 */
 
 import React, { ReactNode } from 'react';
-import { ScrollView as BaseScrollView } from 'react-native';
+import {
+  ScrollView as BaseScrollView,
+  ScrollViewProps as BaseScrollViewProps } from 'react-native';
 
 /**
  * Local Imports
 */
 
-import { Tailwind, StyleProp, TailwindProp } from '~/util/TailwindCss';
+import { Tailwind, TailwindProp } from '~/util/TailwindCss';
 
 /**
  * Types/Interfaces
 */
 
-export interface ScrollViewProps {
-  style?: StyleProp;
+export interface ScrollViewProps extends BaseScrollViewProps {
   tailwind?: TailwindProp;
   children?: ReactNode;
-  onLayout?: Function;
 };
 
 /**

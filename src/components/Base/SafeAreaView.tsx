@@ -3,7 +3,8 @@
 */
 
 import React, { ReactNode } from 'react';
-import { SafeAreaView as BaseSafeAreaView } from 'react-native';
+import {
+  SafeAreaView as BaseSafeAreaView } from 'react-native';
 
 /**
  * Local Imports
@@ -16,10 +17,8 @@ import { Tailwind, StyleProp, TailwindProp } from '~/util/TailwindCss';
 */
 
 export interface SafeAreaViewProps {
-  style?: StyleProp;
   tailwind?: TailwindProp;
   children?: ReactNode;
-  onLayout?: Function;
 };
 
 /**

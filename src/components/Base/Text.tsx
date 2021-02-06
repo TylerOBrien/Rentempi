@@ -3,23 +3,23 @@
 */
 
 import React, { ReactNode } from 'react';
-import { Text as BaseText } from 'react-native';
+import {
+  Text as BaseText,
+  TextProps as BaseTextProps } from 'react-native';
 
 /**
  * Local Imports
 */
 
-import { Tailwind, StyleProp, TailwindProp } from '~/util/TailwindCss';
+import { Tailwind, TailwindProp } from '~/util/TailwindCss';
 
 /**
  * Types/Interfaces
 */
 
-export interface TextProps {
-  style?: StyleProp;
+export interface TextProps extends BaseTextProps {
   tailwind?: TailwindProp;
   children?: ReactNode;
-  onLayout?: Function;
 };
 
 /**

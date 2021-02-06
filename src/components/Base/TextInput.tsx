@@ -2,24 +2,23 @@
  * Global Imports
 */
 
-import React, { ReactNode } from 'react';
-import { TextInput as BaseTextInput } from 'react-native';
+import React from 'react';
+import {
+  TextInput as BaseTextInput,
+  TextInputProps as BaseTextInputProps } from 'react-native';
 
 /**
  * Local Imports
 */
 
-import { Tailwind, StyleProp, TailwindProp } from '~/util/TailwindCss';
+import { Tailwind, TailwindProp } from '~/util/TailwindCss';
 
 /**
  * Types/Interfaces
 */
 
-export interface TextInputProps {
-  style?: StyleProp;
+export interface TextInputProps extends BaseTextInputProps {
   tailwind?: TailwindProp;
-  children?: ReactNode;
-  onLayout?: Function;
 };
 
 /**
