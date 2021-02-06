@@ -16,6 +16,7 @@ import { ScreenConfig } from '~/config';
  * Locals
 */
 
+const Configs = Object.entries(GuestScreenConfigs);
 const GuestRouterStack = createStackNavigator();
 
 /**
@@ -26,8 +27,7 @@ export function GuestStack() {
   return (
     <GuestRouterStack.Navigator initialRouteName={ ScreenConfig.initial.Guest }>
       {
-        Object.entries(GuestScreenConfigs)
-              .map(([, config], index) => (
+        Configs.map(([, config], index) => (
           <GuestRouterStack.Screen
             key={ index }
             { ...config.stack }
