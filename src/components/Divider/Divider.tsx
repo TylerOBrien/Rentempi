@@ -17,7 +17,7 @@ import { Tailwind, TailwindEnabledProps } from '~/util/TailwindCss';
 */
 
 export interface DividerProps extends TailwindEnabledProps {
-  label: String;
+  label: string;
   children?: ReactNode;
 }
 
