@@ -23,13 +23,13 @@ export interface ButtonProps extends TailwindEnabledProps {
   loading?: boolean;
   container?: FunctionComponent<TailwindEnabledProps>;
   children?: ReactNode;
-  onPress?: Function;
-};
+  onPress: Function;
+}
 
 export interface ButtonLabelProps extends TailwindEnabledProps {
   label: string;
   loading?: boolean;
-};
+}
 
 /**
  * Locals
