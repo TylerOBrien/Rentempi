@@ -18,7 +18,7 @@ import { Tailwind, StyleProp, TailwindProp, TailwindEnabledProps } from '~/util/
 
 export interface LinkContainerProps extends TailwindEnabledProps {
   disabled?: boolean;
-  onPress?: Function;
+  onPress: Function;
 }
 
 export interface LinkLabelContainerProps extends TailwindEnabledProps {
