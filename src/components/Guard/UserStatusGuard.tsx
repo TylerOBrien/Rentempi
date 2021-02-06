@@ -2,7 +2,7 @@
  * Global Imports
 */
 
-import React, { FunctionComponent, ReactNode } from 'react';
+import React, { FunctionComponent } from 'react';
 
 /**
  * Local Imports
@@ -18,7 +18,6 @@ export interface UserStatusGuardProps {
   guest: FunctionComponent;
   unverified: FunctionComponent;
   verified: FunctionComponent;
-  children?: ReactNode;
 }
 
 /**
