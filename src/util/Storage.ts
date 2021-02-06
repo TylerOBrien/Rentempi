@@ -41,11 +41,11 @@ function name(group:string, key:string):Promise<string> {
  * 
  * @param {string} group
  * @param {string} key
- * @param {any} unserialized
+ * @param {object} unserialized
  * 
- * @return {Promise<any>}
+ * @return {Promise<Array<Promise<string>>>}
  */
-function entry(group:string, key:string, unserialized:any):Promise<any> {
+function entry(group:string, key:string, unserialized:object):Promise<Array<Promise<string>>> {
   return new Promise((resolve, reject) => {
     const promises = [
       name(group, key),
