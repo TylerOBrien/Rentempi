@@ -2,4 +2,7 @@
  * Exports
 */
 
-export { Welcome } from './Welcome';
+export {
+  Welcome,
+  WelcomeConfig,
+  WelcomeProps } from './Welcome';

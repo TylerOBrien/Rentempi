@@ -2,4 +2,7 @@
  * Exports
 */
 
-export { ForgotPassword } from './ForgotPassword';
+export {
+  ForgotPassword,
+  ForgotPasswordConfig,
+  ForgotPasswordProps } from './ForgotPassword';

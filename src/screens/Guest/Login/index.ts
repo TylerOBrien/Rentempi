@@ -2,4 +2,7 @@
  * Exports
 */
 
-export { Login } from './Login';
+export {
+  Login,
+  LoginConfig,
+  LoginProps } from './Login';

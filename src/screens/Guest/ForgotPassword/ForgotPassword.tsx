@@ -68,9 +68,9 @@ export function ForgotPassword(props:ForgotPasswordProps) {
   );
 }
 
-export const ForgotPasswordScreen = {
+export const ForgotPasswordConfig = {
   stack: {
-    name: 'ForgotPassword',
+    name: 'Forgot Password',
     headerShown: false,
     component: ForgotPassword
   }

@@ -2,4 +2,7 @@
  * Exports
 */
 
-export { Register } from './Register';
+export {
+  Register,
+  RegisterConfig,
+  RegisterProps } from './Register';

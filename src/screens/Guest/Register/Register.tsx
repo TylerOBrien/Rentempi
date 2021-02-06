@@ -85,3 +85,11 @@ export function Register(props:RegisterProps) {
     </RegisterContext.Provider>
   );
 }
+
+export const RegisterConfig = {
+  stack: {
+    name: 'Register',
+    headerShown: false,
+    component: Register
+  }
+};

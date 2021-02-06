@@ -67,3 +67,11 @@ export function ResetPassword(props:ResetPasswordProps) {
     </PrimaryGuestLayout>
   );
 }
+
+export const ResetPasswordConfig = {
+  stack: {
+    name: 'Reset Password',
+    headerShown: false,
+    component: ResetPassword
+  }
+};

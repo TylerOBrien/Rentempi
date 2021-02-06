@@ -2,4 +2,7 @@
  * Exports
 */
 
-export { ResetPassword } from './ResetPassword';
+export {
+  ResetPassword,
+  ResetPasswordConfig,
+  ResetPasswordProps } from './ResetPassword';

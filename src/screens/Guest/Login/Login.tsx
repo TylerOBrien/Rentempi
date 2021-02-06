@@ -79,7 +79,7 @@ export function Login(props:LoginProps) {
   );
 }
 
-export const LoginScreen = {
+export const LoginConfig = {
   stack: {
     name: 'Login',
     headerShown: false,
