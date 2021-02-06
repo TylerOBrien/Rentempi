@@ -2,17 +2,14 @@
  * Global Imports
 */
 
-import PropTypes from 'prop-types';
-import React, { useEffect, useContext, useState } from 'react';
-import { Platform } from 'react-native';
-import { Formik } from 'formik';
+import React, { useContext } from 'react';
+import { Formik, FormikProps } from 'formik';
 
 /**
  * Local Imports
 */
 
-import { Text, View } from '~/components/Base';
-import { Form } from '~/components/Form';
+import { Form, Input, Password, Submit } from '~/components/Form';
 import { FormikSubmit } from '~/util/Formik';
 
 /**
@@ -51,9 +48,23 @@ export function RegisterForm(props:RegisterFormProps) {
   
   /** Renderers **/
   
-  const renderForm = (formik) => {
+  const renderForm = (formik:FormikProps<RegisterFields>) => {
     <Form>
-      
+      <Input
+        name='email'
+        label='Email Address'
+      />
+      <Password
+        name='password'
+        label='Password'
+      />
+      <Password
+        name='password_confirmation'
+        label='Confirm Password'
+      />
+      <Submit
+        label='Create'
+      />
     </Form>
   };
   
