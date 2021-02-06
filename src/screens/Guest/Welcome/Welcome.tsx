@@ -23,7 +23,7 @@ import { WelcomeGuestLayout } from '~/layouts/Guest';
 
 export interface WelcomeProps {
   
-};
+}
 
 /**
  * Exports
@@ -33,7 +33,7 @@ export function Welcome(props:WelcomeProps) {
   return (
     <WelcomeGuestLayout>
       <Text tailwind='text-2xl text-white'>
-        Welcome
+        Hello! This is the app!
       </Text>
       <Row>
         <Link
