@@ -17,7 +17,7 @@ import { ApiContext } from '~/providers/ApiProvider';
 */
 
 export interface ServiceHook {
-  call: (name:string, ...args:Array<any>) => Promise<any>;
+  call: <Response=any>(name:string, ...args:Array<any>) => Promise<Response>;
 }
 
 /**
@@ -34,7 +34,7 @@ export function useService():ServiceHook {
   /**
    * @return {Promise<any>}
    */
-  const call = (name:string, ...args:Array<any>):Promise<any> => {
+  const call = <Response=any>(name:string, ...args:Array<any>):Promise<Response> => {
     const [ action, group, ...rest ] = name.split('.');
 
     const groupName = `${ group }Services`;
