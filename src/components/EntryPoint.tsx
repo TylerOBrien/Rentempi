@@ -2,7 +2,7 @@
  * Global Imports
 */
 
-import React, { ReactElement } from 'react';
+import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 /**
@@ -16,13 +16,13 @@ import { ApiProvider, AlertProvider, AuthProvider, UserProvider } from '~/provid
  * Locals
 */
 
-function EntryPointMain():ReactElement {
+function EntryPointMain() {
   return (
     <GuestStack />
   );
 }
 
-function EntryPointOverlay():ReactElement {
+function EntryPointOverlay() {
   return (
     <View>
 
@@ -34,7 +34,7 @@ function EntryPointOverlay():ReactElement {
  * Exports
 */
 
-export function EntryPoint():ReactElement {
+export function EntryPoint() {
   return (
     <AuthProvider>
       <UserProvider>
