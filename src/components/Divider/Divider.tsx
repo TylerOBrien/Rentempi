@@ -10,19 +10,16 @@ import React, { ReactNode } from 'react';
 
 import { View, Text } from '~/components/Base';
 import { Row } from '~/components/Grid';
-import { Tailwind, StyleProp, TailwindProp } from '~/util/TailwindCss';
+import { Tailwind, TailwindEnabledProps } from '~/util/TailwindCss';
 
 /**
  * Types/Interfaces
 */
 
-export interface DividerProps {
+export interface DividerProps extends TailwindEnabledProps {
   label: String;
-  style?: StyleProp;
-  tailwind?: TailwindProp;
   children?: ReactNode;
-  onLayout?: Function;
-};
+}
 
 /**
  * Exports
@@ -32,7 +29,7 @@ export function Divider(props:DividerProps) {
   /** Helpers **/
 
   const tailwind = {
-    container: Tailwind.get(props.tailwind, 'container', props.tailwind),
+    container: Tailwind.get(props.tailwind, 'container', true, true, props.tailwind),
     line: Tailwind.get(props.tailwind, 'line'),
     label: Tailwind.get(props.tailwind, 'label')
   };
