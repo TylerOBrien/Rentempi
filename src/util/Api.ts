@@ -25,10 +25,10 @@ export interface Authorization {
 }
 
 export interface Request {
-  method: string;
+  method: Method;
   uri: string;
-  data?: any;
-  headers?: any;
+  data?: object;
+  headers?: object;
 }
 
 export interface ResourceIdentity {
