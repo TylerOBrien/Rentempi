@@ -2,6 +2,7 @@
  * Local Imports
 */
 
+import { TokenModel, UserModel } from '~/models';
 import { Api, Authorization } from '~/util/Api';
 
 /**
@@ -9,6 +10,15 @@ import { Api, Authorization } from '~/util/Api';
 */
 
 const endpoint = 'auth';
+
+/**
+ * Types/Interfaces
+*/
+
+export interface LoginAuthResponse {
+  user: UserModel;
+  token: TokenModel;
+}
 
 /**
  * Exports
@@ -21,7 +31,7 @@ const endpoint = 'auth';
  * 
  * @return {Promise<any>}
  */
-export function LoginAuthService(data:any):Promise<any> {
+export function LoginAuthService(data:any):Promise<LoginAuthResponse> {
   const config = {
     data,
     method: 'POST',
