@@ -60,9 +60,9 @@ export function truthies(items:Array<unknown>):Array<unknown> {
  * @param {object} source
  * @param {string} key
  * 
- * @return {*}
+ * @return {unknown}
  */
-export function within(source:any, key:string):any {
+export function within(source:object, key:string):unknown {
   if (!key) {
     Assert.ThrowUnexpectedEmptyError('key', 'string');
   }
@@ -81,13 +81,11 @@ export function within(source:any, key:string):any {
 }
 
 /**
- * 
- * 
  * @param {object} condensed
  * 
  * @return {object}
  */
-export function expand(condensed:any):any {
+export function expand(condensed:object):object {
   const expanded = {};
 
   for (const key in condensed) {
@@ -115,15 +113,13 @@ export function expand(condensed:any):any {
 }
 
 /**
- * 
- * 
  * @param {object} source
- * @param {array|undefined} parent
- * @param {object|undefined} existing
+ * @param {Array<string>} parent
+ * @param {object} existing
  * 
  * @return {object}
  */
-export function condense(source:any, parent?:string[], existing?:any):any {
+export function condense(source:object, parent?:Array<string>, existing?:object):object {
   if (!parent) {
     parent = [];
   }
@@ -142,18 +138,18 @@ export function condense(source:any, parent?:string[], existing?:any):any {
 }
 
 /**
- * 
+ * Clones the passed object and removes the specified keys.
  * 
  * @param {object} source
- * @param {array|object} except
+ * @param {Array<string>|object} except
  * 
  * @return {object}
  */
-export function excepted(source:any, except:string[] | any):any {
+export function excepted(source:object, except:Array<string> | object):object {
   const clone = Object.assign({}, source);
 
   if (JS.isArray(except)) {
-    let i = except.length;
+    let i = (<Array<string>>except).length;
     while (i--) {
       delete clone[except[i]];
     }
