@@ -47,7 +47,7 @@ export interface ResourceIdentity {
  * 
  * @return {Promise}
  */
-function call(request:Request, auth?:Authorization):Promise<any> {
+function call<Response=any>(request:Request, auth?:Authorization):Promise<Response> {
   const headers = Object.assign({}, request.headers, {
     Authorization: auth?.token,
     common: Object.assign({}, defaultHeadersCommon, request.headers?.common)
@@ -67,7 +67,11 @@ function call(request:Request, auth?:Authorization):Promise<any> {
     }
   }
 
-  return axios(config);
+  return new Promise((resolve, reject) => {
+    axios(config)
+      .then(response => resolve(response.data))
+      .catch(reject);
+  });
 }
 
 /**
