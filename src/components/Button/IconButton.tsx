@@ -2,31 +2,57 @@
  * Global Imports
 */
 
-import PropTypes from 'prop-types';
-import React from 'react';
-import { ActivityIndicator, StyleSheet } from 'react-native';
+import React, { FunctionComponent, ReactNode } from 'react';
+import { StyleSheet } from 'react-native';
 
 /**
  * Local Imports
 */
 
-import { Pressable, Text, View } from '~/components/Base';
-import { Row } from '~/components/Grid';
-import { Tailwind } from '~/util';
+import { Text, View } from '~/components/Base';
+import { Tailwind, TailwindEnabledProps } from '~/util/TailwindCss';
 
 /**
  * Sibling Imports
 */
 
-import { BasicButton } from './BasicButton';
+import { Button } from './Button';
+
+/**
+ * Types/Interfaces
+*/
+
+export interface IconButtonProps extends TailwindEnabledProps {
+  icon: ReactNode;
+  iconPosition?: 'left' | 'right';
+  label?: string;
+  disabled?: boolean;
+  loading?: boolean;
+  container?: FunctionComponent<TailwindEnabledProps>;
+  children?: ReactNode;
+  onPress: Function;
+}
+
+export interface IconButtonLabelProps extends TailwindEnabledProps {
+  label?: string;
+  loading?: boolean;
+}
 
 /**
  * Locals
 */
 
-function IconButtonLabel(props) {
+function IconButtonLabel(props:IconButtonLabelProps) {
+  /** Helpers **/
+
+  const tailwinds = {
+    container: Tailwind.get(props.tailwind, 'label', false, false)
+  };
+
+  /** Output **/
+
   return (
-    <Text style={{ flex: 1 }}>
+    <Text style={ styles.label } tailwind={ tailwinds.container }>
       { props.label }
     </Text>
   );
@@ -36,7 +62,7 @@ function IconButtonLabel(props) {
  * Exports
 */
 
-export function IconButton(props) {
+export function IconButton(props:IconButtonProps) {
   /** Helpers **/
 
   const tailwinds = {
@@ -46,39 +72,34 @@ export function IconButton(props) {
   /** Output **/
 
   return (
-    <BasicButton style={ props.style } tailwind={ tailwinds.container } onLayout={ props.onLayout }>
-      <Row>
+    <Button
+      style={ props.style }
+      tailwind={ tailwinds.container }
+      onLayout={ props.onLayout }
+      onPress={ props.onPress }
+    >
+      <View style={ styles.inner }>
         <View>
-          <props.icon />
+          { props.icon }
         </View>
         {
           props.label && <IconButtonLabel { ...props } />
         }
-      </Row>
-    </BasicButton>
+      </View>
+    </Button>
   );
 }
-
-IconButton.propTypes = {
-  label: PropTypes.string,
-
-  icon: PropTypes.node.isRequired,
-  iconPosition: PropTypes.oneOf([ 'left', 'right' ]),
-
-  style: PropTypes.oneOfType([ PropTypes.object, PropTypes.array, ]),
-  tailwind: PropTypes.oneOfType([ PropTypes.string, PropTypes.object, PropTypes.array ]),
-
-  disabled: PropTypes.bool,
-  loading: PropTypes.bool,
-
-  onLayout: PropTypes.func,
-  onPress: PropTypes.func.isRequired
-};
 
 /**
  * Styles
 */
 
 const styles = StyleSheet.create({
-  
+  inner: {
+    flexDirection: 'row'
+  },
+
+  label: {
+    flex: 1
+  }
 });
