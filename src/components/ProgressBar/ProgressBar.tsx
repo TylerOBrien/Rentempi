@@ -10,7 +10,6 @@ import { ColorValue, StyleSheet } from 'react-native';
 */
 
 import { Text, View } from '~/components/Base';
-import { StyleProp } from '~/util/TailwindCss';
 
 /**
  * Types/Interfaces
