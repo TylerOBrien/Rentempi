@@ -15,15 +15,15 @@ import { DateTimeConfig } from '~/config';
 */
 
 export interface DateTimeFormat {
-  date?: string,
-  time?: string,
-  dateTime?: string
-}
+  date?: string;
+  time?: string;
+  dateTime?: string;
+};
 
 export interface DateTimeOptions {
-  dateOnly: boolean,
-  format?: DateTimeFormat
-}
+  dateOnly: boolean;
+  format?: DateTimeFormat;
+};
 
 /**
  * Locals
