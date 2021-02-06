@@ -9,7 +9,8 @@ import { StyleSheet, Text, View } from 'react-native';
  * Local Imports
 */
 
-import { GuestStack } from '~/navigation/stacks/Guest';
+import { UserStatusGuard } from '~/components/Guard';
+import { GuestStack, UnverifiedStack, VerifiedStack } from '~/navigation/stacks';
 import { ApiProvider, AlertProvider, AuthProvider, UserProvider } from '~/providers';
 
 /**
@@ -18,7 +19,11 @@ import { ApiProvider, AlertProvider, AuthProvider, UserProvider } from '~/provid
 
 function EntryPointMain() {
   return (
-    <GuestStack />
+    <UserStatusGuard
+      guest={ GuestStack }
+      unverified={ UnverifiedStack }
+      verified={ VerifiedStack }
+    />
   );
 }
 
