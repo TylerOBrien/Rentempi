@@ -35,7 +35,7 @@ export function UserStatusGuard(props:UserStatusGuardProps) {
   switch (session.user?.status) {
   case 'Unverified':
     return <props.unverified />;
-  case 'Verified':
+  case 'Ok':
     return <props.verified />;
   }
 
