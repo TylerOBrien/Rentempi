@@ -10,20 +10,16 @@ import { ActivityIndicator, ColorValue, StyleSheet } from 'react-native';
 */
 
 import { View } from '~/components/Base';
-import { Tailwind, StyleProp, TailwindProp } from '~/util/TailwindCss';
+import { Tailwind, TailwindEnabledProps } from '~/util/TailwindCss';
 
 /**
  * Types/Interfaces
 */
 
-export interface LoadingOverlayProps {
+export interface LoadingOverlayProps extends TailwindEnabledProps {
   color: ColorValue;
   size: number | 'small' | 'large';
-  style?: StyleProp;
-  tailwind?: TailwindProp;
-  children?: ReactNode;
-  onLayout?: Function;
-};
+}
 
 /**
  * Exports
