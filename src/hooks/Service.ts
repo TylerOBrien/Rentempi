@@ -35,7 +35,7 @@ export function useService():ServiceHook {
    * @return {Promise<any>}
    */
   const call = <Response=any>(name:string, ...args:Array<any>):Promise<Response> => {
-    const [ action, group, ...rest ] = name.split('.');
+    const [ group, action, ...rest ] = name.split('.');
 
     const groupName = `${ group }Services`;
     const serviceName = `${ action }${ group }${ rest.join('') }Service`;
