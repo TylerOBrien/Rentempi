@@ -11,14 +11,14 @@ import {
  * Local Imports
 */
 
-import { Tailwind, TailwindProp } from '~/util/TailwindCss';
+import { Tailwind, TailwindBaseProp } from '~/util/TailwindCss';
 
 /**
  * Types/Interfaces
 */
 
 export interface TextProps extends BaseTextProps {
-  tailwind?: TailwindProp;
+  tailwind?: TailwindBaseProp;
   children?: ReactNode;
 }
 

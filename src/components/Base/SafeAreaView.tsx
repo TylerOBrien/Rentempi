@@ -10,14 +10,14 @@ import {
  * Local Imports
 */
 
-import { Tailwind, StyleProp, TailwindProp } from '~/util/TailwindCss';
+import { Tailwind, TailwindBaseProp } from '~/util/TailwindCss';
 
 /**
  * Types/Interfaces
 */
 
 export interface SafeAreaViewProps {
-  tailwind?: TailwindProp;
+  tailwind?: TailwindBaseProp;
   children?: ReactNode;
 }
 
