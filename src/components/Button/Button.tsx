@@ -45,21 +45,18 @@ function ButtonLabel(props:ButtonLabelProps) {
   };
 
   /** Output **/
-
+  
   return (
-    <View tailwind={ tailwinds.labelContainer } style={ styles.labelContainer }>
-      {
-        props.loading &&
-          <View tailwind={ tailwinds.loadingContainer } style={ styles.loadingContainer }>
-            <ActivityIndicator
-              color='white'
-              animating={ props.loading }
-            />
-          </View>
-      }
+    <View style={ styles.labelContainer } tailwind={ tailwinds.labelContainer }>
+      <View style={ styles.loadingContainer }>
+        <ActivityIndicator
+          color='red'
+          animating={ props.loading }
+        />
+      </View>
       {
         props.label &&
-          <Text tailwind={ tailwinds.label }>
+          <Text style={ props.loading ? styles.labelLoading : undefined } tailwind={ tailwinds.label }>
             { props.label }
           </Text>
       }
@@ -82,9 +79,9 @@ export function Button(props:ButtonProps) {
 
   return (
     <Pressable
-      disabled={ props.disabled }
-      style={ props.style }
+      style={ styles.container }
       tailwind={ tailwinds.container }
+      disabled={ props.disabled }
       onPress={ Functional.delayed(props.onPress) }
       onLayout={ props.onLayout }
     >
@@ -98,6 +95,10 @@ export function Button(props:ButtonProps) {
 */
 
 const styles = StyleSheet.create({
+  container: {
+    alignSelf: 'flex-start'
+  },
+
   loadingContainer: {
     position: 'absolute',
     justifyContent: 'center',
@@ -108,5 +109,9 @@ const styles = StyleSheet.create({
 
   labelContainer: {
     position: 'relative'
+  },
+
+  labelLoading: {
+    opacity: 0
   }
 });
