@@ -3,50 +3,75 @@
 */
 
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { ColorValue, StyleSheet } from 'react-native';
 
 /**
  * Local Imports
 */
 
 import { Text, View } from '~/components/Base';
-import { Row } from '~/components/Grid';
+import { StyleProp } from '~/util/TailwindCss';
 
 /**
  * Types/Interfaces
 */
 
+interface BarPartProps {
+  progress: number;
+  color: ColorValue;
+}
+
 export interface ProgressBarProps {
   progress: number;
-};
+}
+
+/**
+ * Locals
+*/
+
+function BarPart(props:BarPartProps) {
+  return (
+    <View
+      style={{
+        width: `${ props.progress }%`,
+        height: 3,
+        backgroundColor: 'bg-green-400'
+      }}
+    />
+  );
+}
 
 /**
  * Exports
 */
 
 export function ProgressBar(props:ProgressBarProps) {
+  /** Helpers **/
+
+  if (props.progress < 0 || props.progress > 100) {
+    throw new Error;
+  }
+
+  /** Output **/
+
   return (
-    <Row>
-      <Row style={ styles.inner }>
-        <View
-          style={{
-            width: ( Math.round(props.progress) || 0 ) + '%',
-            height: 3,
-            backgroundColor: 'bg-green-400'
-          }}
+    <View style={ styles.container }>
+      <View style={ styles.inner }>
+        <BarPart
+          progress={ props.progress }
+          color='red'
         />
-        <View
-          style={{
-            width: ( 100 - (Math.round(props.progress) || 0) ) + '%',
-            height: 3,
-            backgroundColor: 'bg-gray-800'
-          }}
+        <BarPart
+          progress={ 100 - props.progress }
+          color='gray'
         />
-      </Row>
-      <View style={ styles.percentage }>
-        <Text tailwind='text-gray-500'>{ Math.round(props.progress) || 0 }%</Text>
       </View>
-    </Row>
+      <View style={ styles.percentage }>
+        <Text>
+          { Math.round(props.progress) }%
+        </Text>
+      </View>
+    </View>
   );
 }
 
@@ -55,8 +80,13 @@ export function ProgressBar(props:ProgressBarProps) {
 */
 
 const styles = StyleSheet.create({
+  container: {
+    flexDirection: 'row'
+  },
+
   inner: {
     flex: 1,
+    flexDirection: 'row',
     alignItems: 'center'
   },
 
