@@ -11,7 +11,7 @@ import { Formik, FormikProps } from 'formik';
 */
 
 import { Text, View } from '~/components/Base';
-import { Form, Input, Submit } from '~/components/Form';
+import { Form, Input, Password, Submit } from '~/components/Form';
 import { FormikSubmit } from '~/util/Formik';
 
 /**
@@ -45,7 +45,7 @@ export function LoginForm(props:LoginFormProps) {
   /** Contexts **/
 
   const context = useContext(props.context);
-  
+
   /** Renderers **/
   
   const renderForm = (formik:FormikProps<LoginFields>) => (
@@ -53,6 +53,10 @@ export function LoginForm(props:LoginFormProps) {
       <Input
         name='email'
         label='Email Address'
+      />
+      <Password
+        name='password'
+        label='Password'
       />
       <Submit
         label='Login'
