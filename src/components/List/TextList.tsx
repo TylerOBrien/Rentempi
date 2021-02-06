@@ -52,7 +52,7 @@ const prefixes = {
 export function TextList(props:TextListProps) {
   /** Helpers **/
 
-  const tailwinds = props.tailwind && {
+  const tailwinds = {
     container: Tailwind.get(props.tailwind, 'container'),
     item: Tailwind.get(props.tailwind, 'item', false, false),
     prefix: Tailwind.get(props.tailwind, 'prefix', false, false),
@@ -63,14 +63,14 @@ export function TextList(props:TextListProps) {
 
   const renderItemPrefix = (item:TextListItem, index:number) => {
     return (
-      <Text tailwind={ tailwinds?.prefix }>
+      <Text tailwind={ tailwinds.prefix }>
         { prefixes[props.prefix]({ index }) }
       </Text>
     );
   };
 
   const renderItemContent = (item:TextListItem, index:number) => (
-    <Text tailwind={ tailwinds?.content }>
+    <Text tailwind={ tailwinds.content }>
       { item }
     </Text>
   );
@@ -78,12 +78,12 @@ export function TextList(props:TextListProps) {
   /** Output **/
 
   return (
-    <View style={ props.style } tailwind={ tailwinds?.container } onLayout={ props.onLayout }>
+    <View style={ props.style } tailwind={ tailwinds.container } onLayout={ props.onLayout }>
       {
         props.items.map((item:TextListItem, index:number) => (
           <View
             key={ index }
-            tailwind={ tailwinds?.item }
+            tailwind={ tailwinds.item }
           >
             { renderItemPrefix(item, index) }
             { renderItemContent(item, index) }
