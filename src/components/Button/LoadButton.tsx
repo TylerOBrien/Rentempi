@@ -20,7 +20,7 @@ export interface LoadButtonProps extends TailwindEnabledProps {
   disabled?: boolean;
   loading?: boolean;
   children?: ReactNode;
-  onPress?: Function;
+  onPress: Function;
 }
 
 /**
