@@ -39,6 +39,7 @@
     "@react-navigation/bottom-tabs": "^5.11.2",
     "@react-navigation/native": "^5.8.10",
     "@react-navigation/stack": "^5.12.8",
+    "@types/react-native-vector-icons": "^6.4.6",
     "axios": "^0.21.1",
     "formik": "^2.2.6",
     "luxon": "^1.25.0",
