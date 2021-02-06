@@ -18,7 +18,7 @@ import { Tailwind, TailwindEnabledProps } from '~/util/TailwindCss';
 */
 
 export interface ButtonProps extends TailwindEnabledProps {
-  label: string;
+  label?: string;
   disabled?: boolean;
   loading?: boolean;
   container?: FunctionComponent<TailwindEnabledProps>;
@@ -85,7 +85,7 @@ export function Button(props:ButtonProps) {
       onPress={ Functional.delayed(props.onPress) }
       onLayout={ props.onLayout }
     >
-      { props.children || <ButtonLabel { ...props } /> }
+      { props.children || <ButtonLabel { ...props } label={ props.label || '' } /> }
     </Pressable>
   );
 }
