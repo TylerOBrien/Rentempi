@@ -37,14 +37,14 @@ export interface PressableProps {
  * Exports
 */
 
-export function Pressable({ style, ...props }:PressableProps) {
+export function Pressable(props:PressableProps) {
   /** Helpers **/
 
-  const hasStyleChange = !!(props.stylePressed || props.styleUnpressed || props.tailwindPressed || props.tailwindUnpressed);
+  //const hasStyleChange = !!(props.stylePressed || props.styleUnpressed || props.tailwindPressed || props.tailwindUnpressed);
 
   /** Event Handlers **/
 
-  const handleStyleChange = (isPressed:boolean):object => {
+  /* const handleStyleChange = (isPressed:boolean):object => {
     const parsed = props.tailwind ? Tailwind.props({ tailwind: props.tailwind }) : {};
     const changeStyle = isPressed ? props.stylePressed : props.styleUnpressed;
     const changeTailwind = isPressed ? props.tailwindPressed : props.tailwindUnpressed;
@@ -62,7 +62,7 @@ export function Pressable({ style, ...props }:PressableProps) {
     }
 
     return parsed;
-  };
+  }; */
   
   /** Output **/
 
