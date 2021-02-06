@@ -46,7 +46,7 @@ export function ResetPasswordForm(props:ResetPasswordFormProps) {
   
   /** Renderers **/
   
-  const renderForm = (formik:FormikProps<ResetPasswordFields>) => {
+  const renderForm = (formik:FormikProps<ResetPasswordFields>) => (
     <Form>
       <Password
         name='password'
@@ -60,7 +60,7 @@ export function ResetPasswordForm(props:ResetPasswordFormProps) {
         label='Save New Password'
       />
     </Form>
-  };
+  );
   
   /** Output **/
   

@@ -48,7 +48,7 @@ export function RegisterForm(props:RegisterFormProps) {
   
   /** Renderers **/
   
-  const renderForm = (formik:FormikProps<RegisterFields>) => {
+  const renderForm = (formik:FormikProps<RegisterFields>) => (
     <Form>
       <Input
         name='email'
@@ -66,7 +66,7 @@ export function RegisterForm(props:RegisterFormProps) {
         label='Create'
       />
     </Form>
-  };
+  );
   
   /** Output **/
   
