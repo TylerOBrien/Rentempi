@@ -14,7 +14,9 @@ import { AlertContext } from '~/providers/AlertProvider';
  * Types/Interfaces
 */
 
-export type AlertIterator = { [Symbol.iterator]: () => Generator<any, void, unknown>; };
+export type AlertIterator = {
+  [Symbol.iterator]: () => Generator<any, void, unknown>;
+}
 
 export interface AlertHook {
   iterator: AlertIterator;
@@ -22,7 +24,7 @@ export interface AlertHook {
   notice: (content:any) => void;
   warning: (content:any) => void;
   error: (content:any) => void;
-};
+}
 
 /**
  * Exports
