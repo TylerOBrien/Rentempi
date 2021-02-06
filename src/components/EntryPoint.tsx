@@ -29,7 +29,7 @@ function EntryPointMain() {
 
 function EntryPointOverlay() {
   return (
-    <View>
+    <View style={ styles.overlay }>
 
     </View>
   );
@@ -59,5 +59,9 @@ export function EntryPoint() {
 */
 
 const styles = StyleSheet.create({
-  
+  overlay: {
+    position: 'absolute',
+    width: '100%',
+    height: '100%'
+  }
 });
