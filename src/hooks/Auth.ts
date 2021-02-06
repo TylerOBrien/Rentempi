@@ -20,17 +20,17 @@ import { Authorization } from '~/util/Api';
 
 export interface AuthLoginOptions {
   remember?: boolean;
-};
+}
 
 export interface AuthLogin {
   user: any;
-  token: Authorization;
-};
+  credentials: Authorization;
+}
 
 export interface AuthHook {
-  login: (auth:AuthLogin, options?:AuthLoginOptions) => Promise<any>;
-  logout: () => Promise<any>;
-};
+  login: (auth:AuthLogin, options?:AuthLoginOptions) => Promise<void>;
+  logout: () => Promise<void>;
+}
 
 /**
  * Exports
@@ -45,22 +45,22 @@ export function useAuth():AuthHook {
   /** Contexts **/
   
   const { setUser } = useContext(UserContext);
-  const { hasTokenStorageRef, token, setToken } = useContext(AuthContext);
+  const { hasStorageRef, credentials, setCredentials } = useContext(AuthContext);
   
   /** Side-Effects **/
 
   useEffect(() => {
-    if (token && loginResolveRef.current) {
+    if (credentials && loginResolveRef.current) {
       loginResolveRef.current();
       loginResolveRef.current = null;
-    } else if (!token) {
+    } else if (!credentials) {
       if (logoutResolveRef.current) {
         logoutResolveRef.current();
         logoutResolveRef.current = null;
       }
-      hasTokenStorageRef.current = false;
+      hasStorageRef.current = false;
     }
-  }, [ token ]);
+  }, [ credentials ]);
   
   /** Helpers **/
 
@@ -70,18 +70,18 @@ export function useAuth():AuthHook {
   const login = (auth:AuthLogin, options?:AuthLoginOptions):Promise<void> => {
     return new Promise(async (resolve, reject) => {
       loginResolveRef.current = resolve.bind(this);
-      hasTokenStorageRef.current = !!options?.remember;
+      hasStorageRef.current = !!options?.remember;
       
-      if (hasTokenStorageRef.current) {
+      if (hasStorageRef.current) {
         try {
-          await TokenStorage.set(auth.token);
+          await TokenStorage.set(auth.credentials);
         } catch (error) {
           return reject(error);
         }
       }
 
       setUser(auth.user);
-      setToken(auth.token);
+      setCredentials(auth.credentials);
     });
   };
 
@@ -92,7 +92,7 @@ export function useAuth():AuthHook {
     return new Promise(async (resolve, reject) => {
       logoutResolveRef.current = resolve.bind(this);
 
-      if (hasTokenStorageRef.current) {
+      if (hasStorageRef.current) {
         try {
           await TokenStorage.clear();
         } catch (error) {
@@ -101,7 +101,7 @@ export function useAuth():AuthHook {
       }
 
       setUser(null);
-      setToken(null);
+      setCredentials(null);
     });
   };
   
