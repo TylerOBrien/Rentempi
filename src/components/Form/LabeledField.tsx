@@ -2,8 +2,7 @@
  * Global Imports
 */
 
-import PropTypes from 'prop-types';
-import React, { Fragment } from 'react';
+import React, { Fragment, FunctionComponent, ReactNode } from 'react';
 
 /**
  * Local Imports
@@ -12,16 +11,26 @@ import React, { Fragment } from 'react';
 import { Text, View } from '~/components/Base';
 import { ValuedField } from './ValuedField';
 
-import { Tailwind } from '~/util/TailwindCss';
+import { FormProps } from '~/util/Form';
+import { Tailwind, TailwindEnabledProps } from '~/util/TailwindCss';
+
+/**
+ * Types/Interfaces
+*/
+
+export interface LabeledFieldProps extends FormProps, TailwindEnabledProps {
+  label?: ReactNode;
+  labelPosition?: 'before' | 'after';
+  labelType?: 'outside' | 'contain';
+  labelContainer?: FunctionComponent<TailwindEnabledProps>;
+  children: ReactNode;
+}
 
 /**
  * Locals
 */
 
-/**
- * 
- */
-function LabeledFieldContainer(props) {
+function LabeledFieldContainer(props:LabeledFieldProps) {
   /** Renderers **/
 
   const renderLabelContent = () => (
@@ -35,42 +44,38 @@ function LabeledFieldContainer(props) {
   return (
     <props.labelContainer>
       { 
-        labelPosition === 'before' && renderLabelContent()
+        props.labelPosition === 'before' && renderLabelContent()
       }
       {
-        labelType === 'contain' && props.children
+        props.labelType === 'contain' && props.children
       }
       { 
-        labelPosition === 'after' && renderLabelContent()
+        props.labelPosition === 'after' && renderLabelContent()
       }
     </props.labelContainer>
   );
 }
 
-/**
- * 
- */
-function LabeledFieldBefore(props) {
-  <Fragment>
-    {
-      props.label && React.createElement(LabeledFieldContainer, props)
-    }
-    {
-      (!props.label || labelType === 'outside')
-        ? props.children
-        : null
-    }
-  </Fragment>
-}
-
-/**
- * 
- */
-function LabeledFieldAfter(props) {
+function LabeledFieldBefore(props:LabeledFieldProps) {
   return (
     <Fragment>
       {
-        (!props.label || labelType === 'outside')
+        props.label && React.createElement(LabeledFieldContainer, props)
+      }
+      {
+        (!props.label || props.labelType === 'outside')
+          ? props.children
+          : null
+      }
+    </Fragment>
+  );
+}
+
+function LabeledFieldAfter(props:LabeledFieldProps) {
+  return (
+    <Fragment>
+      {
+        (!props.label || props.labelType === 'outside')
           ? props.children
           : null
       }
@@ -85,33 +90,17 @@ function LabeledFieldAfter(props) {
  * Exports
 */
 
-export function LabeledField(props) {
+export function LabeledField(props:LabeledFieldProps) {
   return (
-    <ValuedField { ...props }  name={ props.name } value={ props.value } style={ props.style } tailwind={ props.tailwind }>
+    <ValuedField { ...props }>
       {
-          labelPosition === 'before' ? React.createElement(LabeledFieldBefore, props)
-        : labelPosition === 'after'  ? React.createElement(LabeledFieldAfter, props)
+          props.labelPosition === 'before' ? React.createElement(LabeledFieldBefore, props)
+        : props.labelPosition === 'after'  ? React.createElement(LabeledFieldAfter, props)
         : null
       }
     </ValuedField>
   );
 }
-
-LabeledField.propTypes = {
-  name: PropTypes.string.isRequired,
-  value: PropTypes.string,
-  label: PropTypes.oneOfType([ PropTypes.string, PropTypes.func, PropTypes.node ]),
-
-  container: PropTypes.oneOfType([ PropTypes.func, PropTypes.node, PropTypes.symbol ]),
-
-  labelContainer: PropTypes.func,
-  labelType: PropTypes.oneOf([ 'outside', 'contain' ]),
-  labelPosition: PropTypes.oneOf([ 'before', 'after' ]),
-
-  tailwind: PropTypes.oneOfType([ PropTypes.string, PropTypes.object, PropTypes.array ]),
-
-  hasError: PropTypes.bool
-};
 
 LabeledField.defaultProps = {
   container: View,
