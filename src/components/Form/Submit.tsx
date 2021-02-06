@@ -20,8 +20,8 @@ export interface SubmitProps extends TailwindEnabledProps {
   label?: string;
   container?: FunctionComponent<TailwindEnabledProps>;
   formik?: boolean;
-  onPress?: Function;
-};
+  onPress: Function;
+}
 
 /**
  * Exports
