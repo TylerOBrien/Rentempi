@@ -62,9 +62,9 @@ const fontSizeRegex = new RegExp('text-(xs|sm|base|lg|xl|2xl|3xl|4xl|5xl|6xl)');
  */
 function aliased(tailwind:TailwindClassNames):string {
   if (JS.isArray(tailwind)) {
-    tailwind = Algorithm.truthies(tailwind).join(' ').split(' ');
+    tailwind = Algorithm.truthies(<Array<string>>tailwind).join(' ').split(' ');
   } else {
-    tailwind = tailwind.split(' ');
+    tailwind = (<string>tailwind).split(' ');
   }
 
   let i = tailwind.length;
