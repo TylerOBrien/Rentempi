@@ -27,7 +27,7 @@ export interface ButtonProps extends TailwindEnabledProps {
 }
 
 export interface ButtonLabelProps extends TailwindEnabledProps {
-  label: string;
+  label?: string;
   loading?: boolean;
 }
 
@@ -57,9 +57,12 @@ function ButtonLabel(props:ButtonLabelProps) {
             />
           </View>
       }
-      <Text tailwind={ tailwinds.label }>
-        { props.label }
-      </Text>
+      {
+        props.label &&
+          <Text tailwind={ tailwinds.label }>
+            { props.label }
+          </Text>
+      }
     </View>
   );
 }
@@ -85,7 +88,7 @@ export function Button(props:ButtonProps) {
       onPress={ Functional.delayed(props.onPress) }
       onLayout={ props.onLayout }
     >
-      { props.children || <ButtonLabel { ...props } label={ props.label || '' } /> }
+      { props.children || <ButtonLabel { ...props } /> }
     </Pressable>
   );
 }
