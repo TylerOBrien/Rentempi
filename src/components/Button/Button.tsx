@@ -2,7 +2,7 @@
  * Global Imports
 */
 
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, ReactNode } from 'react';
 import { ActivityIndicator, StyleSheet } from 'react-native';
 
 /**
@@ -10,6 +10,7 @@ import { ActivityIndicator, StyleSheet } from 'react-native';
 */
 
 import { Pressable, Text, View } from '~/components/Base';
+import { Functional } from '~/util/Functional';
 import { Tailwind, TailwindEnabledProps } from '~/util/TailwindCss';
 
 /**
@@ -21,6 +22,7 @@ export interface ButtonProps extends TailwindEnabledProps {
   disabled?: boolean;
   loading?: boolean;
   container?: FunctionComponent<TailwindEnabledProps>;
+  children?: ReactNode;
   onPress?: Function;
 };
 
@@ -76,14 +78,15 @@ export function Button(props:ButtonProps) {
   /** Output **/
 
   return (
-    <View style={ props.style } tailwind={ tailwinds.container } onLayout={ props.onLayout }>
-      <Pressable
-        disabled={ props.disabled }
-        onPress={ () => requestAnimationFrame(() => props.onPress()) }
-      >
-        <ButtonLabel { ...props } />
-      </Pressable>
-    </View>
+    <Pressable
+      disabled={ props.disabled }
+      style={ props.style }
+      tailwind={ tailwinds.container }
+      onPress={ Functional.delayed(props.onPress) }
+      onLayout={ props.onLayout }
+    >
+      { props.children || <ButtonLabel { ...props } /> }
+    </Pressable>
   );
 }
 
