@@ -5,6 +5,12 @@
 import React, { ReactNode, useRef, useState } from 'react';
 
 /**
+ * Local Imports
+*/
+
+import { Authorization } from '~/util/Api';
+
+/**
  * Types/Interfaces
 */
 
@@ -13,8 +19,8 @@ export interface AuthProviderProps {
 };
 
 export interface AuthContextInterface {
-  token: string;
-  setToken: React.Dispatch<React.SetStateAction<string>>;
+  token: Authorization;
+  setToken: React.Dispatch<React.SetStateAction<Authorization>>;
   hasTokenStorageRef: React.MutableRefObject<boolean>;
 };
 
@@ -35,7 +41,7 @@ export function AuthProvider(props:AuthProviderProps) {
 
   /** States **/
 
-  const [ token, setToken ] = useState<string>();
+  const [ token, setToken ] = useState<Authorization>();
 
   /** Output **/
 
