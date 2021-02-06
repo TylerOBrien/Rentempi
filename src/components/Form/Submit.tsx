@@ -19,6 +19,8 @@ import { TailwindEnabledProps } from '~/util/TailwindCss';
 export interface SubmitProps extends TailwindEnabledProps {
   label?: string;
   container?: FunctionComponent<TailwindEnabledProps>;
+  loading?: boolean;
+  disabled?: boolean;
   formik?: boolean;
   onPress?: Function;
 }
@@ -40,8 +42,8 @@ export function Submit(props:SubmitProps) {
       container={ props.container }
       style={ props.style }
       tailwind={ props.tailwind }
-      loading={ false }
-      disabled={ false }
+      loading={ formik ? formik.isSubmitting : props.loading }
+      disabled={ formik ? formik.isSubmitting : props.loading || props.disabled }
       onPress={ formik ? formik.handleSubmit : props.onPress }
       onLayout={ props.onLayout }
     />
