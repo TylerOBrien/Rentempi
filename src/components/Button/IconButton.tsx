@@ -100,6 +100,6 @@ const styles = StyleSheet.create({
   },
 
   label: {
-    flex: 1
+    alignSelf: 'center'
   }
 });
