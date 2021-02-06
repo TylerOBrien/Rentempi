@@ -3,7 +3,7 @@
 */
 
 import React, { ReactNode, useEffect, useRef, useState } from 'react';
-import { Animated, StyleSheet, View } from 'react-native';
+import { Animated, LayoutChangeEvent, StyleSheet, View } from 'react-native';
 
 /**
  * Local Imports
@@ -26,7 +26,7 @@ export interface ModalProps {
   transition?: ModalTransition;
   style?: StyleProp;
   children?: ReactNode;
-  onLayout?: Function;
+  onLayout?: (event:LayoutChangeEvent) => void;
 };
 
 /**
