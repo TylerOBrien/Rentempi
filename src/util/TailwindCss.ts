@@ -29,6 +29,12 @@ export type TailwindProp = string | Array<string>;
 export type TailwindClassNames = string | Array<string>;
 export type TailwindObject = string | Array<string> | object;
 
+export interface TailwindEnabledProps {
+  style?: StyleProp;
+  tailwind?: TailwindProp;
+  onLayout?: Function;
+};
+
 /**
  * Local Vars
 */
