@@ -10,6 +10,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 */
 
 import * as GuestScreenConfigs from '~/screens/Guest/configs';
+import { ScreenConfig } from '~/config';
 
 /**
  * Locals
@@ -23,7 +24,7 @@ const GuestRouterStack = createStackNavigator();
 
 export function GuestStack() {
   return (
-    <GuestRouterStack.Navigator>
+    <GuestRouterStack.Navigator initialRouteName={ ScreenConfig.initial.Guest }>
       {
         Object.entries(GuestScreenConfigs)
               .map(([, config], index) => (
