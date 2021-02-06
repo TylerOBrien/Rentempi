@@ -10,4 +10,4 @@ export { usePaginate } from './Paginate';
 export { useService } from './Service';
 export { usePreMountEffect, usePostMountEffect } from './Effect';
 export { useStorage } from './Storage';
-export { useUser } from './User';
+export { useSession } from './Session';

@@ -8,7 +8,7 @@ import React, { FunctionComponent } from 'react';
  * Local Imports
 */
 
-import { useUser } from '~/hooks';
+import { useSession } from '~/hooks';
 
 /**
  * Types/Interfaces
@@ -27,7 +27,7 @@ export interface UserStatusGuardProps {
 export function UserStatusGuard(props:UserStatusGuardProps) {
   /** Hooks **/
 
-  const session = useUser();
+  const session = useSession();
   
   /** Output **/
   

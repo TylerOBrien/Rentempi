@@ -15,7 +15,7 @@ import { UserContext } from '~/providers/UserProvider';
  * Types/Interfaces
 */
 
-export interface UserHook {
+export interface SessionHook {
   user: UserModel;
   setUser: React.Dispatch<React.SetStateAction<UserModel>>;
 };
@@ -24,7 +24,7 @@ export interface UserHook {
  * Exports
 */
 
-export function useUser():UserHook {
+export function useSession():SessionHook {
   /** Contexts **/
   
   const { user, setUser } = useContext(UserContext);
