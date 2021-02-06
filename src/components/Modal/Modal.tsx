@@ -3,7 +3,7 @@
 */
 
 import React, { ReactNode, useEffect, useRef, useState } from 'react';
-import { Animated, LayoutChangeEvent, StyleSheet, View } from 'react-native';
+import { Animated, ColorValue, LayoutChangeEvent, StyleSheet, View } from 'react-native';
 
 /**
  * Local Imports
@@ -16,18 +16,18 @@ import { StyleProp } from '~/util/TailwindCss';
 */
 
 export interface ModalTransition {
-  type: 'fade' | 'slide';
+  type: 'fade' | 'slide' | 'both';
   duration: number;
-};
+}
 
 export interface ModalProps {
   visible?: boolean;
-  backgroundColor?: string;
   transition?: ModalTransition;
+  backgroundColor?: ColorValue;
   style?: StyleProp;
   children?: ReactNode;
   onLayout?: (event:LayoutChangeEvent) => void;
-};
+}
 
 /**
  * Exports
@@ -37,6 +37,7 @@ export function Modal(props:ModalProps) {
   /** Refs **/
 
   const opacityRef = useRef<Animated.Value>();
+  const offsetRef = useRef<Animated.ValueXY>();
 
   /** States **/
 
