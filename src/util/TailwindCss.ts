@@ -211,7 +211,7 @@ function color(colorName:string):string {
  * If the passed param is not a Tailwind object then it will be assumed to be a
  * class string or an array of class strings and/or Tailwind objects.
  * 
- * @param {TailwindClassNames} props
+ * @param {TailwindObject} tailwind
  * @param {string} group
  * @param {boolean} fallbackOnString
  * @param {boolean} fallbackOnArray
@@ -219,7 +219,7 @@ function color(colorName:string):string {
  * 
  * @return {any}
  */
-function get(tailwind:TailwindClassNames, group:string=ThemeConfig.defaults.group.name, fallbackOnString:boolean=true, fallbackOnArray:boolean=true, fallbackTailwind?:any):any {
+function get(tailwind:TailwindObject, group:string=ThemeConfig.defaults.group.name, fallbackOnString:boolean=true, fallbackOnArray:boolean=true, fallbackTailwind?:any):any {
   if (JS.isString(tailwind)) {
     return fallbackOnString ? tailwind || fallbackTailwind : undefined;
   } else if (JS.isArray(tailwind)) {
