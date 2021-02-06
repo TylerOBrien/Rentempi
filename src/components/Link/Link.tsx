@@ -56,7 +56,7 @@ export function Link(props:LinkProps) {
   const renderContainedLabel = () => (
     <props.labelContainer
       { ...props.labelContainerProps }
-      tailwind={ Tailwind.get(props.tailwind, 'label', false) }
+      tailwind={ Tailwind.get(props.tailwind, 'label', false, false) }
     >
       { props.label || props.to }
     </props.labelContainer>
