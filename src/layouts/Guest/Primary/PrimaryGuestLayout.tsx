@@ -2,51 +2,39 @@
  * Global Imports
 */
 
-import PropTypes from 'prop-types';
-import React, { useEffect, useContext, useState } from 'react';
+import React, { Fragment, ReactNode } from 'react';
 
 /**
  * Local Imports
 */
 
-import { Text, View } from '~/components/Base';
-
-import { Header, Navigation } from './components';
+import { View } from '~/components/Base';
 
 /**
- * Locals
+ * Sibling Imports
 */
 
+import { Header } from './components';
 
+/**
+ * Types/Interfaces
+*/
+
+export interface PrimaryGuestLayoutProps {
+  children: ReactNode;
+};
 
 /**
  * Exports
 */
 
-/**
- * 
- */
-export function PrimaryGuestLayout(props) {
-  /** Contexts **/
-  
-  
-  /** States **/
-  
-  
-  /** Side-Effects **/
-  
-  
-  /** Event Handlers **/
-  
-  
-  /** Renderers **/
-  
-  
-  /** Output **/
-  
+export function PrimaryGuestLayout(props:PrimaryGuestLayoutProps) {
   return (
-    <View>
-      { props.children }
-    </View>
+    <Fragment>
+      <Header />
+      <View>
+        { props.children }
+      </View>
+    </Fragment>
   );
 }
