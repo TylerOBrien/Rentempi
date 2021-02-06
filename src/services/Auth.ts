@@ -12,8 +12,13 @@ import { Api, Authorization } from '~/util/Api';
 const endpoint = 'auth';
 
 /**
- * Types/Interfaces
+ * Login
 */
+
+export interface LoginAuthRequest {
+  email: string;
+  password: string;
+}
 
 export interface LoginAuthResponse {
   user: UserModel;
@@ -21,17 +26,13 @@ export interface LoginAuthResponse {
 }
 
 /**
- * Exports
-*/
-
-/**
  * Attempt login.
  * 
- * @param {any} data
+ * @param {LoginAuthRequest} data
  * 
- * @return {Promise<any>}
+ * @return {Promise<LoginAuthResponse>}
  */
-export function LoginAuthService(data:any):Promise<LoginAuthResponse> {
+export function LoginAuthService(data:LoginAuthRequest):Promise<LoginAuthResponse> {
   const config = {
     data,
     method: 'POST',
@@ -40,6 +41,10 @@ export function LoginAuthService(data:any):Promise<LoginAuthResponse> {
 
   return Api.call(config);
 }
+
+/**
+ * 
+*/
 
 /**
  * Attempt registration.
