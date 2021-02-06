@@ -16,13 +16,13 @@ import { Authorization } from '~/util/Api';
 
 export interface AuthProviderProps {
   children: ReactNode;
-};
+}
 
 export interface AuthContextInterface {
-  token: Authorization;
-  setToken: React.Dispatch<React.SetStateAction<Authorization>>;
-  hasTokenStorageRef: React.MutableRefObject<boolean>;
-};
+  credentials: Authorization;
+  setCredentials: React.Dispatch<React.SetStateAction<Authorization>>;
+  hasStorageRef: React.MutableRefObject<boolean>;
+}
 
 /**
  * Contexts
@@ -37,16 +37,16 @@ export const AuthContext = React.createContext<AuthContextInterface>(undefined);
 export function AuthProvider(props:AuthProviderProps) {
   /** Refs **/
 
-  const hasTokenStorageRef = useRef<boolean>();
+  const hasStorageRef = useRef<boolean>();
 
   /** States **/
 
-  const [ token, setToken ] = useState<Authorization>();
+  const [ credentials, setCredentials ] = useState<Authorization>();
 
   /** Output **/
 
   return (
-    <AuthContext.Provider value={{ token, setToken, hasTokenStorageRef }}>
+    <AuthContext.Provider value={{ credentials, setCredentials, hasStorageRef }}>
       { props.children }
     </AuthContext.Provider>
   );
