@@ -20,7 +20,7 @@ import { Tailwind, TailwindProp } from '~/util/TailwindCss';
 export interface ScrollViewProps extends BaseScrollViewProps {
   tailwind?: TailwindProp;
   children?: ReactNode;
-};
+}
 
 /**
  * Exports

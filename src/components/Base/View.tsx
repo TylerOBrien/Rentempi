@@ -20,7 +20,7 @@ import { Tailwind, TailwindProp } from '~/util/TailwindCss';
 export interface ViewProps extends BaseViewProps {
   tailwind?: TailwindProp;
   children?: ReactNode;
-};
+}
 
 /**
  * Exports

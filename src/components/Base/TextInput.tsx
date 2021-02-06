@@ -19,7 +19,7 @@ import { Tailwind, TailwindProp } from '~/util/TailwindCss';
 
 export interface TextInputProps extends BaseTextInputProps {
   tailwind?: TailwindProp;
-};
+}
 
 /**
  * Exports

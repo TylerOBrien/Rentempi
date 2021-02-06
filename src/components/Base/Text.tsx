@@ -20,7 +20,7 @@ import { Tailwind, TailwindProp } from '~/util/TailwindCss';
 export interface TextProps extends BaseTextProps {
   tailwind?: TailwindProp;
   children?: ReactNode;
-};
+}
 
 /**
  * Exports

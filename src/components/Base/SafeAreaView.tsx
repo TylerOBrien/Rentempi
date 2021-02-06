@@ -19,7 +19,7 @@ import { Tailwind, StyleProp, TailwindProp } from '~/util/TailwindCss';
 export interface SafeAreaViewProps {
   tailwind?: TailwindProp;
   children?: ReactNode;
-};
+}
 
 /**
  * Exports
