@@ -2,8 +2,8 @@
  * Global Imports
 */
 
-import PropTypes from 'prop-types';
 import React, { useEffect, useContext, useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
 
 /**
  * Local Imports
@@ -12,31 +12,21 @@ import React, { useEffect, useContext, useState } from 'react';
 import { PrimaryVerifiedLayout } from '~/layouts/Verified';
 
 /**
- * Exports
+ * Types/Interfaces
 */
 
+export interface LobbyProps {
+  
+}
+
 /**
- * 
- */
-export function Lobby(props) {
+ * Components
+*/
+
+export function Lobby(props:LobbyProps) {
   /** Hooks **/
   
   const navigation = useNavigation();
-
-  /** Contexts **/
-  
-  
-  /** States **/
-  
-  
-  /** Side-Effects **/
-  
-  
-  /** Event Handlers **/
-  
-  
-  /** Renderers **/
-  
   
   /** Output **/
   
@@ -46,3 +36,13 @@ export function Lobby(props) {
     </PrimaryVerifiedLayout>
   );
 }
+
+export const LobbyConfig = {
+  stack: {
+    name: 'Lobby',
+    component: Lobby,
+    options: {
+      headerShown: false
+    }
+  }
+};
