@@ -4,14 +4,14 @@
 
 import React, { useEffect, useContext, useState } from 'react';
 import { Platform } from 'react-native';
-import { Formik } from 'formik';
+import { Formik, FormikProps } from 'formik';
 
 /**
  * Local Imports
 */
 
 import { Text, View } from '~/components/Base';
-import { Form } from '~/components/Form';
+import { Form, Input, Submit } from '~/components/Form';
 import { FormikSubmit } from '~/util/Formik';
 
 /**
@@ -21,18 +21,18 @@ import { FormikSubmit } from '~/util/Formik';
 export interface LoginFields {
   email: string;
   password: string;
-};
+}
 
 export interface LoginFormProps {
   context: React.Context<any>;
   onSubmit: FormikSubmit<LoginFields>;
-};
+}
 
 /**
  * Locals
 */
   
-const initialValues = {
+const initialValues:LoginFields = {
   email: '',
   password: ''
 };
@@ -48,9 +48,15 @@ export function LoginForm(props:LoginFormProps) {
   
   /** Renderers **/
   
-  const renderForm = (formik) => (
+  const renderForm = (formik:FormikProps<LoginFields>) => (
     <Form>
-      
+      <Input
+        name='email'
+        label='Email Address'
+      />
+      <Submit
+        label='Login'
+      />
     </Form>
   );
   
