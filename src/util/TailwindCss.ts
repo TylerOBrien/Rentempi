@@ -234,12 +234,12 @@ function get(tailwind:TailwindObject, group:string=ThemeConfig.defaults.group.na
  * spreading two Tailwind objects one after another into a new one.
  * 
  * @param {TailwindObject} tailwind
- * @param {any} extension
+ * @param {object} extension
  * @param {string} fallbackGroup
  * 
  * @return {object}
  */
-function merge(tailwind:TailwindObject, extension:any, fallbackGroup:string=ThemeConfig.defaults.group.name):object {
+function merge(tailwind:TailwindObject, extension:object, fallbackGroup:string=ThemeConfig.defaults.group.name):object {
   if (JS.isString(tailwind)) {
     tailwind = { [fallbackGroup]: tailwind };
   }
