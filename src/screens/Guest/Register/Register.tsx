@@ -89,7 +89,9 @@ export function Register(props:RegisterProps) {
 export const RegisterConfig = {
   stack: {
     name: 'Register',
-    headerShown: false,
-    component: Register
+    component: Register,
+    options: {
+      headerShown: false
+    }
   }
 };

@@ -82,7 +82,9 @@ export function Login(props:LoginProps) {
 export const LoginConfig = {
   stack: {
     name: 'Login',
-    headerShown: false,
-    component: Login
+    component: Login,
+    options: {
+      headerShown: false
+    }
   }
 };

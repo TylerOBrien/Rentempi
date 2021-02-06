@@ -59,7 +59,9 @@ export function Welcome(props:WelcomeProps) {
 export const WelcomeConfig = {
   stack: {
     name: 'Welcome',
-    headerShown: false,
-    component: Welcome
+    component: Welcome,
+    options: {
+      headerShown: false
+    }
   }
 };

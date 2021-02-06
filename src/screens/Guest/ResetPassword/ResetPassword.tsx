@@ -71,7 +71,9 @@ export function ResetPassword(props:ResetPasswordProps) {
 export const ResetPasswordConfig = {
   stack: {
     name: 'Reset Password',
-    headerShown: false,
-    component: ResetPassword
+    component: ResetPassword,
+    options: {
+      headerShown: false
+    }
   }
 };
