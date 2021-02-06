@@ -5,6 +5,7 @@
     "lib": ["esnext"],
     "jsx": "react",
     "esModuleInterop": true,
+    "resolveJsonModule": true,
     "paths": {
       "~/*": ["src/*"],
       "@resources/*": ["resources/*"],
