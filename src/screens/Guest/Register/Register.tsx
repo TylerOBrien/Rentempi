@@ -3,19 +3,19 @@
 */
 
 import React, { useState } from 'react';
-import { useNavigation } from '@react-navigation/native';
+import { FormikHelpers } from 'formik';
 
 /**
  * Local Imports
 */
 
-import { ScreenConfig } from '~/config';
-
-import { RegisterForm } from '~/forms/Guest';
+import { RegisterForm, RegisterFields } from '~/forms/Guest/RegisterForm';
 import { PrimaryGuestLayout } from '~/layouts/Guest';
 
 import { useAuth, useForm, useService } from '~/hooks';
 import { FormHook } from '~/hooks/Form';
+
+import { RegisterAuthResponse } from '~/services/Auth';
 
 /**
  * Types/Interfaces
@@ -23,13 +23,13 @@ import { FormHook } from '~/hooks/Form';
 
 export interface RegisterProps {
   
-};
+}
 
 export interface RegisterContextInterface {
   form: FormHook;
   remember: boolean;
   setRemember: React.Dispatch<React.SetStateAction<boolean>>;
-};
+}
 
 /**
  * Locals
@@ -46,7 +46,6 @@ export function Register(props:RegisterProps) {
   
   const auth = useAuth();
   const form = useForm();
-  const navigation = useNavigation();
   const service = useService();
   
   /** States **/
@@ -55,16 +54,17 @@ export function Register(props:RegisterProps) {
   
   /** Event Handlers **/
   
-  const handleSuccess = async ({ user, token }) => {
-    await auth.login({ user, token }, { remember });
-    navigation.reset({
-      index: 0,
-      routes: [ ScreenConfig.initial[user.status] ]
+  const handleSuccess = (response:RegisterAuthResponse) => {
+    auth.login({
+      user: response.user,
+      credentials: { token: response.token.value }
+    }, {
+      remember
     });
   };
   
-  const handleSubmit = (values, formik) => {
-    service.call('Auth.Register', values)
+  const handleSubmit = (values:RegisterFields, formik:FormikHelpers<RegisterFields>) => {
+    service.call<RegisterAuthResponse>('Auth.Register', values)
       .then(handleSuccess)
       .catch(error => {
         form.setError(error);
