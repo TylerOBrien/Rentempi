@@ -2,24 +2,36 @@
  * Global Imports
 */
 
-import PropTypes from 'prop-types';
-import React from 'react';
+import React, { ErrorInfo, ReactNode } from 'react';
 
 /**
- * Exports
+ * Types/Interfaces
 */
 
-export class ErrorBoundary extends React.Component {
-  static getDerivedStateFromError(error) {
+export interface ErrorBoundaryProps {
+  fallback: ReactNode;
+  onError?: (error:Error, info:ErrorInfo) => void;
+}
+
+export interface ErrorBoundaryState {
+  hasError: boolean;
+}
+
+/**
+ * Components
+*/
+
+export class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
+  static getDerivedStateFromError(error:Error):ErrorBoundaryState {
     return { hasError: true };
   }
 
-  constructor(props) {
+  constructor(props:ErrorBoundaryProps) {
     super(props);
     this.state = { hasError: false };
   }
 
-  componentDidCatch(error, info) {
+  componentDidCatch(error:Error, info:ErrorInfo) {
     if (this.props.onError) {
       this.props.onError(error, info);
     } else {
@@ -35,8 +47,3 @@ export class ErrorBoundary extends React.Component {
     );
   }
 }
-
-ErrorBoundary.propTypes = {
-  fallback: PropTypes.node.isRequired,
-  onError: PropTypes.func
-};
