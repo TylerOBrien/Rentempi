@@ -3,6 +3,7 @@
 */
 
 import { useContext } from 'react';
+import { AxiosResponse } from 'axios';
 
 /**
  * Local Imports
@@ -51,7 +52,7 @@ export function useService():ServiceHook {
 
     return new Promise((resolve, reject) => {
       service(credentials, ...args)
-        .then(response => resolve(response.data))
+        .then((response:AxiosResponse) => resolve(response.data))
         .catch(reject);
     });
   };
