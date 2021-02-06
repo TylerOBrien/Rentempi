@@ -10,6 +10,7 @@ import React, { ErrorInfo, ReactNode } from 'react';
 
 export interface ErrorBoundaryProps {
   fallback: ReactNode;
+  children: ReactNode;
   onError?: (error:Error, info:ErrorInfo) => void;
 }
 
