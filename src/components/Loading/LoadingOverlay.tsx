@@ -2,7 +2,7 @@
  * Global Imports
 */
 
-import React, { ReactNode } from 'react';
+import React from 'react';
 import { ActivityIndicator, ColorValue, StyleSheet } from 'react-native';
 
 /**
