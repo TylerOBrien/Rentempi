@@ -83,9 +83,9 @@ export function Modal(props:ModalProps) {
   /** Helpers **/
 
   /**
-   * 
+   * @return {void}
    */
-  const animate = (isVisible:boolean) => {
+  const animate = (isVisible:boolean):void => {
     Animated.timing(opacityRef.current, {
       toValue: isVisible ? 1 : 0,
       duration: props.transition?.duration || 500,
@@ -141,9 +141,9 @@ export function Modal(props:ModalProps) {
   /** Renderers **/
 
   /**
-   * 
+   * @return {JSX.Element}
    */
-  const renderActive = () => (
+  const renderActive = ():JSX.Element => (
     <View style={ style || styles.container } ref={ handleRef } onLayout={ handleLayout }>
       <Animated.View style={[ styles.background, { opacity: opacityRef.current, backgroundColor: props.backgroundColor } ]} />
       <Animated.View style={{ opacity: opacityRef.current }}>
