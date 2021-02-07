@@ -48,9 +48,10 @@ export function useService():ServiceHook {
 
     const services = AllServices[groupName];
     const service = services[serviceName];
+    const payload = service.unprotected ? args : [].concat(credentials, args);
 
     return new Promise((resolve, reject) => {
-      service(credentials, ...args)
+      service(...payload)
         .then((response:AxiosResponse) => resolve(response.data))
         .catch(reject);
     });
