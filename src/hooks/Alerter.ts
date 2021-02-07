@@ -27,6 +27,7 @@ export type AlertItem = {
 export interface AlerterHook {
   alerts: Array<string>;
   fromKey: (key:string) => AlertItem;
+  remove: (key:string) => void;
   message: (value:string) => void;
   notice: (value:string) => void;
   warning: (value:string) => void;
@@ -104,6 +105,6 @@ export function useAlerter():AlerterHook {
   /** Output **/
 
   return {
-    alerts, fromKey, message, notice, warning, error
+    alerts, fromKey, remove, message, notice, warning, error
   };
 }
