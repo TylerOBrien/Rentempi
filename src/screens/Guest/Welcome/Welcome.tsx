@@ -51,13 +51,22 @@ export function Welcome(props:WelcomeProps) {
       />
 
       <Link
-        tailwind='self-center px-8 py-4 rounded-2xl bg-yellow-400'
+        tailwind='self-center w-45p py-4 rounded-2xl bg-yellow-400'
         to={ AppDriver.Screen.Guest.ForgotPassword }
       >
-        <Text tailwind='text-lg text-black'>
+        <Text tailwind='text-center text-lg text-black'>
           Recover Account
         </Text>
       </Link>
+
+      <Button
+        label='Contact Us'
+        onPress={ () => {} }
+        tailwind={{
+          container: 'self-center w-45p mt-4 py-4 rounded-2xl bg-yellow-400',
+          label: 'text-center text-lg'
+        }}
+      />
     </WelcomeGuestLayout>
   );
 }
