@@ -12,7 +12,7 @@ import { StyleSheet, View } from 'react-native';
 import { AlertsOverlay } from '~/components/Alert';
 import { UserStatusGuard } from '~/components/Guard';
 import { GuestStack, UnverifiedStack, VerifiedStack } from '~/navigation/stacks';
-import { ApiProvider, AlertProvider, AuthProvider, UserProvider } from '~/providers';
+import { ApiProvider, AlertProvider, AuthProvider, FormProvider, UserProvider } from '~/providers';
 
 /**
  * Locals
@@ -46,8 +46,10 @@ export function EntryPoint() {
       <UserProvider>
         <ApiProvider>
           <AlertProvider>
-            <EntryPointMain />
-            <EntryPointOverlay />
+            <FormProvider>
+              <EntryPointMain />
+              <EntryPointOverlay />
+            </FormProvider>
           </AlertProvider>
         </ApiProvider>
       </UserProvider>
