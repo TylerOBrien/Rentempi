@@ -2,14 +2,16 @@
  * Global Imports
 */
 
-import React from 'react';
+import React, { useContext } from 'react';
 import { ColorValue } from 'react-native';
+import { useFormikContext } from 'formik';
 
 /**
  * Local Imports
 */
 
-import { TextInput } from '~/components/Base';
+import { Text, TextInput } from '~/components/Base';
+import { FormContext } from '~/providers/FormProvider';
 import { FormProps } from '~/util/Form';
 import { Tailwind, TailwindEnabledProps } from '~/util/TailwindCss';
 
@@ -34,6 +36,18 @@ export interface InputProps extends FormProps, TailwindEnabledProps {
 */
 
 export function Input({ style, placeholder, secureTextEntry, ...props }:InputProps) {
+  /** Hooks **/
+
+  const formik = useFormikContext();
+
+  /** Contexts **/
+
+  const { errors } = useContext(FormContext);
+
+  /** Helpers **/
+
+  const hasError = !!( errors && props.name in errors );
+
   /** Settings **/
 
   const config = {
@@ -49,6 +63,9 @@ export function Input({ style, placeholder, secureTextEntry, ...props }:InputPro
   return (
     <LabeledField { ...props }>
       <TextInput placeholderTextColor='#aaaaaa' { ...config } />
+      <Text>
+        { errors && errors[props.name] }
+      </Text>
     </LabeledField>
   );
 }
