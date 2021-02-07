@@ -64,7 +64,8 @@ const color = {
   warning: Tailwind.color('warning'),
   error: Tailwind.color('error'),
   info: Tailwind.color('info'),
-  notice: Tailwind.color('notice')
+  notice: Tailwind.color('notice'),
+  message: Tailwind.color('message')
 };
 
 const defaults:ThemeDefaults = {
