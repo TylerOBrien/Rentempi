@@ -19,12 +19,16 @@ import { FormikSubmit } from '~/util/Formik';
 export interface ResetPasswordFields {
   password: string;
   password_confirmation: string;
-};
+}
+
+export interface ResetPasswordFormContext {
+  
+}
 
 export interface ResetPasswordFormProps {
   context: React.Context<any>;
   onSubmit: FormikSubmit<ResetPasswordFields>;
-};
+}
 
 /**
  * Locals

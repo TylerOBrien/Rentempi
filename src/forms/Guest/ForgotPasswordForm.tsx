@@ -20,6 +20,10 @@ export interface ForgotPasswordFields {
   email: string;
 }
 
+export interface ForgotPasswordFormContext {
+  
+}
+
 export interface ForgotPasswordFormProps {
   context: React.Context<any>;
   onSubmit: FormikSubmit<ForgotPasswordFields>;

@@ -2,7 +2,7 @@
  * Global Imports
 */
 
-import React, { useContext } from 'react';
+import React, { Dispatch, SetStateAction, useContext } from 'react';
 import { Formik, FormikProps } from 'formik';
 
 /**
@@ -20,12 +20,17 @@ export interface RegisterFields {
   email: string;
   password: string;
   password_confirmation: string;
-};
+}
+
+export interface RegisterFormContext {
+  remember: boolean;
+  setRemember: Dispatch<SetStateAction<boolean>>;
+}
 
 export interface RegisterFormProps {
   context: React.Context<any>;
   onSubmit: FormikSubmit<RegisterFields>;
-};
+}
 
 /**
  * Locals
