@@ -62,6 +62,7 @@ export function EntryPoint() {
 const styles = StyleSheet.create({
   overlay: {
     position: 'absolute',
+    flexDirection: 'row',
     width: '100%',
     height: '100%'
   }
