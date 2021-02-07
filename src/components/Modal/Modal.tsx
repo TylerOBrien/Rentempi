@@ -3,7 +3,7 @@
 */
 
 import React, { ReactNode, useEffect, useRef, useState } from 'react';
-import { Animated, ColorValue, LayoutChangeEvent, StyleSheet, View } from 'react-native';
+import { Animated, ColorValue, Dimensions, LayoutChangeEvent, ScaledSize, StyleSheet, View } from 'react-native';
 
 /**
  * Local Imports
@@ -14,6 +14,14 @@ import { StyleProp } from '~/util/TailwindCss';
 /**
  * Types/Interfaces
 */
+
+interface ModalStyle {
+  position: string;
+  top: number;
+  left: number;
+  width: number;
+  height: number;
+}
 
 export interface ModalTransition {
   type: 'fade' | 'slide' | 'both';
@@ -36,20 +44,29 @@ export interface ModalProps {
 export function Modal(props:ModalProps) {
   /** Refs **/
 
+  const styleRef = useRef<ModalStyle>();
+  const containerViewRef = useRef<View>();
   const opacityRef = useRef<Animated.Value>();
-  const offsetRef = useRef<Animated.ValueXY>();
 
   /** States **/
 
+  const [ , setForceRender ] = useState<boolean>();
   const [ isActive, setIsActive ] = useState<boolean>();
 
   /** Setup **/
 
-  if (!opacityRef.current) {
-    opacityRef.current = new Animated.Value(0);
-  }
+  const style:object = styleRef.current;
+  const window:ScaledSize = Dimensions.get('window');
 
   /** Side-Effects **/
+
+  useEffect(() => {
+    opacityRef.current = new Animated.Value(0);
+    Dimensions.addEventListener('change', handleOrientationChange);
+    return () => {
+      Dimensions.removeEventListener('change', handleOrientationChange);
+    };
+  }, []);
 
   useEffect(() => {
     animate(props.visible);
@@ -78,13 +95,56 @@ export function Modal(props:ModalProps) {
     });
   };
 
+  /** Event Handlers **/
+
+  /**
+   * @return {void}
+   */
+  const handleRef = (view:View):void => {
+    containerViewRef.current = view;
+  };
+
+  /**
+   * @return {void}
+   */
+  const handleOrientationChange = ():void => {
+    if (styleRef.current) {
+      styleRef.current = null;
+      setForceRender(current => !current);
+    }
+  };
+
+  /**
+   * @return {void}
+   */
+  const handleMeasureView = (width:number, height:number, px:number, py:number, fx:number, fy:number):void => {
+    styleRef.current = {
+      position: 'absolute',
+      top: -fy,
+      left: -fx,
+      width: window.width,
+      height: window.height
+    };
+
+    setForceRender(current => !current);
+  };
+
+  /**
+   * @return {void}
+   */
+  const handleLayout = ():void => {
+    if (!styleRef.current && containerViewRef.current) {
+      containerViewRef.current.measure(handleMeasureView);
+    }
+  };
+
   /** Renderers **/
 
   /**
    * 
    */
   const renderActive = () => (
-    <View style={ styles.container }>
+    <View style={ style || styles.container } ref={ handleRef } onLayout={ handleLayout }>
       <Animated.View style={[ styles.background, { opacity: opacityRef.current, backgroundColor: props.backgroundColor } ]} />
       <Animated.View style={{ opacity: opacityRef.current }}>
         <View style={ styles.inner }>
@@ -96,7 +156,7 @@ export function Modal(props:ModalProps) {
 
   /** Output **/
 
-  return isActive ? renderActive() : null;
+  return (opacityRef.current ?? null) !== null && isActive ? renderActive() : null;
 }
 
 Modal.defaultProps = {
