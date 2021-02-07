@@ -24,10 +24,6 @@ export interface Authorization {
   token: string;
 }
 
-export interface Headers {
-  common?: any;
-}
-
 export interface Request {
   method: string;
   uri: string;
