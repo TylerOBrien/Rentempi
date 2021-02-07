@@ -6,6 +6,7 @@ import 'react-native-gesture-handler';
 import React, { Fragment, useContext } from 'react';
 import { SafeAreaView, StatusBar, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
+import FlashMessage from 'react-native-flash-message';
 
 /**
  * Local Imports
@@ -23,7 +24,7 @@ import { AppContext, AppProvider } from '~/providers/AppProvider';
 function Main() {
   /** Contexts **/
 
-  const { statusBarStyle, isStatusBarHidden } = useContext(AppContext);
+  const { flashMessagePosition, statusBarStyle, isStatusBarHidden } = useContext(AppContext);
   
   /** Output **/
 
@@ -35,6 +36,7 @@ function Main() {
       />
       <SafeAreaView style={ styles.container }>
         <EntryPoint />
+        <FlashMessage position={ flashMessagePosition || 'top' } />
       </SafeAreaView>
     </Fragment>
   );
