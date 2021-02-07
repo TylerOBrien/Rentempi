@@ -8,7 +8,14 @@ module.exports = {
       colors: {
         'primary': '#398ab3',
         'secondary': '#5496b8',
-        'tertiary': '#38718f'
+        'tertiary': '#38718f',
+        'error': '#ff0000',
+        'danger': '#ff0000',
+        'success': '#00ff00',
+        'warning': '#884400',
+        'info': '#004488',
+        'notice': '#884488',
+        'message': '#884488'
       },
       width: {
         '1/7': '14.285714%',
