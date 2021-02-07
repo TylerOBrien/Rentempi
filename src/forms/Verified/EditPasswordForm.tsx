@@ -11,7 +11,7 @@ import { Formik, FormikProps } from 'formik';
 */
 
 import { Text, View } from '~/components/Base';
-import { Form } from '~/components/Form';
+import { Form, Password, Submit } from '~/components/Form';
 import { FormikSubmit } from '~/util/Formik';
 
 /**
@@ -56,7 +56,21 @@ export function EditPasswordForm(props:EditPasswordFormProps) {
   
   const renderForm = (formik:FormikProps<EditPasswordFields>) => (
     <Form>
-      
+      <Password
+        name='password_current'
+        label='Current Password'
+      />
+      <Password
+        name='password'
+        label='New Password'
+      />
+      <Password
+        name='password_confirmation'
+        label='Confirm New Password'
+      />
+      <Submit
+        label='Change Password'
+      />
     </Form>
   );
   
