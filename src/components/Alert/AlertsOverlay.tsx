@@ -50,8 +50,7 @@ export function AlertsOverlay() {
 
 const styles = StyleSheet.create({
   container: {
-    height: '100%',
-    flexDirection: 'column',
+    flex: 1,
     justifyContent: 'flex-end'
   }
 });
