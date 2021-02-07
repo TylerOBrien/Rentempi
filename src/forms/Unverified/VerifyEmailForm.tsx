@@ -10,7 +10,7 @@ import { Formik, FormikProps } from 'formik';
 */
 
 import { Text, View } from '~/components/Base';
-import { Form } from '~/components/Form';
+import { Form, Input, Submit } from '~/components/Form';
 import { FormikSubmit } from '~/util/Formik';
 
 /**
@@ -51,7 +51,13 @@ export function VerifyEmailForm(props:VerifyEmailFormProps) {
   
   const renderForm = (formik:FormikProps<VerifyEmailFields>) => (
     <Form>
-      
+      <Input
+        name='code'
+        label='Verification Code'
+      />
+      <Submit
+        label='Verify Account'
+      />
     </Form>
   );
   
