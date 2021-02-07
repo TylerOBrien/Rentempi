@@ -19,6 +19,7 @@ import { useAlerter } from '~/hooks';
 
 export interface FormHook {
   errors: any;
+  clearErrors: () => void;
   handleError: (formik:FormikHelpers<any>, error:AxiosError) => void;
 }
 
@@ -34,6 +35,12 @@ export function useForm():FormHook {
   /** Contexts **/
 
   const { errors, setErrors } = useContext(FormContext);
+
+  /** Helpers **/
+
+  const clearErrors = () => {
+    setErrors(null);
+  };
 
   /** Event Handlers **/
 
@@ -56,6 +63,7 @@ export function useForm():FormHook {
 
   return {
     errors,
+    clearErrors,
     handleError
   };
 }
