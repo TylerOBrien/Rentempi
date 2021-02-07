@@ -4,7 +4,7 @@
 
 import PropTypes from 'prop-types';
 import React, { useEffect, useContext, useState } from 'react';
-import { Formik } from 'formik';
+import { Formik, FormikProps } from 'formik';
 
 /**
  * Local Imports
@@ -54,7 +54,7 @@ export function EditPasswordForm(props:EditPasswordFormProps) {
   
   /** Renderers **/
   
-  const renderForm = (formik) => {
+  const renderForm = (formik:FormikProps<EditPasswordFields>) => {
     <Form>
       
     </Form>

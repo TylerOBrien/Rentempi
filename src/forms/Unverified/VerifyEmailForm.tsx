@@ -3,7 +3,7 @@
 */
 
 import React, { useEffect, useContext, useState } from 'react';
-import { Formik } from 'formik';
+import { Formik, FormikProps } from 'formik';
 
 /**
  * Local Imports
@@ -49,7 +49,7 @@ export function VerifyEmailForm(props:VerifyEmailFormProps) {
   
   /** Renderers **/
   
-  const renderForm = (formik) => {
+  const renderForm = (formik:FormikProps<VerifyEmailFields>) => {
     <Form>
       
     </Form>
