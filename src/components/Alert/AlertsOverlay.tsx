@@ -51,6 +51,7 @@ export function AlertsOverlay() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'flex-end'
+    justifyContent: 'flex-end',
+    marginBottom: 16
   }
 });
