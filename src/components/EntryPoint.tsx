@@ -10,9 +10,10 @@ import { StyleSheet, View } from 'react-native';
 */
 
 import { AlertsOverlay } from '~/components/Alert';
+import { ItemPickerOverlay } from '~/components/ItemPicker';
 import { UserStatusGuard } from '~/components/Guard';
 import { GuestStack, UnverifiedStack, VerifiedStack } from '~/navigation/stacks';
-import { ApiProvider, AlertProvider, AuthProvider, FormProvider, NetInfoProvider, UserProvider } from '~/providers';
+import { ApiProvider, AlertProvider, AuthProvider, FormProvider, ItemPickerProvider, NetInfoProvider, UserProvider } from '~/providers';
 
 /**
  * Locals
@@ -32,6 +33,7 @@ function EntryPointOverlay() {
   return (
     <View style={ styles.overlay }>
       <AlertsOverlay />
+      <ItemPickerOverlay />
     </View>
   );
 }
@@ -47,10 +49,12 @@ export function EntryPoint() {
         <UserProvider>
           <ApiProvider>
             <AlertProvider>
-              <FormProvider>
-                <EntryPointMain />
-                <EntryPointOverlay />
-              </FormProvider>
+              <ItemPickerProvider>
+                <FormProvider>
+                  <EntryPointMain />
+                  <EntryPointOverlay />
+                </FormProvider>
+              </ItemPickerProvider>
             </AlertProvider>
           </ApiProvider>
         </UserProvider>
