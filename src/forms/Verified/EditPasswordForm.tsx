@@ -54,11 +54,11 @@ export function EditPasswordForm(props:EditPasswordFormProps) {
   
   /** Renderers **/
   
-  const renderForm = (formik:FormikProps<EditPasswordFields>) => {
+  const renderForm = (formik:FormikProps<EditPasswordFields>) => (
     <Form>
       
     </Form>
-  };
+  );
   
   /** Output **/
   

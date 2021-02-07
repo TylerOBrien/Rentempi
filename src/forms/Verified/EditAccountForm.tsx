@@ -50,11 +50,11 @@ export function EditAccountForm(props:EditAccountFormProps) {
   
   /** Renderers **/
   
-  const renderForm = (formik:FormikProps<EditAccountFields>) => {
+  const renderForm = (formik:FormikProps<EditAccountFields>) => (
     <Form>
       
     </Form>
-  };
+  );
   
   /** Output **/
   

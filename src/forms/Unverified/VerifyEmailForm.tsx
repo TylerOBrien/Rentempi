@@ -49,11 +49,11 @@ export function VerifyEmailForm(props:VerifyEmailFormProps) {
   
   /** Renderers **/
   
-  const renderForm = (formik:FormikProps<VerifyEmailFields>) => {
+  const renderForm = (formik:FormikProps<VerifyEmailFields>) => (
     <Form>
       
     </Form>
-  };
+  );
   
   /** Output **/
   
