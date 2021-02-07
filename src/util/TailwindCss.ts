@@ -126,9 +126,12 @@ function parse(className:string, fontSizes?:RegExpExecArray):object {
       console.warn(`Unsupported Tailwind class: '${ key }'`);
     }
 
-    if (!hasVariables && key.length > 2 && key[0] !== '-' && key[1] !== '-') {
-      if (JS.isString(defined) && defined.length > 20) {
-        hasVariables = true;
+    if (!hasVariables) {
+      for (const name in defined) {
+        if (key.length > 2 && name[0] === '-' && name[1] === '-') {
+          hasVariables = true;
+          break;
+        }
       }
     }
 
@@ -149,7 +152,7 @@ function parse(className:string, fontSizes?:RegExpExecArray):object {
   if (!hasVariables) {
     return style;
   }
-
+  
   for (const key in style) {
     if (key.length < 3 || ( key[0] === '-' && key[1] === '-' )) {
       continue;
