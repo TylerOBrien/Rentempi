@@ -2,6 +2,7 @@
  * Local Imports
 */
 
+import { UserModel } from '~/models';
 import { Api, Authorization, ResourceIdentity } from '~/util/Api';
 
 /**
@@ -10,19 +11,29 @@ import { Api, Authorization, ResourceIdentity } from '~/util/Api';
 
 const endpoint = 'users';
 
-/**
- * Exports
+/*
+|--------------------------------------------------------------------------
+| Index
+|--------------------------------------------------------------------------
 */
+
+export interface IndexUserRequest {
+  filter?: any;
+}
+
+export interface IndexUserResponse extends UserModel {
+  //
+}
 
 /**
  * Retrieve listing of all users.
  * 
  * @param {Authorization} auth
- * @param {any} data
+ * @param {IndexUserRequest} data
  * 
- * @return {Promise<any>}
+ * @return {Promise<IndexUserResponse>}
  */
-export function IndexUserService(auth:Authorization, data?:any):Promise<any> {
+export function IndexUserService(auth:Authorization, data?:IndexUserRequest):Promise<IndexUserResponse> {
   const config = {
     data,
     method: 'GET',
@@ -32,16 +43,30 @@ export function IndexUserService(auth:Authorization, data?:any):Promise<any> {
   return Api.call(config, auth);
 }
 
+/*
+|--------------------------------------------------------------------------
+| Show
+|--------------------------------------------------------------------------
+*/
+
+export interface ShowUserRequest {
+  //
+}
+
+export interface ShowUserResponse extends UserModel {
+  //
+}
+
 /**
  * Retrieve a user.
  * 
  * @param {Authorization} auth
  * @param {ResourceIdentity} user
- * @param {any} data
+ * @param {ShowUserRequest} data
  * 
- * @return {Promise<any>}
+ * @return {Promise<ShowUserResponse>}
  */
-export function ShowUserService(auth:Authorization, user:ResourceIdentity, data?:any):Promise<any> {
+export function ShowUserService(auth:Authorization, user:ResourceIdentity, data?:ShowUserRequest):Promise<ShowUserResponse> {
   const config = {
     data,
     method: 'GET',
@@ -51,15 +76,29 @@ export function ShowUserService(auth:Authorization, user:ResourceIdentity, data?
   return Api.call(config, auth);
 }
 
+/*
+|--------------------------------------------------------------------------
+| Store
+|--------------------------------------------------------------------------
+*/
+
+export interface StoreUserRequest {
+  //
+}
+
+export interface StoreUserResponse extends UserModel {
+  //
+}
+
 /**
  * Save a user.
  * 
  * @param {Authorization} auth
- * @param {any} data
+ * @param {StoreUserRequest} data
  * 
- * @return {Promise<any>}
+ * @return {Promise<StoreUserResponse>}
  */
-export function StoreUserService(auth:Authorization, data:any):Promise<any> {
+export function StoreUserService(auth:Authorization, data:StoreUserRequest):Promise<StoreUserResponse> {
   const config = {
     data,
     method: 'POST',
@@ -69,16 +108,30 @@ export function StoreUserService(auth:Authorization, data:any):Promise<any> {
   return Api.call(config, auth);
 }
 
+/*
+|--------------------------------------------------------------------------
+| Update
+|--------------------------------------------------------------------------
+*/
+
+export interface UpdateUserRequest {
+  //
+}
+
+export interface UpdateUserResponse {
+  //
+}
+
 /**
  * Update a user.
  * 
  * @param {Authorization} auth
  * @param {ResourceIdentity} user
- * @param {any} data
+ * @param {UpdateUserRequest} data
  * 
- * @return {Promise<any>}
+ * @return {Promise<UpdateUserResponse>}
  */
-export function UpdateUserService(auth:Authorization, user:ResourceIdentity, data:any):Promise<any> {
+export function UpdateUserService(auth:Authorization, user:ResourceIdentity, data:UpdateUserRequest):Promise<UpdateUserResponse> {
   const config = {
     data,
     method: 'PUT',
@@ -88,16 +141,30 @@ export function UpdateUserService(auth:Authorization, user:ResourceIdentity, dat
   return Api.call(config, auth);
 }
 
+/*
+|--------------------------------------------------------------------------
+| Destroy
+|--------------------------------------------------------------------------
+*/
+
+export interface DestroyUserRequest {
+  //
+}
+
+export interface DestroyUserResponse {
+  //
+}
+
 /**
  * Remove a user.
  * 
  * @param {Authorization} auth
  * @param {ResourceIdentity} user
- * @param {any} data
+ * @param {DestroyUserRequest} data
  * 
- * @return {Promise<any>}
+ * @return {Promise<DestroyUserResponse>}
  */
-export function DestroyUserService(auth:Authorization, user:ResourceIdentity, data?:any):Promise<any> {
+export function DestroyUserService(auth:Authorization, user:ResourceIdentity, data?:DestroyUserRequest):Promise<DestroyUserResponse> {
   const config = {
     data,
     method: 'DELETE',
