@@ -21,7 +21,7 @@ import { AuthLinks, Greeting, HelpLinks, ContactUsModal } from './components';
 */
 
 export interface WelcomeProps {
-  
+  //
 }
 
 /**
