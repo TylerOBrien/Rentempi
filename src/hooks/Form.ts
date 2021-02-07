@@ -5,13 +5,13 @@
 import { useContext } from 'react';
 import { FormikHelpers } from 'formik';
 import { AxiosError } from 'axios';
+import { showMessage } from 'react-native-flash-message';
 
 /**
  * Local Imports
 */
 
 import { FormContext } from '~/providers/FormProvider';
-import { useAlerter } from '~/hooks';
 
 /**
  * Types/Interfaces
@@ -28,10 +28,6 @@ export interface FormHook {
 */
 
 export function useForm():FormHook {
-  /** Hooks **/
-
-  const alerter = useAlerter();
-
   /** Contexts **/
 
   const { errors, setErrors } = useContext(FormContext);
@@ -55,7 +51,10 @@ export function useForm():FormHook {
     formik.setSubmitting(false);
 
     if (error.response.data.message) {
-      alerter.error(error.response.data.message);
+      showMessage({
+        type: 'danger',
+        message: error.response.data.message
+      });
     }
   };
 
