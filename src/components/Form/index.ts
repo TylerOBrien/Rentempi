@@ -2,6 +2,7 @@
  * Exports
 */
 
+export { Checkbox } from './Checkbox';
 export { Form } from './Form';
 export { Input } from './Input';
 export { ItemPicker } from './ItemPicker';
