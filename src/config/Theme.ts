@@ -2,7 +2,7 @@
  * Global Imports
 */
 
-import { StatusBarStyle, StyleSheet } from 'react-native';
+import { ColorValue, StatusBarStyle, StyleSheet } from 'react-native';
 
 /**
  * Local Imports
@@ -14,12 +14,25 @@ import { Tailwind } from '~/util/TailwindCss';
  * Types/Interfaces
 */
 
+export interface ThemeColors {
+  primary: ColorValue;
+  secondary: ColorValue;
+  tertiary: ColorValue;
+  success: ColorValue;
+  fail: ColorValue;
+  warning: ColorValue;
+  error: ColorValue;
+  info: ColorValue;
+  notice: ColorValue;
+  message: ColorValue;
+}
+
 export interface ThemeDefaults {
   statusBarStyle: StatusBarStyle;
   group: {
     name: string;
   };
-};
+}
 
 /**
  * Locals
@@ -54,11 +67,10 @@ const style = StyleSheet.create({
   }
 });
 
-const color = {
+const color:ThemeColors = {
   primary: Tailwind.color('primary'),
   secondary: Tailwind.color('secondary'),
   tertiary: Tailwind.color('tertiary'),
-
   success: Tailwind.color('success'),
   fail: Tailwind.color('fail'),
   warning: Tailwind.color('warning'),
