@@ -21,12 +21,12 @@ export interface VerifyEmailFields {
   code: string;
 }
 
-export interface VeryEmailFormContext {
+export interface VerifyEmailFormContext {
   
 }
 
 export interface VerifyEmailFormProps {
-  context: React.Context<VeryEmailFormContext>;
+  context: React.Context<VerifyEmailFormContext>;
   onSubmit: FormikSubmit<VerifyEmailFields>;
 }
 
