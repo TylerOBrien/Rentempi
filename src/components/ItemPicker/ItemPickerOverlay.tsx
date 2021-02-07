@@ -32,6 +32,14 @@ export function ItemPickerOverlay() {
 
   /** Event Handlers **/
 
+  const handleReset = () => {
+    //
+  };
+
+  const handleCancel = () => {
+    //
+  };
+
   const handlePress = (item:ItemPickerItem, index:number) => {
     //
   };
