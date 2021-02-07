@@ -8,7 +8,7 @@ import React, { Fragment } from 'react';
  * Local Imports
 */
 
-import { useAlert } from '~/hooks';
+import { useAlerter } from '~/hooks';
 
 /**
  * Sibling Imports
@@ -23,17 +23,17 @@ import { Alert } from './Alert';
 export function AlertsOverlay() {
   /** Hooks **/
 
-  const alert = useAlert();
+  const alerter = useAlerter();
 
   /** Output **/
   
   return (
     <Fragment>
       {
-        (alert.alerts || []).map((item, index) => (
+        (alerter.alerts || []).map((item, index) => (
           <Alert
             key={ index }
-            { ...alert.fromKey(item) }
+            { ...alerter.fromKey(item) }
           />
         ))
       }

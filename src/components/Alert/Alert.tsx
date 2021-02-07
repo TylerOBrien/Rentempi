@@ -9,7 +9,7 @@ import React from 'react';
 */
 
 import { Text, View } from '~/components/Base';
-import { AlertItem } from '~/hooks/Alert';
+import { AlertItem } from '~/hooks/Alerter';
 import { TailwindEnabledProps } from '~/util/TailwindCss'
 
 /**

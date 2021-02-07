@@ -24,7 +24,7 @@ export type AlertItem = {
   when?: Date;
 }
 
-export interface AlertHook {
+export interface AlerterHook {
   alerts: Array<string>;
   fromKey: (key:string) => AlertItem;
   message: (value:string) => void;
@@ -37,7 +37,7 @@ export interface AlertHook {
  * Exports
 */
 
-export function useAlert():AlertHook {
+export function useAlerter():AlerterHook {
   /** Contexts **/
 
   const { alerts, setAlerts, alertDataRef, alertTotalCountRef } = useContext(AlertContext);

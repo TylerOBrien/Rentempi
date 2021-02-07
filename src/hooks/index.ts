@@ -2,7 +2,7 @@
  * Exports
 */
 
-export { useAlert } from './Alert';
+export { useAlerter } from './Alerter';
 export { useAuth } from './Auth';
 export { useForm } from './Form';
 export { useNetInfo } from './NetInfo';
