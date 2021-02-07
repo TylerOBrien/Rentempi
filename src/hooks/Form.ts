@@ -38,11 +38,6 @@ export function useForm() {
 
   const { errors, setErrors } = useContext(FormContext);
 
-  /** States **/
-
-  const [ isLoading, setIsLoading ] = useState<boolean>();
-  const [ isSubmitting, setIsSubmitting ] = useState<boolean>();
-
   /** Event Handlers **/
 
   const handleError = <Fields>(formik:FormikHelpers<Fields>, error:AxiosError) => {
@@ -64,10 +59,6 @@ export function useForm() {
 
   return {
     errors,
-    handleError,
-    isLoading,
-    setIsLoading,
-    isSubmitting,
-    setIsSubmitting
+    handleError
   };
 }
