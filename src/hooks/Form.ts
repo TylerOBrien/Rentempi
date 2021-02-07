@@ -2,7 +2,7 @@
  * Global Imports
 */
 
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { FormikHelpers } from 'formik';
 import { AxiosError } from 'axios';
 
@@ -10,6 +10,7 @@ import { AxiosError } from 'axios';
  * Local Imports
 */
 
+import { FormContext } from '~/providers/FormProvider';
 import { useAlerter } from '~/hooks';
 
 /**
@@ -33,6 +34,10 @@ export function useForm() {
 
   const alerter = useAlerter();
 
+  /** Contexts **/
+
+  const { errors, setErrors } = useContext(FormContext);
+
   /** States **/
 
   const [ isLoading, setIsLoading ] = useState<boolean>();
@@ -41,10 +46,13 @@ export function useForm() {
   /** Event Handlers **/
 
   const handleError = <Fields>(formik:FormikHelpers<Fields>, error:AxiosError) => {
+    const newErrors = {};
+
     for (const field in error.response.data.errors) {
-      formik.setFieldError(field, error.response.data.errors[field].join('\t'));
+      newErrors[field] = error.response.data.errors[field].join('\t');
     }
     
+    setErrors(newErrors);
     formik.setSubmitting(false);
 
     if (error.response.data.message) {
@@ -55,6 +63,7 @@ export function useForm() {
   /** Output **/
 
   return {
+    errors,
     handleError,
     isLoading,
     setIsLoading,
