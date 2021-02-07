@@ -2,6 +2,7 @@
  * Local Imports
 */
 
+import { ImageModel } from '~/models';
 import { Api, Authorization, ResourceIdentity } from '~/util/Api';
 
 /**
@@ -10,19 +11,29 @@ import { Api, Authorization, ResourceIdentity } from '~/util/Api';
 
 const endpoint = 'images';
 
-/**
- * Exports
+/*
+|--------------------------------------------------------------------------
+| Index
+|--------------------------------------------------------------------------
 */
+
+export interface IndexImageRequest {
+  filter?: Array<any>;
+}
+
+export interface IndexImageResponse extends ImageModel {
+  //
+}
 
 /**
  * Retrieve listing of all images.
  * 
  * @param {Authorization} auth
- * @param {any} data
+ * @param {IndexImageRequest} data
  * 
- * @return {Promise<any>}
+ * @return {Promise<IndexImageResponse>}
  */
-export function IndexImageService(auth:Authorization, data?:any):Promise<any> {
+export function IndexImageService(auth:Authorization, data?:IndexImageRequest):Promise<IndexImageResponse> {
   const config = {
     data,
     method: 'GET',
@@ -32,16 +43,30 @@ export function IndexImageService(auth:Authorization, data?:any):Promise<any> {
   return Api.call(config, auth);
 }
 
+/*
+|--------------------------------------------------------------------------
+| Show
+|--------------------------------------------------------------------------
+*/
+
+export interface ShowImageRequest {
+  //
+}
+
+export interface ShowImageResponse extends ImageModel {
+  //
+}
+
 /**
  * Retrieve an image.
  * 
  * @param {Authorization} auth
  * @param {ResourceIdentity} image
- * @param {any} data
+ * @param {ShowImageRequest} data
  * 
- * @return {Promise<any>}
+ * @return {Promise<ShowImageResponse>}
  */
-export function ShowImageService(auth:Authorization, image:ResourceIdentity, data?:any):Promise<any> {
+export function ShowImageService(auth:Authorization, image:ResourceIdentity, data?:ShowImageRequest):Promise<ShowImageResponse> {
   const config = {
     data,
     method: 'GET',
@@ -51,15 +76,29 @@ export function ShowImageService(auth:Authorization, image:ResourceIdentity, dat
   return Api.call(config, auth);
 }
 
+/*
+|--------------------------------------------------------------------------
+| Store
+|--------------------------------------------------------------------------
+*/
+
+export interface StoreImageRequest {
+  //
+}
+
+export interface StoreImageResponse extends ImageModel {
+  //
+}
+
 /**
  * Save an image.
  * 
  * @param {Authorization} auth
- * @param {any} data
+ * @param {StoreImageRequest} data
  * 
- * @return {Promise<any>}
+ * @return {Promise<StoreImageResponse>}
  */
-export function StoreImageService(auth:Authorization, data:any):Promise<any> {
+export function StoreImageService(auth:Authorization, data:StoreImageRequest):Promise<StoreImageResponse> {
   const config = {
     data,
     method: 'POST',
@@ -69,16 +108,30 @@ export function StoreImageService(auth:Authorization, data:any):Promise<any> {
   return Api.call(config, auth);
 }
 
+/*
+|--------------------------------------------------------------------------
+| Update
+|--------------------------------------------------------------------------
+*/
+
+export interface UpdateImageRequest {
+  //
+}
+
+export interface UpdateImageResponse {
+  //
+}
+
 /**
  * Update an image.
  * 
  * @param {Authorization} auth
  * @param {ResourceIdentity} image
- * @param {any} data
+ * @param {UpdateImageRequest} data
  * 
- * @return {Promise<any>}
+ * @return {Promise<UpdateImageResponse>}
  */
-export function UpdateImageService(auth:Authorization, image:ResourceIdentity, data:any):Promise<any> {
+export function UpdateImageService(auth:Authorization, image:ResourceIdentity, data:UpdateImageRequest):Promise<UpdateImageResponse> {
   const config = {
     data,
     method: 'PUT',
@@ -88,16 +141,30 @@ export function UpdateImageService(auth:Authorization, image:ResourceIdentity, d
   return Api.call(config, auth);
 }
 
+/*
+|--------------------------------------------------------------------------
+| Destroy
+|--------------------------------------------------------------------------
+*/
+
+export interface DestroyImageRequest {
+  //
+}
+
+export interface DestroyImageResponse {
+  //
+}
+
 /**
  * Remove an image.
  * 
  * @param {Authorization} auth
  * @param {ResourceIdentity} image
- * @param {any} data
+ * @param {DestroyImageRequest} data
  * 
- * @return {Promise<any>}
+ * @return {Promise<DestroyImageResponse>}
  */
-export function DestroyImageService(auth:Authorization, image:ResourceIdentity, data?:any):Promise<any> {
+export function DestroyImageService(auth:Authorization, image:ResourceIdentity, data?:DestroyImageRequest):Promise<DestroyImageResponse> {
   const config = {
     data,
     method: 'DELETE',
