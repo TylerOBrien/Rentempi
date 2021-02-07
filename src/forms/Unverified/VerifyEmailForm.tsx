@@ -19,12 +19,16 @@ import { FormikSubmit } from '~/util/Formik';
 
 export interface VerifyEmailFields {
   code: string;
-};
+}
+
+export interface VeryEmailFormContext {
+  
+}
 
 export interface VerifyEmailFormProps {
-  context: React.Context<unknown>;
+  context: React.Context<VeryEmailFormContext>;
   onSubmit: FormikSubmit<VerifyEmailFields>;
-};
+}
 
 /**
  * Locals

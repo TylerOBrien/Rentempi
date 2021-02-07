@@ -22,12 +22,16 @@ export interface EditPasswordFields {
   password: string;
   password_confirmation: string;
   password_current: string;
-};
+}
+
+export interface EditPasswordFormContext {
+  
+}
 
 export interface EditPasswordFormProps {
-  context: React.Context<unknown>;
+  context: React.Context<EditPasswordFormContext>;
   onSubmit: FormikSubmit<EditPasswordFields>;
-};
+}
 
 /**
  * Locals

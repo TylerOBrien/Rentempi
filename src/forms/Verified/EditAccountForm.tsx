@@ -20,12 +20,16 @@ import { FormikSubmit } from '~/util/Formik';
 
 export interface EditAccountFields {
   code: string;
-};
+}
+
+export interface EditAccountFormContext {
+  
+}
 
 export interface EditAccountFormProps {
-  context: React.Context<unknown>;
+  context: React.Context<EditAccountFormContext>;
   onSubmit: FormikSubmit<EditAccountFields>;
-};
+}
 
 /**
  * Locals
