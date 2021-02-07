@@ -30,11 +30,11 @@ export interface PrimaryGuestLayoutProps {
 
 export function PrimaryGuestLayout(props:PrimaryGuestLayoutProps) {
   return (
-    <Fragment>
+    <View tailwind='flex-auto bg-primary'>
       <Header />
       <View>
         { props.children }
       </View>
-    </Fragment>
+    </View>
   );
 }

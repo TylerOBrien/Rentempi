@@ -9,7 +9,7 @@ import React from 'react';
 */
 
 import { AppConfig } from '~/config';
-import { Text, View } from '~/components/Base';
+import { Text } from '~/components/Base';
 
 /**
  * Exports
@@ -17,8 +17,8 @@ import { Text, View } from '~/components/Base';
 
 export function Header() {
   return (
-    <View>
-      <Text>{ AppConfig.name }</Text>
-    </View>
+    <Text tailwind='text-center text-2xl'>
+      Welcome to { AppConfig.name }
+    </Text>
   );
 }

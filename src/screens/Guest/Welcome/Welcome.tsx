@@ -10,12 +10,19 @@ import React from 'react';
 
 import { AppDriver } from '~/system';
 
-import { Text } from '~/components/Base';
+import { Text, View } from '~/components/Base';
+import { Divider } from '~/components/Divider';
 import { Button } from '~/components/Button';
 import { Row } from '~/components/Grid';
 import { Link } from '~/components/Link';
 
 import { WelcomeGuestLayout } from '~/layouts/Guest';
+
+/**
+ * Sibling Imports
+*/
+
+import { AuthLinks, Greeting } from './components';
 
 /**
  * Types/Interfaces
@@ -32,24 +39,23 @@ export interface WelcomeProps {
 export function Welcome(props:WelcomeProps) {
   return (
     <WelcomeGuestLayout>
-      <Text tailwind='text-2xl text-white'>
-        Hello! This is the app!
-      </Text>
-      <Row>
-        <Link
-          label='Login'
-          container={ Button }
-          to={ AppDriver.Screen.Guest.Login }
-        />
-        <Link
-          label='Create Account'
-          container={ Button }
-          to={ AppDriver.Screen.Guest.Register }
-        />
-      </Row>
-      <Link to={ AppDriver.Screen.Guest.ForgotPassword }>
-        <Text tailwind='text-lg text-white'>
-          Trouble signing in?
+      <Greeting />
+      <AuthLinks />
+
+      <Divider
+        label='Need help?'
+        tailwind={{
+          container: 'my-8',
+          line: 'bg-gray-400'
+        }}
+      />
+
+      <Link
+        tailwind='self-center px-8 py-4 rounded-2xl bg-yellow-400'
+        to={ AppDriver.Screen.Guest.ForgotPassword }
+      >
+        <Text tailwind='text-lg text-black'>
+          Recover Account
         </Text>
       </Link>
     </WelcomeGuestLayout>

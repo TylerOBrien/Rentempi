@@ -6,9 +6,9 @@ module.exports = {
         'full': '128px'
       },
       colors: {
-        'primary': '#111415',
-        'secondary': '#080a0b',
-        'tertiary': '#ffffff'
+        'primary': '#398ab3',
+        'secondary': '#5496b8',
+        'tertiary': '#38718f'
       },
       width: {
         '1/7': '14.285714%',

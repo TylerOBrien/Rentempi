@@ -2,7 +2,7 @@
  * Global Imports
 */
 
-import React, { Fragment, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 
 /**
  * Local Imports
@@ -22,7 +22,7 @@ import { Header } from './components';
 
 export interface WelcomeGuestLayoutProps {
   children: ReactNode;
-};
+}
 
 /**
  * Exports
@@ -30,11 +30,13 @@ export interface WelcomeGuestLayoutProps {
 
 export function WelcomeGuestLayout(props:WelcomeGuestLayoutProps) {
   return (
-    <Fragment>
-      <Header />
-      <View>
-        { props.children }
+    <View tailwind='flex-auto justify-center bg-primary'>
+      <View tailwind='self-center rounded-2xl w-1/2 border-2 border-secondary'>
+        <View tailwind='w-full p-8 rounded-2xl border-2 border-tertiary bg-white'>
+          <Header />
+          { props.children }
+        </View>
       </View>
-    </Fragment>
+    </View>
   );
 }
