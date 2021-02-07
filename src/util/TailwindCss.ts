@@ -47,6 +47,7 @@ export interface TailwindEnabledProps {
 */
 
 const colors = {};
+const tailwinds = {};
 const fontSizeRegex = new RegExp('text-(xs|sm|base|lg|xl|2xl|3xl|4xl|5xl|6xl)');
 
 /**
@@ -110,6 +111,10 @@ function hasTrackingPrefix(entry:string):boolean {
 function parse(className:string, fontSizes?:RegExpExecArray):object {
   if (!className) {
     Assert.ThrowUnexpectedEmptyError('className', 'string');
+  }
+
+  if (className in tailwinds) {
+    return tailwinds[className];
   }
 
   const style = { letterSpacing: undefined };
@@ -182,7 +187,7 @@ function parse(className:string, fontSizes?:RegExpExecArray):object {
     delete style[key];
   }
 
-  return style;
+  return tailwinds[className] = style;
 }
 
 /**
