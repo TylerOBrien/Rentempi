@@ -2,6 +2,7 @@
  * Local Imports
 */
 
+import { ProfileModel } from '~/models';
 import { Api, Authorization, ResourceIdentity } from '~/util/Api';
 
 /**
@@ -10,19 +11,29 @@ import { Api, Authorization, ResourceIdentity } from '~/util/Api';
 
 const endpoint = 'profiles';
 
-/**
- * Exports
+/*
+|--------------------------------------------------------------------------
+| Index
+|--------------------------------------------------------------------------
 */
+
+export interface IndexProfileRequest {
+  filter?: any;
+}
+
+export interface IndexProfileResponse extends ProfileModel {
+  //
+}
 
 /**
  * Retrieve listing of all profiles.
  * 
  * @param {Authorization} auth
- * @param {any} data
+ * @param {IndexProfileRequest} data
  * 
- * @return {Promise<any>}
+ * @return {Promise<IndexProfileResponse>}
  */
-export function IndexProfileService(auth:Authorization, data:any):Promise<any> {
+export function IndexProfileService(auth:Authorization, data?:IndexProfileRequest):Promise<IndexProfileResponse> {
   const config = {
     data,
     method: 'GET',
@@ -32,16 +43,30 @@ export function IndexProfileService(auth:Authorization, data:any):Promise<any> {
   return Api.call(config, auth);
 }
 
+/*
+|--------------------------------------------------------------------------
+| Show
+|--------------------------------------------------------------------------
+*/
+
+export interface ShowProfileRequest {
+  //
+}
+
+export interface ShowProfileResponse extends ProfileModel {
+  //
+}
+
 /**
  * Retrieve a profile.
  * 
  * @param {Authorization} auth
  * @param {ResourceIdentity} profile
- * @param {any} data
+ * @param {ShowProfileRequest} data
  * 
- * @return {Promise<any>}
+ * @return {Promise<ShowProfileResponse>}
  */
-export function ShowProfileService(auth:Authorization, profile:ResourceIdentity, data:any):Promise<any> {
+export function ShowProfileService(auth:Authorization, profile:ResourceIdentity, data?:ShowProfileRequest):Promise<ShowProfileResponse> {
   const config = {
     data,
     method: 'GET',
@@ -51,15 +76,29 @@ export function ShowProfileService(auth:Authorization, profile:ResourceIdentity,
   return Api.call(config, auth);
 }
 
+/*
+|--------------------------------------------------------------------------
+| Store
+|--------------------------------------------------------------------------
+*/
+
+export interface StoreProfileRequest {
+  //
+}
+
+export interface StoreProfileResponse extends ProfileModel {
+  //
+}
+
 /**
  * Save a profile.
  * 
  * @param {Authorization} auth
- * @param {any} data
+ * @param {StoreProfileRequest} data
  * 
- * @return {Promise<any>}
+ * @return {Promise<StoreProfileResponse>}
  */
-export function StoreProfileService(auth:Authorization, data:any):Promise<any> {
+export function StoreProfileService(auth:Authorization, data:StoreProfileRequest):Promise<StoreProfileResponse> {
   const config = {
     data,
     method: 'POST',
@@ -69,16 +108,30 @@ export function StoreProfileService(auth:Authorization, data:any):Promise<any> {
   return Api.call(config, auth);
 }
 
+/*
+|--------------------------------------------------------------------------
+| Update
+|--------------------------------------------------------------------------
+*/
+
+export interface UpdateProfileRequest {
+  //
+}
+
+export interface UpdateProfileResponse {
+  //
+}
+
 /**
  * Update a profile.
  * 
  * @param {Authorization} auth
  * @param {ResourceIdentity} profile
- * @param {any} data
+ * @param {UpdateProfileRequest} data
  * 
- * @return {Promise<any>}
+ * @return {Promise<UpdateProfileResponse>}
  */
-export function UpdateProfileService(auth:Authorization, profile:ResourceIdentity, data:any):Promise<any> {
+export function UpdateProfileService(auth:Authorization, profile:ResourceIdentity, data:UpdateProfileRequest):Promise<UpdateProfileResponse> {
   const config = {
     data,
     method: 'PUT',
@@ -88,16 +141,30 @@ export function UpdateProfileService(auth:Authorization, profile:ResourceIdentit
   return Api.call(config, auth);
 }
 
+/*
+|--------------------------------------------------------------------------
+| Destroy
+|--------------------------------------------------------------------------
+*/
+
+export interface DestroyProfileRequest {
+  //
+}
+
+export interface DestroyProfileResponse {
+  //
+}
+
 /**
  * Remove a profile.
  * 
  * @param {Authorization} auth
  * @param {ResourceIdentity} profile
- * @param {any} data
+ * @param {DestroyProfileRequest} data
  * 
- * @return {Promise<any>}
+ * @return {Promise<DestroyProfileResponse>}
  */
-export function DestroyProfileService(auth:Authorization, profile:ResourceIdentity, data:any):Promise<any> {
+export function DestroyProfileService(auth:Authorization, profile:ResourceIdentity, data?:DestroyProfileRequest):Promise<DestroyProfileResponse> {
   const config = {
     data,
     method: 'DELETE',
