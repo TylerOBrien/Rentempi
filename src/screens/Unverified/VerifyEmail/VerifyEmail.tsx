@@ -2,18 +2,18 @@
  * Global Imports
 */
 
-import PropTypes from 'prop-types';
-import React, { useEffect, useContext, useState } from 'react';
-import { useNavigation } from '@react-navigation/native';
+import React from 'react';
+import { FormikHelpers } from 'formik';
 
 /**
  * Local Imports
 */
 
+import { VerifyEmailFields, VerifyEmailForm, VerifyEmailFormContext } from '~/forms/Unverified/VerifyEmailForm';
 import { PrimaryUnverifiedLayout } from '~/layouts/Unverified';
+import { StoreEmailVerificationResponse } from '~/services/EmailVerification';
 
 import { useForm, useService } from '~/hooks';
-import { FormHook } from '~/hooks/Form';
 
 /**
  * Types/Interfaces
@@ -23,15 +23,11 @@ export interface VerifyEmailProps {
   
 }
 
-export interface VerifyEmailContextInterface {
-  form: FormHook;
-}
-
 /**
  * Locals
 */
 
-const VerifyEmailContext = React.createContext<VerifyEmailContextInterface>(undefined);
+const VerifyEmailContext = React.createContext<VerifyEmailFormContext>(undefined);
 
 /**
  * Exports
@@ -41,15 +37,31 @@ export function VerifyEmail(props:VerifyEmailProps) {
   /** Hooks **/
   
   const form = useForm();
-  const navigation = useNavigation();
   const service = useService();
+  
+  /** Event Handlers **/
+  
+  const handleSuccess = (response:StoreEmailVerificationResponse) => {
+    //
+  };
+  
+  const handleSubmit = (values:VerifyEmailFields, formik:FormikHelpers<VerifyEmailFields>) => {
+    service.call('EmailVerification.Store', values)
+      .then(handleSuccess)
+      .catch(error => form.handleError(formik, error));
+  };
   
   /** Output **/
   
   return (
-    <PrimaryUnverifiedLayout>
-      
-    </PrimaryUnverifiedLayout>
+    <VerifyEmailContext.Provider value={{  }}>
+      <PrimaryUnverifiedLayout>
+        <VerifyEmailForm
+          context={ VerifyEmailContext }
+          onSubmit={ handleSubmit }
+        />
+      </PrimaryUnverifiedLayout>
+    </VerifyEmailContext.Provider>
   );
 }
 
