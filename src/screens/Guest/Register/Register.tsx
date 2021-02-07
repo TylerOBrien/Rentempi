@@ -66,10 +66,7 @@ export function Register(props:RegisterProps) {
   const handleSubmit = (values:RegisterFields, formik:FormikHelpers<RegisterFields>) => {
     service.call<RegisterAuthResponse>('Auth.Register', values)
       .then(handleSuccess)
-      .catch(error => {
-        form.setError(error);
-        formik.setSubmitting(false);
-      });
+      .catch(error => form.handleError(formik, error));
   };
   
   /** Output **/
