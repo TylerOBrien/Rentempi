@@ -2,7 +2,7 @@
  * Global Imports
 */
 
-import { useContext } from 'react';
+import { ReactNode, useContext } from 'react';
 
 /**
  * Local Imports
@@ -18,12 +18,19 @@ export type AlertIterator = {
   [Symbol.iterator]: () => Generator<any, void, unknown>;
 }
 
+export type AlertItem = {
+  type: string;
+  message: ReactNode;
+}
+
 export interface AlertHook {
+  alerts: Array<string>;
   iterator: AlertIterator;
   message: (content:any) => void;
   notice: (content:any) => void;
   warning: (content:any) => void;
   error: (content:any) => void;
+  fromKey: (key:string) => AlertItem;
 }
 
 /**
@@ -33,7 +40,7 @@ export interface AlertHook {
 export function useAlert():AlertHook {
   /** Contexts **/
 
-  const { alertDataRef, alertTotalCountRef, setAlerts } = useContext(AlertContext);
+  const { alerts, setAlerts, alertDataRef, alertTotalCountRef } = useContext(AlertContext);
 
   /** Add/Remove Alerts **/
 
@@ -72,6 +79,10 @@ export function useAlert():AlertHook {
     });
   };
 
+  const fromKey = (key:string):AlertItem => {
+    return alertDataRef.current[key];
+  };
+
   /** Generator **/
 
   const iterator = {
@@ -103,6 +114,6 @@ export function useAlert():AlertHook {
   /** Output **/
 
   return {
-    iterator, message, notice, warning, error
+    alerts, fromKey, iterator, message, notice, warning, error
   };
 }
