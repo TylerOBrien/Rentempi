@@ -3,7 +3,9 @@
 */
 
 import React, { ReactNode } from 'react';
-import { Pressable as BasePressable } from 'react-native';
+import {
+  Pressable as BasePressable,
+  PressableProps as BasePressableProps } from 'react-native';
 
 /**
  * Local Imports
@@ -15,22 +17,13 @@ import { Tailwind, StyleProp, TailwindBaseProp } from '~/util/TailwindCss';
  * Types/Interfaces
 */
 
-export interface PressableProps {
-  style?: StyleProp;
+export interface PressableProps extends BasePressableProps {
   styleUnpressed?: StyleProp;
   stylePressed?: StyleProp;
   tailwind?: TailwindBaseProp;
   tailwindUnpressed?: TailwindBaseProp;
   tailwindPressed?: TailwindBaseProp;
-
-  delayLongPress?: Number;
-  disabled?: Boolean;
-
   children?: ReactNode;
-  
-  onLayout?: Function;
-  onPress?: Function;
-  onLongPress?: Function;
 }
 
 /**
