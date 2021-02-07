@@ -174,6 +174,14 @@ function parse(className:string, fontSizes?:RegExpExecArray):object {
     }
   }
 
+  for (const key in style) {
+    if (key.length > 3 && ( key[0] !== '-' && key[1] !== '-' )) {
+      continue;
+    }
+
+    delete style[key];
+  }
+
   return style;
 }
 
