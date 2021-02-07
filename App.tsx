@@ -13,9 +13,9 @@ import FlashMessage from 'react-native-flash-message';
 */
 
 import { ThemeConfig } from '~/config';
-
 import { EntryPoint } from '~/components/EntryPoint';
 import { AppContext, AppProvider } from '~/providers/AppProvider';
+import { Tailwind } from '~/util';
 
 /**
  * Locals
@@ -24,7 +24,7 @@ import { AppContext, AppProvider } from '~/providers/AppProvider';
 function Main() {
   /** Contexts **/
 
-  const { flashMessagePosition, statusBarStyle, isStatusBarHidden } = useContext(AppContext);
+  const { flashMessagePosition, statusBarStyle, backgroundColor, isStatusBarHidden } = useContext(AppContext);
   
   /** Output **/
 
@@ -34,7 +34,7 @@ function Main() {
         hidden={ isStatusBarHidden }
         barStyle={ statusBarStyle || ThemeConfig.defaults.statusBarStyle }
       />
-      <SafeAreaView style={ styles.container }>
+      <SafeAreaView style={ backgroundColor ? [ styles.container, { backgroundColor } ] : styles.container }>
         <EntryPoint />
         <FlashMessage position={ flashMessagePosition || 'top' } />
       </SafeAreaView>
@@ -62,6 +62,7 @@ export function App() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    backgroundColor: Tailwind.color('primary')
   }
 });
