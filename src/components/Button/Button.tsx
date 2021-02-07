@@ -64,6 +64,10 @@ function ButtonLabel(props:ButtonLabelProps) {
   );
 }
 
+ButtonLabel.defaultProps = {
+  loading: false
+};
+
 /**
  * Exports
 */
