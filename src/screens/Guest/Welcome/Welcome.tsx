@@ -2,7 +2,7 @@
  * Global Imports
 */
 
-import React from 'react';
+import React, { useState } from 'react';
 
 /**
  * Local Imports
@@ -22,7 +22,7 @@ import { WelcomeGuestLayout } from '~/layouts/Guest';
  * Sibling Imports
 */
 
-import { AuthLinks, Greeting } from './components';
+import { AuthLinks, Greeting, HelpLinks, ContactUsModal } from './components';
 
 /**
  * Types/Interfaces
@@ -37,35 +37,36 @@ export interface WelcomeProps {
 */
 
 export function Welcome(props:WelcomeProps) {
+  /** States **/
+
+  const [ isContactUsModalVisible, setIsContactUsModalVisible ] = useState<boolean>();
+
+  /** Event Handlers **/
+
+  /**
+   * @return {void}
+   */
+  const handleContactUs = ():void => {
+    setIsContactUsModalVisible(true);
+  };
+
+  /**
+   * @return {void}
+   */
+  const handleCloseContactUsModal = ():void => {
+    setIsContactUsModalVisible(false);
+  };
+
+  /** Output **/
+
   return (
     <WelcomeGuestLayout>
       <Greeting />
       <AuthLinks />
-
-      <Divider
-        label='Need help?'
-        tailwind={{
-          container: 'my-8',
-          line: 'bg-gray-400'
-        }}
-      />
-
-      <Link
-        tailwind='self-center w-45p py-4 rounded-2xl bg-yellow-400'
-        to={ AppDriver.Screen.Guest.ForgotPassword }
-      >
-        <Text tailwind='text-center text-lg text-black'>
-          Recover Account
-        </Text>
-      </Link>
-
-      <Button
-        label='Contact Us'
-        onPress={ () => {} }
-        tailwind={{
-          container: 'self-center w-45p mt-4 py-4 rounded-2xl bg-yellow-400',
-          label: 'text-center text-lg'
-        }}
+      <HelpLinks onPressContactUs={ handleContactUs } />
+      <ContactUsModal
+        visible={ isContactUsModalVisible }
+        onClose={ handleCloseContactUsModal }
       />
     </WelcomeGuestLayout>
   );
