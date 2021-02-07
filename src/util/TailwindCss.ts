@@ -267,8 +267,6 @@ function props(properties:any):any {
   
   const parsed = parse(aliased(properties.tailwind));
 
-  console.log(parsed);
-
   if (!properties.style) {
     return Object.assign({}, properties, { style: parsed, tailwind: undefined });
   }
