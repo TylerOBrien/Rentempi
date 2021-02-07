@@ -2,7 +2,7 @@
  * Global Imports
 */
 
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { FormikHelpers } from 'formik';
 import { AxiosError } from 'axios';
 
@@ -18,18 +18,15 @@ import { useAlerter } from '~/hooks';
 */
 
 export interface FormHook {
+  errors: any;
   handleError: (formik:FormikHelpers<any>, error:AxiosError) => void;
-  isLoading: boolean;
-  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
-  isSubmitting: boolean;
-  setIsSubmitting: React.Dispatch<React.SetStateAction<boolean>>;
-};
+}
 
 /**
  * Exports
 */
 
-export function useForm() {
+export function useForm():FormHook {
   /** Hooks **/
 
   const alerter = useAlerter();
