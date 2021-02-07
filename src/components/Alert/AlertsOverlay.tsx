@@ -2,7 +2,7 @@
  * Global Imports
 */
 
-import React from 'react';
+import React, { Fragment } from 'react';
 
 /**
  * Local Imports
@@ -28,11 +28,15 @@ export function AlertsOverlay() {
   /** Output **/
   
   return (
-    (alert.alerts || []).map((item, index) => (
-      <Alert
-        key={ index }
-        item={ alert.fromKey(item) }
-      />
-    ))
+    <Fragment>
+      {
+        (alert.alerts || []).map((item, index) => (
+          <Alert
+            key={ index }
+            item={ alert.fromKey(item) }
+          />
+        ))
+      }
+    </Fragment>
   );
 }
