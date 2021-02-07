@@ -2,6 +2,7 @@
  * Local Imports
 */
 
+import { AddressModel } from '~/models';
 import { Api, Authorization, ResourceIdentity } from '~/util/Api';
 
 /**
@@ -10,19 +11,29 @@ import { Api, Authorization, ResourceIdentity } from '~/util/Api';
 
 const endpoint = 'addresses';
 
-/**
- * Exports
+/*
+|--------------------------------------------------------------------------
+| Index
+|--------------------------------------------------------------------------
 */
+
+export interface IndexAddressRequest {
+  filter?: Array<any>;
+}
+
+export interface IndexAddressResponse extends AddressModel {
+  //
+}
 
 /**
  * Retrieve listing of all addresses.
  * 
  * @param {Authorization} auth
- * @param {any} data
+ * @param {IndexAddressRequest} data
  * 
- * @return {Promise<any>}
+ * @return {Promise<IndexAddressResponse>}
  */
-export function IndexAddressService(auth:Authorization, data?:any):Promise<any> {
+export function IndexAddressService(auth:Authorization, data?:IndexAddressRequest):Promise<IndexAddressResponse> {
   const config = {
     data,
     method: 'GET',
@@ -32,16 +43,30 @@ export function IndexAddressService(auth:Authorization, data?:any):Promise<any> 
   return Api.call(config, auth);
 }
 
+/*
+|--------------------------------------------------------------------------
+| Show
+|--------------------------------------------------------------------------
+*/
+
+export interface ShowAddressRequest {
+  //
+}
+
+export interface ShowAddressResponse extends AddressModel {
+  //
+}
+
 /**
  * Retrieve an address.
  * 
  * @param {Authorization} auth
  * @param {ResourceIdentity} address
- * @param {any} data
+ * @param {ShowAddressRequest} data
  * 
- * @return {Promise<any>}
+ * @return {Promise<ShowAddressResponse>}
  */
-export function ShowAddressService(auth:Authorization, address:ResourceIdentity, data?:any):Promise<any> {
+export function ShowAddressService(auth:Authorization, address:ResourceIdentity, data?:ShowAddressRequest):Promise<ShowAddressResponse> {
   const config = {
     data,
     method: 'GET',
@@ -51,15 +76,29 @@ export function ShowAddressService(auth:Authorization, address:ResourceIdentity,
   return Api.call(config, auth);
 }
 
+/*
+|--------------------------------------------------------------------------
+| Store
+|--------------------------------------------------------------------------
+*/
+
+export interface StoreAddressRequest {
+  //
+}
+
+export interface StoreAddressResponse extends AddressModel {
+  //
+}
+
 /**
  * Save an address.
  * 
  * @param {Authorization} auth
- * @param {any} data
+ * @param {StoreAddressRequest} data
  * 
- * @return {Promise<any>}
+ * @return {Promise<StoreAddressResponse>}
  */
-export function StoreAddressService(auth:Authorization, data:any):Promise<any> {
+export function StoreAddressService(auth:Authorization, data:StoreAddressRequest):Promise<StoreAddressResponse> {
   const config = {
     data,
     method: 'POST',
@@ -69,16 +108,30 @@ export function StoreAddressService(auth:Authorization, data:any):Promise<any> {
   return Api.call(config, auth);
 }
 
+/*
+|--------------------------------------------------------------------------
+| Update
+|--------------------------------------------------------------------------
+*/
+
+export interface UpdateAddressRequest {
+  //
+}
+
+export interface UpdateAddressResponse {
+  //
+}
+
 /**
  * Update an address.
  * 
  * @param {Authorization} auth
  * @param {ResourceIdentity} address
- * @param {any} data
+ * @param {UpdateAddressRequest} data
  * 
- * @return {Promise<any>}
+ * @return {Promise<UpdateAddressResponse>}
  */
-export function UpdateAddressService(auth:Authorization, address:ResourceIdentity, data:any):Promise<any> {
+export function UpdateAddressService(auth:Authorization, address:ResourceIdentity, data:UpdateAddressRequest):Promise<UpdateAddressResponse> {
   const config = {
     data,
     method: 'PUT',
@@ -86,6 +139,20 @@ export function UpdateAddressService(auth:Authorization, address:ResourceIdentit
   };
 
   return Api.call(config, auth);
+}
+
+/*
+|--------------------------------------------------------------------------
+| Destroy
+|--------------------------------------------------------------------------
+*/
+
+export interface DestroyAddressRequest {
+  //
+}
+
+export interface DestroyAddressResponse {
+  //
 }
 
 /**
@@ -97,7 +164,7 @@ export function UpdateAddressService(auth:Authorization, address:ResourceIdentit
  * 
  * @return {Promise<any>}
  */
-export function DestroyAddressService(auth:Authorization, address:ResourceIdentity, data?:any):Promise<any> {
+export function DestroyAddressService(auth:Authorization, address:ResourceIdentity, data?:DestroyAddressRequest):Promise<DestroyAddressResponse> {
   const config = {
     data,
     method: 'DELETE',
