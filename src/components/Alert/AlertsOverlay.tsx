@@ -2,12 +2,14 @@
  * Global Imports
 */
 
-import React, { Fragment } from 'react';
+import React from 'react';
+import { StyleSheet } from 'react-native';
 
 /**
  * Local Imports
 */
 
+import { View } from '~/components/Base';
 import { useAlerter } from '~/hooks';
 
 /**
@@ -28,7 +30,7 @@ export function AlertsOverlay() {
   /** Output **/
   
   return (
-    <Fragment>
+    <View style={ styles.container }>
       {
         (alerter.alerts || []).map((item, index) => (
           <Alert
@@ -37,6 +39,18 @@ export function AlertsOverlay() {
           />
         ))
       }
-    </Fragment>
+    </View>
   );
 }
+
+/**
+ * Styles
+*/
+
+const styles = StyleSheet.create({
+  container: {
+    height: '100%',
+    flexDirection: 'column',
+    justifyContent: 'flex-end'
+  }
+});
