@@ -9,6 +9,7 @@ import { StyleSheet, View } from 'react-native';
  * Local Imports
 */
 
+import { AlertsOverlay } from '~/components/Alert';
 import { UserStatusGuard } from '~/components/Guard';
 import { GuestStack, UnverifiedStack, VerifiedStack } from '~/navigation/stacks';
 import { ApiProvider, AlertProvider, AuthProvider, UserProvider } from '~/providers';
@@ -30,7 +31,7 @@ function EntryPointMain() {
 function EntryPointOverlay() {
   return (
     <View style={ styles.overlay }>
-
+      <AlertsOverlay />
     </View>
   );
 }
