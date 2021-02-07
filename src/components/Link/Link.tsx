@@ -55,8 +55,8 @@ export function Link(props:LinkProps) {
 
   const renderContainedLabel = () => (
     <props.labelContainer
-      { ...props.labelContainerProps }
       tailwind={ Tailwind.get(props.tailwind, 'label', false, false) }
+      { ...props.labelContainerProps }
     >
       { props.label || props.to }
     </props.labelContainer>
@@ -66,8 +66,8 @@ export function Link(props:LinkProps) {
   
   return (
     <props.container
-      { ...props.containerProps }
       tailwind={ Tailwind.get(props.tailwind, 'container') }
+      { ...props.containerProps }
       disabled={ props.disabled }
       onPress={ handlePress }
     >
