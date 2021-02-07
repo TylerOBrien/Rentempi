@@ -15,16 +15,21 @@ import { Modal } from '~/components/Modal';
  * Types/Interfaces
 */
 
+export interface ItemPickerItem {
+  id: number;
+  name: string;
+}
+
 export interface ItemPickerContextInterface {
   isActive: boolean;
   setIsActive: React.Dispatch<React.SetStateAction<boolean>>;
 
-  itemsRef: React.MutableRefObject<Array<any>>;
-  selectedValueRef: React.MutableRefObject<any>;
+  itemsRef: React.MutableRefObject<Array<ItemPickerItem>>;
+  selectedValueRef: React.MutableRefObject<ItemPickerItem>;
   handleChooseRef: React.MutableRefObject<Function>;
   handleCancelRef: React.MutableRefObject<Function>;
   handleResetRef: React.MutableRefObject<Function>;
-};
+}
 
 /**
  * Contexts
@@ -39,8 +44,8 @@ export const ItemPickerContext = React.createContext<ItemPickerContextInterface>
 export function ItemPickerProvider(props:any) {
   /** Refs **/
 
-  const itemsRef = useRef<Array<any>>();
-  const selectedValueRef = useRef<any>();
+  const itemsRef = useRef<Array<ItemPickerItem>>();
+  const selectedValueRef = useRef<ItemPickerItem>();
   const handleChooseRef = useRef<Function>();
   const handleCancelRef = useRef<Function>();
   const handleResetRef = useRef<Function>();
