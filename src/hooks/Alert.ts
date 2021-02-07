@@ -20,17 +20,17 @@ export type AlertIterator = {
 
 export type AlertItem = {
   type: string;
-  message: ReactNode;
+  value: string;
+  when?: Date;
 }
 
 export interface AlertHook {
   alerts: Array<string>;
-  iterator: AlertIterator;
-  message: (content:any) => void;
-  notice: (content:any) => void;
-  warning: (content:any) => void;
-  error: (content:any) => void;
   fromKey: (key:string) => AlertItem;
+  message: (value:string) => void;
+  notice: (value:string) => void;
+  warning: (value:string) => void;
+  error: (value:string) => void;
 }
 
 /**
@@ -47,7 +47,7 @@ export function useAlert():AlertHook {
   /**
    * 
    */
-  const append = (alert:any) => {
+  const append = (alert:AlertItem) => {
     alert.when = new Date;
 
     if (!alertDataRef.current) {
@@ -83,37 +83,27 @@ export function useAlert():AlertHook {
     return alertDataRef.current[key];
   };
 
-  /** Generator **/
-
-  const iterator = {
-    *[Symbol.iterator]() {
-      for (const key in alertDataRef) {
-        yield Object.assign({ remove: remove.bind(this, key) }, alertDataRef[key]);
-      }
-    }
-  };
-
   /** Alert Types **/
   
-  const message = (content:any) => {
-    append({ type: 'message', content });
+  const message = (value:string) => {
+    append({ type: 'message', value });
   };
   
-  const notice = (content:any) => {
-    append({ type: 'notice', content });
+  const notice = (value:string) => {
+    append({ type: 'notice', value });
   };
   
-  const warning = (content:any) => {
-    append({ type: 'warning', content });
+  const warning = (value:string) => {
+    append({ type: 'warning', value });
   };
   
-  const error = (content:any) => {
-    append({ type: 'error', content });
+  const error = (value:string) => {
+    append({ type: 'error', value });
   };
 
   /** Output **/
 
   return {
-    alerts, fromKey, iterator, message, notice, warning, error
+    alerts, fromKey, message, notice, warning, error
   };
 }

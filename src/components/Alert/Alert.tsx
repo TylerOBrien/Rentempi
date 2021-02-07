@@ -17,7 +17,8 @@ import { TailwindEnabledProps } from '~/util/TailwindCss'
 */
 
 export interface AlertProps extends TailwindEnabledProps {
-  item: AlertItem;
+  type: string;
+  value: string;
 }
 
 /**
@@ -26,8 +27,8 @@ export interface AlertProps extends TailwindEnabledProps {
 
 export function Alert(props:AlertProps) {
   return (
-    <View>
-      <Text>{ props.item.message }</Text>
+    <View style={{ backgroundColor: 'red' }}>
+      <Text>{ props.value }</Text>
     </View>
   );
 }

@@ -33,7 +33,7 @@ export function AlertsOverlay() {
         (alert.alerts || []).map((item, index) => (
           <Alert
             key={ index }
-            item={ alert.fromKey(item) }
+            { ...alert.fromKey(item) }
           />
         ))
       }
