@@ -9,7 +9,7 @@ import { FormikHelpers } from 'formik';
  * Local Imports
 */
 
-import { LoginFields, LoginForm } from '~/forms/Guest/LoginForm';
+import { LoginFields, LoginForm, LoginFormContext } from '~/forms/Guest/LoginForm';
 import { PrimaryGuestLayout } from '~/layouts/Guest';
 
 import { useAuth, useForm, useService } from '~/hooks';
@@ -23,19 +23,13 @@ import { LoginAuthResponse } from '~/services/Auth';
 
 export interface LoginProps {
   
-};
-
-export interface LoginContextInterface {
-  form: FormHook;
-  remember: boolean;
-  setRemember: React.Dispatch<React.SetStateAction<boolean>>;
-};
+}
 
 /**
  * Locals
 */
 
-const LoginContext = React.createContext<LoginContextInterface>(undefined);
+const LoginContext = React.createContext<LoginFormContext>(undefined);
 
 /**
  * Exports
@@ -66,16 +60,13 @@ export function Login(props:LoginProps) {
   const handleSubmit = (values:LoginFields, formik:FormikHelpers<LoginFields>) => {
     service.call<LoginAuthResponse>('Auth.Login', values)
       .then(handleSuccess)
-      .catch(error => {
-        form.setError(error);
-        formik.setSubmitting(false);
-      });
+      .catch(error => form.handleError(formik, error));
   };
   
   /** Output **/
   
   return (
-    <LoginContext.Provider value={{ form, remember, setRemember }}>
+    <LoginContext.Provider value={{ remember, setRemember }}>
       <PrimaryGuestLayout>
         <LoginForm
           context={ LoginContext }

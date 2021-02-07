@@ -2,8 +2,7 @@
  * Global Imports
 */
 
-import React, { useEffect, useContext, useState } from 'react';
-import { Platform } from 'react-native';
+import React, { Context, Dispatch, SetStateAction, useContext } from 'react';
 import { Formik, FormikProps } from 'formik';
 
 /**
@@ -11,8 +10,9 @@ import { Formik, FormikProps } from 'formik';
 */
 
 import { Text, View } from '~/components/Base';
-import { Form, Input, Password, Submit } from '~/components/Form';
+import { Checkbox, Form, Input, Password, Submit } from '~/components/Form';
 import { FormikSubmit } from '~/util/Formik';
+import { FormHook } from '~/hooks/Form';
 
 /**
  * Types/Interfaces
@@ -23,8 +23,13 @@ export interface LoginFields {
   password: string;
 }
 
+export interface LoginFormContext {
+  remember: boolean;
+  setRemember: Dispatch<SetStateAction<boolean>>;
+}
+
 export interface LoginFormProps {
-  context: React.Context<any>;
+  context: Context<LoginFormContext>;
   onSubmit: FormikSubmit<LoginFields>;
 }
 
@@ -57,6 +62,11 @@ export function LoginForm(props:LoginFormProps) {
       <Password
         name='password'
         label='Password'
+      />
+      <Checkbox
+        name='remember_me'
+        label='Remember Me'
+        checked={ false }
       />
       <Submit
         label='Login'
