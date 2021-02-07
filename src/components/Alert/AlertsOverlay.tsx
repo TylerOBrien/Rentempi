@@ -35,6 +35,7 @@ export function AlertsOverlay() {
         (alerter.alerts || []).map((item, index) => (
           <Alert
             key={ index }
+            onClose={ () => alerter.remove(item) }
             { ...alerter.fromKey(item) }
           />
         ))
