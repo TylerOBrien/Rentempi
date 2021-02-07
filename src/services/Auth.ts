@@ -44,6 +44,8 @@ export function LoginAuthService(data:LoginAuthRequest):Promise<LoginAuthRespons
   return Api.call(config);
 }
 
+LoginAuthService.unprotected = true;
+
 /*
 |--------------------------------------------------------------------------
 | Register
@@ -77,6 +79,8 @@ export function RegisterAuthService(data:RegisterAuthRequest):Promise<RegisterAu
 
   return Api.call(config);
 }
+
+RegisterAuthService.unprotected = true;
 
 /*
 |--------------------------------------------------------------------------
@@ -140,3 +144,5 @@ export function ForgotPasswordAuthService(data:ForgotPasswordAuthRequest):Promis
 
   return Api.call(config);
 }
+
+ForgotPasswordAuthService.unprotected = true;
