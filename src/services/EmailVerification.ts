@@ -10,19 +10,30 @@ import { Api, Authorization } from '~/util/Api';
 
 const endpoint = 'email-verifications';
 
-/**
- * Exports
+/*
+|--------------------------------------------------------------------------
+| Store
+|--------------------------------------------------------------------------
 */
+
+export interface StoreEmailVerificationRequest {
+  email: string;
+  code: string;
+}
+
+export interface StoreEmailVerificationResponse {
+  
+}
 
 /**
  * Save email verification.
  * 
  * @param {Authorization} auth
- * @param {any} data
+ * @param {StoreEmailVerificationRequest} data
  * 
- * @return {Promise<any>}
+ * @return {Promise<StoreEmailVerificationResponse>}
  */
-export function StoreEmailVerificationService(auth:Authorization, data:any):Promise<any> {
+export function StoreEmailVerificationService(auth:Authorization, data:StoreEmailVerificationRequest):Promise<StoreEmailVerificationResponse> {
   const config = {
     data,
     method: 'POST',
