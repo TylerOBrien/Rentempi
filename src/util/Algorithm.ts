@@ -17,17 +17,17 @@ import { JS } from './JS';
  * evaluated such that this function guarantees to return a 1-dimensional array
  * regardless of the depth of the array passed.
  * 
- * @param {unknown} items
+ * @param {Array<T>} items
  * 
- * @return {array}
+ * @return {Array<T>}
  */
-export function truthies(items:Array<unknown>):Array<unknown> {
-  const result = [];
+export function truthies<T=unknown>(items:Array<T>):Array<T> {
+  const result:Array<T> = [];
   const end = items.length;
 
   for (let i = 0; i < end; i++) {
     if (JS.isArray(items[i])) {
-      const children = truthies(<Array<unknown>>items[i]);
+      const children:Array<T> = truthies(<any>items[i]);
       if (children.length) {
         result.push(...children);
       }
