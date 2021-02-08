@@ -9,6 +9,7 @@ import { useNavigation } from '@react-navigation/native';
  * Local Imports
 */
 
+import { Text } from '~/components/Base';
 import { PrimaryVerifiedLayout } from '~/layouts/Verified';
 
 /**
@@ -16,7 +17,7 @@ import { PrimaryVerifiedLayout } from '~/layouts/Verified';
 */
 
 export interface LobbyProps {
-  
+  //
 }
 
 /**
@@ -32,7 +33,7 @@ export function Lobby(props:LobbyProps) {
   
   return (
     <PrimaryVerifiedLayout>
-      
+      <Text>This is the lobby.</Text>
     </PrimaryVerifiedLayout>
   );
 }
