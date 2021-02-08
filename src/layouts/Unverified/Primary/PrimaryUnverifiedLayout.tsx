@@ -2,19 +2,13 @@
  * Global Imports
 */
 
-import React, { Fragment, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 
 /**
  * Local Imports
 */
 
-import { View } from '~/components/Base';
-
-/**
- * Sibling Imports
-*/
-
-import { Header } from './components';
+import { Text, View } from '~/components/Base';
 
 /**
  * Types/Interfaces
@@ -22,7 +16,7 @@ import { Header } from './components';
 
 export interface PrimaryUnverifiedLayoutProps {
   children: ReactNode;
-};
+}
 
 /**
  * Exports
@@ -30,11 +24,13 @@ export interface PrimaryUnverifiedLayoutProps {
 
 export function PrimaryUnverifiedLayout(props:PrimaryUnverifiedLayoutProps) {
   return (
-    <Fragment>
-      <Header />
+    <View tailwind='flex-auto justify-center items-center bg-primary'>
       <View>
+        <Text tailwind='text-3xl text-white'>
+          Verify Account
+        </Text>
         { props.children }
       </View>
-    </Fragment>
+    </View>
   );
 }
