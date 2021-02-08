@@ -9,6 +9,7 @@ import { StyleSheet } from 'react-native';
  * Local Imports
 */
 
+import { ScreenConfig } from '~/config';
 import { ScrollView, View } from '~/components/Base';
 
 /**
@@ -33,8 +34,8 @@ export function WelcomeGuestLayout(props:WelcomeGuestLayoutProps) {
   return (
     <ScrollView style={ styles.container } contentContainerStyle={ styles.inner }>
       <View tailwind='flex-auto h-full justify-center bg-primary'>
-        <View tailwind='self-center rounded-2xl w-1/2 border-2 border-secondary'>
-          <View tailwind='w-full p-8 rounded-2xl border-2 border-tertiary bg-white'>
+        <View style={ styles.contentContainer } tailwind='rounded-2xl border-2 border-secondary'>
+          <View tailwind='p-8 rounded-2xl border-2 border-tertiary bg-white'>
             <Header />
             { props.children }
           </View>
@@ -55,5 +56,8 @@ const styles = StyleSheet.create({
   },
   inner: {
     flexGrow: 1
+  },
+  contentContainer: {
+    width: Math.max(500, ScreenConfig.dimensions.min)
   }
 });
