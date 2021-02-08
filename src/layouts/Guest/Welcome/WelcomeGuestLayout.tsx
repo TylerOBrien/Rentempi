@@ -58,6 +58,6 @@ const styles = StyleSheet.create({
     flexGrow: 1
   },
   contentContainer: {
-    width: Math.max(500, ScreenConfig.dimensions.min)
+    width: Math.max(500, ScreenConfig.dimensions.min) - 32
   }
 });
