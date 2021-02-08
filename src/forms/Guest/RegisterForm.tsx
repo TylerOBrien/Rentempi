@@ -82,7 +82,7 @@ export function RegisterForm(props:RegisterFormProps) {
       <Submit
         label='Create Account'
         tailwind={{
-          container: 'btn mt-8 rounded-full bg-purple-800',
+          container: 'self-center btn mt-8 rounded-full bg-purple-800',
           label: 'btn-text text-white'
         }}
       />
