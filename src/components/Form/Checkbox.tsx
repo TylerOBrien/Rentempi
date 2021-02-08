@@ -25,6 +25,7 @@ import { LabeledField } from './LabeledField';
 */
 
 export interface CheckboxProps extends FormProps, TailwindEnabledProps {
+  labelPosition?: string;
   checked?: boolean;
 }
 

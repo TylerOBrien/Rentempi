@@ -23,6 +23,7 @@ import { Input } from './Input';
 */
 
 export interface PasswordProps extends FormProps, TailwindEnabledProps {
+  labelPosition?: string;
   placeholder?: string;
   placeholderTextColor?: ColorValue;
 }

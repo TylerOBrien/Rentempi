@@ -26,6 +26,7 @@ import { LabeledField } from './LabeledField';
 */
 
 export interface InputProps extends FormProps, TailwindEnabledProps {
+  labelPosition?: string;
   placeholder?: string;
   placeholderTextColor?: ColorValue;
   secureTextEntry?: boolean;
