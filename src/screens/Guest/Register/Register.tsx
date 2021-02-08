@@ -10,12 +10,18 @@ import { FormikHelpers } from 'formik';
 */
 
 import { RegisterForm, RegisterFields } from '~/forms/Guest/RegisterForm';
-import { PrimaryGuestLayout } from '~/layouts/Guest';
+import { SideMenuGuestLayout } from '~/layouts/Guest';
 
 import { useAuth, useForm, useService } from '~/hooks';
 import { FormHook } from '~/hooks/Form';
 
 import { RegisterAuthResponse } from '~/services/Auth';
+
+/**
+ * Sibling Imports
+*/
+
+import { SideMenu } from './components';
 
 /**
  * Types/Interfaces
@@ -77,12 +83,12 @@ export function Register(props:RegisterProps) {
   
   return (
     <RegisterContext.Provider value={{ form, remember, setRemember }}>
-      <PrimaryGuestLayout>
+      <SideMenuGuestLayout menu={ SideMenu }>
         <RegisterForm
           context={ RegisterContext }
           onSubmit={ handleSubmit }
         />
-      </PrimaryGuestLayout>
+      </SideMenuGuestLayout>
     </RegisterContext.Provider>
   );
 }
