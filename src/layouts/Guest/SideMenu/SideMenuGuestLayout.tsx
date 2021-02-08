@@ -40,7 +40,7 @@ export function SideMenuGuestLayout(props:SideMenuGuestLayoutProps) {
         <Col tailwind='w-1/3 bg-tertiary'>
           { React.createElement(props.menu) }
         </Col>
-        <Col tailwind='flex-auto p-8 bg-red-400'>
+        <Col tailwind='flex-auto p-8'>
           { props.children }
         </Col>
       </Row>
