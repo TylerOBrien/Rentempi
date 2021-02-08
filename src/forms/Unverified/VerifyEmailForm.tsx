@@ -53,10 +53,16 @@ export function VerifyEmailForm(props:VerifyEmailFormProps) {
     <Form>
       <Input
         name='code'
-        label='Verification Code'
+        tailwind={{
+          input: 'input'
+        }}
       />
       <Submit
         label='Verify Account'
+        tailwind={{
+          container: 'self-center btn mt-8 rounded-full bg-blue-800',
+          label: 'btn-text text-white'
+        }}
       />
     </Form>
   );
