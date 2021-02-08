@@ -3,7 +3,7 @@
 */
 
 import React, { FunctionComponent, ReactNode } from 'react';
-import { ActivityIndicator, StyleSheet } from 'react-native';
+import { ActivityIndicator, ColorValue, StyleSheet } from 'react-native';
 
 /**
  * Local Imports
@@ -21,6 +21,7 @@ export interface ButtonProps extends TailwindEnabledProps {
   label?: string;
   disabled?: boolean;
   loading?: boolean;
+  loadingColor?: ColorValue;
   container?: FunctionComponent<TailwindEnabledProps>;
   children?: ReactNode;
   onPress: Function;
@@ -29,6 +30,7 @@ export interface ButtonProps extends TailwindEnabledProps {
 export interface ButtonLabelProps extends TailwindEnabledProps {
   label?: string;
   loading?: boolean;
+  loadingColor?: ColorValue;
 }
 
 /**
@@ -50,7 +52,7 @@ function ButtonLabel(props:ButtonLabelProps) {
     <View style={ styles.labelContainer } tailwind={ tailwinds.labelContainer }>
       <View style={ styles.loadingContainer }>
         <ActivityIndicator
-          color='red'
+          color={ props.loadingColor || 'white' }
           animating={ props.loading }
         />
       </View>
@@ -85,6 +87,7 @@ export function Button(props:ButtonProps) {
     <Pressable
       style={ styles.container }
       tailwind={ tailwinds.container }
+      loadingColor={ props.loadingColor }
       disabled={ props.disabled }
       onPress={ Functional.delayed(props.onPress) }
       onLayout={ props.onLayout }
@@ -100,7 +103,7 @@ export function Button(props:ButtonProps) {
 
 const styles = StyleSheet.create({
   container: {
-    alignSelf: 'flex-start'
+    /* alignSelf: 'flex-start' */
   },
 
   loadingContainer: {
