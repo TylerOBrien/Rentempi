@@ -10,10 +10,16 @@ import { FormikHelpers } from 'formik';
 */
 
 import { LoginFields, LoginForm, LoginFormContext } from '~/forms/Guest/LoginForm';
-import { PrimaryGuestLayout } from '~/layouts/Guest';
+import { SideMenuGuestLayout } from '~/layouts/Guest';
 import { LoginAuthResponse } from '~/services/Auth';
 
 import { useAuth, useForm, useService } from '~/hooks';
+
+/**
+ * Sibling Imports
+*/
+
+import { SideMenu } from './components';
 
 /**
  * Types/Interfaces
@@ -69,12 +75,12 @@ export function Login(props:LoginProps) {
   
   return (
     <LoginContext.Provider value={{ remember, setRemember }}>
-      <PrimaryGuestLayout>
+      <SideMenuGuestLayout menu={ SideMenu }>
         <LoginForm
           context={ LoginContext }
           onSubmit={ handleSubmit }
         />
-      </PrimaryGuestLayout>
+      </SideMenuGuestLayout>
     </LoginContext.Provider>
   );
 }
