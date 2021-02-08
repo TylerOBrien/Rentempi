@@ -39,7 +39,7 @@ export function ContactUsModal(props:ContactUsModalProps) {
           tincidunt. Suspendisse quis augue malesuada, dignissim felis at, dignissim ipsum. 
         </Text>
         <Button
-          label='Ok'
+          label='Okay'
           onPress={ props.onClose }
           tailwind={{
             container: 'self-center mt-8 px-8 py-4 rounded-full bg-gray-600',
