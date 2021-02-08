@@ -3,7 +3,6 @@
 */
 
 import React, { useState } from 'react';
-import { StyleSheet } from 'react-native';
 
 /**
  * Local Imports
@@ -55,7 +54,7 @@ export function Welcome(props:WelcomeProps) {
 
   return (
     <WelcomeGuestLayout>
-      <View style={ styles.top }>
+      <View tailwind='flex-auto'>
         <Greeting />
         <AuthLinks />
       </View>
@@ -77,11 +76,3 @@ export const WelcomeConfig = {
     }
   }
 };
-
-/** Styles **/
-
-const styles = StyleSheet.create({
-  top: {
-    flex: 1
-  }
-});
