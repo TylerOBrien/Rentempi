@@ -1,4 +1,5 @@
 {
   "btn": "self-start px-8 py-4",
-  "btn-text": "text-base"
+  "btn-text": "text-base",
+  "input": "border-b border-black"
 }
