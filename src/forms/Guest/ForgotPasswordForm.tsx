@@ -53,9 +53,17 @@ export function ForgotPasswordForm(props:ForgotPasswordFormProps) {
       <Input
         name='email'
         label='Email Address'
+        labelPosition='after'
+        tailwind={{
+          input: 'input'
+        }}
       />
       <Submit
         label='Recover Account'
+        tailwind={{
+          container: 'self-center btn mt-8 rounded-full bg-purple-800',
+          label: 'btn-text text-white'
+        }}
       />
     </Form>
   );
