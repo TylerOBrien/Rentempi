@@ -9,6 +9,7 @@ import { ActivityIndicator, ColorValue, StyleSheet } from 'react-native';
  * Local Imports
 */
 
+import { ThemeConfig } from '~/config';
 import { View } from '~/components/Base';
 import { Tailwind, TailwindEnabledProps } from '~/util/TailwindCss';
 
@@ -61,6 +62,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: '100%',
     height: '100%',
-    backgroundColor: Tailwind.color('primary')
+    backgroundColor: ThemeConfig.color.primary
   }
 });
