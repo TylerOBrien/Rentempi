@@ -58,17 +58,33 @@ export function RegisterForm(props:RegisterFormProps) {
       <Input
         name='email'
         label='Email Address'
+        labelPosition='after'
+        tailwind={{
+          input: 'input'
+        }}
       />
       <Password
         name='password'
         label='Password'
+        labelPosition='after'
+        tailwind={{
+          input: 'input'
+        }}
       />
       <Password
         name='password_confirmation'
         label='Confirm Password'
+        labelPosition='after'
+        tailwind={{
+          input: 'input'
+        }}
       />
       <Submit
-        label='Create'
+        label='Create Account'
+        tailwind={{
+          container: 'btn mt-8 rounded-full bg-purple-800',
+          label: 'btn-text text-white'
+        }}
       />
     </Form>
   );
