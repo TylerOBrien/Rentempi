@@ -76,6 +76,10 @@ export function LoginForm(props:LoginFormProps) {
         label='Remember Me'
         labelPosition='after'
         checked={ false }
+        tailwind={{
+          container: 'flex-row items-center mt-8',
+          label: 'ml-4 text-base'
+        }}
       />
       <Submit
         label='Login'
