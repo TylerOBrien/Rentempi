@@ -3,11 +3,13 @@
 */
 
 import React, { useState } from 'react';
+import { StyleSheet } from 'react-native';
 
 /**
  * Local Imports
 */
 
+import { View } from '~/components/Base';
 import { WelcomeGuestLayout } from '~/layouts/Guest';
 
 /**
@@ -53,8 +55,10 @@ export function Welcome(props:WelcomeProps) {
 
   return (
     <WelcomeGuestLayout>
-      <Greeting />
-      <AuthLinks />
+      <View style={ styles.top }>
+        <Greeting />
+        <AuthLinks />
+      </View>
       <HelpLinks onPressContactUs={ handleContactUs } />
       <ContactUsModal
         visible={ isContactUsModalVisible }
@@ -73,3 +77,11 @@ export const WelcomeConfig = {
     }
   }
 };
+
+/** Styles **/
+
+const styles = StyleSheet.create({
+  top: {
+    flex: 1
+  }
+});
