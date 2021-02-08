@@ -34,7 +34,7 @@ function LabeledFieldContainer(props:LabeledFieldProps) {
   /** Renderers **/
 
   const renderLabelContent = () => (
-    <Text tailwind={ Tailwind.get(props.tailwind, 'label') }>
+    <Text tailwind={ Tailwind.get(props.tailwind, 'label') || 'text-base' }>
       { props.label }
     </Text>
   );
