@@ -58,14 +58,23 @@ export function LoginForm(props:LoginFormProps) {
       <Input
         name='email'
         label='Email Address'
+        labelPosition='after'
+        tailwind={{
+          input: 'input'
+        }}
       />
       <Password
         name='password'
         label='Password'
+        labelPosition='after'
+        tailwind={{
+          input: 'input'
+        }}
       />
       <Checkbox
         name='remember_me'
         label='Remember Me'
+        labelPosition='after'
         checked={ false }
       />
       <Submit
