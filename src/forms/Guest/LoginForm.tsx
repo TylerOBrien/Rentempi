@@ -76,6 +76,7 @@ export function LoginForm(props:LoginFormProps) {
         label='Remember Me'
         labelPosition='after'
         checked={ false }
+        onChangeValue={ value => context.setRemember(value === 'true') }
         tailwind={{
           container: 'flex-row items-center mt-8',
           label: 'ml-4 text-base'
