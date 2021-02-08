@@ -42,6 +42,14 @@ export function Checkbox(props:CheckboxProps) {
 
   const [ isChecked, setIsChecked ] = useState<boolean>(props.checked);
 
+  /** Side-Effects **/
+
+  useEffect(() => {
+    if (props.onChangeValue) {
+      props.onChangeValue(isChecked.toString());
+    }
+  }, [ isChecked ]);
+
   /** Helpers **/
 
   const hasError = props.name in formik.errors;
