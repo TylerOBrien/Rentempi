@@ -64,9 +64,12 @@ export function Input({ style, placeholder, secureTextEntry, ...props }:InputPro
   return (
     <LabeledField { ...props }>
       <TextInput placeholderTextColor='#aaaaaa' { ...config } />
-      <Text>
-        { errors && errors[props.name] }
-      </Text>
+      {
+        hasError &&
+          <Text tailwind='text-red-600'>
+            { errors[props.name] }
+          </Text>
+      }
     </LabeledField>
   );
 }
