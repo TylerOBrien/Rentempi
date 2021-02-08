@@ -58,6 +58,7 @@ const styles = StyleSheet.create({
     flexGrow: 1
   },
   contentContainer: {
+    alignSelf: 'center',
     width: Math.max(500, ScreenConfig.dimensions.min) - 32
   }
 });
