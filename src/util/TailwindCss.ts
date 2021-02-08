@@ -2,7 +2,7 @@
  * Global Imports
 */
 
-import { LayoutChangeEvent } from 'react-native';
+import { LayoutChangeEvent, StyleSheet } from 'react-native';
 
 /**
  * Resources
@@ -114,7 +114,7 @@ function parse(className:string, fontSizes?:RegExpExecArray):object {
   }
 
   if (className in tailwinds) {
-    return tailwinds[className];
+    return Object.assign({}, tailwinds[className]);
   }
 
   const style = { letterSpacing: undefined };
@@ -185,6 +185,10 @@ function parse(className:string, fontSizes?:RegExpExecArray):object {
     }
 
     delete style[key];
+  }
+
+  if ('letterSpacing' in style) {
+    delete style.letterSpacing;
   }
 
   return tailwinds[className] = style;
