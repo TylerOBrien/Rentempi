@@ -3,13 +3,13 @@
 */
 
 import React, { ReactNode } from 'react';
+import { StyleSheet } from 'react-native';
 
 /**
  * Local Imports
 */
 
 import { View, Text } from '~/components/Base';
-import { Row } from '~/components/Grid';
 import { Tailwind, TailwindEnabledProps } from '~/util/TailwindCss';
 
 /**
@@ -17,7 +17,7 @@ import { Tailwind, TailwindEnabledProps } from '~/util/TailwindCss';
 */
 
 export interface DividerProps extends TailwindEnabledProps {
-  label: string;
+  label?: string;
   children?: ReactNode;
 }
 
@@ -28,37 +28,61 @@ export interface DividerProps extends TailwindEnabledProps {
 export function Divider(props:DividerProps) {
   /** Helpers **/
 
-  const tailwind = {
+  const tailwinds = {
     container: Tailwind.get(props.tailwind, 'container', true, true, props.tailwind),
-    line: Tailwind.get(props.tailwind, 'line'),
-    label: Tailwind.get(props.tailwind, 'label')
+    line: Tailwind.get(props.tailwind, 'line', false, false),
+    label: Tailwind.get(props.tailwind, 'label', false, false)
   };
 
   /** Renderers **/
 
   /**
-   * 
+   * @return {JSX.Element}
    */
-  const renderLine = () => (
-    <View onLayout={ props.onLayout } tailwind={[ 'w-full h-px', tailwind.container ]} />
+  const renderLine = ():JSX.Element => (
+    <View style={ styles.line } tailwind={ tailwinds.container } onLayout={ props.onLayout } />
   );
   
   /**
-   * 
+   * @return {JSX.Element}
    */
-  const renderLabeledLine = () => (
-    <Row onLayout={ props.onLayout } tailwind={[ 'items-center', tailwind.container ]}>
-      <View tailwind={[ 'flex-auto h-px', tailwind.line ]} />
-      <View tailwind='px-4'>
-        <Text tailwind={[ 'text-lg', tailwind.label ]}>
+  const renderLabeledLine = ():JSX.Element => (
+    <View style={ styles.container } tailwind={ tailwinds.container } onLayout={ props.onLayout }>
+      <View style={ styles.labeledLine } tailwind={ tailwinds.line } />
+      <View style={ styles.inner }>
+        <Text tailwind={[ 'text-lg', tailwinds.label ]}>
           { props.label }
         </Text>
       </View>
-      <View tailwind={[ 'flex-auto h-px', tailwind.line ]} />
-    </Row>
+      <View style={ styles.labeledLine } tailwind={ tailwinds.line } />
+    </View>
   );
 
   /** Output **/
 
   return props.label ? renderLabeledLine() : renderLine();
 }
+
+/**
+ * Styles
+*/
+
+const styles = StyleSheet.create({
+  container: {
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
+  inner: {
+    paddingLeft: 16,
+    paddingRight: 16
+  },
+  line: {
+    flex: 1,
+    height: 1
+  },
+  labeledLine: {
+    flex: 1,
+    height: 1,
+    marginTop: 2
+  }
+});
