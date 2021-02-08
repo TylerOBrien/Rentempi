@@ -26,9 +26,17 @@ export interface LoadingOverlayProps extends TailwindEnabledProps {
 */
 
 export function LoadingOverlay(props:LoadingOverlayProps) {
+  /** Helpers **/
+
+  const tailwinds = {
+    container: Tailwind.get(props.tailwind, 'container')
+  };
+
+  /** Output **/
+
   return (
     <View style={ styles.overlay } onLayout={ props.onLayout }>
-      <View style={ props.style } tailwind={ props.tailwind }>
+      <View style={ props.style } tailwind={ tailwinds.container }>
         <ActivityIndicator
           color={ props.color }
           size={ props.size }
