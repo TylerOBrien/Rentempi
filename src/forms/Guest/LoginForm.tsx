@@ -79,6 +79,10 @@ export function LoginForm(props:LoginFormProps) {
       />
       <Submit
         label='Login'
+        tailwind={{
+          container: 'btn mt-8 rounded-full bg-purple-800',
+          label: 'btn-text text-white'
+        }}
       />
     </Form>
   );
