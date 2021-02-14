@@ -28,20 +28,20 @@ const itemAndroidRipple = {
 export function ItemPickerOverlay() {
   /** Contexts **/
 
-  const { isActive, setIsActive, itemsRef } = useContext(ItemPickerContext);
+  const { isActive, setIsActive, itemsRef, handleChooseRef, handleResetRef } = useContext(ItemPickerContext);
 
   /** Event Handlers **/
 
   const handleReset = () => {
-    //
+    requestAnimationFrame(() => handleResetRef.current());
   };
 
   const handleCancel = () => {
-    //
+    requestAnimationFrame(() => setIsActive(false));
   };
 
   const handlePress = (item:ItemPickerItem, index:number) => {
-    //
+    requestAnimationFrame(() => handleChooseRef.current(item, index));
   };
 
   /** Output **/
@@ -58,11 +58,25 @@ export function ItemPickerOverlay() {
                 android_ripple={ itemAndroidRipple }
                 onPress={ handlePress.bind(this, item, index) }
               >
-                <Text>{ item.name }</Text>
+                <Text style={ styles.itemText }>{ item.name }</Text>
               </Pressable>
             ))
           }
         </ScrollView>
+        <Pressable
+          style={ styles.itemControlPressable }
+          android_ripple={ itemAndroidRipple }
+          onPress={ handleCancel }
+        >
+          <Text style={ styles.itemControlText }>Cancel</Text>
+        </Pressable>
+        <Pressable
+          style={ styles.itemControlPressable }
+          android_ripple={ itemAndroidRipple }
+          onPress={ handleReset }
+        >
+          <Text style={ styles.itemControlText }>Reset</Text>
+        </Pressable>
       </View>
     </Modal>
   );
@@ -83,7 +97,7 @@ const styles = StyleSheet.create({
   },
 
   scroller: {
-    height: 400,
+    maxHeight: 400,
     borderRadius: 16
   },
 
@@ -92,13 +106,17 @@ const styles = StyleSheet.create({
     backgroundColor: 'white'
   },
 
-  itemFirst: {
-    borderTopLeftRadius: 16,
-    borderTopRightRadius: 16
+  itemText: {
+    fontSize: 16
   },
 
-  itemLast: {
-    borderBottomLeftRadius: 16,
-    borderBottomRightRadius: 16
+  itemControlPressable: {
+    padding: 16,
+    backgroundColor: 'white'
+  },
+
+  itemControlText: {
+    fontSize: 16,
+    textAlign: 'center'
   }
 });

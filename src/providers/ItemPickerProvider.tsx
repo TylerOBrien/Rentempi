@@ -2,14 +2,7 @@
  * Global Imports
 */
 
-import React, { useContext, useEffect, useRef, useState } from 'react';
-
-/**
- * Local Imports
-*/
-
-import { Pressable, Text, View } from '~/components/Base';
-import { Modal } from '~/components/Modal';
+import React, { Dispatch, MutableRefObject, SetStateAction, useEffect, useRef, useState } from 'react';
 
 /**
  * Types/Interfaces
@@ -20,15 +13,19 @@ export interface ItemPickerItem {
   name: string;
 }
 
+export type ItemPickerItemHandler = (item:ItemPickerItem, index:number) => void;
+
 export interface ItemPickerContextInterface {
   isActive: boolean;
-  setIsActive: React.Dispatch<React.SetStateAction<boolean>>;
+  isVisible: boolean;
+  setIsActive: Dispatch<SetStateAction<boolean>>;
 
-  itemsRef: React.MutableRefObject<Array<ItemPickerItem>>;
-  selectedValueRef: React.MutableRefObject<ItemPickerItem>;
-  handleChooseRef: React.MutableRefObject<Function>;
-  handleCancelRef: React.MutableRefObject<Function>;
-  handleResetRef: React.MutableRefObject<Function>;
+  itemsRef: MutableRefObject<Array<ItemPickerItem>>;
+  selectedItemRef: MutableRefObject<ItemPickerItem>;
+
+  handleChooseRef: MutableRefObject<ItemPickerItemHandler>;
+  handleCancelRef: MutableRefObject<Function>;
+  handleResetRef: MutableRefObject<Function>;
 }
 
 /**
@@ -44,15 +41,36 @@ export const ItemPickerContext = React.createContext<ItemPickerContextInterface>
 export function ItemPickerProvider(props:any) {
   /** Refs **/
 
+  const isMountedRef = useRef<boolean>();
   const itemsRef = useRef<Array<ItemPickerItem>>();
-  const selectedValueRef = useRef<ItemPickerItem>();
-  const handleChooseRef = useRef<Function>();
-  const handleCancelRef = useRef<Function>();
+  const selectedItemRef = useRef<ItemPickerItem>();
+  const handleChooseRef = useRef<ItemPickerItemHandler>();
+  const handleCancelRef = useRef<ItemPickerItemHandler>();
   const handleResetRef = useRef<Function>();
 
   /** States **/
 
   const [ isActive, setIsActive ] = useState<boolean>();
+  const [ isVisible, setIsVisible ] = useState<boolean>();
+
+  /** Side-Effects **/
+
+  useEffect(() => {
+    if (isMountedRef.current) {
+      setTimeout(() => {
+        if (!isActive) {
+          itemsRef.current = null;
+          selectedItemRef.current = null;
+          handleChooseRef.current = null;
+          handleCancelRef.current = null;
+          handleResetRef.current = null;
+        }
+        setIsVisible(!isActive);
+      }, 500);
+    } else {
+      isMountedRef.current = true;
+    }
+  }, [ isActive ]);
 
   /** Output **/
 
@@ -60,9 +78,10 @@ export function ItemPickerProvider(props:any) {
     <ItemPickerContext.Provider
       value={{
         isActive,
+        isVisible,
         setIsActive,
         itemsRef,
-        selectedValueRef,
+        selectedItemRef,
         handleChooseRef,
         handleCancelRef,
         handleResetRef
