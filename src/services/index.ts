@@ -7,6 +7,7 @@ import * as AuthServices from './Auth';
 import * as EmailVerificationServices from './EmailVerification';
 import * as ImageServices from './Image';
 import * as ProfileServices from './Profile';
+import * as TokenServices from './Token';
 import * as UserServices from './User';
 
 /**
@@ -19,5 +20,6 @@ export {
   EmailVerificationServices,
   ImageServices,
   ProfileServices,
+  TokenServices,
   UserServices
 }
