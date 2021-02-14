@@ -86,7 +86,7 @@ export function Field(props:FieldProps) {
   useEffect(() => {
     if (isMountedRef.current) {
       if (props.onChangeValue) {
-        props.onChangeValue(value);
+        props.onChangeValue(formik ? formik.values[props.name] : value);
       }
     }
   }, [ formik ? formik.values[props.name] : value ]);
@@ -133,11 +133,7 @@ export function Field(props:FieldProps) {
    * @return {void}
    */
   const handleChangeEvent = (event:NativeSyntheticEvent<any>):void => {
-    if (formik) {
-      formik.setFieldValue(props.name, event.nativeEvent.text);
-    } else {
-      setValue(event.nativeEvent.text);
-    }
+    handleChangeValue(event.nativeEvent.text);
   };
 
   /**
