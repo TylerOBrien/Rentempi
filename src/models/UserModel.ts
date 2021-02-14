@@ -4,7 +4,7 @@
 
 export interface UserModel {
   id: number;
-  identified: boolean;
+  is_identified: boolean;
   first_name?: string;
   middle_name?: string;
   last_name?: string;
