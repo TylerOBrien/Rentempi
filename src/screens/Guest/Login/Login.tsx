@@ -66,7 +66,7 @@ export function Login(props:LoginProps) {
   };
   
   const handleSubmit = (values:LoginFields, formik:FormikHelpers<LoginFields>) => {
-    service.call<LoginAuthResponse>('Auth.Login', values)
+    service.call('Token.Store', values)
       .then(handleSuccess)
       .catch(error => form.handleError(formik, error));
   };
