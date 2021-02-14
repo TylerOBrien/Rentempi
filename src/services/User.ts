@@ -2,7 +2,7 @@
  * Local Imports
 */
 
-import { UserModel } from '~/models';
+import { TokenModel, UserModel } from '~/models';
 import { Api, Authorization, ResourceIdentity } from '~/util/Api';
 
 /**
@@ -88,8 +88,9 @@ export interface StoreUserRequest {
   last_name?: string;
 }
 
-export interface StoreUserResponse extends UserModel {
-  //
+export interface StoreUserResponse {
+  token: TokenModel;
+  user: UserModel;
 }
 
 /**
