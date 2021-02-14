@@ -56,7 +56,7 @@ export function Checkbox(props:CheckboxProps) {
     >
       <Field
         name={ props.name }
-        value={ isChecked }
+        value={ !!isChecked }
         component={ BaseCheckBox }
         changeHandler='onValueChange'
         onChangeValue={ setIsChecked }
