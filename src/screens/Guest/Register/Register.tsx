@@ -9,11 +9,10 @@ import { FormikHelpers } from 'formik';
  * Local Imports
 */
 
-import { RegisterForm, RegisterFields } from '~/forms/Guest/RegisterForm';
+import { RegisterForm, RegisterFormContext, RegisterFields } from '~/forms/Guest/RegisterForm';
 import { SideMenuGuestLayout } from '~/layouts/Guest';
 
 import { useAuth, useForm, useService } from '~/hooks';
-import { FormHook } from '~/hooks/Form';
 
 import { RegisterAuthResponse } from '~/services/Auth';
 
@@ -31,17 +30,11 @@ export interface RegisterProps {
   //
 }
 
-export interface RegisterContextInterface {
-  form: FormHook;
-  remember: boolean;
-  setRemember: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
 /**
  * Locals
 */
 
-const RegisterContext = React.createContext<RegisterContextInterface>(undefined);
+const RegisterContext = React.createContext<RegisterFormContext>(undefined);
 
 /**
  * Exports
@@ -88,7 +81,7 @@ export function Register(props:RegisterProps) {
   /** Output **/
   
   return (
-    <RegisterContext.Provider value={{ form, remember, setRemember }}>
+    <RegisterContext.Provider value={{ remember, setRemember }}>
       <SideMenuGuestLayout menu={ SideMenu }>
         <RegisterForm
           context={ RegisterContext }
