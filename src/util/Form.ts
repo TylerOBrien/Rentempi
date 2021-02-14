@@ -1,11 +1,25 @@
 /**
+ * Global Imports
+*/
+
+import { ColorValue } from 'react-native';
+
+/**
  * Exports
 */
 
+export type FormFieldValue = string | number | boolean;
+export type FormLabelType = 'contain' | 'outside';
+export type FormLabelPosition = 'before' | 'after';
+
 export interface FormProps {
-  name: string;
   label?: string;
-  value?: string;
-  initialValue?: string;
-  onChangeValue?: (value:string) => void;
+  labelType?: FormLabelType;
+  labelPosition?: FormLabelPosition;
+  placeholder?: string;
+  placeholderTextColor?: ColorValue;
+  value?: FormFieldValue;
+  initialValue?: FormFieldValue;
+  formik?: boolean;
+  onChangeValue?: (value:FormFieldValue) => void;
 }
