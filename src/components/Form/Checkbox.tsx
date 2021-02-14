@@ -2,22 +2,22 @@
  * Global Imports
 */
 
-import React, { useEffect, useState } from 'react';
-import { ColorValue } from 'react-native';
+import React, { useContext, useEffect, useState } from 'react';
 import BaseCheckBox from '@react-native-community/checkbox';
-import { useFormikContext } from 'formik';
 
 /**
  * Local Imports
 */
 
+import { FormContext } from '~/providers/FormProvider';
 import { FormProps } from '~/util/Form';
-import { Tailwind, TailwindEnabledProps } from '~/util/TailwindCss';
+import { TailwindEnabledProps } from '~/util/TailwindCss';
 
 /**
  * Sibling Imports
 */
 
+import { Field } from './Field';
 import { LabeledField } from './LabeledField';
 
 /**
@@ -25,7 +25,7 @@ import { LabeledField } from './LabeledField';
 */
 
 export interface CheckboxProps extends FormProps, TailwindEnabledProps {
-  labelPosition?: string;
+  name: string;
   checked?: boolean;
 }
 
@@ -34,33 +34,32 @@ export interface CheckboxProps extends FormProps, TailwindEnabledProps {
 */
 
 export function Checkbox(props:CheckboxProps) {
-  /** Hooks **/
+  /** Contexts **/
 
-  const formik = useFormikContext();
+  const { errors } = useContext(FormContext);
 
   /** States **/
 
   const [ isChecked, setIsChecked ] = useState<boolean>(props.checked);
 
-  /** Side-Effects **/
-
-  useEffect(() => {
-    if (props.onChangeValue) {
-      props.onChangeValue(isChecked.toString());
-    }
-  }, [ isChecked ]);
-
   /** Helpers **/
 
-  const hasError = props.name in formik.errors;
+  const hasError = !!( errors && props.name in errors );
   
   /** Output **/
 
   return (
-    <LabeledField { ...props }>
-      <BaseCheckBox
+    <LabeledField
+      label={ props.label }
+      labelType={ props.labelType }
+      labelPosition={ props.labelPosition }
+    >
+      <Field
+        name={ props.name }
         value={ isChecked }
-        onValueChange={ setIsChecked }
+        component={ BaseCheckBox }
+        changeHandler='onValueChange'
+        onChangeValue={ setIsChecked }
       />
     </LabeledField>
   );

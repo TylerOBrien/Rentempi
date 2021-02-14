@@ -3,7 +3,6 @@
 */
 
 import React from 'react';
-import { ColorValue } from 'react-native';
 
 /**
  * Local Imports
@@ -23,9 +22,7 @@ import { Input } from './Input';
 */
 
 export interface PasswordProps extends FormProps, TailwindEnabledProps {
-  labelPosition?: string;
-  placeholder?: string;
-  placeholderTextColor?: ColorValue;
+  name: string;
 }
 
 /**
@@ -34,6 +31,19 @@ export interface PasswordProps extends FormProps, TailwindEnabledProps {
 
 export function Password(props:PasswordProps) {
   return (
-    <Input { ...props } secureTextEntry={ true } />
+    <Input
+      name={ props.name }
+      value={ props.value }
+      initialValue={ props.initialValue }
+      placeholder={ props.placeholder }
+      placeholderTextColor={ props.placeholderTextColor }
+      label={ props.label }
+      labelType={ props.labelType }
+      labelPosition={ props.labelPosition }
+      style={ props.style }
+      tailwind={ props.tailwind }
+      secureTextEntry={ true }
+      onChangeValue={ props.onChangeValue }
+    />
   );
 }
