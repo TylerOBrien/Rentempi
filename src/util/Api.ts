@@ -9,20 +9,20 @@ import axios, { AxiosRequestConfig, Method } from 'axios';
 */
 
 import { ApiConfig } from '~/config';
+import { TokenModel } from '~/models';
 
 /**
  * Config
 */
 
+const defaultAuth:Authorization = null;
 const defaultHeaders = { 'X-Requested-With': 'XMLHttpRequest' };
 
 /**
  * Interfaces
 */
 
-export interface Authorization {
-  token: string;
-}
+export type Authorization = TokenModel;
 
 export interface Request {
   method: string;
@@ -49,7 +49,7 @@ export interface ResourceIdentity {
  */
 function call<Response=any>(request:Request, auth?:Authorization):Promise<Response> {
   const headers:object = Object.assign({}, request.headers, defaultHeaders, {
-    Authorization: auth?.token,
+    Authorization: auth?.value || defaultAuth?.value,
   });
 
   const payloadKey:string = request.method.toLowerCase() === 'get' ? 'params' : 'data';
