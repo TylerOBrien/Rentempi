@@ -30,13 +30,14 @@ export function UserStatusGuard(props:UserStatusGuardProps) {
   const session = useSession();
   
   /** Output **/
-  
-  switch (session.user?.status) {
-  case 'Unverified':
-    return <props.unverified />;
-  case 'Ok':
-    return <props.verified />;
-  }
 
+  if (session.user) {
+    if (session.user.is_identified) {
+      return <props.verified />;
+    } else {
+      return <props.unverified />;
+    }
+  }
+  
   return <props.guest />;
 }
