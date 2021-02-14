@@ -3,8 +3,6 @@
 */
 
 import React, { useContext } from 'react';
-import { ColorValue } from 'react-native';
-import { useFormikContext } from 'formik';
 
 /**
  * Local Imports
@@ -13,12 +11,13 @@ import { useFormikContext } from 'formik';
 import { Text, TextInput } from '~/components/Base';
 import { FormContext } from '~/providers/FormProvider';
 import { FormProps } from '~/util/Form';
-import { Tailwind, TailwindEnabledProps } from '~/util/TailwindCss';
+import { TailwindEnabledProps } from '~/util/TailwindCss';
 
 /**
  * Sibling Imports
 */
 
+import { Field } from './Field';
 import { LabeledField } from './LabeledField';
 
 /**
@@ -26,21 +25,15 @@ import { LabeledField } from './LabeledField';
 */
 
 export interface InputProps extends FormProps, TailwindEnabledProps {
-  labelPosition?: string;
-  placeholder?: string;
-  placeholderTextColor?: ColorValue;
+  name: string;
   secureTextEntry?: boolean;
-};
+}
 
 /**
  * Exports
 */
 
-export function Input({ style, placeholder, secureTextEntry, ...props }:InputProps) {
-  /** Hooks **/
-
-  const formik = useFormikContext();
-
+export function Input(props:InputProps) {
   /** Contexts **/
 
   const { errors } = useContext(FormContext);
@@ -48,22 +41,21 @@ export function Input({ style, placeholder, secureTextEntry, ...props }:InputPro
   /** Helpers **/
 
   const hasError = !!( errors && props.name in errors );
-
-  /** Settings **/
-
-  const config = {
-    name: props.name,
-    style,
-    secureTextEntry,
-    placeholder,
-    tailwind: Tailwind.get(props.tailwind, 'input')
-  };
   
   /** Output **/
 
   return (
-    <LabeledField { ...props }>
-      <TextInput placeholderTextColor='#aaaaaa' { ...config } />
+    <LabeledField
+      label={ props.label }
+      labelType={ props.labelType }
+      labelPosition={ props.labelPosition }
+    >
+      <Field
+        name={ props.name }
+        component={ TextInput }
+        tailwind={ props.tailwind }
+        formik={ props.formik }
+      />
       {
         hasError &&
           <Text tailwind='text-red-600'>
