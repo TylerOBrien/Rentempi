@@ -12,12 +12,6 @@ import aliases from '@resources/tailwind/aliases.json';
 import definitions from '@resources/tailwind/styles.json';
 
 /**
- * Local Imports
-*/
-
-import { ThemeConfig } from '~/config';
-
-/**
  * Sibling Imports
 */
 
@@ -239,7 +233,7 @@ function color(colorName:string):string {
  * 
  * @return {any}
  */
-function get(tailwind:TailwindObject, group:string=ThemeConfig.defaults.group.name, fallbackOnString:boolean=true, fallbackOnArray:boolean=true, fallbackTailwind?:any):any {
+function get(tailwind:TailwindObject, group:string='container', fallbackOnString:boolean=true, fallbackOnArray:boolean=true, fallbackTailwind?:any):any {
   if (JS.isString(tailwind)) {
     return fallbackOnString ? tailwind || fallbackTailwind : undefined;
   } else if (JS.isArray(tailwind)) {
@@ -259,7 +253,7 @@ function get(tailwind:TailwindObject, group:string=ThemeConfig.defaults.group.na
  * 
  * @return {object}
  */
-function merge(tailwind:TailwindObject, extension:object, fallbackGroup:string=ThemeConfig.defaults.group.name):object {
+function merge(tailwind:TailwindObject, extension:object, fallbackGroup:string='container'):object {
   if (JS.isString(tailwind)) {
     tailwind = { [fallbackGroup]: tailwind };
   }
