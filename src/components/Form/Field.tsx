@@ -21,6 +21,7 @@ import { Field as FormikField, useFormikContext } from 'formik';
  * Local Imports
 */
 
+import { FormFieldValue } from '~/util/Form';
 import { Tailwind, StyleProp, TailwindProp } from '~/util/TailwindCss';
 
 /**
@@ -29,7 +30,7 @@ import { Tailwind, StyleProp, TailwindProp } from '~/util/TailwindCss';
 
 export type FieldContainer = FunctionComponent | ReactElement;
 export type FieldComponent = FunctionComponent<object> | ComponentClass<object>;
-export type FieldValue = string | number | boolean;
+export type FieldValue = FormFieldValue;
 export type FieldValueChangeHandler = (value:FieldValue) => void;
 
 export interface FieldProps {
