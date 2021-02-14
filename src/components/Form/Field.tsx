@@ -39,6 +39,7 @@ export interface FieldProps {
   placeholder?: string;
   placeholderTextColor?: ColorValue;
   component: FieldComponent;
+  componentProps?: object;
   changeHandler?: string;
   changeValueHandler?: string;
   endEditingHandler?: string;
@@ -183,7 +184,8 @@ export function Field(props:FieldProps) {
    */
   const renderField = ():ReactNode => (
     React.createElement(props.component,
-      Object.assign(
+      Object.assign({},
+        props.componentProps,
         {
           name: props.name,
           value: props.value,

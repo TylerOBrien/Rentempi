@@ -57,6 +57,7 @@ export function Input(props:InputProps) {
         placeholder={ props.placeholder }
         placeholderTextColor={ props.placeholderTextColor }
         component={ TextInput }
+        componentProps={ props.secureTextEntry && { secureTextEntry: props.secureTextEntry } }
         tailwind={ props.tailwind }
         formik={ props.formik }
       />
