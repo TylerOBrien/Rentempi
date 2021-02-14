@@ -24,7 +24,7 @@ export interface AuthLoginOptions {
 
 export interface AuthLogin {
   user: any;
-  credentials: Authorization;
+  token: Authorization;
 }
 
 export interface AuthHook {
@@ -74,14 +74,14 @@ export function useAuth():AuthHook {
       
       if (hasStorageRef.current) {
         try {
-          await TokenStorage.set(auth.credentials);
+          await TokenStorage.set(auth.token);
         } catch (error) {
           return reject(error);
         }
       }
 
       setUser(auth.user);
-      setCredentials(auth.credentials);
+      setCredentials(auth.token);
     });
   };
 
