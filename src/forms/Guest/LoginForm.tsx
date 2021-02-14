@@ -17,8 +17,14 @@ import { FormikSubmit } from '~/util/Formik';
 */
 
 export interface LoginFields {
-  email: string;
-  password: string;
+  identity: {
+    type: 'email' | 'mobile' | 'oauth';
+    value: string;
+  },
+  secret: {
+    type: 'password' | 'totp';
+    value: string;
+  }
 }
 
 export interface LoginFormContext {
@@ -36,8 +42,14 @@ export interface LoginFormProps {
 */
   
 const initialValues:LoginFields = {
-  email: '',
-  password: ''
+  identity: {
+    type: 'email',
+    value: ''
+  },
+  secret: {
+    type: 'password',
+    value: ''
+  }
 };
 
 /**
@@ -54,7 +66,7 @@ export function LoginForm(props:LoginFormProps) {
   const renderForm = (formik:FormikProps<LoginFields>) => (
     <Form>
       <Input
-        name='email'
+        name='identity.value'
         label='Email Address'
         labelPosition='after'
         tailwind={{
@@ -62,7 +74,7 @@ export function LoginForm(props:LoginFormProps) {
         }}
       />
       <Password
-        name='password'
+        name='secret.value'
         label='Password'
         labelPosition='after'
         tailwind={{
