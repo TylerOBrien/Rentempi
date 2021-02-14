@@ -8,7 +8,7 @@ import { ColorValue } from 'react-native';
  * Exports
 */
 
-export type FormFieldValue = string | number | boolean | Date;
+export type FormFieldValue = string | number | boolean;
 export type FormLabelType = 'contain' | 'outside';
 export type FormLabelPosition = 'before' | 'after';
 
