@@ -14,7 +14,7 @@ import React, {
   useRef,
   useState } from 'react';
 
-import { NativeSyntheticEvent } from 'react-native';
+import { ColorValue, NativeSyntheticEvent } from 'react-native';
 import { Field as FormikField, useFormikContext } from 'formik';
 
 /**
@@ -36,6 +36,8 @@ export interface FieldProps {
   name: string;
   value?: FieldValue;
   initialValue?: FieldValue;
+  placeholder?: string;
+  placeholderTextColor?: ColorValue;
   component: FieldComponent;
   changeHandler?: string;
   changeValueHandler?: string;
@@ -211,3 +213,7 @@ export function Field(props:FieldProps) {
     </Fragment>
   );
 }
+
+Field.defaultProps = {
+  formik: true
+};
