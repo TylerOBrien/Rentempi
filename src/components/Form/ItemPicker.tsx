@@ -57,6 +57,7 @@ export function ItemPicker(props:ItemPickerProps) {
       if (props.onChangeValue) {
         props.onChangeValue(selected);
       }
+      picker.setIsActive(false);
     } else {
       isMountedRef.current = true;
     }
@@ -68,16 +69,22 @@ export function ItemPicker(props:ItemPickerProps) {
    * @return {void}
    */
   const handleChoose = (item:ItemPickerItem, index:number):void => {
-    setSelected(item);
-    picker.setIsActive(false);
+    if (selected?.id !== item.id) {
+      setSelected(item);
+    } else {
+      picker.setIsActive(false);
+    }
   };
   
   /**
    * @return {void}
    */
   const handleReset = ():void => {
-    setSelected(null);
-    picker.setIsActive(false);
+    if (selected) {
+      setSelected(null);
+    } else {
+      picker.setIsActive(false);
+    }
   };
   
   /**
