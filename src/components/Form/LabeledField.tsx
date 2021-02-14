@@ -15,13 +15,16 @@ import { FormProps } from '~/util/Form';
 import { Tailwind, TailwindEnabledProps } from '~/util/TailwindCss';
 
 /**
+ * Sibling Imports
+*/
+
+import { Field, FieldComponent } from './Field';
+
+/**
  * Types/Interfaces
 */
 
 export interface LabeledFieldProps extends FormProps, TailwindEnabledProps {
-  label?: ReactNode;
-  labelPosition?: 'before' | 'after';
-  labelType?: 'outside' | 'contain';
   labelContainer?: FunctionComponent<TailwindEnabledProps>;
   children: ReactNode;
 }
@@ -92,13 +95,13 @@ function LabeledFieldAfter(props:LabeledFieldProps) {
 
 export function LabeledField(props:LabeledFieldProps) {
   return (
-    <ValuedField { ...props }>
+    <Fragment>
       {
           props.labelPosition === 'before' ? React.createElement(LabeledFieldBefore, props)
         : props.labelPosition === 'after'  ? React.createElement(LabeledFieldAfter, props)
         : null
       }
-    </ValuedField>
+    </Fragment>
   );
 }
 
