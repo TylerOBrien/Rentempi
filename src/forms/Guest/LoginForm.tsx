@@ -9,10 +9,8 @@ import { Formik, FormikProps } from 'formik';
  * Local Imports
 */
 
-import { Text, View } from '~/components/Base';
 import { Checkbox, Form, Input, Password, Submit } from '~/components/Form';
 import { FormikSubmit } from '~/util/Formik';
-import { FormHook } from '~/hooks/Form';
 
 /**
  * Types/Interfaces
@@ -60,7 +58,7 @@ export function LoginForm(props:LoginFormProps) {
         label='Email Address'
         labelPosition='after'
         tailwind={{
-          input: 'input'
+          field: 'input'
         }}
       />
       <Password
@@ -68,7 +66,7 @@ export function LoginForm(props:LoginFormProps) {
         label='Password'
         labelPosition='after'
         tailwind={{
-          input: 'input'
+          field: 'input'
         }}
       />
       <Checkbox
