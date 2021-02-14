@@ -23,8 +23,7 @@ import { LabeledField } from './LabeledField';
 */
 
 export interface SelectProps extends FormProps, TailwindEnabledProps {
-  placeholder?: string;
-  placeholderTextColor?: ColorValue;
+  //
 }
 
 /**
