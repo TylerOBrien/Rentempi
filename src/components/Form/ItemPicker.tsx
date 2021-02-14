@@ -84,13 +84,11 @@ export function ItemPicker(props:ItemPickerProps) {
    * @return {void}
    */
   const handlePress = ():void => {
-    if (!hasPressed) {
-      picker.itemsRef.current = props.items;
-      picker.handleChooseRef.current = handleChoose;
-      picker.handleResetRef.current = handleReset;
+    picker.itemsRef.current = props.items;
+    picker.handleChooseRef.current = handleChoose;
+    picker.handleResetRef.current = handleReset;
 
-      requestAnimationFrame(() => picker.setIsActive(true));
-    }
+    requestAnimationFrame(() => picker.setIsActive(true));
   };
   
   /** Output **/
@@ -103,7 +101,7 @@ export function ItemPicker(props:ItemPickerProps) {
       labelType={ props.labelType }
       labelPosition={ props.labelPosition }
     >
-      <Pressable onPress={ handlePress }>
+      <Pressable onPress={ handlePress } disabled={ hasPressed }>
         <Text>
           { selected?.name || props.items[initialValueIndex]?.name || props.placeholder || 'Select…' }
         </Text>
