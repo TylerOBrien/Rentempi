@@ -11,4 +11,3 @@ export { LabeledField } from './LabeledField';
 export { Password } from './Password';
 export { Select } from './Select';
 export { Submit } from './Submit';
-export { ValuedField } from './ValuedField';
