@@ -10,6 +10,7 @@ module.exports = {
         'secondary': '#5496b8',
         'tertiary': '#38718f',
         'error': '#ff0000',
+        'fail': '#ff0000',
         'danger': '#ff0000',
         'success': '#00ff00',
         'warning': '#884400',
