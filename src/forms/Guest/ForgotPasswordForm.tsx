@@ -55,7 +55,7 @@ export function ForgotPasswordForm(props:ForgotPasswordFormProps) {
         label='Email Address'
         labelPosition='after'
         tailwind={{
-          input: 'input'
+          field: 'input'
         }}
       />
       <Submit

@@ -60,7 +60,7 @@ export function RegisterForm(props:RegisterFormProps) {
         label='Email Address'
         labelPosition='after'
         tailwind={{
-          input: 'input'
+          field: 'input'
         }}
       />
       <Password
@@ -68,7 +68,7 @@ export function RegisterForm(props:RegisterFormProps) {
         label='Password'
         labelPosition='after'
         tailwind={{
-          input: 'input'
+          field: 'input'
         }}
       />
       <Password
@@ -76,9 +76,10 @@ export function RegisterForm(props:RegisterFormProps) {
         label='Confirm Password'
         labelPosition='after'
         tailwind={{
-          input: 'input'
+          field: 'input'
         }}
       />
+
       <Submit
         label='Create Account'
         tailwind={{

@@ -54,7 +54,7 @@ export function VerifyEmailForm(props:VerifyEmailFormProps) {
       <Input
         name='code'
         tailwind={{
-          input: 'input'
+          field: 'input'
         }}
       />
       <Submit
