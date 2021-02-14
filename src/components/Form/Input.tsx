@@ -52,6 +52,10 @@ export function Input(props:InputProps) {
     >
       <Field
         name={ props.name }
+        value={ props.value }
+        initialValue={ props.initialValue }
+        placeholder={ props.placeholder }
+        placeholderTextColor={ props.placeholderTextColor }
         component={ TextInput }
         tailwind={ props.tailwind }
         formik={ props.formik }
