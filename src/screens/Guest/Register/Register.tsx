@@ -28,7 +28,7 @@ import { SideMenu } from './components';
 */
 
 export interface RegisterProps {
-  
+  //
 }
 
 export interface RegisterContextInterface {
@@ -64,7 +64,10 @@ export function Register(props:RegisterProps) {
   
   /** Event Handlers **/
   
-  const handleSuccess = (response:RegisterAuthResponse) => {
+  /**
+   * @return {void}
+   */
+  const handleSuccess = (response:RegisterAuthResponse):void => {
     auth.login({
       user: response.user,
       credentials: { token: response.token.value }
@@ -73,8 +76,11 @@ export function Register(props:RegisterProps) {
     });
   };
   
-  const handleSubmit = (values:RegisterFields, formik:FormikHelpers<RegisterFields>) => {
-    service.call<RegisterAuthResponse>('Auth.Register', values)
+  /**
+   * @return {void}
+   */
+  const handleSubmit = (values:RegisterFields, formik:FormikHelpers<RegisterFields>):void => {
+    service.call('Auth.Register', values)
       .then(handleSuccess)
       .catch(error => form.handleError(formik, error));
   };
