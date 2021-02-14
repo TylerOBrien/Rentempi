@@ -83,7 +83,9 @@ export function ShowUserService(auth:Authorization, user:ResourceIdentity, data?
 */
 
 export interface StoreUserRequest {
-  //
+  first_name?: string;
+  middle_name?: string;
+  last_name?: string;
 }
 
 export interface StoreUserResponse extends UserModel {
@@ -93,19 +95,18 @@ export interface StoreUserResponse extends UserModel {
 /**
  * Save a user.
  * 
- * @param {Authorization} auth
  * @param {StoreUserRequest} data
  * 
  * @return {Promise<StoreUserResponse>}
  */
-export function StoreUserService(auth:Authorization, data:StoreUserRequest):Promise<StoreUserResponse> {
+export function StoreUserService(data:StoreUserRequest = null):Promise<StoreUserResponse> {
   const config = {
     data,
     method: 'POST',
     uri: `/v1/${ endpoint }`
   };
   
-  return Api.call(config, auth);
+  return Api.call(config);
 }
 
 /*
