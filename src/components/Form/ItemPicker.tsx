@@ -3,6 +3,7 @@
 */
 
 import React, { useContext, useEffect, useRef, useState } from 'react';
+import { StyleSheet } from 'react-native';
 
 /**
  * Local Imports
@@ -11,7 +12,7 @@ import React, { useContext, useEffect, useRef, useState } from 'react';
 import { Pressable, Text } from '~/components/Base';
 import { ItemPickerContext, ItemPickerItem } from '~/providers/ItemPickerProvider';
 import { FormProps } from '~/util/Form';
-import { TailwindEnabledProps } from '~/util/TailwindCss';
+import { Tailwind, TailwindEnabledProps } from '~/util/TailwindCss';
 
 /**
  * Sibling Imports
@@ -33,6 +34,12 @@ export interface ItemPickerProps extends FormProps, TailwindEnabledProps {
 */
 
 export function ItemPicker(props:ItemPickerProps) {
+  /** Config **/
+
+  const tailwinds = {
+    field: Tailwind.get(props.tailwind, 'field')
+  };
+
   /** Refs **/
 
   const isMountedRef = useRef<boolean>();
@@ -108,11 +115,21 @@ export function ItemPicker(props:ItemPickerProps) {
       labelType={ props.labelType }
       labelPosition={ props.labelPosition }
     >
-      <Pressable onPress={ handlePress } disabled={ hasPressed }>
-        <Text>
+      <Pressable tailwind={ tailwinds.field } onPress={ handlePress } disabled={ hasPressed }>
+        <Text style={ styles.text }>
           { selected?.name || props.items[initialValueIndex]?.name || props.placeholder || 'Select…' }
         </Text>
       </Pressable>
     </LabeledField>
   );
 }
+
+/**
+ * Styles
+*/
+
+const styles = StyleSheet.create({
+  text: {
+    fontSize: 16
+  }
+});
