@@ -176,3 +176,17 @@ export function DestroyIdentityService(auth:Authorization, Identity:ResourceIden
 
   return Api.call(config, auth);
 }
+
+/*
+|--------------------------------------------------------------------------
+| Service
+|--------------------------------------------------------------------------
+*/
+
+export const Identity = {
+  index: IndexIdentityService,
+  show: ShowIdentityService,
+  store: StoreIdentityService,
+  update: UpdateIdentityService,
+  destroy: DestroyIdentityService
+};

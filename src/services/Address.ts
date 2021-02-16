@@ -173,3 +173,17 @@ export function DestroyAddressService(auth:Authorization, address:ResourceIdenti
 
   return Api.call(config, auth);
 }
+
+/*
+|--------------------------------------------------------------------------
+| Service
+|--------------------------------------------------------------------------
+*/
+
+export const Address = {
+  index: IndexAddressService,
+  show: ShowAddressService,
+  store: StoreAddressService,
+  update: UpdateAddressService,
+  destroy: DestroyAddressService
+};

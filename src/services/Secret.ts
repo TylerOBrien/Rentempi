@@ -176,3 +176,17 @@ export function DestroySecretService(auth:Authorization, secret:ResourceIdentity
 
   return Api.call(config, auth);
 }
+
+/*
+|--------------------------------------------------------------------------
+| Service
+|--------------------------------------------------------------------------
+*/
+
+export const Secret = {
+  index: IndexSecretService,
+  show: ShowSecretService,
+  store: StoreSecretService,
+  update: UpdateSecretService,
+  destroy: DestroySecretService
+};

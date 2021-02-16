@@ -173,3 +173,18 @@ export function DestroyImageService(auth:Authorization, image:ResourceIdentity, 
   
   return Api.call(config, auth);
 }
+
+/*
+|--------------------------------------------------------------------------
+| Service
+|--------------------------------------------------------------------------
+*/
+
+export const Image = {
+  index: IndexImageService,
+  show: ShowImageService,
+  store: StoreImageService,
+  update: UpdateImageService,
+  destroy: DestroyImageService
+};
+

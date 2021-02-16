@@ -173,3 +173,17 @@ export function DestroyProfileService(auth:Authorization, profile:ResourceIdenti
 
   return Api.call(config, auth);
 }
+
+/*
+|--------------------------------------------------------------------------
+| Service
+|--------------------------------------------------------------------------
+*/
+
+export const Profile = {
+  index: IndexProfileService,
+  show: ShowProfileService,
+  store: StoreProfileService,
+  update: UpdateProfileService,
+  destroy: DestroyProfileService
+};

@@ -2,7 +2,7 @@
  * Local Imports
 */
 
-import { TokenModel } from '~/models';
+import { TokenModel, UserModel } from '~/models';
 import { Api, Authorization, ResourceIdentity } from '~/util/Api';
 
 /**
@@ -93,26 +93,26 @@ export interface StoreTokenRequest {
   }
 }
 
-export interface StoreTokenResponse extends TokenModel {
-  //
+export interface StoreTokenResponse {
+  token: TokenModel;
+  user: UserModel;
 }
 
 /**
  * Save a token.
  * 
- * @param {Authorization} auth
  * @param {StoreTokenRequest} data
  * 
  * @return {Promise<StoreTokenResponse>}
  */
-export function StoreTokenService(auth:Authorization, data:StoreTokenRequest):Promise<StoreTokenResponse> {
+export function StoreTokenService(data:StoreTokenRequest):Promise<StoreTokenResponse> {
   const config = {
     data,
     method: 'POST',
     uri: `/v1/${ endpoint }`
   };
 
-  return Api.call(config, auth);
+  return Api.call(config);
 }
 
 /*
@@ -180,3 +180,17 @@ export function DestroyTokenService(auth:Authorization, Token:ResourceIdentity, 
 
   return Api.call(config, auth);
 }
+
+/*
+|--------------------------------------------------------------------------
+| Service
+|--------------------------------------------------------------------------
+*/
+
+export const Token = {
+  index: IndexTokenService,
+  show: ShowTokenService,
+  store: StoreTokenService,
+  update: UpdateTokenService,
+  destroy: DestroyTokenService
+};

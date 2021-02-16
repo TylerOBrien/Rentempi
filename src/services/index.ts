@@ -1,25 +1,12 @@
 /**
- * Sibling Imports
-*/
-
-import * as AddressServices from './Address';
-import * as AuthServices from './Auth';
-import * as EmailVerificationServices from './EmailVerification';
-import * as ImageServices from './Image';
-import * as ProfileServices from './Profile';
-import * as TokenServices from './Token';
-import * as UserServices from './User';
-
-/**
  * Exports
 */
 
-export {
-  AddressServices,
-  AuthServices,
-  EmailVerificationServices,
-  ImageServices,
-  ProfileServices,
-  TokenServices,
-  UserServices
-}
+export { Address } from './Address';
+export { Identity } from './Identity';
+export { Image } from './Image';
+export { Profile } from './Profile';
+export { Recovery } from './Recovery';
+export { Secret } from './Secret';
+export { Token } from './Token';
+export { User } from './User';
