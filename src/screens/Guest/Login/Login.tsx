@@ -58,7 +58,6 @@ export function Login(props:LoginProps) {
    * @return {void}
    */
   const handleSuccess = (response:StoreTokenResponse):void => {
-    console.log(response);
     auth.login(response, { remember });
   };
   
