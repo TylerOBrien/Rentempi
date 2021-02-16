@@ -24,7 +24,7 @@ import { LabeledField } from './LabeledField';
  * Types/Interfaces
 */
 
-export interface ItemPickerProps extends FormProps, TailwindEnabledProps {
+export interface ItemPickerProps extends FormProps<ItemPickerItem>, TailwindEnabledProps {
   name: string;
   items: Array<ItemPickerItem>;
 }
@@ -37,7 +37,8 @@ export function ItemPicker(props:ItemPickerProps) {
   /** Config **/
 
   const tailwinds = {
-    field: Tailwind.get(props.tailwind, 'field')
+    field: Tailwind.get(props.tailwind, 'field'),
+    text: Tailwind.get(props.tailwind, 'text')
   };
 
   /** Refs **/
@@ -116,7 +117,7 @@ export function ItemPicker(props:ItemPickerProps) {
       labelPosition={ props.labelPosition }
     >
       <Pressable tailwind={ tailwinds.field } onPress={ handlePress } disabled={ hasPressed }>
-        <Text style={ styles.text }>
+        <Text tailwind={ tailwinds.text } style={ styles.text }>
           { selected?.name || props.items[initialValueIndex]?.name || props.placeholder || 'Select…' }
         </Text>
       </Pressable>
