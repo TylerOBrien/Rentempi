@@ -12,9 +12,8 @@ import FaIcon from 'react-native-vector-icons/FontAwesome';
 
 import { Text, View } from '~/components/Base';
 import { WelcomeGuestLayout } from '~/layouts/Guest';
-import { ForgotPasswordAuthResponse } from '~/services/Auth';
 import { ForgotPasswordFields, ForgotPasswordForm, ForgotPasswordFormContext } from '~/forms/Guest/ForgotPasswordForm';
-
+import { Recovery } from '~/services';
 import { useForm, useService } from '~/hooks';
 
 /**
@@ -51,14 +50,18 @@ export function ForgotPassword(props:ForgotPasswordProps) {
   
   /** Event Handlers **/
   
-  const handleSuccess = (response:ForgotPasswordAuthResponse) => {
+  /**
+   * @return {void}
+   */
+  const handleSuccess = (response):void => {
     setIsSuccess(true);
   };
   
-  const handleSubmit = (values:ForgotPasswordFields, formik:FormikHelpers<ForgotPasswordFields>) => {
-    service.call<ForgotPasswordAuthResponse>('Auth.ForgotPassword', values)
-      .then(handleSuccess)
-      .catch(error => form.handleError(formik, error));
+  /**
+   * @return {void}
+   */
+  const handleSubmit = (values:ForgotPasswordFields, formik:FormikHelpers<ForgotPasswordFields>):void => {
+    Recovery.store(values);
   };
   
   /** Output **/

@@ -2,7 +2,7 @@
  * Global Imports
 */
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { FormikHelpers } from 'formik';
 
 /**
@@ -11,10 +11,8 @@ import { FormikHelpers } from 'formik';
 
 import { RegisterForm, RegisterFormContext, RegisterFields } from '~/forms/Guest/RegisterForm';
 import { SideMenuGuestLayout } from '~/layouts/Guest';
-
-import { useAuth, useForm, useService } from '~/hooks';
-
-import { RegisterAuthResponse } from '~/services/Auth';
+import { useAuth, useForm } from '~/hooks';
+import { Identity, Secret, User } from '~/services';
 
 /**
  * Sibling Imports
@@ -45,7 +43,6 @@ export function Register(props:RegisterProps) {
   
   const auth = useAuth();
   const form = useForm();
-  const service = useService();
   
   /** States **/
   
@@ -58,24 +55,24 @@ export function Register(props:RegisterProps) {
   /** Event Handlers **/
   
   /**
-   * @return {void}
+   * @return {Promise<void>}
    */
-  const handleSuccess = (response:RegisterAuthResponse):void => {
-    auth.login({
-      user: response.user,
-      credentials: { token: response.token.value }
-    }, {
-      remember
-    });
-  };
-  
-  /**
-   * @return {void}
-   */
-  const handleSubmit = (values:RegisterFields, formik:FormikHelpers<RegisterFields>):void => {
-    service.call('Auth.Register', values)
-      .then(handleSuccess)
-      .catch(error => form.handleError(formik, error));
+  const handleSubmit = async (values:RegisterFields, formik:FormikHelpers<RegisterFields>):Promise<void> => {
+    const { user, token } = await User.store();
+
+    const identity = await Identity.store({
+      name: 'primary',
+      type: 'email' as const,
+      value: values.email
+    }, token);
+
+    const secret = await Secret.store({
+      type: 'password' as const,
+      value: values.password,
+      confirmation: values.password_confirmation
+    }, token);
+
+    auth.login({ user, token }, { remember });
   };
   
   /** Output **/

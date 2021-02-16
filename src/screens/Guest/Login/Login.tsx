@@ -11,9 +11,8 @@ import { FormikHelpers } from 'formik';
 
 import { LoginFields, LoginForm, LoginFormContext } from '~/forms/Guest/LoginForm';
 import { SideMenuGuestLayout } from '~/layouts/Guest';
-import { LoginAuthResponse } from '~/services/Auth';
-
-import { useAuth, useForm, useService } from '~/hooks';
+import { useAuth, useForm } from '~/hooks';
+import { Token, StoreTokenResponse } from '~/services/Token';
 
 /**
  * Sibling Imports
@@ -26,7 +25,7 @@ import { SideMenu } from './components';
 */
 
 export interface LoginProps {
-  
+  //
 }
 
 /**
@@ -44,7 +43,6 @@ export function Login(props:LoginProps) {
   
   const auth = useAuth();
   const form = useForm();
-  const service = useService();
   
   /** States **/
   
@@ -56,17 +54,19 @@ export function Login(props:LoginProps) {
   
   /** Event Handlers **/
   
-  const handleSuccess = (response:LoginAuthResponse) => {
-    auth.login({
-      user: response.user,
-      credentials: { token: response.token.value }
-    }, {
-      remember
-    });
+  /**
+   * @return {void}
+   */
+  const handleSuccess = (response:StoreTokenResponse):void => {
+    console.log(response);
+    auth.login(response, { remember });
   };
   
-  const handleSubmit = (values:LoginFields, formik:FormikHelpers<LoginFields>) => {
-    service.call('Token.Store', values)
+  /**
+   * @return {void}
+   */
+  const handleSubmit = (values:LoginFields, formik:FormikHelpers<LoginFields>):void => {
+    Token.store(values)
       .then(handleSuccess)
       .catch(error => form.handleError(formik, error));
   };
