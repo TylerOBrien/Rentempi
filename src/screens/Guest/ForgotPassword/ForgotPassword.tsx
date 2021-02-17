@@ -14,7 +14,7 @@ import { Text, View } from '~/components/Base';
 import { WelcomeGuestLayout } from '~/layouts/Guest';
 import { ForgotPasswordFields, ForgotPasswordForm, ForgotPasswordFormContext } from '~/forms/Guest/ForgotPasswordForm';
 import { Recovery } from '~/services';
-import { useForm, useService } from '~/hooks';
+import { useForm } from '~/hooks';
 
 /**
  * Types/Interfaces
@@ -38,7 +38,6 @@ export function ForgotPassword(props:ForgotPasswordProps) {
   /** Hooks **/
   
   const form = useForm();
-  const service = useService();
   
   /** States **/
 

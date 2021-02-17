@@ -12,7 +12,7 @@ import { useNavigation } from '@react-navigation/native';
 
 import { PrimaryGuestLayout } from '~/layouts/Guest';
 
-import { useForm, useService } from '~/hooks';
+import { useForm } from '~/hooks';
 import { FormHook } from '~/hooks/Form';
 
 /**
@@ -42,7 +42,6 @@ export function ResetPassword(props:ResetPasswordProps) {
   
   const form = useForm();
   const navigation = useNavigation();
-  const service = useService();
 
   /** Contexts **/
   

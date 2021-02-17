@@ -11,9 +11,9 @@ import { FormikHelpers } from 'formik';
 
 import { VerifyEmailFields, VerifyEmailForm, VerifyEmailFormContext } from '~/forms/Unverified/VerifyEmailForm';
 import { PrimaryUnverifiedLayout } from '~/layouts/Unverified';
-import { StoreEmailVerificationResponse } from '~/services/EmailVerification';
+import {  } from '~/services';
 
-import { useForm, useService } from '~/hooks';
+import { useForm } from '~/hooks';
 
 /**
  * Types/Interfaces
@@ -37,7 +37,6 @@ export function VerifyEmail(props:VerifyEmailProps) {
   /** Hooks **/
   
   const form = useForm();
-  const service = useService();
   
   /** Event Handlers **/
   
@@ -46,9 +45,9 @@ export function VerifyEmail(props:VerifyEmailProps) {
   };
   
   const handleSubmit = (values:VerifyEmailFields, formik:FormikHelpers<VerifyEmailFields>) => {
-    service.call('EmailVerification.Store', values)
+    /* service.call('EmailVerification.Store', values)
       .then(handleSuccess)
-      .catch(error => form.handleError(formik, error));
+      .catch(error => form.handleError(formik, error)); */
   };
   
   /** Output **/
