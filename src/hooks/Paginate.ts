@@ -27,7 +27,7 @@ export interface PaginateHook {
 export function usePaginate(options:PaginateOptions):PaginateHook {
   /** States **/
 
-  const [ page, setPage ] = useState(0);
+  const [ page, setPage ] = useState<number>(0);
 
   /** Output **/
 
