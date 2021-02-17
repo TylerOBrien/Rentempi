@@ -27,7 +27,7 @@ export function useStorage(group:string='db'):StorageHook {
   /** Helpers **/
 
   /**
-   * 
+   * @return {Promise<boolean>}
    */
   const has = (key:string):Promise<boolean> => {
     return new Promise((resolve, reject) => {
@@ -38,7 +38,7 @@ export function useStorage(group:string='db'):StorageHook {
   };
 
   /**
-   * 
+   * @return {Promise<any>}
    */
   const get = (key:string):Promise<any> => {
     return new Promise((resolve, reject) => {
@@ -49,7 +49,7 @@ export function useStorage(group:string='db'):StorageHook {
   };
   
   /**
-   * 
+   * @return {Promise<void>}
    */
   const set = (key:string, value:any):Promise<void> => {
     return new Promise((resolve, reject) => {
@@ -60,7 +60,7 @@ export function useStorage(group:string='db'):StorageHook {
   };
   
   /**
-   * 
+   * @return {Promise<void>}
    */
   const merge = (key:string, value:any):Promise<void> => {
     return new Promise((resolve, reject) => {
@@ -71,7 +71,7 @@ export function useStorage(group:string='db'):StorageHook {
   };
   
   /**
-   * 
+   * @return {Promise<void>}
    */
   const remove = (key:string):Promise<void> => {
     return new Promise((resolve, reject) => {
