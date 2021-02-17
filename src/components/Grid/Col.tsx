@@ -18,7 +18,7 @@ import { TailwindEnabledProps } from '~/util/TailwindCss';
 
 export interface ColProps extends TailwindEnabledProps {
   children?: ReactNode;
-};
+}
 
 /**
  * Exports
