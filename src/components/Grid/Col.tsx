@@ -10,7 +10,7 @@ import { StyleSheet } from 'react-native';
 */
 
 import { View } from '~/components/Base';
-import { TailwindEnabledProps } from '~/util/TailwindCss';
+import { Tailwind, TailwindEnabledProps } from '~/util/TailwindCss';
 
 /**
  * Types/Interfaces
@@ -25,10 +25,18 @@ export interface ColProps extends TailwindEnabledProps {
 */
 
 export function Col(props:ColProps) {
+  /** Tailwind **/
+
+  const tailwinds = {
+    container: Tailwind.get(props.tailwind, 'container')
+  };
+
+  /** Output **/
+
   return (
     <View
       style={ !props.style ? styles.col : [ styles.col, props.style ] }
-      tailwind={ props.tailwind }
+      tailwind={ tailwinds.container }
       onLayout={ props.onLayout }
     >
       { props.children }
