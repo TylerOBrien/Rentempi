@@ -2,7 +2,7 @@
  * Global Imports
 */
 
-import React, { ReactElement, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import { StyleSheet } from 'react-native';
 
 /**
@@ -11,7 +11,7 @@ import { StyleSheet } from 'react-native';
 
 import { View } from '~/components/Base';
 import { Col } from './Col';
-import { TailwindEnabledProps } from '~/util/TailwindCss';
+import { Tailwind, TailwindEnabledProps } from '~/util/TailwindCss';
 
 /**
  * Types/Interfaces
@@ -25,20 +25,33 @@ export interface RowProps extends TailwindEnabledProps {
 }
 
 /**
+ * Locals
+*/
+
+const maxCols = 16;
+
+/**
  * Exports
 */
 
 export function Row(props:RowProps) {
-  /** Helpers **/
+  /** Tailwind **/
 
-  const colStyle = !props.cols ? undefined : { width: `${ props.cols / 16 }%` };
+  const tailwinds = {
+    container: Tailwind.get(props.tailwind, 'container')
+  };
 
   /** Renderers **/
 
-  const renderColumn = (child:ReactElement):ReactElement => (
+  /**
+   * @return {JSX.Element}
+   */
+  const renderColumn = (child:JSX.Element):JSX.Element => (
     (child.type === Col)
       ? child
-      : <Col style={ colStyle }>{ child }</Col>
+      : <Col style={ styles['col' + props.cols] }>
+          { child }
+        </Col>
   );
 
   /** Output **/
@@ -46,7 +59,7 @@ export function Row(props:RowProps) {
   return (
     <View
       style={ !props.style ? styles.row : [ styles.row, props.style ] }
-      tailwind={ props.tailwind }
+      tailwind={ tailwinds.container }
       onLayout={ props.onLayout }
     >
       {
@@ -65,5 +78,69 @@ export function Row(props:RowProps) {
 const styles = StyleSheet.create({
   row: {
     flexDirection: 'row'
+  },
+
+  col1: {
+    width: (1 / maxCols) * 100 + '%'
+  },
+
+  col2: {
+    width: (2 / maxCols) * 100 + '%'
+  },
+
+  col3: {
+    width: (3 / maxCols) * 100 + '%'
+  },
+
+  col4: {
+    width: (4 / maxCols) * 100 + '%'
+  },
+
+  col5: {
+    width: (5 / maxCols) * 100 + '%'
+  },
+
+  col6: {
+    width: (6 / maxCols) * 100 + '%'
+  },
+
+  col7: {
+    width: (7 / maxCols) * 100 + '%'
+  },
+
+  col8: {
+    width: (8 / maxCols) * 100 + '%'
+  },
+
+  col9: {
+    width: (9 / maxCols) * 100 + '%'
+  },
+
+  col10: {
+    width: (10 / maxCols) * 100 + '%'
+  },
+
+  col11: {
+    width: (11 / maxCols) * 100 + '%'
+  },
+
+  col12: {
+    width: (12 / maxCols) * 100 + '%'
+  },
+
+  col13: {
+    width: (13 / maxCols) * 100 + '%'
+  },
+
+  col14: {
+    width: (14 / maxCols) * 100 + '%'
+  },
+
+  col15: {
+    width: (15 / maxCols) * 100 + '%'
+  },
+
+  col16: {
+    width: (16 / maxCols) * 100 + '%'
   }
 });
