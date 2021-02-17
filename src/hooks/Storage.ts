@@ -38,9 +38,9 @@ export function useStorage(group:string='db'):StorageHook {
   };
 
   /**
-   * @return {Promise<any>}
+   * @return {Promise<T>}
    */
-  const get = (key:string):Promise<any> => {
+  const get = <T=unknown>(key:string):Promise<T> => {
     return new Promise((resolve, reject) => {
       StorageDriver.get(group, key)
         .then(data => resolve(data ? JSON.parse(data) : undefined))
