@@ -2,7 +2,7 @@
  * Global Imports
 */
 
-import React, { useContext } from 'react';
+import { Dispatch, SetStateAction, useContext } from 'react';
 
 /**
  * Local Imports
@@ -17,8 +17,8 @@ import { UserContext } from '~/providers/UserProvider';
 
 export interface SessionHook {
   user: UserModel;
-  setUser: React.Dispatch<React.SetStateAction<UserModel>>;
-};
+  setUser: Dispatch<SetStateAction<UserModel>>;
+}
 
 /**
  * Exports
