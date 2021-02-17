@@ -11,14 +11,14 @@ import React, { useState } from 'react';
 export interface PaginateOptions {
   per: number;
   length: number;
-};
+}
 
 export interface PaginateHook {
   page: number;
   setPage: React.Dispatch<React.SetStateAction<number>>;
   pages: number;
   offset: Array<number>;
-};
+}
 
 /**
  * Exports
