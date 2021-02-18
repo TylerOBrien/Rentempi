@@ -107,7 +107,7 @@ export function PaginateNavigation(props:PaginateNavigationProps) {
   /** Output **/
   
   return (
-    <View style={ styles.container }>
+    <View style={ styles.container } onLayout={ props.onLayout }>
       {
         props.current > firstPivot &&
           <PageNumber
