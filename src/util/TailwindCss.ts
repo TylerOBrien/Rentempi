@@ -104,7 +104,7 @@ function hasTrackingPrefix(entry:string):boolean {
  */
 function parse(className:string, fontSizes?:RegExpExecArray):object {
   if (!className) {
-    Assert.ThrowUnexpectedEmptyError('className', 'string');
+    return;
   }
 
   if (className in tailwinds) {
@@ -279,7 +279,15 @@ function props(properties:any):any {
     return properties;
   }
   
-  const parsed = parse(aliased(properties.tailwind));
+  const parsed = parse(aliased(
+    Array.isArray(properties.tailwind)
+      ? Algorithm.truthies<string>(properties.tailwind).join(' ')
+      : properties.tailwind
+  ));
+
+  if (!parsed) {
+    return properties;
+  }
 
   if (!properties.style) {
     return Object.assign({}, properties, { style: parsed, tailwind: undefined });
