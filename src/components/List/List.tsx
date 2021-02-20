@@ -32,7 +32,7 @@ export function List(props:ListProps) {
   return (
     <View
       style={ !props.style ? styles.container : [ styles.container, props.style ] }
-      tailwind={ props.tailwind }
+      tailwind={ Tailwind.get(props.tailwind) }
       onLayout={ props.onLayout }
     >
 

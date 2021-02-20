@@ -41,9 +41,9 @@ function ButtonLabel(props:ButtonLabelProps) {
   /** Helpers **/
 
   const tailwinds = {
-    label: Tailwind.get(props.tailwind, 'label', false, false),
-    labelContainer: Tailwind.get(props.tailwind, 'labelContainer', false, false),
-    loadingContainer: Tailwind.get(props.tailwind, 'loadingContainer', false, false)
+    label: Tailwind.get(props.tailwind, 'label'),
+    labelContainer: Tailwind.get(props.tailwind, 'labelContainer'),
+    loadingContainer: Tailwind.get(props.tailwind, 'loadingContainer')
   };
 
   /** Output **/

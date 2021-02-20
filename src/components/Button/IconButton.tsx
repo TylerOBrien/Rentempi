@@ -46,7 +46,7 @@ function IconButtonLabel(props:IconButtonLabelProps) {
   /** Helpers **/
 
   const tailwinds = {
-    container: Tailwind.get(props.tailwind, 'label', false, false)
+    container: Tailwind.get(props.tailwind, 'label')
   };
 
   /** Output **/

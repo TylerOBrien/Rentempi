@@ -34,7 +34,7 @@ export interface TailwindEnabledProps {
   style?: StyleProp;
   tailwind?: TailwindProp;
   onLayout?: (event:LayoutChangeEvent) => void;
-};
+}
 
 /**
  * Local Vars
@@ -220,27 +220,23 @@ function color(colorName:string):string {
 }
 
 /**
- * Gets the child Tailwind object of the passed Tailwind object.
+ * Gets the named child Tailwind object.
  * 
  * If the passed param is not a Tailwind object then it will be assumed to be a
- * class string or an array of class strings and/or Tailwind objects.
+ * className string or an array of className strings.
  * 
  * @param {TailwindObject} tailwind
- * @param {string} group
- * @param {boolean} fallbackOnString
- * @param {boolean} fallbackOnArray
- * @param {any} fallbackTailwind
+ * @param {string} name
+ * @param {TailwindClassNames} fallback
  * 
- * @return {any}
+ * @return {TailwindObject}
  */
-function get(tailwind:TailwindObject, group:string='container', fallbackOnString:boolean=true, fallbackOnArray:boolean=true, fallbackTailwind?:any):any {
-  if (JS.isString(tailwind)) {
-    return fallbackOnString ? tailwind || fallbackTailwind : undefined;
-  } else if (JS.isArray(tailwind)) {
-    return fallbackOnArray ? tailwind || fallbackTailwind : undefined;
-  } else {
-    return ( tailwind && tailwind[group] ) || fallbackTailwind;
+function get(tailwind:TailwindObject, name:string = 'container', fallback:TailwindClassNames = undefined):TailwindClassNames {
+  if (typeof tailwind === 'string' || Array.isArray(tailwind)) {
+    return tailwind || fallback;
   }
+
+  return name in tailwind ? tailwind[name] : fallback;
 }
 
 /**

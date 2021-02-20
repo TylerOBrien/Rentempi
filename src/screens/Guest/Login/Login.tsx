@@ -9,6 +9,7 @@ import { FormikHelpers } from 'formik';
  * Local Imports
 */
 
+import { PaginateNavigation } from '~/components/Paginate';
 import { LoginFields, LoginForm, LoginFormContext } from '~/forms/Guest/LoginForm';
 import { SideMenuGuestLayout } from '~/layouts/Guest';
 import { useAuth, useForm } from '~/hooks';
@@ -78,6 +79,11 @@ export function Login(props:LoginProps) {
         <LoginForm
           context={ LoginContext }
           onSubmit={ handleSubmit }
+        />
+        <PaginateNavigation
+          current={ 5 }
+          total={ 50 }
+          onNavigate={ page => {} }
         />
       </SideMenuGuestLayout>
     </LoginContext.Provider>

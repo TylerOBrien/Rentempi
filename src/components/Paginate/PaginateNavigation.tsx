@@ -55,12 +55,12 @@ function PageNumber(props:PageNumberProps) {
   /** Tailwinds **/
 
   const tailwinds = {
-    container: Tailwind.get(props.tailwind, 'container', false, false),
-    containerActive: Tailwind.get(props.tailwind, 'containerActive', false, false),
-    containerInactive: Tailwind.get(props.tailwind, 'containerInactive', false, false),
-    text: Tailwind.get(props.tailwind, 'text', false, false),
-    textActive: Tailwind.get(props.tailwind, 'textActive', false, false),
-    textInactive: Tailwind.get(props.tailwind, 'textInactive', false, false)
+    container: Tailwind.get(props.tailwind, 'container'),
+    containerActive: Tailwind.get(props.tailwind, 'containerActive'),
+    containerInactive: Tailwind.get(props.tailwind, 'containerInactive'),
+    text: Tailwind.get(props.tailwind, 'text'),
+    textActive: Tailwind.get(props.tailwind, 'textActive'),
+    textInactive: Tailwind.get(props.tailwind, 'textInactive')
   };
 
   /** Output **/

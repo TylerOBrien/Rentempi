@@ -29,9 +29,9 @@ export function Divider(props:DividerProps) {
   /** Helpers **/
 
   const tailwinds = {
-    container: Tailwind.get(props.tailwind, 'container', true, true, props.tailwind),
-    line: Tailwind.get(props.tailwind, 'line', false, false),
-    label: Tailwind.get(props.tailwind, 'label', false, false)
+    container: Tailwind.get(props.tailwind, 'container'),
+    line: Tailwind.get(props.tailwind, 'line'),
+    label: Tailwind.get(props.tailwind, 'label')
   };
 
   /** Renderers **/
