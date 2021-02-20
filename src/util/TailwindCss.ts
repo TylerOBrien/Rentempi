@@ -236,7 +236,7 @@ function get(tailwind:TailwindObject, name:string = 'container', fallback:Tailwi
     return tailwind || fallback;
   }
 
-  return name in tailwind ? tailwind[name] : fallback;
+  return tailwind && name in tailwind ? tailwind[name] : fallback;
 }
 
 /**
