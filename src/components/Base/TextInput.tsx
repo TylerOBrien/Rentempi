@@ -11,14 +11,14 @@ import {
  * Local Imports
 */
 
-import { Tailwind, TailwindBaseProp } from '~/util/TailwindCss';
+import { Tailwind, TailwindClassNames } from '~/util/TailwindCss';
 
 /**
  * Types/Interfaces
 */
 
 export interface TextInputProps extends BaseTextInputProps {
-  tailwind?: TailwindBaseProp;
+  tailwind?: TailwindClassNames;
 }
 
 /**

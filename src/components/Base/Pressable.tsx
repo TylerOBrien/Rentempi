@@ -11,7 +11,7 @@ import {
  * Local Imports
 */
 
-import { Tailwind, StyleProp, TailwindBaseProp } from '~/util/TailwindCss';
+import { Tailwind, StyleProp, TailwindClassNames } from '~/util/TailwindCss';
 
 /**
  * Types/Interfaces
@@ -20,9 +20,9 @@ import { Tailwind, StyleProp, TailwindBaseProp } from '~/util/TailwindCss';
 export interface PressableProps extends BasePressableProps {
   styleUnpressed?: StyleProp;
   stylePressed?: StyleProp;
-  tailwind?: TailwindBaseProp;
-  tailwindUnpressed?: TailwindBaseProp;
-  tailwindPressed?: TailwindBaseProp;
+  tailwind?: TailwindClassNames;
+  tailwindUnpressed?: TailwindClassNames;
+  tailwindPressed?: TailwindClassNames;
   children?: ReactNode;
 }
 
