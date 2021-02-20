@@ -9,13 +9,18 @@ import { ScreenDriver } from '~/system';
 */
 
 export const ScreenConfig = {
-  dimensions: {
-    min: Math.min(...ScreenDriver.dimensions()),
-    max: Math.max(...ScreenDriver.dimensions())
-  },
   initial: {
     Guest: 'Welcome',
     Undentified: 'Identify',
     Identified: 'Lobby'
-  }
+  },
+
+  breakpoints: {
+    sm: 400,
+    md: 700,
+    lg: 1000,
+    xl: 1300
+  },
+
+  dimensions: ScreenDriver.dimensions()
 };
