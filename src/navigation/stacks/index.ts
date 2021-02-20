@@ -3,5 +3,5 @@
 */
 
 export { GuestStack } from './Guest';
-export { UnverifiedStack } from './Unverified';
-export { VerifiedStack } from './Verified';
+export { UnverifiedStack } from './Unidentified';
+export { VerifiedStack } from './Identified';

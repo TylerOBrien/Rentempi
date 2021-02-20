@@ -20,7 +20,7 @@ import { Header } from './components';
  * Types/Interfaces
 */
 
-export interface PrimaryVerifiedLayoutProps {
+export interface PrimaryIdentifiedLayoutProps {
   children: ReactNode;
 };
 
@@ -28,7 +28,7 @@ export interface PrimaryVerifiedLayoutProps {
  * Exports
 */
 
-export function PrimaryVerifiedLayout(props:PrimaryVerifiedLayoutProps) {
+export function PrimaryIdentifiedLayout(props:PrimaryIdentifiedLayoutProps) {
   return (
     <Fragment>
       <Header />

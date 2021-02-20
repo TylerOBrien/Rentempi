@@ -9,7 +9,7 @@ import { createStackNavigator } from '@react-navigation/stack';
  * Local Imports
 */
 
-import * as UnverifiedScreenConfigs from '~/screens/Unverified/configs';
+import * as UnverifiedScreenConfigs from '~/screens/Unidentified/configs';
 import { ScreenConfig } from '~/config';
 
 /**

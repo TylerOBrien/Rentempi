@@ -14,7 +14,7 @@ import { Text, View } from '~/components/Base';
  * Types/Interfaces
 */
 
-export interface PrimaryUnverifiedLayoutProps {
+export interface PrimaryUnidentifiedLayoutProps {
   children: ReactNode;
 }
 
@@ -22,7 +22,7 @@ export interface PrimaryUnverifiedLayoutProps {
  * Exports
 */
 
-export function PrimaryUnverifiedLayout(props:PrimaryUnverifiedLayoutProps) {
+export function PrimaryUnidentifiedLayout(props:PrimaryUnidentifiedLayoutProps) {
   return (
     <View tailwind='flex-auto justify-center items-center bg-primary'>
       <View>

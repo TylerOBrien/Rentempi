@@ -9,8 +9,8 @@ import { FormikHelpers } from 'formik';
  * Local Imports
 */
 
-import { VerifyEmailFields, VerifyEmailForm, VerifyEmailFormContext } from '~/forms/Unverified/VerifyEmailForm';
-import { PrimaryUnverifiedLayout } from '~/layouts/Unverified';
+import { VerifyEmailFields, VerifyEmailForm, VerifyEmailFormContext } from '~/forms/Unidentified/VerifyEmailForm';
+import { PrimaryUnidentifiedLayout } from '~/layouts/Unidentified';
 import {  } from '~/services';
 
 import { useForm } from '~/hooks';
@@ -54,12 +54,12 @@ export function VerifyEmail(props:VerifyEmailProps) {
   
   return (
     <VerifyEmailContext.Provider value={{  }}>
-      <PrimaryUnverifiedLayout>
+      <PrimaryUnidentifiedLayout>
         <VerifyEmailForm
           context={ VerifyEmailContext }
           onSubmit={ handleSubmit }
         />
-      </PrimaryUnverifiedLayout>
+      </PrimaryUnidentifiedLayout>
     </VerifyEmailContext.Provider>
   );
 }
