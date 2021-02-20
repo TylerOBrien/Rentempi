@@ -10,7 +10,7 @@ import { LayoutChangeEvent } from 'react-native';
 */
 
 export interface SwitchProps {
-  active: number;
+  current: number;
   components: Array<FunctionComponent>;
   onLayout?: (event:LayoutChangeEvent) => void;
 }
@@ -32,19 +32,19 @@ export function Switch(props:SwitchProps) {
   /** Setup **/
 
   if (!visibleRef.current) {
-    activeRef.current = props.active;
-    visibleRef.current = React.createElement(props.components[props.active]);
+    activeRef.current = props.current;
+    visibleRef.current = React.createElement(props.components[props.current]);
   }
 
   /** Side-Effects **/
 
   useEffect(() => {
-    if (props.active !== activeRef.current) {
-      activeRef.current = props.active;
-      visibleRef.current = React.createElement(props.components[props.active]);
+    if (props.current !== activeRef.current) {
+      activeRef.current = props.current;
+      visibleRef.current = React.createElement(props.components[props.current]);
       setForceRender(current => !current);
     }
-  }, [ props.active ]);
+  }, [ props.current ]);
 
   /** Output **/
 
