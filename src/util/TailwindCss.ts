@@ -27,8 +27,8 @@ export type StyleProp = object | Array<object>;
 export type TailwindBaseProp = string | Array<string>;
 export type TailwindProp = TailwindBaseProp | object;
 
-export type TailwindClassNames = string | Array<string>;
-export type TailwindObject = string | Array<string> | object;
+export type TailwindClassNames = string | Array<string> | Array<TailwindClassNames>;
+export type TailwindObject = TailwindClassNames | object;
 
 export interface TailwindProps {
   style?: StyleProp;
