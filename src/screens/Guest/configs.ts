@@ -1,9 +1,21 @@
 /**
+ * Imports
+*/
+
+import * as LoginConfig from './Login/config';
+import * as RegisterConfig from './Register/config';
+import * as ResetPasswordConfig from './ResetPassword/config';
+import * as ForgotPasswordConfig from './ForgotPassword/config';
+import * as WelcomeConfig from './Welcome/config';
+
+/**
  * Exports
 */
 
-export { ForgotPasswordConfig } from './ForgotPassword';
-export { LoginConfig } from './Login';
-export { RegisterConfig } from './Register';
-export { ResetPasswordConfig } from './ResetPassword';
-export { WelcomeConfig } from './Welcome';
+export {
+  LoginConfig,
+  RegisterConfig,
+  ResetPasswordConfig,
+  ForgotPasswordConfig,
+  WelcomeConfig
+}

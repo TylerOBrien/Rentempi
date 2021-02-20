@@ -89,13 +89,3 @@ export function Login(props:LoginProps) {
     </LoginContext.Provider>
   );
 }
-
-export const LoginConfig = {
-  stack: {
-    name: 'Login',
-    component: Login,
-    options: {
-      headerShown: false
-    }
-  }
-};

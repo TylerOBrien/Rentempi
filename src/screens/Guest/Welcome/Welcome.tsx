@@ -66,13 +66,3 @@ export function Welcome(props:WelcomeProps) {
     </WelcomeGuestLayout>
   );
 }
-
-export const WelcomeConfig = {
-  stack: {
-    name: 'Welcome',
-    component: Welcome,
-    options: {
-      headerShown: false
-    }
-  }
-};

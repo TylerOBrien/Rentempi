@@ -90,14 +90,3 @@ export function ForgotPassword(props:ForgotPasswordProps) {
     </ForgotPasswordContext.Provider>
   );
 }
-
-export const ForgotPasswordConfig = {
-  stack: {
-    name: 'Forgot Password',
-    component: ForgotPassword,
-    options: {
-      headerShown: false,
-      animationEnabled: false
-    }
-  }
-};
