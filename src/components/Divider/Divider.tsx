@@ -81,11 +81,7 @@ function LabeledLine(props:LabeledLineProps) {
 */
 
 export function Divider(props:DividerProps) {
-  return (
-    props.label
-      ? <LabeledLine />
-      : <Line />
-  );
+  return React.createElement(props.label ? LabeledLine : Line, props);
 }
 
 /**
