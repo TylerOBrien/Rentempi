@@ -56,12 +56,12 @@ export function truthies<T=unknown>(items:Array<T>):Array<T> {
  * within(source, 'bar.message'); // 'hello'
  * within(source, 'bar.baz.data'); // 'testing 123'
  * 
- * @param {T} source
+ * @param {InTy} source
  * @param {string} key
  * 
- * @return {unknown}
+ * @return {OutTy}
  */
-export function within<T>(source:T, key:string):unknown {
+export function within<InTy, OutTy=unknown>(source:InTy, key:string):OutTy {
   if (!key) {
     Assert.ThrowUnexpectedEmptyError('key', 'string');
   }
@@ -76,7 +76,7 @@ export function within<T>(source:T, key:string):unknown {
     node = node[parts[index++]];
   }
 
-  return node;
+  return node as unknown as OutTy;
 }
 
 /**
