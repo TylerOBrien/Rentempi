@@ -1,8 +1,8 @@
 /**
- * Global Imports
+ * Local Imports
 */
 
-import { Dimensions } from 'react-native';
+import { ScreenDriver } from '~/system';
 
 /**
  * Exports
@@ -10,12 +10,12 @@ import { Dimensions } from 'react-native';
 
 export const ScreenConfig = {
   dimensions: {
-    min: Math.min(Dimensions.get('window').width, Dimensions.get('window').height),
-    max: Math.max(Dimensions.get('window').width, Dimensions.get('window').height)
+    min: Math.min(...ScreenDriver.dimensions()),
+    max: Math.max(...ScreenDriver.dimensions())
   },
   initial: {
     Guest: 'Welcome',
-    Unverified: 'Verify Email',
-    Verified: 'Lobby'
+    Undentified: 'Identify',
+    Identified: 'Lobby'
   }
 };
