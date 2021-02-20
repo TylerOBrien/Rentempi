@@ -141,22 +141,24 @@ export function condense(source:object, parent?:Array<string>, existing?:object)
 /**
  * Clones the passed object and removes the specified keys.
  * 
- * @param {object} source
- * @param {Array<string>|object} except
+ * @param {InTy} source
+ * @param {object|Array<string>} except
  * 
- * @return {object}
+ * @return {OutTy}
  */
-export function excepted(source:object, except:Array<string> | object):object {
-  const clone = Object.assign({}, source);
+export function excepted<InTy=object, OutTy=InTy>(source:InTy, except:object | Array<string>):OutTy {
+  const clone = Object.assign({}, source as unknown as OutTy);
 
   if (Array.isArray(except)) {
-    let i = (<Array<string>>except).length;
+    let i = (except as Array<string>).length;
     while (i--) {
       delete clone[except[i]];
     }
   } else {
     for (const key in except) {
-      delete clone[key];
+      if (except[key]) {
+        delete clone[key];
+      }
     }
   }
 
