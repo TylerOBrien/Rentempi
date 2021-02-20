@@ -3,7 +3,6 @@
 */
 
 import { Assert } from './Assert';
-import { JS } from './JS';
 
 /**
  * Exports
@@ -26,7 +25,7 @@ export function truthies<T=unknown>(items:Array<T>):Array<T> {
   const end = items.length;
 
   for (let i = 0; i < end; i++) {
-    if (JS.isArray(items[i])) {
+    if (Array.isArray(items[i])) {
       const children:Array<T> = truthies(items[i] as any);
       if (children.length) {
         result.push(...children);
@@ -91,7 +90,9 @@ export function expand(condensed:object):object {
   for (const key in condensed) {
     const parts = key.split('.');
     const end = parts.length;
-    const value = JS.isObject(condensed[key]) ? Object.assign({}, condensed[key]) : condensed[key];
+    const value = ( typeof condensed[key] === 'object' )
+      ? Object.assign({}, condensed[key])
+      : condensed[key];
 
     if (end === 1) {
       expanded[key] = value;
@@ -127,10 +128,10 @@ export function condense(source:object, parent?:Array<string>, existing?:object)
   const result = existing || {};
 
   for (const key in source) {
-    if (!JS.isObject(source[key])) {
-      result[parent.join('.') + ( parent.length ? '.' : '' ) + key] = source[key];
-    } else {
+    if (typeof source[key] === 'object') {
       condense(source[key], parent.concat(key), result);
+    } else {
+      result[parent.join('.') + ( parent.length ? '.' : '' ) + key] = source[key];
     }
   }
 
@@ -148,7 +149,7 @@ export function condense(source:object, parent?:Array<string>, existing?:object)
 export function excepted(source:object, except:Array<string> | object):object {
   const clone = Object.assign({}, source);
 
-  if (JS.isArray(except)) {
+  if (Array.isArray(except)) {
     let i = (<Array<string>>except).length;
     while (i--) {
       delete clone[except[i]];
