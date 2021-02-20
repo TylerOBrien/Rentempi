@@ -37,12 +37,23 @@ export interface DividerProps extends TailwindProps {
 */
 
 function Line(props:LineProps) {
+  /** Helpers **/
+
+  const tailwinds = {
+    container: Tailwind.get(props.tailwind, 'container'),
+    line: Tailwind.get(props.tailwind, 'line')
+  };
+
+  /** Output **/
+
   return (
-    <View
-      style={ styles.line }
-      tailwind={ Tailwind.get(props.tailwind) }
-      onLayout={ props.onLayout }
-    />
+    <View style={ styles.container } tailwind={ tailwinds.container } onLayout={ props.onLayout }>
+      <View
+        style={ styles.line }
+        tailwind={ tailwinds.line }
+        onLayout={ props.onLayout }
+      />
+    </View>
   );
 }
 
