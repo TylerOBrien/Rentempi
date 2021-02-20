@@ -114,24 +114,25 @@ export function expand(condensed:object):object {
 }
 
 /**
- * @param {object} source
+ * @param {InTy} source
  * @param {Array<string>} parent
- * @param {object} existing
+ * @param {OutTy} existing
  * 
- * @return {object}
+ * @return {OutTy}
  */
-export function condense(source:object, parent?:Array<string>, existing?:object):object {
-  if (!parent) {
-    parent = [];
+export function condense<InTy=object, OutTy=InTy>(source:InTy, parent?:Array<string>, existing?:OutTy):OutTy {
+  if (!source) {
+    return null;
   }
 
-  const result = existing || {};
+  const tree = (parent || []) as Array<string>;
+  const result = (existing || {}) as unknown as OutTy;
 
   for (const key in source) {
     if (typeof source[key] === 'object') {
-      condense(source[key], parent.concat(key), result);
+      condense(source[key], tree.concat(key), result);
     } else {
-      result[parent.join('.') + ( parent.length ? '.' : '' ) + key] = source[key];
+      result[tree.join('.') + ( tree.length ? '.' : '' ) + key] = source[key];
     }
   }
 
