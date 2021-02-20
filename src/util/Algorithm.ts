@@ -27,7 +27,7 @@ export function truthies<T=unknown>(items:Array<T>):Array<T> {
 
   for (let i = 0; i < end; i++) {
     if (JS.isArray(items[i])) {
-      const children:Array<T> = truthies(<any>items[i]);
+      const children:Array<T> = truthies(items[i] as any);
       if (children.length) {
         result.push(...children);
       }
