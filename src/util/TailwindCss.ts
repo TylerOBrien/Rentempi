@@ -240,6 +240,29 @@ function get(tailwind:TailwindObject, name:string = 'container', fallback:Tailwi
 }
 
 /**
+ * 
+ * 
+ * @param {TailwindObject} tailwind
+ * @param {Array<string>} names
+ * @param {string} primary
+ * 
+ * @return {object}
+ */
+function getAll(tailwind:TailwindObject, names:Array<string> = [], primary:string = 'container'):object {
+  const tailwinds = {};
+
+  if (typeof tailwind === 'object') {
+    for (const name of names) {
+      tailwinds[name] = get(tailwind, name);
+    }
+  } else {
+    tailwinds[primary] = tailwind;
+  }
+
+  return tailwinds;
+}
+
+/**
  * Merges the extension with the tailwind object. This is roughly equivalent to
  * spreading two Tailwind objects one after another into a new one.
  * 
@@ -310,4 +333,4 @@ function style(props:any):any {
  * Namespaced Exports
 */
 
-export const Tailwind = { parse, color, get, merge, props, style };
+export const Tailwind = { parse, color, get, getAll, merge, props, style };
