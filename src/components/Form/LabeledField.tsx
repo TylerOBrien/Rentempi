@@ -9,23 +9,15 @@ import React, { Fragment, FunctionComponent, ReactNode } from 'react';
 */
 
 import { Text, View } from '~/components/Base';
-import { ValuedField } from './ValuedField';
-
-import { FormProps } from '~/util/Form';
-import { Tailwind, TailwindEnabledProps } from '~/util/TailwindCss';
-
-/**
- * Sibling Imports
-*/
-
-import { Field, FieldComponent } from './Field';
+import { FormFieldProps } from '~/util/Form';
+import { Tailwind, TailwindProps } from '~/util/TailwindCss';
 
 /**
  * Types/Interfaces
 */
 
-export interface LabeledFieldProps extends FormProps, TailwindEnabledProps {
-  labelContainer?: FunctionComponent<TailwindEnabledProps>;
+export interface LabeledFieldProps extends FormFieldProps, TailwindProps {
+  labelContainer?: FunctionComponent<TailwindProps>;
   children: ReactNode;
 }
 

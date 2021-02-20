@@ -10,8 +10,8 @@ import BaseCheckBox from '@react-native-community/checkbox';
 */
 
 import { FormContext } from '~/providers/FormProvider';
-import { FormProps } from '~/util/Form';
-import { TailwindEnabledProps } from '~/util/TailwindCss';
+import { FormFieldProps } from '~/util/Form';
+import { TailwindProps } from '~/util/TailwindCss';
 
 /**
  * Sibling Imports
@@ -24,7 +24,7 @@ import { LabeledField } from './LabeledField';
  * Types/Interfaces
 */
 
-export interface CheckboxProps extends FormProps, TailwindEnabledProps {
+export interface CheckboxProps extends FormFieldProps, TailwindProps {
   name: string;
   checked?: boolean;
 }

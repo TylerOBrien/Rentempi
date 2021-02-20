@@ -8,8 +8,8 @@ import React from 'react';
  * Local Imports
 */
 
-import { FormProps } from '~/util/Form';
-import { TailwindEnabledProps } from '~/util/TailwindCss';
+import { FormFieldProps } from '~/util/Form';
+import { TailwindProps } from '~/util/TailwindCss';
 
 /**
  * Sibling Imports
@@ -21,7 +21,7 @@ import { Input } from './Input';
  * Types/Interfaces
 */
 
-export interface PasswordProps extends FormProps, TailwindEnabledProps {
+export interface PasswordProps extends FormFieldProps, TailwindProps {
   name: string;
 }
 

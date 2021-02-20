@@ -11,8 +11,8 @@ import { StyleSheet } from 'react-native';
 
 import { Pressable, Text } from '~/components/Base';
 import { ItemPickerContext, ItemPickerItem } from '~/providers/ItemPickerProvider';
-import { FormProps } from '~/util/Form';
-import { Tailwind, TailwindEnabledProps } from '~/util/TailwindCss';
+import { FormFieldProps } from '~/util/Form';
+import { Tailwind, TailwindProps } from '~/util/TailwindCss';
 
 /**
  * Sibling Imports
@@ -24,7 +24,7 @@ import { LabeledField } from './LabeledField';
  * Types/Interfaces
 */
 
-export interface ItemPickerProps extends FormProps<ItemPickerItem>, TailwindEnabledProps {
+export interface ItemPickerProps extends FormFieldProps<ItemPickerItem>, TailwindProps {
   name: string;
   items: Array<ItemPickerItem>;
 }

@@ -9,8 +9,8 @@ import { ColorValue } from 'react-native';
  * Local Imports
 */
 
-import { FormProps } from '~/util/Form';
-import { Tailwind, TailwindEnabledProps } from '~/util/TailwindCss';
+import { FormFieldProps } from '~/util/Form';
+import { Tailwind, TailwindProps } from '~/util/TailwindCss';
 
 /**
  * Sibling Imports
@@ -22,7 +22,7 @@ import { LabeledField } from './LabeledField';
  * Types/Interfaces
 */
 
-export interface SelectProps extends FormProps, TailwindEnabledProps {
+export interface SelectProps extends FormFieldProps, TailwindProps {
   //
 }
 

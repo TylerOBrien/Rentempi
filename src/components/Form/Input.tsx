@@ -10,8 +10,8 @@ import React, { useContext } from 'react';
 
 import { Text, TextInput } from '~/components/Base';
 import { FormContext } from '~/providers/FormProvider';
-import { FormProps } from '~/util/Form';
-import { TailwindEnabledProps } from '~/util/TailwindCss';
+import { FormFieldProps } from '~/util/Form';
+import { TailwindProps } from '~/util/TailwindCss';
 
 /**
  * Sibling Imports
@@ -24,7 +24,7 @@ import { LabeledField } from './LabeledField';
  * Types/Interfaces
 */
 
-export interface InputProps extends FormProps, TailwindEnabledProps {
+export interface InputProps extends FormFieldProps, TailwindProps {
   name: string;
   secureTextEntry?: boolean;
 }

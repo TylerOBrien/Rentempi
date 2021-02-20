@@ -11,15 +11,15 @@ import { useFormikContext } from 'formik';
 */
 
 import { Button } from '~/components/Button';
-import { TailwindEnabledProps } from '~/util/TailwindCss';
+import { TailwindProps } from '~/util/TailwindCss';
 
 /**
  * Types/Interfaces
 */
 
-export interface SubmitProps extends TailwindEnabledProps {
+export interface SubmitProps extends TailwindProps {
   label?: string;
-  container?: FunctionComponent<TailwindEnabledProps>;
+  container?: FunctionComponent<TailwindProps>;
   loading?: boolean;
   loadingColor?: ColorValue;
   disabled?: boolean;
