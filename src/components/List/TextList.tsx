@@ -54,9 +54,9 @@ export function TextList(props:TextListProps) {
 
   const tailwinds = {
     container: Tailwind.get(props.tailwind, 'container'),
-    item: Tailwind.get(props.tailwind, 'item', false, false),
-    prefix: Tailwind.get(props.tailwind, 'prefix', false, false),
-    content: Tailwind.get(props.tailwind, 'content', false, false)
+    item: Tailwind.get(props.tailwind, 'item'),
+    prefix: Tailwind.get(props.tailwind, 'prefix'),
+    content: Tailwind.get(props.tailwind, 'content')
   };
 
   /** Renderers **/
