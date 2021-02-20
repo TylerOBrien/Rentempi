@@ -16,11 +16,11 @@ import { Tailwind, TailwindProps } from '~/util/TailwindCss';
  * Types/Interfaces
 */
 
+export type TextListItem = string;
+
 interface TextListItemPrefixProps {
   index?: number;
 }
-
-export type TextListItem = string;
 
 export interface TextListProps extends TailwindProps {
   items: Array<TextListItem>;
