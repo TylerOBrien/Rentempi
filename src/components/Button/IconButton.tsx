@@ -10,7 +10,7 @@ import { StyleSheet } from 'react-native';
 */
 
 import { Text, View } from '~/components/Base';
-import { Tailwind, TailwindEnabledProps } from '~/util/TailwindCss';
+import { Tailwind, TailwindProps } from '~/util/TailwindCss';
 
 /**
  * Sibling Imports
@@ -22,18 +22,18 @@ import { Button } from './Button';
  * Types/Interfaces
 */
 
-export interface IconButtonProps extends TailwindEnabledProps {
+export interface IconButtonProps extends TailwindProps {
   icon: ReactNode;
   iconPosition?: 'left' | 'right';
   label?: string;
   disabled?: boolean;
   loading?: boolean;
-  container?: FunctionComponent<TailwindEnabledProps>;
+  container?: FunctionComponent<TailwindProps>;
   children?: ReactNode;
   onPress: Function;
 }
 
-export interface IconButtonLabelProps extends TailwindEnabledProps {
+export interface IconButtonLabelProps extends TailwindProps {
   label?: string;
   loading?: boolean;
 }

@@ -10,7 +10,7 @@ import { StyleSheet } from 'react-native';
 */
 
 import { Text, View } from '~/components/Base';
-import { Tailwind, TailwindEnabledProps } from '~/util/TailwindCss';
+import { Tailwind, TailwindProps } from '~/util/TailwindCss';
 
 /**
  * Types/Interfaces
@@ -22,7 +22,7 @@ interface TextListItemPrefixProps {
 
 export type TextListItem = string;
 
-export interface TextListProps extends TailwindEnabledProps {
+export interface TextListProps extends TailwindProps {
   items: Array<TextListItem>;
   prefix: 'number' | 'disc' | 'letter';
 }

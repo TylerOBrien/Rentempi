@@ -9,13 +9,13 @@ import React, { ReactNode, useEffect, useState } from 'react';
 */
 
 import { Button } from './Button';
-import { Tailwind, TailwindEnabledProps } from '~/util/TailwindCss';
+import { Tailwind, TailwindProps } from '~/util/TailwindCss';
 
 /**
  * Types/Interfaces
 */
 
-export interface LoadButtonProps extends TailwindEnabledProps {
+export interface LoadButtonProps extends TailwindProps {
   label?: string;
   disabled?: boolean;
   loading?: boolean;

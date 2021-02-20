@@ -10,7 +10,7 @@ import { StyleSheet } from 'react-native';
 */
 
 import { Text, View } from '~/components/Base';
-import { Tailwind, TailwindEnabledProps } from '~/util/TailwindCss';
+import { Tailwind, TailwindProps } from '~/util/TailwindCss';
 
 /**
  * Types/Interfaces
@@ -20,7 +20,7 @@ export interface ListItem {
 
 }
 
-export interface ListProps extends TailwindEnabledProps {
+export interface ListProps extends TailwindProps {
   items: Array<ListItem>;
 }
 

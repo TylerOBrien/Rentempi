@@ -10,13 +10,13 @@ import { StyleSheet } from 'react-native';
 */
 
 import { View } from '~/components/Base';
-import { Tailwind, TailwindEnabledProps } from '~/util/TailwindCss';
+import { Tailwind, TailwindProps } from '~/util/TailwindCss';
 
 /**
  * Types/Interfaces
 */
 
-export interface ColProps extends TailwindEnabledProps {
+export interface ColProps extends TailwindProps {
   children?: ReactNode;
 }
 

@@ -11,23 +11,23 @@ import { ActivityIndicator, ColorValue, StyleSheet } from 'react-native';
 
 import { Pressable, Text, View } from '~/components/Base';
 import { Functional } from '~/util/Functional';
-import { Tailwind, TailwindEnabledProps } from '~/util/TailwindCss';
+import { Tailwind, TailwindProps } from '~/util/TailwindCss';
 
 /**
  * Types/Interfaces
 */
 
-export interface ButtonProps extends TailwindEnabledProps {
+export interface ButtonProps extends TailwindProps {
   label?: string;
   disabled?: boolean;
   loading?: boolean;
   loadingColor?: ColorValue;
-  container?: FunctionComponent<TailwindEnabledProps>;
+  container?: FunctionComponent<TailwindProps>;
   children?: ReactNode;
   onPress: Function;
 }
 
-export interface ButtonLabelProps extends TailwindEnabledProps {
+export interface ButtonLabelProps extends TailwindProps {
   label?: string;
   loading?: boolean;
   loadingColor?: ColorValue;

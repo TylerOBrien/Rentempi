@@ -10,22 +10,22 @@ import { useNavigation } from '@react-navigation/native';
 */
 
 import { Pressable, Text } from '~/components/Base';
-import { Tailwind, StyleProp, TailwindProp, TailwindEnabledProps } from '~/util/TailwindCss';
+import { Tailwind, StyleProp, TailwindProp, TailwindProps } from '~/util/TailwindCss';
 
 /**
  * Types/Interfaces
 */
 
-export interface LinkContainerProps extends TailwindEnabledProps {
+export interface LinkContainerProps extends TailwindProps {
   disabled?: boolean;
   onPress: Function;
 }
 
-export interface LinkLabelContainerProps extends TailwindEnabledProps {
-  
+export interface LinkLabelContainerProps extends TailwindProps {
+  //
 }
 
-export interface LinkProps extends TailwindEnabledProps {
+export interface LinkProps extends TailwindProps {
   to: string;
   container?: FunctionComponent<LinkContainerProps>;
   containerProps?: LinkContainerProps;

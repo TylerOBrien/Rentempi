@@ -10,7 +10,7 @@ import { StyleSheet } from 'react-native';
 */
 
 import { Pressable, Text, View } from '~/components/Base';
-import { Tailwind, TailwindObject, TailwindEnabledProps } from '~/util/TailwindCss'
+import { Tailwind, TailwindClassNames, TailwindObject, TailwindProps } from '~/util/TailwindCss'
 
 /**
  * Types/Interfaces
@@ -30,7 +30,7 @@ interface PageNumberProps {
   onPress: (page:number) => void | Promise<void>;
 }
 
-export interface PaginateNavigationProps extends TailwindEnabledProps {
+export interface PaginateNavigationProps extends TailwindProps {
   current: number;
   total: number;
   per?: number;

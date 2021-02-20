@@ -12,13 +12,13 @@ import FaIcon from 'react-native-vector-icons/FontAwesome';
 
 import { Pressable, Text, View } from '~/components/Base';
 import { AlertItem } from '~/hooks/Alerter';
-import { TailwindEnabledProps } from '~/util/TailwindCss'
+import { TailwindProps } from '~/util/TailwindCss'
 
 /**
  * Types/Interfaces
 */
 
-export interface AlertProps extends AlertItem, TailwindEnabledProps {
+export interface AlertProps extends AlertItem, TailwindProps {
   onClose: Function;
 }
 

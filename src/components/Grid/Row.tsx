@@ -11,7 +11,7 @@ import { StyleSheet } from 'react-native';
 
 import { View } from '~/components/Base';
 import { Col } from './Col';
-import { Tailwind, TailwindEnabledProps } from '~/util/TailwindCss';
+import { Tailwind, TailwindProps } from '~/util/TailwindCss';
 
 /**
  * Types/Interfaces
@@ -19,7 +19,7 @@ import { Tailwind, TailwindEnabledProps } from '~/util/TailwindCss';
 
 export type Cols = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16;
 
-export interface RowProps extends TailwindEnabledProps {
+export interface RowProps extends TailwindProps {
   cols?: Cols;
   children?: ReactNode;
 }
