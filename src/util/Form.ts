@@ -21,5 +21,5 @@ export interface FormProps<T=FormFieldValue> {
   value?: T;
   initialValue?: T;
   formik?: boolean;
-  onChangeValue?: (value:T) => void;
+  onChangeValue?: (value:T) => void | Promise<void>;
 }
