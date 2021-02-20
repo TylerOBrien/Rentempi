@@ -61,7 +61,7 @@ function LabeledLine(props:LabeledLineProps) {
     <View style={ styles.container } tailwind={ tailwinds.container } onLayout={ props.onLayout }>
       <View style={ styles.labeledLine } tailwind={ tailwinds.line } />
       <View style={ styles.inner }>
-        <Text tailwind={[ 'text-lg', tailwinds.label ]}>
+        <Text tailwind={ tailwinds.label ? [ 'text-lg', tailwinds.label ] : 'text-lg' }>
           { props.label }
         </Text>
       </View>
