@@ -9,6 +9,8 @@ import { Dimensions } from 'react-native';
 */
 
 export interface ScreenDimensions {
+  min: number;
+  max: number;
   landscape: {
     width: number;
     height: number;
@@ -33,6 +35,8 @@ function dimensions():ScreenDimensions {
   const max = Math.max(width, height);
 
   return {
+    min,
+    max,
     landscape: {
       width: max,
       height: min
