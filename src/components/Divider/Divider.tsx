@@ -51,7 +51,6 @@ function Line(props:LineProps) {
       <View
         style={ styles.line }
         tailwind={ tailwinds.line }
-        onLayout={ props.onLayout }
       />
     </View>
   );
