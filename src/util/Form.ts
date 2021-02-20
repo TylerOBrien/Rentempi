@@ -9,13 +9,13 @@ import { ColorValue } from 'react-native';
 */
 
 export type FormFieldValue = string | number | boolean;
-export type FormLabelType = 'contain' | 'outside';
-export type FormLabelPosition = 'before' | 'after';
+export type FormFieldLabelType = 'contain' | 'outside';
+export type FormFieldLabelPosition = 'before' | 'after';
 
-export interface FormProps<T=FormFieldValue> {
+export interface FormFieldProps<T=FormFieldValue> {
   label?: string;
-  labelType?: FormLabelType;
-  labelPosition?: FormLabelPosition;
+  labelType?: FormFieldLabelType;
+  labelPosition?: FormFieldLabelPosition;
   placeholder?: string;
   placeholderTextColor?: ColorValue;
   value?: T;

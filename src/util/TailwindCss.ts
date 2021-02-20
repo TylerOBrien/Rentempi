@@ -2,7 +2,7 @@
  * Global Imports
 */
 
-import { LayoutChangeEvent, StyleSheet } from 'react-native';
+import { LayoutChangeEvent } from 'react-native';
 
 /**
  * Resources
@@ -30,7 +30,7 @@ export type TailwindProp = TailwindBaseProp | object;
 export type TailwindClassNames = string | Array<string>;
 export type TailwindObject = string | Array<string> | object;
 
-export interface TailwindEnabledProps {
+export interface TailwindProps {
   style?: StyleProp;
   tailwind?: TailwindProp;
   onLayout?: (event:LayoutChangeEvent) => void;
