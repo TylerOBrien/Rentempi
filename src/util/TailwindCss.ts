@@ -198,23 +198,22 @@ function parse(className:string, fontSizes?:RegExpExecArray):object {
  * @return {string}
  */
 function color(colorName:string):string {
-  return colors[colorName] ?? (() => {
-    let parsed:ParsedColor;
-    const entries:Array<string> = colorName.split(' ');
+  if (colorName in colors) {
+    return colors[colorName];
+  }
 
-    entries[0] = ( 'bg-' + entries[0] );
+  let parsed:ParsedColor;
+  const entries:Array<string> = colorName.split(' ');
 
-    if (entries.length === 1) {
-      parsed = parse(entries[0]);
-    } else {
-      entries[1] = ( 'bg-' + entries[1] );
-      parsed = parse(entries[0] + ' ' + entries[1]);
-    }
+  entries[0] = ( 'bg-' + entries[0] );
 
-    colors[colorName] = parsed.backgroundColor;
+  if (entries.length === 1) {
+    parsed = parse(entries[0]);
+  } else {
+    parsed = parse(entries[0] + ' ' + ( 'bg-' + entries[1] ));
+  }
 
-    return parsed.backgroundColor;
-  })();
+  return colors[colorName] = parsed.backgroundColor;
 }
 
 /**
