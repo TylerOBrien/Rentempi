@@ -52,6 +52,4 @@ function dimensions():ScreenDimensions {
  * Exports
 */
 
-export const ScreenDriver = {
-  dimensions
-};
+export const ScreenDriver = { dimensions };
