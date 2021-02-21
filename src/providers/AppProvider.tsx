@@ -2,14 +2,13 @@
  * Global Imports
 */
 
-import React, { ReactNode, useState } from 'react';
-import { ColorValue, Dispatch, SetStateAction, StatusBarStyle } from 'react-native';
+import React, { Dispatch, SetStateAction, ReactNode, createContext, useState } from 'react';
+import { ColorValue, StatusBarStyle } from 'react-native';
 import { Position } from 'react-native-flash-message';
 
 /**
  * Types/Interfaces
 */
-
 
 export interface AppProviderProps {
   children: ReactNode;
@@ -33,7 +32,7 @@ export interface AppContextInterface {
  * Contexts
 */
 
-export const AppContext = React.createContext<AppContextInterface>(undefined);
+export const AppContext = createContext<AppContextInterface>(undefined);
 
 /**
  * Components

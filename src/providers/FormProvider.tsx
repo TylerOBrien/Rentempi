@@ -2,7 +2,7 @@
  * Global Imports
 */
 
-import React, { ReactNode, useState } from 'react';
+import React, { Dispatch, SetStateAction, ReactNode, createContext, useState } from 'react';
 
 /**
  * Types/Interfaces
@@ -14,14 +14,14 @@ export interface FormProviderProps {
 
 export interface FormContextInterface {
   errors: any;
-  setErrors: React.Dispatch<React.SetStateAction<any>>;
+  setErrors: Dispatch<SetStateAction<any>>;
 }
 
 /**
  * Contexts
 */
 
-export const FormContext = React.createContext<FormContextInterface>(undefined);
+export const FormContext = createContext<FormContextInterface>(undefined);
 
 /**
  * Components

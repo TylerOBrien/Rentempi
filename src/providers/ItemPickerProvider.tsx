@@ -2,7 +2,7 @@
  * Global Imports
 */
 
-import React, { Dispatch, MutableRefObject, SetStateAction, useEffect, useRef, useState } from 'react';
+import React, { Dispatch, MutableRefObject, SetStateAction, createContext, useEffect, useRef, useState } from 'react';
 
 /**
  * Types/Interfaces
@@ -32,7 +32,7 @@ export interface ItemPickerContextInterface {
  * Contexts
 */
 
-export const ItemPickerContext = React.createContext<ItemPickerContextInterface>(undefined);
+export const ItemPickerContext = createContext<ItemPickerContextInterface>(undefined);
 
 /**
  * Components
@@ -41,17 +41,17 @@ export const ItemPickerContext = React.createContext<ItemPickerContextInterface>
 export function ItemPickerProvider(props:any) {
   /** Refs **/
 
-  const isMountedRef = useRef<boolean>();
-  const itemsRef = useRef<Array<ItemPickerItem>>();
+  const isMountedRef    = useRef<boolean>();
+  const itemsRef        = useRef<Array<ItemPickerItem>>();
   const selectedItemRef = useRef<ItemPickerItem>();
   const handleChooseRef = useRef<ItemPickerItemHandler>();
   const handleCancelRef = useRef<ItemPickerItemHandler>();
-  const handleResetRef = useRef<Function>();
+  const handleResetRef  = useRef<Function>();
 
   /** States **/
 
-  const [ isActive, setIsActive ] = useState<boolean>();
-  const [ isVisible, setIsVisible ] = useState<boolean>();
+  const [ isActive,   setIsActive ]   = useState<boolean>();
+  const [ isVisible,  setIsVisible ]  = useState<boolean>();
 
   /** Side-Effects **/
 

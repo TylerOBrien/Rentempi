@@ -2,7 +2,7 @@
  * Global Imports
 */
 
-import React, { ReactNode, useContext } from 'react';
+import React, { ReactNode, createContext, useContext } from 'react';
 
 /**
  * Local Imports
@@ -27,7 +27,7 @@ export interface ApiContextInterface {
  * Contexts
 */
 
-export const ApiContext = React.createContext<ApiContextInterface>(undefined);
+export const ApiContext = createContext<ApiContextInterface>(undefined);
 
 /**
  * Components

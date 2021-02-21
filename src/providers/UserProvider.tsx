@@ -2,7 +2,7 @@
  * Global Imports
 */
 
-import React, { ReactNode, useState } from 'react';
+import React, { Dispatch, ReactNode, SetStateAction, createContext, useState } from 'react';
 
 /**
  * Local Imports
@@ -16,18 +16,18 @@ import { UserModel } from '~/models';
 
 export interface UserProviderProps {
   children: ReactNode;
-};
+}
 
 export interface UserContextInterface {
   user: UserModel;
-  setUser: React.Dispatch<React.SetStateAction<UserModel>>;
-};
+  setUser: Dispatch<SetStateAction<UserModel>>;
+}
 
 /**
  * Contexts
 */
 
-export const UserContext = React.createContext<UserContextInterface>(undefined);
+export const UserContext = createContext<UserContextInterface>(undefined);
 
 /**
  * Components

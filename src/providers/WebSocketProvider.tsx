@@ -2,7 +2,7 @@
  * Global Imports
 */
 
-import React, { ReactNode, useRef, useState } from 'react';
+import React, { Dispatch, SetStateAction, MutableRefObject, ReactNode, createContext, useRef, useState } from 'react';
 
 /**
  * Types/Interfaces
@@ -10,19 +10,19 @@ import React, { ReactNode, useRef, useState } from 'react';
 
 export interface WebSocketProviderProps {
   children: ReactNode;
-};
+}
 
 export interface WebSocketContextInterface {
   isConnected: boolean;
-  setIsConnected: React.Dispatch<React.SetStateAction<boolean>>;
-  wsRef: React.MutableRefObject<object>;
-};
+  setIsConnected: Dispatch<SetStateAction<boolean>>;
+  wsRef: MutableRefObject<object>;
+}
 
 /**
  * Contexts
 */
 
-export const WebSocketContext = React.createContext<WebSocketContextInterface>(undefined);
+export const WebSocketContext = createContext<WebSocketContextInterface>(undefined);
 
 /**
  * Components

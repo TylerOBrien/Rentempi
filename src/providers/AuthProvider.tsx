@@ -2,7 +2,7 @@
  * Global Imports
 */
 
-import React, { ReactNode, useRef, useState } from 'react';
+import React, { Dispatch, MutableRefObject, ReactNode, SetStateAction, createContext, useRef, useState } from 'react';
 
 /**
  * Local Imports
@@ -20,15 +20,15 @@ export interface AuthProviderProps {
 
 export interface AuthContextInterface {
   credentials: Authorization;
-  setCredentials: React.Dispatch<React.SetStateAction<Authorization>>;
-  hasStorageRef: React.MutableRefObject<boolean>;
+  setCredentials: Dispatch<SetStateAction<Authorization>>;
+  hasStorageRef: MutableRefObject<boolean>;
 }
 
 /**
  * Contexts
 */
 
-export const AuthContext = React.createContext<AuthContextInterface>(undefined);
+export const AuthContext = createContext<AuthContextInterface>(undefined);
 
 /**
  * Components

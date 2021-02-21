@@ -2,7 +2,7 @@
  * Global Imports
 */
 
-import React, { ReactNode, useRef, useState } from 'react';
+import React, { Dispatch, MutableRefObject, ReactNode, SetStateAction, createContext, useRef, useState } from 'react';
 
 /**
  * Types/Interfaces
@@ -10,20 +10,20 @@ import React, { ReactNode, useRef, useState } from 'react';
 
 export interface AlertProviderProps {
   children: ReactNode;
-};
+}
 
 export interface AlertContextInterface {
   alerts: Array<string>;
-  setAlerts: React.Dispatch<React.SetStateAction<Array<string>>>;
-  alertDataRef: React.MutableRefObject<object>;
-  alertTotalCountRef: React.MutableRefObject<number>;
-};
+  setAlerts: Dispatch<SetStateAction<Array<string>>>;
+  alertDataRef: MutableRefObject<object>;
+  alertTotalCountRef: MutableRefObject<number>;
+}
 
 /**
  * Contexts
 */
 
-export const AlertContext = React.createContext<AlertContextInterface>(undefined);
+export const AlertContext = createContext<AlertContextInterface>(undefined);
 
 /**
  * Components
