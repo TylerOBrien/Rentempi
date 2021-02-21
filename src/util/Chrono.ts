@@ -14,6 +14,10 @@ import { DateTimeConfig } from '~/config';
  * Interfaces
 */
 
+export enum DateTimeMode {
+  Date, Time, DateTime
+}
+
 export interface DateTimeFormat {
   date?: string;
   time?: string;
@@ -21,7 +25,7 @@ export interface DateTimeFormat {
 }
 
 export interface DateTimeOptions {
-  dateOnly: boolean;
+  mode: DateTimeMode;
   format?: DateTimeFormat;
 }
 
@@ -40,7 +44,7 @@ export interface DateTimeOptions {
  */
 function from(when:string, options?:DateTimeOptions):DateTime {
   return DateTime.fromFormat(when,
-    options?.dateOnly
+    options?.mode === DateTimeMode.Date
       ? ( options?.format?.date || DateTimeConfig.format.date )
       : ( options?.format?.dateTime || DateTimeConfig.format.dateTime )
   );
