@@ -16,7 +16,6 @@ import definitions from '@resources/tailwind/styles.json';
 */
 
 import { Algorithm } from './Algorithm';
-import { Assert } from './Assert';
 import { JS } from './JS';
 
 /**
