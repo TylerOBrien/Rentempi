@@ -2,7 +2,18 @@
  * Global Imports
 */
 
-import { lazy as react_lazy, ComponentType, LazyExoticComponent } from 'react';
+import React, {
+  FunctionComponent,
+  FunctionComponentElement,
+  LazyExoticComponent,
+  Suspense,
+  SuspenseProps } from 'react';
+
+/**
+ * Types/Interfaces
+*/
+
+export type FunctionComponentLazy = LazyExoticComponent<FunctionComponent<any>>;
 
 /**
  * Functions
@@ -12,11 +23,22 @@ import { lazy as react_lazy, ComponentType, LazyExoticComponent } from 'react';
  * @param {string} name
  * @param {Promise<any>} imported
  * 
- * @return {LazyExoticComponent<ComponentType<any>>}
+ * @return {FunctionComponentLazy}
  */
-function lazy(name:string, imported:Promise<any>):LazyExoticComponent<ComponentType<any>> {
-  return react_lazy(
-    () => imported.then(module => ({ default: module[name] }))
+function lazy(name:string, imported:Promise<any>) : FunctionComponentLazy {
+  return React.lazy( () => imported.then(module => ({ default: module[name] })) );
+}
+
+/**
+ * @param {string} name
+ * @param {Promise<any>} imported
+ * @param {FunctionComponent} fallback
+ * 
+ * @return {() => FunctionComponentElement<SuspenseProps>}
+ */
+function suspended(name:string, imported:Promise<any>, fallback:FunctionComponent) : () => FunctionComponentElement<SuspenseProps> {
+  return () => React.createElement(
+    Suspense, { fallback }, React.createElement( lazy(name, imported) )
   );
 }
 
@@ -24,4 +46,4 @@ function lazy(name:string, imported:Promise<any>):LazyExoticComponent<ComponentT
  * Exports
 */
 
-export const ReactHelpers = { lazy };
+export const ReactHelpers = { lazy, suspended };
