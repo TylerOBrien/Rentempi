@@ -1,4 +1,10 @@
 /**
+ * Types/Interfaces
+*/
+
+export type AnyCallback<Out=void> = (...args:Array<unknown>) => Out | Promise<Out>;
+
+/**
  * Locals
 */
 
@@ -6,12 +12,12 @@
  * Delays execution of callback. Primarily only useful to prevent blocking of
  * React Native's UI thread.
  * 
- * @param {Function} callback
+ * @param {AnyCallback<T>} callback
  * 
- * @return {Function}
+ * @return {AnyCallback<void>}
  */
-function delayed(callback:Function):Function {
-  return (...args:Array<unknown>) => {
+function delayed<T=void>(callback:AnyCallback<T>) : AnyCallback<void> {
+  return (...args:Array<unknown>) : void => {
     requestAnimationFrame(() => callback(...args));
   };
 }
