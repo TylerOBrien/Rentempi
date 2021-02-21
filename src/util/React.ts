@@ -3,9 +3,11 @@
 */
 
 import React, {
+  Dispatch,
   FunctionComponent,
   FunctionComponentElement,
   LazyExoticComponent,
+  SetStateAction,
   Suspense,
   SuspenseProps } from 'react';
 
@@ -14,6 +16,7 @@ import React, {
 */
 
 export type FunctionComponentLazy = LazyExoticComponent<FunctionComponent<any>>;
+export type SetStateHandler<T> = Dispatch<SetStateAction<T>>;
 
 /**
  * Functions
