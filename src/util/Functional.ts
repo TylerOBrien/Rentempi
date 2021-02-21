@@ -10,8 +10,8 @@
  * 
  * @return {Function}
  */
-function delayed(callback:Function, ...args:Array<unknown>):Function {
-  return () => {
+function delayed(callback:Function):Function {
+  return (...args:Array<unknown>) => {
     requestAnimationFrame(() => callback(...args));
   };
 }
