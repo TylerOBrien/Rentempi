@@ -45,12 +45,10 @@ export function UserStatusGuard(props:UserStatusGuardProps) {
   /** Side-Effects **/
 
   useEffect(() => {
-    setRoute(
-      !session.user
-        ? 'guest'
-        : session.user.is_identified
-          ? 'identified'
-          : 'unidentified' );
+    setRoute(!session.user ? 'guest'
+      : session.user.is_identified
+        ? 'identified'
+        : 'unidentified' );
   }, [ session.user ]);
   
   /** Output **/
