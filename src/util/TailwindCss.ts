@@ -293,9 +293,9 @@ function merge(tailwind:TailwindObject, extension:object, fallbackGroup:string =
  * 
  * @param {TailwindBaseProps} properties
  * 
- * @return {any}
+ * @return {TailwindBaseProps}
  */
-function props(properties:TailwindBaseProps):any {
+function props(properties:TailwindBaseProps):TailwindBaseProps {
   if (!properties.tailwind) {
     return properties;
   }
