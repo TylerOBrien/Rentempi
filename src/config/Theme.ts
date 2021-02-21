@@ -3,6 +3,7 @@
 */
 
 import { ColorValue, StatusBarStyle, StyleSheet } from 'react-native';
+import { Position } from 'react-native-flash-message';
 
 /**
  * Local Imports
@@ -29,6 +30,7 @@ export interface ThemeColors {
 
 export interface ThemeDefaults {
   statusBarStyle: StatusBarStyle;
+  flashMessagePosition: Position;
   group: {
     name: string;
   };
@@ -82,6 +84,7 @@ const color:ThemeColors = {
 
 const defaults:ThemeDefaults = {
   statusBarStyle: 'light-content',
+  flashMessagePosition: 'top',
   group: {
     name: 'container'
   }
