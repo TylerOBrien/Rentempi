@@ -37,13 +37,3 @@ export function Lobby(props:LobbyProps) {
     </PrimaryIdentifiedLayout>
   );
 }
-
-export const LobbyConfig = {
-  stack: {
-    name: 'Lobby',
-    component: Lobby,
-    options: {
-      headerShown: false
-    }
-  }
-};

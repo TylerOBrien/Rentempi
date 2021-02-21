@@ -1,5 +1,5 @@
 /**
- * Global Imports
+ * Local Imports
 */
 
 import { ReactHelpers } from '~/util/React';
@@ -9,7 +9,7 @@ import { ReactHelpers } from '~/util/React';
 */
 
 const name = 'Login';
-const component = ReactHelpers.lazy('Login', import('./Login'));
+const component = ReactHelpers.suspended('Login', import('./Login'), null);
 
 const drawer = {
   name,

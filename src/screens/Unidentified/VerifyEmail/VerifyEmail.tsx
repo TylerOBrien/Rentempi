@@ -63,13 +63,3 @@ export function VerifyEmail(props:VerifyEmailProps) {
     </VerifyEmailContext.Provider>
   );
 }
-
-export const VerifyEmailConfig = {
-  stack: {
-    name: 'Verify Email',
-    component: VerifyEmail,
-    options: {
-      headerShown: false
-    }
-  }
-};
