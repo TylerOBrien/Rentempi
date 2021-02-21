@@ -34,6 +34,7 @@ import {
 function EntryPointMain() {
   return (
     <UserStatusGuard
+      loading={ () => null }
       guest={ GuestStack }
       unidentified={ UndentifiedStack }
       identified={ IdentifiedStack }
