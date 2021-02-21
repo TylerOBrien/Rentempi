@@ -49,28 +49,27 @@ const fontSizeRegex = new RegExp('text-(xs|sm|base|lg|xl|2xl|3xl|4xl|5xl|6xl)');
 */
 
 /**
- * Applies aliases, if necessary, to the passes Tailwind class names.
+ * Applies aliases to the passed Tailwind class names.
  * 
  * @param {TailwindClassNames} tailwind
  * 
  * @return {string}
  */
 function aliased(tailwind:TailwindClassNames):string {
-  if (JS.isArray(tailwind)) {
-    tailwind = Algorithm.truthies(<Array<string>>tailwind).join(' ').split(' ');
-  } else {
-    tailwind = (<string>tailwind).split(' ');
+  if (Array.isArray(tailwind)) {
+    tailwind = Algorithm.truthies(tailwind as Array<string>).join(' ');
   }
 
-  let i = tailwind.length;
+  const classNames = (tailwind as string).split(' ');
+  let i = classNames.length;
 
   while (i--) {
-    if (tailwind[i] in aliases) {
-      tailwind[i] = aliases[tailwind[i]];
+    if (classNames[i] in aliases) {
+      classNames[i] = aliases[classNames[i]];
     }
   }
 
-  return tailwind.join(' ');
+  return classNames.join(' ');
 }
 
 /**
