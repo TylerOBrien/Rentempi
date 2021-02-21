@@ -198,10 +198,6 @@ function parse(className:string, fontSizes?:RegExpExecArray):object {
  * @return {string}
  */
 function color(colorName:string):string {
-  if (!colorName) {
-    Assert.ThrowUnexpectedEmptyError('colorName', 'string');
-  }
-
   return colors[colorName] || (() => {
     let parsed:ParsedColor;
     const entries:Array<string> = colorName.split(' ');
