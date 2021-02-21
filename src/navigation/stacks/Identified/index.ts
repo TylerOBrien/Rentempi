@@ -2,4 +2,4 @@
  * Exports
 */
 
-export { VerifiedStack } from './VerifiedStack';
+export { IdentifiedStack } from './IdentifiedStack';

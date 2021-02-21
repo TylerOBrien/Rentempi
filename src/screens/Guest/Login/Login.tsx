@@ -9,8 +9,8 @@ import { FormikHelpers } from 'formik';
  * Local Imports
 */
 
-import { LoginFields, LoginForm, LoginFormContext } from '~/forms/Guest/LoginForm';
-import { SideMenuGuestLayout } from '~/layouts/Guest';
+import { LoginFields, LoginForm, LoginFormContext } from '~/forms/guest/LoginForm';
+import { SideMenuGuestLayout } from '~/layouts/guest';
 import { useAuth, useForm } from '~/hooks';
 import { Token, StoreTokenResponse } from '~/services/Token';
 

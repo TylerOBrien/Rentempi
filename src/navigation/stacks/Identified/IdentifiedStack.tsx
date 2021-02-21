@@ -9,7 +9,7 @@ import { createStackNavigator } from '@react-navigation/stack';
  * Local Imports
 */
 
-import * as IdentifiedScreenConfigs from '~/screens/Identified/configs';
+import * as IdentifiedScreenConfigs from '~/screens/identified/configs';
 import { ScreenConfig } from '~/config';
 
 /**
@@ -25,7 +25,7 @@ const IdentifiedRouterStack = createStackNavigator();
 
 export function IdentifiedStack() {
   return (
-    <IdentifiedRouterStack.Navigator initialRouteName={ ScreenConfig.initial.Identified }>
+    <IdentifiedRouterStack.Navigator initialRouteName={ ScreenConfig.initial.identified }>
       {
         Configs.map(([, config], index) => (
           <IdentifiedRouterStack.Screen

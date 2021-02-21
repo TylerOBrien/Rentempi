@@ -9,7 +9,7 @@ import React, { useState } from 'react';
 */
 
 import { View } from '~/components/Base';
-import { WelcomeGuestLayout } from '~/layouts/Guest';
+import { WelcomeGuestLayout } from '~/layouts/guest';
 
 /**
  * Sibling Imports

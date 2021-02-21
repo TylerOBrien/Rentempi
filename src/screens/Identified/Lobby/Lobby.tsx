@@ -10,7 +10,7 @@ import { useNavigation } from '@react-navigation/native';
 */
 
 import { Text } from '~/components/Base';
-import { PrimaryIdentifiedLayout } from '~/layouts/Identified';
+import { PrimaryIdentifiedLayout } from '~/layouts/identified';
 
 /**
  * Types/Interfaces

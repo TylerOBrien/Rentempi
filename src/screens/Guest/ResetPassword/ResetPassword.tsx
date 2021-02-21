@@ -10,7 +10,7 @@ import { useNavigation } from '@react-navigation/native';
  * Local Imports
 */
 
-import { PrimaryGuestLayout } from '~/layouts/Guest';
+import { PrimaryGuestLayout } from '~/layouts/guest';
 
 import { useForm } from '~/hooks';
 import { FormHook } from '~/hooks/Form';

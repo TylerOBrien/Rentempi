@@ -9,8 +9,8 @@ import { FormikHelpers } from 'formik';
  * Local Imports
 */
 
-import { VerifyEmailFields, VerifyEmailForm, VerifyEmailFormContext } from '~/forms/Unidentified/VerifyEmailForm';
-import { PrimaryUnidentifiedLayout } from '~/layouts/Unidentified';
+import { VerifyEmailFields, VerifyEmailForm, VerifyEmailFormContext } from '~/forms/unidentified/VerifyEmailForm';
+import { PrimaryUnidentifiedLayout } from '~/layouts/unidentified';
 import {  } from '~/services';
 
 import { useForm } from '~/hooks';

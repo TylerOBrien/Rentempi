@@ -11,8 +11,8 @@ import FaIcon from 'react-native-vector-icons/FontAwesome';
 */
 
 import { Text, View } from '~/components/Base';
-import { WelcomeGuestLayout } from '~/layouts/Guest';
-import { ForgotPasswordFields, ForgotPasswordForm, ForgotPasswordFormContext } from '~/forms/Guest/ForgotPasswordForm';
+import { WelcomeGuestLayout } from '~/layouts/guest';
+import { ForgotPasswordFields, ForgotPasswordForm, ForgotPasswordFormContext } from '~/forms/guest/ForgotPasswordForm';
 import { Recovery } from '~/services';
 import { useForm } from '~/hooks';
 
