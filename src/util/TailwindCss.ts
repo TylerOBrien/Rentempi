@@ -275,7 +275,9 @@ function merge(tailwind:TailwindObject, extension:object, fallbackGroup:string =
   const newTailwind = Object.assign({}, tailwind);
 
   for (const key in extension) {
-    Object.assign(newTailwind[key], extension[key]);
+    if (typeof extension[key] === 'object') {
+      Object.assign(newTailwind[key], extension[key]);
+    }
   }
 
   return newTailwind;
