@@ -2,7 +2,7 @@
  * Local Imports
 */
 
-import { StorageConfig } from '~/config';
+import { StorageConfig } from '~/config/Storage';
 
 /**
  * Sibling Imports

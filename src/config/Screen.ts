@@ -2,7 +2,7 @@
  * Local Imports
 */
 
-import { ScreenDriver } from '~/system';
+import { ScreenDriver } from '~/system/Screen';
 
 /**
  * Exports
