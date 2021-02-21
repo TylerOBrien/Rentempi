@@ -38,6 +38,11 @@ export interface TailwindProps {
   onLayout?: (event:LayoutChangeEvent) => void;
 }
 
+export interface TailwindBaseProps {
+  style?: StyleProp;
+  tailwind?: TailwindClassNames;
+}
+
 /**
  * Local Vars
 */
@@ -286,18 +291,18 @@ function merge(tailwind:TailwindObject, extension:object, fallbackGroup:string =
 /**
  * 
  * 
- * @param {any} properties
+ * @param {TailwindBaseProps} properties
  * 
  * @return {any}
  */
-function props(properties:any):any {
+function props(properties:TailwindBaseProps):any {
   if (!properties.tailwind) {
     return properties;
   }
   
   const parsed = parse(aliased(
     Array.isArray(properties.tailwind)
-      ? Algorithm.truthies<string>(properties.tailwind).join(' ')
+      ? Algorithm.truthies<TailwindClassNames, string>(properties.tailwind).join(' ')
       : properties.tailwind
   ));
 
