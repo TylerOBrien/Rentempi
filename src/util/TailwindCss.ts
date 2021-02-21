@@ -319,13 +319,13 @@ function props(properties:TailwindBaseProps):TailwindBaseProps {
 }
 
 /**
+ * Returns a clone of the style prop, if it exists.
  * 
+ * @param {TailwindBaseProps} style
  * 
- * @param {object} props
- * 
- * @return {object}
+ * @return {StyleProp}
  */
-function style(props:any):any {
+function style(props:TailwindBaseProps):StyleProp {
   return props.style && Object.assign({}, props.style);
 };
 
