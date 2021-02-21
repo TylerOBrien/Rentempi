@@ -4,5 +4,4 @@
 
 export {
   Welcome,
-  WelcomeConfig,
   WelcomeProps } from './Welcome';
