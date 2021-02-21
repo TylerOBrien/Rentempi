@@ -16,22 +16,22 @@ import { Assert } from './Assert';
  * evaluated such that this function guarantees to return a 1-dimensional array
  * regardless of the depth of the array passed.
  * 
- * @param {Array<T>} items
+ * @param {Array<In>} items
  * 
- * @return {Array<T>}
+ * @return {Array<Out>}
  */
-export function truthies<T=unknown>(items:Array<T>):Array<T> {
-  const result:Array<T> = [];
+export function truthies<In=unknown, Out=In>(items:Array<In>):Array<Out> {
+  const result:Array<Out> = [];
   const end = items.length;
 
   for (let i = 0; i < end; i++) {
     if (Array.isArray(items[i])) {
-      const children:Array<T> = truthies(items[i] as any);
+      const children:Array<Out> = truthies(items[i] as unknown as Array<In>);
       if (children.length) {
         result.push(...children);
       }
     } else if (items[i]) {
-      result.push(items[i]);
+      result.push(items[i] as unknown as Out);
     }
   }
 
