@@ -1,15 +1,15 @@
 /**
- * Global Imports
+ * Sibling Imports
 */
 
-import { ReactHelpers } from '~/util/React';
+import { ResetPassword } from './ResetPassword';
 
 /**
  * Locals
 */
 
 const name = 'Reset Password';
-const component = ReactHelpers.lazy('ResetPassword', import('./ResetPassword'));
+const component = ResetPassword;
 
 const drawer = {
   name,

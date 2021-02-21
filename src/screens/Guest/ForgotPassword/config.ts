@@ -1,15 +1,15 @@
 /**
- * Global Imports
+ * Sibling Imports
 */
 
-import { ReactHelpers } from '~/util/React';
+import { ForgotPassword } from './ForgotPassword';
 
 /**
  * Locals
 */
 
 const name = 'Forgot Password';
-const component = ReactHelpers.lazy('ForgotPassword', import('./ForgotPassword'));
+const component = ForgotPassword;
 
 const drawer = {
   name,

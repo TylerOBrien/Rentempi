@@ -1,15 +1,15 @@
 /**
- * Local Imports
+ * Sibling Imports
 */
 
-import { ReactHelpers } from '~/util/React';
+import { Login } from './Login';
 
 /**
  * Locals
 */
 
 const name = 'Login';
-const component = ReactHelpers.suspended('Login', import('./Login'), null);
+const component = Login;
 
 const drawer = {
   name,

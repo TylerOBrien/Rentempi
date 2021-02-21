@@ -1,15 +1,15 @@
 /**
- * Global Imports
+ * Sibling Imports
 */
 
-import { ReactHelpers } from '~/util/React';
+import { Register } from './Register';
 
 /**
  * Locals
 */
 
 const name = 'Register';
-const component = ReactHelpers.lazy('Register', import('./Register'));
+const component = Register;
 
 const drawer = {
   name,
