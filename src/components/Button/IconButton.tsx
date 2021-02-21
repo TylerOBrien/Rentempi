@@ -30,7 +30,7 @@ export interface IconButtonProps extends TailwindProps {
   loading?: boolean;
   container?: FunctionComponent<TailwindProps>;
   children?: ReactNode;
-  onPress: Function;
+  onPress: () => void;
 }
 
 export interface IconButtonLabelProps extends TailwindProps {
