@@ -19,7 +19,7 @@ import { TailwindProps } from '~/util/TailwindCss'
 */
 
 export interface AlertProps extends AlertItem, TailwindProps {
-  onClose: Function;
+  onClose: () => void;
 }
 
 /**
