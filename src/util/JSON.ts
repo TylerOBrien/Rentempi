@@ -7,9 +7,9 @@
  * 
  * @param {string} serialized
  * 
- * @return {Promise<object>}
+ * @return {Promise<T>}
  */
-function parse(serialized:string):Promise<object> {
+function parse<T=object>(serialized:string):Promise<T> {
   return new Promise((resolve, reject) => {
     try {
       resolve(JSON.parse(serialized));
@@ -22,11 +22,11 @@ function parse(serialized:string):Promise<object> {
 /**
  * Wraps built-in JSON.stringify() function with a Promise.
  * 
- * @param {object} unserialized
+ * @param {T} unserialized
  * 
  * @return {Promise<string>}
  */
-function stringify(unserialized:object):Promise<string> {
+function stringify<T=object>(unserialized:T):Promise<string> {
   return new Promise((resolve, reject) => {
     try {
       resolve(JSON.stringify(unserialized));
