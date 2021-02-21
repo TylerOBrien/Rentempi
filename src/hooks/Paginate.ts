@@ -9,8 +9,8 @@ import { Dispatch, SetStateAction, useState } from 'react';
 */
 
 export interface PaginateOptions {
-  per: number;
-  length: number;
+  stride: number;
+  total: number;
 }
 
 export interface PaginateHook {
@@ -34,10 +34,10 @@ export function usePaginate(options:PaginateOptions):PaginateHook {
   return {
     page,
     setPage,
-    pages: Math.ceil(options.length / options.per) || 0,
+    pages: Math.ceil(options.total / options.stride) || 0,
     offset: [
-      page * options.per,
-      (page * options.per) + options.per
+      page * options.stride,
+      (page * options.stride) + options.stride
     ]
   };
 }
