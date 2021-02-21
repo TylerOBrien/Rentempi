@@ -120,6 +120,7 @@ function parse(className:string, fontSizes?:RegExpExecArray):object {
 
     if (!defined) {
       console.warn(`Unsupported Tailwind class: '${ key }'`);
+      continue;
     }
 
     if (!hasVariables) {
