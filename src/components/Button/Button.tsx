@@ -24,7 +24,7 @@ export interface ButtonProps extends TailwindProps {
   loadingColor?: ColorValue;
   container?: FunctionComponent<TailwindProps>;
   children?: ReactNode;
-  onPress: Function;
+  onPress: () => void;
 }
 
 export interface ButtonLabelProps extends TailwindProps {
@@ -87,7 +87,6 @@ export function Button(props:ButtonProps) {
     <Pressable
       style={ styles.container }
       tailwind={ tailwinds.container }
-      loadingColor={ props.loadingColor }
       disabled={ props.disabled }
       onPress={ Functional.delayed(props.onPress) }
       onLayout={ props.onLayout }
