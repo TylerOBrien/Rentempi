@@ -23,6 +23,10 @@ import { JS } from './JS';
  * Types/Interfaces
 */
 
+interface ParsedColor {
+  backgroundColor?: string;
+}
+
 export type StyleProp = object | Array<object>;
 export type TailwindBaseProp = string | Array<string>;
 export type TailwindProp = TailwindBaseProp | object;
@@ -199,7 +203,7 @@ function color(colorName:string):string {
   }
 
   return colors[colorName] || (() => {
-    let parsed:any;
+    let parsed:ParsedColor;
     const entries:Array<string> = colorName.split(' ');
 
     entries[0] = ( 'bg-' + entries[0] );
