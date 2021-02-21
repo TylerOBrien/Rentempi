@@ -18,12 +18,12 @@ export interface DateTimeFormat {
   date?: string;
   time?: string;
   dateTime?: string;
-};
+}
 
 export interface DateTimeOptions {
   dateOnly: boolean;
   format?: DateTimeFormat;
-};
+}
 
 /**
  * Locals
