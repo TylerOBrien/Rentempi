@@ -11,6 +11,7 @@ import { StyleSheet } from 'react-native';
 
 import { ScreenConfig } from '~/config';
 import { ScrollView, View } from '~/components/Base';
+import { Tailwind } from '~/util/TailwindCss';
 
 /**
  * Sibling Imports
@@ -52,11 +53,13 @@ export function WelcomeGuestLayout(props:WelcomeGuestLayoutProps) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'red'
+    backgroundColor: Tailwind.color('primary')
   },
+
   inner: {
     flexGrow: 1
   },
+
   contentContainer: {
     alignSelf: 'center',
     width: Math.max(500, ScreenConfig.dimensions.min) - 32
