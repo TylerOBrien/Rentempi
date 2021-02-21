@@ -54,7 +54,10 @@ function createGuardScreen(component:FunctionComponent) {
 
     useEffect(() => {
       if (route) {
-        navigation.navigate(route);
+        navigation.reset({
+          index: 0,
+          routes: [{ name: route }]
+        });
       }
     }, [ route ]);
     
