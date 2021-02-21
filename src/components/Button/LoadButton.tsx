@@ -48,8 +48,8 @@ export function LoadButton(props:LoadButtonProps) {
       label={ props.label }
       loading={ isLoading || props.loading }
       disabled={ isLoading || props.loading || props.disabled }
-      onLayout={ props.onLayout }
       onPress={ () => setIsLoading(true) }
+      onLayout={ props.onLayout }
     >
       { props.children }
     </Button>

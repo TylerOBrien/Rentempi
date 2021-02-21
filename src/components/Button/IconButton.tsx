@@ -75,8 +75,8 @@ export function IconButton(props:IconButtonProps) {
     <Button
       style={ props.style }
       tailwind={ tailwinds.container }
-      onLayout={ props.onLayout }
       onPress={ props.onPress }
+      onLayout={ props.onLayout }
     >
       <View style={ styles.inner }>
         <View>
