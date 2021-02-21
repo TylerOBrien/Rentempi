@@ -44,7 +44,7 @@ function EntryPointMain() {
 
 function EntryPointOverlay() {
   return (
-    <View style={ styles.overlay }>
+    <View style={ styles.overlay } pointerEvents='box-none'>
       <AlertsOverlay />
       <ItemPickerOverlay />
     </View>

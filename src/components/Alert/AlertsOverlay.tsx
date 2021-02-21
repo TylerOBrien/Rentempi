@@ -30,7 +30,7 @@ export function AlertsOverlay() {
   /** Output **/
   
   return (
-    <View style={ styles.container }>
+    <View style={ styles.container } pointerEvents='box-none'>
       {
         (alerter.alerts || []).map((item, index) => (
           <Alert
