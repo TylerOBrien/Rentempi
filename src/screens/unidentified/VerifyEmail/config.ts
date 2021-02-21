@@ -1,15 +1,15 @@
 /**
- * Global Imports
+ * Sibling Imports
 */
 
-import { ReactHelpers } from '~/util/React';
+import { VerifyEmail } from './VerifyEmail';
 
 /**
  * Locals
 */
 
 const name = 'Verify Email';
-const component = ReactHelpers.lazy('VerifyEmail', import('./VerifyEmail'));
+const component = VerifyEmail;
 
 const drawer = {
   name,

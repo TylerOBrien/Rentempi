@@ -1,15 +1,15 @@
 /**
- * Global Imports
+ * Sibling Imports
 */
 
-import { ReactHelpers } from '~/util/React';
+import { Lobby } from './Lobby';
 
 /**
  * Locals
 */
 
 const name = 'Lobby';
-const component = ReactHelpers.lazy('Lobby', import('./Lobby'));
+const component = Lobby;
 
 const drawer = {
   name,
