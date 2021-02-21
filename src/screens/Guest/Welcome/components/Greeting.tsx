@@ -11,18 +11,10 @@ import React from 'react';
 import { Text, View } from '~/components/Base';
 
 /**
- * Types/Interfaces
-*/
-
-export interface GreetingProps {
-  
-}
-
-/**
  * Exports
 */
 
-export function Greeting(props:GreetingProps) {
+export function Greeting() {
   return (
     <View tailwind='py-8'>
       <Text tailwind='text-lg text-center text-black'>

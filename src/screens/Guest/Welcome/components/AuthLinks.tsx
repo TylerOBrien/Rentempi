@@ -14,18 +14,10 @@ import { Row } from '~/components/Grid';
 import { Link } from '~/components/Link';
 
 /**
- * Types/Interfaces
-*/
-
-export interface AuthLinksProps {
-  
-}
-
-/**
  * Exports
 */
 
-export function AuthLinks(props:AuthLinksProps) {
+export function AuthLinks() {
   return (
     <Row tailwind='justify-between'>
       <Link
