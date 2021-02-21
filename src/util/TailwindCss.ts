@@ -16,7 +16,6 @@ import definitions from '@resources/tailwind/styles.json';
 */
 
 import { Algorithm } from './Algorithm';
-import { JS } from './JS';
 
 /**
  * Types/Interfaces
@@ -160,7 +159,7 @@ function parse(className:string, fontSizes?:RegExpExecArray):object {
 
     const entry = style[key];
 
-    if (!JS.isString(entry) || entry.length < 20) {
+    if (typeof entry !== 'string' || entry.length < 20) {
       continue;
     }
 
@@ -269,7 +268,7 @@ function getAll(tailwind:TailwindObject, names:Array<string> = [], primary:strin
  * @return {object}
  */
 function merge(tailwind:TailwindObject, extension:object, fallbackGroup:string='container'):object {
-  if (JS.isString(tailwind)) {
+  if (typeof tailwind === 'string') {
     tailwind = { [fallbackGroup]: tailwind };
   }
 
