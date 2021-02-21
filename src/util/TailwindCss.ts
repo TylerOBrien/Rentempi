@@ -104,9 +104,7 @@ function hasTrackingPrefix(entry:string):boolean {
 function parse(className:string, fontSizes?:RegExpExecArray):object {
   if (!className) {
     return;
-  }
-
-  if (className in tailwinds) {
+  } else if (className in tailwinds) {
     return Object.assign({}, tailwinds[className]);
   }
 
