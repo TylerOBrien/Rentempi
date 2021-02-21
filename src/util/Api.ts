@@ -55,7 +55,7 @@ function call<Response=any>(request:Request, auth?:Authorization):Promise<Respon
   const payloadKey:string = request.method.toLowerCase() === 'get' ? 'params' : 'data';
   const config:AxiosRequestConfig = {
     headers,
-    method: <Method>request.method,
+    method: request.method as Method,
     url: ApiConfig.url + request.uri,
     [payloadKey]: request.data || {}
   };
