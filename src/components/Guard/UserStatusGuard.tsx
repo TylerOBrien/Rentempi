@@ -2,8 +2,7 @@
  * Global Imports
 */
 
-import React, { useContext, useEffect, useState, FunctionComponent } from 'react';
-import { useNavigation } from '@react-navigation/native';
+import React, { useEffect, useState, FunctionComponent } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
 /**
@@ -16,13 +15,8 @@ import { useSession } from '~/hooks';
  * Types/Interfaces
 */
 
-export type UserStatusGuardContext = string;
-
-export interface UserStatusGuardScreenProps {
-  component: FunctionComponent;
-}
-
 export interface UserStatusGuardProps {
+  loading: FunctionComponent;
   guest: FunctionComponent;
   unidentified: FunctionComponent;
   identified: FunctionComponent;
@@ -33,39 +27,7 @@ export interface UserStatusGuardProps {
 */
 
 const GuardStack = createStackNavigator();
-const GuardContext = React.createContext<UserStatusGuardContext>(undefined);
 const GuardScreenOptions = { headerShown: false };
-
-/**
- * Factories
-*/
-
-function createGuardScreen(component:FunctionComponent) {
-  return () => {
-    /** Context **/
-
-    const navigation = useNavigation();
-
-    /** Context **/
-
-    const route = useContext(GuardContext);
-
-    /** Side-Effects **/
-
-    useEffect(() => {
-      if (route) {
-        navigation.reset({
-          index: 0,
-          routes: [{ name: route }]
-        });
-      }
-    }, [ route ]);
-    
-    /** Output **/
-
-    return React.createElement(component);
-  };
-}
 
 /**
  * Exports
@@ -94,29 +56,12 @@ export function UserStatusGuard(props:UserStatusGuardProps) {
   /** Output **/
 
   return (
-    <GuardContext.Provider value={ route }>
-      <GuardStack.Navigator initialRouteName='loading'>
-        <GuardStack.Screen
-          name='loading'
-          component={ createGuardScreen(() => null) }
-          options={ GuardScreenOptions }
-        />
-        <GuardStack.Screen
-          name='guest'
-          component={ createGuardScreen(props.guest) }
-          options={ GuardScreenOptions }
-        />
-        <GuardStack.Screen
-          name='unidentified'
-          component={ createGuardScreen(props.unidentified) }
-          options={ GuardScreenOptions }
-        />
-        <GuardStack.Screen
-          name='identified'
-          component={ createGuardScreen(props.identified) }
-          options={ GuardScreenOptions }
-        />
-      </GuardStack.Navigator>
-    </GuardContext.Provider>
+    <GuardStack.Navigator initialRouteName='loading'>
+      <GuardStack.Screen
+        name={ route || 'loading' }
+        component={ props[route || 'loading'] }
+        options={ GuardScreenOptions }
+      />
+    </GuardStack.Navigator>
   );
 }
