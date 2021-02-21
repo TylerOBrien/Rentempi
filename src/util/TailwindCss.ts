@@ -304,9 +304,7 @@ function props(properties:any):any {
 
   if (!parsed) {
     return properties;
-  }
-
-  if (!properties.style) {
+  } else if (!properties.style) {
     return Object.assign({}, properties, { style: parsed, tailwind: undefined });
   }
 
