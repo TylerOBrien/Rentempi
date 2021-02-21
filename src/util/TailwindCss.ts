@@ -267,7 +267,7 @@ function getAll(tailwind:TailwindObject, names:Array<string> = [], primary:strin
  * 
  * @return {object}
  */
-function merge(tailwind:TailwindObject, extension:object, fallbackGroup:string='container'):object {
+function merge(tailwind:TailwindObject, extension:object, fallbackGroup:string = 'container'):object {
   if (typeof tailwind === 'string') {
     tailwind = { [fallbackGroup]: tailwind };
   }
