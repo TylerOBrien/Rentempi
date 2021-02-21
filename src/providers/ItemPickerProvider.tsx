@@ -2,7 +2,13 @@
  * Global Imports
 */
 
-import React, { Dispatch, MutableRefObject, SetStateAction, createContext, useEffect, useRef, useState } from 'react';
+import React, { createContext, useEffect, useRef, useState, MutableRefObject } from 'react';
+
+/**
+ * Local Imports
+*/
+
+import { SetStateHandler } from '~/util/React';
 
 /**
  * Types/Interfaces
@@ -18,7 +24,7 @@ export type ItemPickerItemHandler = (item:ItemPickerItem, index:number) => void;
 export interface ItemPickerContextInterface {
   isActive: boolean;
   isVisible: boolean;
-  setIsActive: Dispatch<SetStateAction<boolean>>;
+  setIsActive: SetStateHandler<boolean>;
 
   itemsRef: MutableRefObject<Array<ItemPickerItem>>;
   selectedItemRef: MutableRefObject<ItemPickerItem>;

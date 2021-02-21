@@ -2,7 +2,13 @@
  * Global Imports
 */
 
-import React, { Dispatch, ReactNode, SetStateAction, createContext, useState } from 'react';
+import React, { createContext, useState, Dispatch, ReactNode, SetStateAction } from 'react';
+
+/**
+ * Local Imports
+*/
+
+import { SetStateHandler } from '~/util/React';
 
 /**
  * Local Imports
@@ -20,7 +26,7 @@ export interface UserProviderProps {
 
 export interface UserContextInterface {
   user: UserModel;
-  setUser: Dispatch<SetStateAction<UserModel>>;
+  setUser: SetStateHandler<UserModel>;
 }
 
 /**

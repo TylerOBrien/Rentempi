@@ -2,7 +2,7 @@
  * Global Imports
 */
 
-import React, { ReactNode, createContext, useRef, useState } from 'react';
+import React, { createContext, useRef, useState, ReactNode } from 'react';
 import NetInfo, { NetInfoState, NetInfoSubscription } from '@react-native-community/netinfo';
 
 /**

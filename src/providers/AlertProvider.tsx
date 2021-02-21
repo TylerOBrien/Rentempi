@@ -2,7 +2,13 @@
  * Global Imports
 */
 
-import React, { Dispatch, MutableRefObject, ReactNode, SetStateAction, createContext, useRef, useState } from 'react';
+import React, { useRef, useState, MutableRefObject, ReactNode, createContext } from 'react';
+
+/**
+ * Local Imports
+*/
+
+import { SetStateHandler } from '~/util/React';
 
 /**
  * Types/Interfaces
@@ -14,7 +20,7 @@ export interface AlertProviderProps {
 
 export interface AlertContextInterface {
   alerts: Array<string>;
-  setAlerts: Dispatch<SetStateAction<Array<string>>>;
+  setAlerts: SetStateHandler<Array<string>>;
   alertDataRef: MutableRefObject<object>;
   alertTotalCountRef: MutableRefObject<number>;
 }

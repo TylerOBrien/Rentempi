@@ -2,7 +2,13 @@
  * Global Imports
 */
 
-import React, { Dispatch, SetStateAction, MutableRefObject, ReactNode, createContext, useRef, useState } from 'react';
+import React, { createContext, useRef, useState, MutableRefObject, ReactNode } from 'react';
+
+/**
+ * Local Imports
+*/
+
+import { SetStateHandler } from '~/util/React';
 
 /**
  * Types/Interfaces
@@ -14,7 +20,7 @@ export interface WebSocketProviderProps {
 
 export interface WebSocketContextInterface {
   isConnected: boolean;
-  setIsConnected: Dispatch<SetStateAction<boolean>>;
+  setIsConnected: SetStateHandler<boolean>;
   wsRef: MutableRefObject<object>;
 }
 

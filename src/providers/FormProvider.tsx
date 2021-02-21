@@ -2,7 +2,13 @@
  * Global Imports
 */
 
-import React, { Dispatch, SetStateAction, ReactNode, createContext, useState } from 'react';
+import React, { createContext, useState, ReactNode } from 'react';
+
+/**
+ * Local Imports
+*/
+
+import { SetStateHandler } from '~/util/React';
 
 /**
  * Types/Interfaces
@@ -14,7 +20,7 @@ export interface FormProviderProps {
 
 export interface FormContextInterface {
   errors: any;
-  setErrors: Dispatch<SetStateAction<any>>;
+  setErrors: SetStateHandler<any>;
 }
 
 /**
