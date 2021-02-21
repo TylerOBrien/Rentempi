@@ -12,7 +12,7 @@ import { StyleSheet, View } from 'react-native';
 import { AlertsOverlay } from '~/components/Alert';
 import { ItemPickerOverlay } from '~/components/ItemPicker';
 import { UserStatusGuard } from '~/components/Guard';
-import { GuestStack, UnverifiedStack, VerifiedStack } from '~/navigation/stacks';
+import { GuestStack, UndentifiedStack, IdentifiedStack } from '~/navigation/stacks';
 import { ApiProvider, AlertProvider, AuthProvider, FormProvider, ItemPickerProvider, NetInfoProvider, UserProvider } from '~/providers';
 
 /**
@@ -23,8 +23,8 @@ function EntryPointMain() {
   return (
     <UserStatusGuard
       guest={ GuestStack }
-      unverified={ UnverifiedStack }
-      verified={ VerifiedStack }
+      unidentified={ UndentifiedStack }
+      identified={ IdentifiedStack }
     />
   );
 }

@@ -16,8 +16,8 @@ import { useSession } from '~/hooks';
 
 export interface UserStatusGuardProps {
   guest: FunctionComponent;
-  unverified: FunctionComponent;
-  verified: FunctionComponent;
+  unidentified: FunctionComponent;
+  identified: FunctionComponent;
 }
 
 /**
@@ -33,9 +33,9 @@ export function UserStatusGuard(props:UserStatusGuardProps) {
 
   if (session.user) {
     if (session.user.is_identified) {
-      return <props.verified />;
+      return <props.identified />;
     } else {
-      return <props.unverified />;
+      return <props.unidentified />;
     }
   }
   
