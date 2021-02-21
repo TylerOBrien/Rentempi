@@ -36,7 +36,7 @@ function Main() {
       />
       <SafeAreaView style={ backgroundColor ? [ styles.container, { backgroundColor } ] : styles.container }>
         <EntryPoint />
-        <FlashMessage position={ flashMessagePosition || 'top' } />
+        <FlashMessage position={ flashMessagePosition || ThemeConfig.defaults.flashMessagePosition } />
       </SafeAreaView>
     </Fragment>
   );
