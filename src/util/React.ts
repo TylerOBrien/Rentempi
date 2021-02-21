@@ -16,6 +16,7 @@ import React, {
 */
 
 export type FunctionComponentLazy = LazyExoticComponent<FunctionComponent<any>>;
+export type HigherOrderFunctionComponentLazy = () => FunctionComponentElement<SuspenseProps>;
 export type SetStateHandler<T> = Dispatch<SetStateAction<T>>;
 
 /**
@@ -29,7 +30,7 @@ export type SetStateHandler<T> = Dispatch<SetStateAction<T>>;
  * @return {FunctionComponentLazy}
  */
 function lazy(name:string, imported:Promise<any>) : FunctionComponentLazy {
-  return React.lazy( () => imported.then(module => ({ default: module[name] })) );
+  return React.lazy(() => imported.then(module => ({ default: module[name] })));
 }
 
 /**
@@ -37,9 +38,9 @@ function lazy(name:string, imported:Promise<any>) : FunctionComponentLazy {
  * @param {Promise<any>} imported
  * @param {FunctionComponent} fallback
  * 
- * @return {() => FunctionComponentElement<SuspenseProps>}
+ * @return {HigherOrderFunctionComponentLazy}
  */
-function suspended(name:string, imported:Promise<any>, fallback:FunctionComponent) : () => FunctionComponentElement<SuspenseProps> {
+function suspended(name:string, imported:Promise<any>, fallback:FunctionComponent) : HigherOrderFunctionComponentLazy {
   return () => React.createElement(
     Suspense, { fallback }, React.createElement( lazy(name, imported) )
   );
