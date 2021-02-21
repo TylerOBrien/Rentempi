@@ -11,6 +11,13 @@ import { StorageConfig } from '~/config/Storage';
 import { AsyncJSON } from './JSON';
 
 /**
+ * Types/Interfaces
+*/
+
+export type StorageEntry = Array<Promise<string>>;
+export type PromisedStorageEntry = Promise<StorageEntry>;
+
+/**
  * Locals
 */
 
@@ -37,17 +44,19 @@ function name(group:string, key:string):Promise<string> {
 }
 
 /**
- * Retrieve a key and value pair to be saved in storage.
+ * Retrieve a key and value pair to be saved in storage. The returned array will
+ * contain two Promise<string> elements. The first promise resolves to the name
+ * of the entry. The second resolves to the stringified JSON to be written.
  * 
  * @param {string} group
  * @param {string} key
  * @param {object} unserialized
  * 
- * @return {Promise<Array<Promise<string>>>}
+ * @return {PromisedStorageEntry}
  */
-function entry(group:string, key:string, unserialized:object):Promise<Array<Promise<string>>> {
+function entry(group:string, key:string, unserialized:object):PromisedStorageEntry {
   return new Promise((resolve, reject) => {
-    const promises = [
+    const promises:StorageEntry = [
       name(group, key),
       AsyncJSON.stringify(unserialized)
     ];
