@@ -8,8 +8,7 @@ import React, { Fragment } from 'react';
  * Local Imports
 */
 
-import { AppDriver } from '~/system';
-
+import { ScreenConfig } from '~/config';
 import { Text } from '~/components/Base';
 import { Divider } from '~/components/Divider';
 import { Button } from '~/components/Button';
@@ -40,7 +39,7 @@ export function HelpLinks(props:HelpLinksProps) {
 
       <Link
         tailwind='self-center w-45p py-4 rounded-2xl bg-yellow-400'
-        to={ AppDriver.Screen.Guest.ForgotPassword }
+        to={ ScreenConfig.guest.ForgotPassword }
       >
         <Text tailwind='text-center text-lg text-black'>
           Recover Account

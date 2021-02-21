@@ -8,7 +8,7 @@ import React from 'react';
  * Local Imports
 */
 
-import { AppDriver } from '~/system';
+import { ScreenConfig } from '~/config';
 import { Button } from '~/components/Button';
 import { Row } from '~/components/Grid';
 import { Link } from '~/components/Link';
@@ -33,14 +33,14 @@ export function AuthLinks(props:AuthLinksProps) {
         tailwind='w-45p py-4 rounded-full bg-indigo-500'
         labelContainerProps={{ tailwind: 'text-base text-indigo-100 text-center' }}
         container={ Button }
-        to={ AppDriver.Screen.Guest.Login }
+        to={ ScreenConfig.guest.Login }
       />
       <Link
         label='Create Account'
         tailwind='w-45p py-4 rounded-full bg-indigo-500'
         labelContainerProps={{ tailwind: 'text-base text-indigo-100 text-center' }}
         container={ Button }
-        to={ AppDriver.Screen.Guest.Register }
+        to={ ScreenConfig.guest.Register }
       />
     </Row>
   );

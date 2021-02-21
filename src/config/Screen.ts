@@ -9,10 +9,28 @@ import { ScreenDriver } from '~/system/Screen';
 */
 
 export const ScreenConfig = {
+  guest: {
+    Welcome: 'Welcome',
+    Login: 'Login',
+    Register: 'Register',
+    ForgotPassword: 'Forgot Password',
+    ChangePassword: 'Change Password'
+  },
+
+  undentified: {
+    Identify: 'Identify',
+    VerifyEmail: 'VerifyEmail',
+    VerifyMobile: 'VerifyMobile'
+  },
+
+  identified: {
+    Lobby: 'Lobby'
+  },
+
   initial: {
-    Guest: 'Welcome',
-    Undentified: 'Identify',
-    Identified: 'Lobby'
+    guest: 'Welcome',
+    undentified: 'Identify',
+    identified: 'Lobby'
   },
 
   breakpoints: {
