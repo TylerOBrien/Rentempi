@@ -52,12 +52,11 @@ function call<Response=any>(request:Request, auth?:Authorization):Promise<Respon
     Authorization: auth?.value || defaultAuth?.value,
   });
 
-  const payloadKey:string = request.method.toLowerCase() === 'get' ? 'params' : 'data';
   const config:AxiosRequestConfig = {
     headers,
     method: request.method as Method,
     url: ApiConfig.url + request.uri,
-    [payloadKey]: request.data || {}
+    [request.method.toLowerCase() === 'get' ? 'params' : 'data']: request.data || {}
   };
 
   for (const key in config.headers) {
