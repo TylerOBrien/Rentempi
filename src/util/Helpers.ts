@@ -9,8 +9,8 @@
  * 
  * @return {Function}
  */
-function promised(callback:Function):Function {
-  return (...args:any[]) => new Promise((resolve, reject) => {
+function promised<In=unknown, Out=void>(callback:(...args:Array<In>) => Out) : (...args:Array<In>) => Promise<Out> {
+  return (...args:Array<In>) => new Promise((resolve, reject) => {
     try {
       resolve(callback(...args));
     } catch (error) {
