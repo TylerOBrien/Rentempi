@@ -14,7 +14,7 @@ import { AsyncJSON } from './JSON';
  * Types/Interfaces
 */
 
-export type StorageEntry = Array<Promise<string>>;
+export type StorageEntry = Array<string>;
 export type PromisedStorageEntry = Promise<StorageEntry>;
 
 /**
@@ -56,13 +56,13 @@ function name(group:string, key:string):Promise<string> {
  */
 function entry(group:string, key:string, unserialized:object):PromisedStorageEntry {
   return new Promise((resolve, reject) => {
-    const promises:StorageEntry = [
+    const promises = [
       name(group, key),
       AsyncJSON.stringify(unserialized)
     ];
 
     Promise.all(promises)
-      .then(() => resolve(promises))
+      .then(resolve)
       .catch(reject);
   });
 }
