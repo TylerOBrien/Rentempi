@@ -22,7 +22,7 @@ import { Field as FormikField, useFormikContext } from 'formik';
 */
 
 import { FormFieldValue } from '~/util/Form';
-import { Tailwind, StyleProp, TailwindProp } from '~/util/TailwindCss';
+import { Tailwind, TailwindProp } from '~/util/TailwindCss';
 
 /**
  * Types/Interfaces
@@ -44,7 +44,7 @@ export interface FieldProps {
   changeHandler?: string;
   changeValueHandler?: string;
   endEditingHandler?: string;
-  style?: StyleProp;
+  style?: object | Array<object>;
   tailwind?: TailwindProp;
   formik?: boolean;
   onChange?: () => void;
