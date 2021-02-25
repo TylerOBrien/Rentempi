@@ -4,6 +4,7 @@
 
 import React, { FunctionComponent, ReactNode } from 'react';
 import { ActivityIndicator, ColorValue, StyleSheet } from 'react-native';
+import { Icon } from 'react-native-vector-icons/Icon';
 
 /**
  * Local Imports
@@ -17,27 +18,27 @@ import { Tailwind, TailwindProps } from '~/util/TailwindCss';
  * Types/Interfaces
 */
 
-export interface ButtonProps extends TailwindProps {
+interface ButtonBaseProps extends TailwindProps {
   label?: string;
-  disabled?: boolean;
   loading?: boolean;
   loadingColor?: ColorValue;
+  disabled?: boolean;
+}
+
+export interface ButtonProps extends ButtonBaseProps {
+  iconName?: string;
+  iconFamily?: typeof Icon;
+  iconPosition?: 'left' | 'right' | 'center';
   container?: FunctionComponent<TailwindProps>;
   children?: ReactNode;
   onPress: () => void | Promise<void>;
-}
-
-export interface ButtonLabelProps extends TailwindProps {
-  label?: string;
-  loading?: boolean;
-  loadingColor?: ColorValue;
 }
 
 /**
  * Locals
 */
 
-function ButtonLabel(props:ButtonLabelProps) {
+function ButtonLabel(props:ButtonBaseProps) {
   /** Helpers **/
 
   const tailwinds = {
@@ -47,7 +48,7 @@ function ButtonLabel(props:ButtonLabelProps) {
   };
 
   /** Output **/
-  
+
   return (
     <View style={ styles.labelContainer } tailwind={ tailwinds.labelContainer }>
       <View style={ styles.loadingContainer }>
@@ -85,13 +86,16 @@ export function Button(props:ButtonProps) {
 
   return (
     <Pressable
-      style={ styles.container }
+      style={ props.style ? [ styles.container, props.style ] : styles.container }
       tailwind={ tailwinds.container }
       disabled={ props.disabled }
       onPress={ Functional.delayed(props.onPress) }
       onLayout={ props.onLayout }
     >
-      { props.children || <ButtonLabel { ...props } /> }
+      {
+        props.children ||
+          <ButtonLabel { ...props } />
+      }
     </Pressable>
   );
 }
