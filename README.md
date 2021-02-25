@@ -14,6 +14,23 @@ In the file `android/app/build.gradle` add the following after `apply plugin: "c
 apply from: project(':react-native-config').projectDir.getPath() + '/dotenv.gradle'
 ```
 
+### React Native PDF
+
+#### Android
+
+In the file `android/app/build.gradle` add the following after the `defaultConfig` block:
+
+```
+packagingOptions {
+    pickFirst 'lib/x86/libc++_shared.so'
+    pickFirst 'lib/x86_64/libjsc.so'
+    pickFirst 'lib/arm64-v8a/libjsc.so'
+    pickFirst 'lib/arm64-v8a/libc++_shared.so'
+    pickFirst 'lib/x86_64/libc++_shared.so'
+    pickFirst 'lib/armeabi-v7a/libc++_shared.so'
+}
+```
+
 ### React Native Vector Icons
 
 #### Android
@@ -54,10 +71,4 @@ In the file `ios/YourProjectName/Info.plist` add the following the end of the fi
 	<string>Zocial.ttf</string>
 	<string>Fontisto.ttf</string>
 </array>
-```
-
-Run from `ios` directory:
-
-```
-pod update
 ```
