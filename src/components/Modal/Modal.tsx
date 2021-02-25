@@ -6,12 +6,6 @@ import React, { ReactNode, useEffect, useRef, useState } from 'react';
 import { Animated, ColorValue, Dimensions, LayoutChangeEvent, ScaledSize, StyleSheet, View } from 'react-native';
 
 /**
- * Local Imports
-*/
-
-import { StyleProp } from '~/util/TailwindCss';
-
-/**
  * Types/Interfaces
 */
 
@@ -32,7 +26,7 @@ export interface ModalProps {
   visible?: boolean;
   transition?: ModalTransition;
   backgroundColor?: ColorValue;
-  style?: StyleProp;
+  style?: object | Array<object>;
   children?: ReactNode;
   onLayout?: (event:LayoutChangeEvent) => void;
 }

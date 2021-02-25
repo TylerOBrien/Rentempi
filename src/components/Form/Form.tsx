@@ -9,14 +9,14 @@ import React, { FunctionComponent, ReactNode } from 'react';
 */
 
 import { View } from '~/components/Base';
-import { TailwindEnabledProps } from '~/util/TailwindCss';
+import { TailwindProps } from '~/util/TailwindCss';
 
 /**
  * Types/Interfaces
 */
 
-export interface FormProps extends TailwindEnabledProps {
-  container?: FunctionComponent<TailwindEnabledProps>;
+export interface FormProps extends TailwindProps {
+  container?: FunctionComponent<TailwindProps>;
   children?: ReactNode;
 };
 
