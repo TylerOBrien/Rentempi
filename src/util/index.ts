@@ -10,6 +10,7 @@ export { Chrono } from './Chrono';
 export { Currency } from './Currency';
 export { Geo } from './Geo';
 export { Helpers } from './Helpers';
+export { ImageHelpers } from './Image';
 export { JS } from './JS';
 export { AsyncJSON } from './JSON';
 export { ReactHelpers } from './React';
