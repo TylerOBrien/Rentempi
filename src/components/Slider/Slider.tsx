@@ -3,7 +3,7 @@
 */
 
 import React, { useRef } from 'react';
-import { Animated, PanResponder, StyleSheet, View } from 'react-native';
+import { Animated, PanResponder, LayoutChangeEvent, StyleSheet, View } from 'react-native';
 
 /**
  * Types/Interfaces
@@ -16,9 +16,9 @@ export interface SliderProps {
   min: number;
   max: number;
   stride: number;
-  onLayout?: Function;
-  onValueChange?: Function;
-};
+  onLayout?: (event:LayoutChangeEvent) => void | Promise<void>;
+  onValueChange?: (value:number) => void | Promise<void>;
+}
 
 /**
  * Exports

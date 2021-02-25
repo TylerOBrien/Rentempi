@@ -27,9 +27,9 @@ export interface ConfirmModalProps extends ModalProps {
   labelCancel?: string;
   labelConfirm?: string;
   loading?: boolean;
-  onConfirm: Function;
-  onClose: Function;
-};
+  onConfirm: () => void | Promise<void>;
+  onClose: () => void | Promise<void>;
+}
 
 /**
  * Exports
