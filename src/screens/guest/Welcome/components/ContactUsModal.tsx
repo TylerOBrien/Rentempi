@@ -19,7 +19,7 @@ import { Modal } from '~/components/Modal';
 
 export interface ContactUsModalProps {
   visible: boolean;
-  onClose: Function;
+  onClose: () => void | Promise<void>;
   onLayout?: (event:LayoutChangeEvent) => void;
 }
 
