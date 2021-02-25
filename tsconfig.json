@@ -6,6 +6,7 @@
     "jsx": "react",
     "esModuleInterop": true,
     "resolveJsonModule": true,
+    "skipLibCheck": true,
     "paths": {
       "~/*": ["src/*"],
       "@resources/*": ["resources/*"],
