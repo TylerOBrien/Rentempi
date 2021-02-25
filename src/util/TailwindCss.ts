@@ -2,7 +2,7 @@
  * Global Imports
 */
 
-import { LayoutChangeEvent } from 'react-native';
+import { LayoutChangeEvent, StyleProp } from 'react-native';
 
 /**
  * Resources
@@ -25,7 +25,6 @@ interface ParsedColor {
   backgroundColor?: string;
 }
 
-export type StyleProp = object | Array<object>;
 export type TailwindBaseProp = string | Array<string>;
 export type TailwindProp = TailwindBaseProp | object;
 
@@ -33,13 +32,13 @@ export type TailwindClassNames = string | Array<string> | Array<TailwindClassNam
 export type TailwindObject = TailwindClassNames | object;
 
 export interface TailwindProps {
-  style?: StyleProp;
+  style?: object | Array<object>;
   tailwind?: TailwindProp;
   onLayout?: (event:LayoutChangeEvent) => void;
 }
 
-export interface TailwindBaseProps {
-  style?: StyleProp;
+export interface TailwindBaseProps<T=object> {
+  style?: StyleProp<T>;
   tailwind?: TailwindClassNames;
 }
 
