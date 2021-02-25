@@ -11,7 +11,7 @@ import { FormikHelpers } from 'formik';
 
 import { VerifyEmailFields, VerifyEmailForm, VerifyEmailFormContext } from '~/forms/unidentified/VerifyEmailForm';
 import { PrimaryUnidentifiedLayout } from '~/layouts/unidentified';
-import {  } from '~/services';
+import { StoreEmailVerificationResponse } from '~/services/EmailVerification';
 
 import { useForm } from '~/hooks';
 

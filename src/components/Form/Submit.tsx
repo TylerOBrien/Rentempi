@@ -24,7 +24,7 @@ export interface SubmitProps extends TailwindProps {
   loadingColor?: ColorValue;
   disabled?: boolean;
   formik?: boolean;
-  onPress?: Function;
+  onPress?: () => void | Promise<void>;
 }
 
 /**

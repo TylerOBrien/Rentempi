@@ -24,7 +24,7 @@ export interface ButtonProps extends TailwindProps {
   loadingColor?: ColorValue;
   container?: FunctionComponent<TailwindProps>;
   children?: ReactNode;
-  onPress: () => void;
+  onPress: () => void | Promise<void>;
 }
 
 export interface ButtonLabelProps extends TailwindProps {

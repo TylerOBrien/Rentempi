@@ -11,15 +11,15 @@ import {
  * Local Imports
 */
 
-import { Tailwind, StyleProp, TailwindClassNames } from '~/util/TailwindCss';
+import { Tailwind, TailwindClassNames } from '~/util/TailwindCss';
 
 /**
  * Types/Interfaces
 */
 
 export interface PressableProps extends BasePressableProps {
-  styleUnpressed?: StyleProp;
-  stylePressed?: StyleProp;
+  styleUnpressed?: object | Array<object>;
+  stylePressed?: object | Array<object>;
   tailwind?: TailwindClassNames;
   tailwindUnpressed?: TailwindClassNames;
   tailwindPressed?: TailwindClassNames;
@@ -59,5 +59,5 @@ export function Pressable(props:PressableProps) {
   
   /** Output **/
 
-  return React.createElement(BasePressable, Tailwind.props(props));
+  return React.createElement(BasePressable, Tailwind.props<object>(props));
 }

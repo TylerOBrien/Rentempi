@@ -17,6 +17,18 @@ import { JS } from './JS';
 
 export type GeoNameType = 'name' | 'alpha2' | 'alpha3';
 
+export interface Province {
+  short: string;
+  name: string;
+  alias: string;
+}
+
+export interface Country {
+  alpha2: string | Array<string>;
+  alpha3: string | Array<string>;
+  provinces: Array<Province>;
+}
+
 /**
  * Local Vars
 */
@@ -33,9 +45,9 @@ const ncountries = countries.length;
  * @param {GeoNameType} needle
  * @param {string} key
  * 
- * @return {string}
+ * @return {Country}
  */
-function country(needle:GeoNameType, key:string):string {
+function country(needle:GeoNameType, key:string):Country {
   if (!key) {
     Assert.ThrowUnexpectedEmptyError('key', 'string');
   }
@@ -43,10 +55,10 @@ function country(needle:GeoNameType, key:string):string {
   for (let i = 0; i < ncountries; i++) {
     if (JS.isArray(countries[i][key])) {
       if (countries[i][key].indexOf(needle) !== -1) {
-        return countries[i];
+        return countries[i] as unknown as Country;
       }
     } else if (countries[i][key] === needle) {
-      return countries[i];
+      return countries[i] as unknown as Country;
     }
   }
 
@@ -82,11 +94,11 @@ function province(country, needle:string, provinceKey:string='short', countryKey
   let i = country.provinces.length;
 
   while (i--) {
-    if (JS.isArray(country.provinces[i][key])) {
-      if (country.provinces[i][key].indexOf(needle) !== -1) {
+    if (JS.isArray(country.provinces[i][provinceKey])) {
+      if (country.provinces[i][provinceKey].indexOf(needle) !== -1) {
         return country.provinces[i];
       }
-    } else if (country.provinces[i][key] === needle) {
+    } else if (country.provinces[i][provinceKey] === needle) {
       return country.provinces[i];
     }
   }
@@ -98,9 +110,9 @@ function province(country, needle:string, provinceKey:string='short', countryKey
  * 
  * @param {string} alpha2
  * 
- * @return {string}
+ * @return {Country}
  */
-function countryFromAlpha2(alpha2:string):string {
+function countryFromAlpha2(alpha2:string):Country {
   if (!alpha2) {
     Assert.ThrowUnexpectedEmptyError('alpha2', 'string');
   }
@@ -116,9 +128,9 @@ function countryFromAlpha2(alpha2:string):string {
  * 
  * @param {string} alpha3
  * 
- * @return {string}
+ * @return {Country}
  */
-function countryFromAlpha3(alpha3:string):string {
+function countryFromAlpha3(alpha3:string):Country {
   if (!alpha3) {
     Assert.ThrowUnexpectedEmptyError('alpha3', 'string');
   }
@@ -134,9 +146,9 @@ function countryFromAlpha3(alpha3:string):string {
  * 
  * @param {string} name
  * 
- * @return {string}
+ * @return {Country}
  */
-export function countryFromName(name:string):string {
+export function countryFromName(name:string):Country {
   if (!name) {
     Assert.ThrowUnexpectedEmptyError('name', 'string');
   }

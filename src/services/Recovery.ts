@@ -83,8 +83,10 @@ export function ShowRecoveryService(auth:Authorization, recovery:ResourceIdentit
 */
 
 export interface StoreRecoveryRequest {
-  type: 'email' | 'mobile';
-  value: string;
+  identity: {
+    type: 'email' | 'mobile';
+    value: string;
+  }
 }
 
 export interface StoreRecoveryResponse extends RecoveryModel {

@@ -37,7 +37,7 @@ export interface TailwindProps {
   onLayout?: (event:LayoutChangeEvent) => void;
 }
 
-export interface TailwindBaseProps<T=object> {
+export interface TailwindBaseProps<T> {
   style?: StyleProp<T>;
   tailwind?: TailwindClassNames;
 }
@@ -294,7 +294,7 @@ function merge(tailwind:TailwindObject, extension:object, fallbackGroup:string =
  * 
  * @return {TailwindBaseProps}
  */
-function props(properties:TailwindBaseProps):TailwindBaseProps {
+function props<T>(properties:TailwindBaseProps<T>):TailwindBaseProps<T> {
   if (!properties.tailwind) {
     return properties;
   }
@@ -324,7 +324,7 @@ function props(properties:TailwindBaseProps):TailwindBaseProps {
  * 
  * @return {StyleProp}
  */
-function style(props:TailwindBaseProps):StyleProp {
+function style<T>(props:TailwindBaseProps<T>):StyleProp<T> {
   return props.style && Object.assign({}, props.style);
 };
 

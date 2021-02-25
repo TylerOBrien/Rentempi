@@ -19,7 +19,7 @@ import { Link } from '~/components/Link';
 */
 
 export interface HelpLinksProps {
-  onPressContactUs: Function;
+  onPressContactUs: () => void | Promise<void>;
 }
 
 /**
