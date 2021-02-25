@@ -2,8 +2,8 @@
  * Global Imports
 */
 
-import React, { FunctionComponent, ReactNode } from 'react';
-import { ActivityIndicator, ColorValue, StyleSheet } from 'react-native';
+import React, { FunctionComponent, ReactNode, useRef, useState } from 'react';
+import { ActivityIndicator, ColorValue, LayoutChangeEvent, Platform, PressableAndroidRippleConfig, StyleSheet } from 'react-native';
 import { Icon } from 'react-native-vector-icons/Icon';
 
 /**
@@ -23,6 +23,7 @@ interface ButtonBaseProps extends TailwindProps {
   loading?: boolean;
   loadingColor?: ColorValue;
   disabled?: boolean;
+  borderless?: boolean;
 }
 
 export interface ButtonProps extends ButtonBaseProps {
@@ -76,10 +77,36 @@ ButtonLabel.defaultProps = {
 */
 
 export function Button(props:ButtonProps) {
+  /** Refs **/
+
+  const androidRippleRef = useRef<PressableAndroidRippleConfig>();
+
+  /** States **/
+
+  const [ , setForceRender ] = useState<boolean>();
+
   /** Helpers **/
 
   const tailwinds = {
     container: Tailwind.get(props.tailwind, 'container')
+  };
+
+  /** Event Handlers **/
+
+  /**
+   * @return {void}
+   */
+  const handleLayout = (event:LayoutChangeEvent) : void => {
+    androidRippleRef.current = {
+      radius: event.nativeEvent.layout.width / 2,
+      borderless: props.borderless
+    };
+
+    if (props.onLayout) {
+      props.onLayout(event);
+    }
+
+    setForceRender(current => !current);
   };
 
   /** Output **/
@@ -89,8 +116,9 @@ export function Button(props:ButtonProps) {
       style={ props.style ? [ styles.container, props.style ] : styles.container }
       tailwind={ tailwinds.container }
       disabled={ props.disabled }
-      onPress={ Functional.delayed(props.onPress) }
-      onLayout={ props.onLayout }
+      onPress={ props.onPress }
+      onLayout={ Platform.OS === 'android' ? handleLayout : props.onLayout }
+      android_ripple={ androidRippleRef.current }
     >
       {
         props.children ||
