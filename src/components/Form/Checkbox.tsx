@@ -45,7 +45,7 @@ export function Checkbox(props:CheckboxProps) {
   /** Helpers **/
 
   const hasError = !!( errors && props.name in errors );
-  
+
   /** Output **/
 
   return (
@@ -64,3 +64,7 @@ export function Checkbox(props:CheckboxProps) {
     </LabeledField>
   );
 }
+
+Checkbox.defaultProps = {
+  labelPosition: 'after'
+};
